@@ -1,0 +1,72 @@
+:root {
+  --main-bg-color: #0e0e0c;
+  --main-font-color: #d1d0cc;
+  --border-color: #595854;
+  --border-hover-color: rgb(133, 132, 121);
+  /* --highlight-color: #c9962a; */
+  --highlight-color: #d0aa3b;
+  --link-color: var(--highlight-color);
+  --divider-gradient: linear-gradient(to right, transparent, #7a5c1e, transparent);
+  --hover-shadow: 0px 0px 16px 4px rgba(50, 49, 35, 0.9);
+  --hover-background: rgba(50, 49, 35, 0.5);
+}
+
+.pink-theme {
+  --main-bg-color: #1a0a10;
+  --main-font-color: #f0d0e0;
+  --border-color: #6a3050;
+  --border-hover-color: rgb(180, 100, 140);
+  --highlight-color: #e879a8;
+  --link-color: var(--highlight-color);
+  --divider-gradient: linear-gradient(to right, transparent, #c75070, transparent);
+  --hover-shadow: 0px 0px 16px 4px rgba(199, 80, 112, 0.8);
+  --hover-background: rgba(90, 48, 80, 0.5);
+}
+
+.blue-theme {
+  --main-bg-color: #0a1018;
+  --main-font-color: #d0e0f0;
+  --border-color: #30506a;
+  --border-hover-color: rgb(100, 140, 180);
+  --highlight-color: #79b8e8;
+  --link-color: var(--highlight-color);
+  --divider-gradient: linear-gradient(to right, transparent, #5090c7, transparent);
+  --hover-shadow: 0px 0px 16px 4px rgba(80, 144, 199, 0.8);
+  --hover-background: rgba(50, 70, 90, 0.5);
+}
+
+@font-face {
+  font-family: 'Macondo';
+  src: url('@/assets/fonts/Macondo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('@/assets/fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ModernAntiqua';
+  src: url('@/assets/fonts/ModernAntiqua-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Metamorphous';
+  src: url('@/assets/fonts/Metamorphous-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CrimsonText';
+  src: url('@/assets/fonts/CrimsonText-Regular.ttf') format('truetype');
+}
+
+body {
+  /* font-family: 'Macondo', sans-serif; */
+  font-family: 'CrimsonText', sans-serif;
+  font-size: 15px;
+  background: var(--main-bg-color);
+  color: var(--main-font-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

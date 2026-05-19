@@ -1,0 +1,39 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+  transition: 0.4s;
+}
+
+.button {
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border-color);
+  transition: 0.3s;
+  text-align: center;
+  background: transparent;
+  color: var(--link-color);
+}
+
+.button-lg {
+  font-size: 1.5rem;
+  padding: 0.5rem 1.1rem;
+}
+
+.button:hover {
+  border-color: var(--border-hover-color);
+  box-shadow: var(--hover-shadow);
+  background: var(--hover-background);
+}
+
+.d-none {
+  display: none;
+}
