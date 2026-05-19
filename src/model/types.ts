@@ -12,7 +12,7 @@ export interface Encounter {
   dlc: boolean
   category: string
   npcs: Npc[]
-  youtube: string
+  youtube: string[]
 }
 
 export type ResistanceValue = number | 'Immune'
@@ -52,9 +52,10 @@ export interface Npc {
   phase: number
   tarnished: boolean
   weakPart: number
-  parryable: boolean
-  numberOfParries: number
-  backstab: boolean
+  parryable?: boolean
+  numberOfParries?: number
+  backstab?: boolean
+  defense: number
   negation: Negation
   resistance: Resistance
   poise: Poise

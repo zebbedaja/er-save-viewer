@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 

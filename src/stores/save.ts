@@ -53,5 +53,16 @@ export const useSaveStore = defineStore('save', () => {
     error.value = null
   }
 
-  return { save, activeSlotId, activeSlot, profileSummaries, isLoading, error, readFile, resetSaveFile, resetActiveSlot, setActiveSlotId }
+  return {
+    save,
+    activeSlotId,
+    activeSlot,
+    profileSummaries,
+    isLoading,
+    error,
+    readFile,
+    resetSaveFile,
+    resetActiveSlot,
+    setActiveSlotId,
+  }
 })

@@ -10,4 +10,3 @@ import { RouterView } from 'vue-router'
     </SaveBrowser>
   </main>
 </template>
-

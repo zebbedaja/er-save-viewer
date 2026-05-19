@@ -17,9 +17,7 @@ const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
 function isDefeated(flagId: number): boolean {
-  return (
-    props.saveSlot?.eventFlags?.some((f) => f.id === flagId && f.state) ?? false
-  )
+  return props.saveSlot?.eventFlags?.some((f) => f.id === flagId && f.state) ?? false
 }
 
 function countDefeated(bosses: typeof encounters): number {
@@ -29,15 +27,9 @@ function countDefeated(bosses: typeof encounters): number {
 const baseGameBosses = encounters.filter((e) => !e.dlc)
 const dlcBosses = encounters.filter((e) => e.dlc)
 
-const defeatedOverall = computed(() =>
-  encounters.filter((e) => isDefeated(e.flagId)).length
-)
-const defeatedBaseGame = computed(() =>
-  baseGameBosses.filter((e) => isDefeated(e.flagId)).length
-)
-const defeatedDlc = computed(() =>
-  dlcBosses.filter((e) => isDefeated(e.flagId)).length
-)
+const defeatedOverall = computed(() => encounters.filter((e) => isDefeated(e.flagId)).length)
+const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => isDefeated(e.flagId)).length)
+const defeatedDlc = computed(() => dlcBosses.filter((e) => isDefeated(e.flagId)).length)
 
 const filteredEncounters = computed(() => {
   const query = searchQuery.value.toLowerCase()
@@ -130,7 +122,10 @@ function formatNumber(n: number | undefined): string {
           <span class="progression-count">{{ defeatedBaseGame }}/{{ baseGameBosses.length }}</span>
         </div>
         <div class="progression-bar">
-          <div class="progression-fill base-game" :style="{ width: (defeatedBaseGame / baseGameBosses.length) * 100 + '%' }"></div>
+          <div
+            class="progression-fill base-game"
+            :style="{ width: (defeatedBaseGame / baseGameBosses.length) * 100 + '%' }"
+          ></div>
         </div>
       </div>
 
@@ -147,12 +142,7 @@ function formatNumber(n: number | undefined): string {
 
     <div class="filters">
       <div class="search-group">
-        <input
-          type="text"
-          class="search-input"
-          :placeholder="$t('searchBosses')"
-          v-model="searchQuery"
-        />
+        <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
       </div>
 
       <div class="filter-row">
@@ -172,11 +162,7 @@ function formatNumber(n: number | undefined): string {
           </div>
 
           <div class="filter-group">
-            <button
-              class="defeat-toggle-btn"
-              :class="{ active: defeatFilter === 'all' }"
-              @click="defeatFilter = 'all'"
-            >
+            <button class="defeat-toggle-btn" :class="{ active: defeatFilter === 'all' }" @click="defeatFilter = 'all'">
               {{ $t('allBosses') }}
             </button>
             <button
@@ -203,19 +189,10 @@ function formatNumber(n: number | undefined): string {
       </div>
     </div>
 
-    <div v-if="groupedBosses.length === 0" class="no-results">
-      No bosses match your filters.
-    </div>
+    <div v-if="groupedBosses.length === 0" class="no-results">No bosses match your filters.</div>
 
-    <div
-      v-for="[region, bosses] in groupedBosses"
-      :key="region"
-      class="region-group"
-    >
-      <div
-        class="region-header"
-        @click="toggleRegion(region)"
-      >
+    <div v-for="[region, bosses] in groupedBosses" :key="region" class="region-group">
+      <div class="region-header" @click="toggleRegion(region)">
         <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
         <span class="region-name">{{ region }}</span>
         <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>

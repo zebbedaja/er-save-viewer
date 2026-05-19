@@ -14,10 +14,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Godrick the Grafted [Boss]',
         id: 47500014,
+        defense: 105,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -65,10 +67,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Margit, the Fell Omen [Boss]',
         id: 21300014,
+        defense: 103,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -117,10 +121,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Grafted Scion [Boss]',
         id: 46900008,
+        defense: 107,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -166,10 +172,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Morgott, the Omen King [Boss]',
         id: 21300534,
+        defense: 114,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -215,10 +223,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Godfrey, First Elden Lord [Boss]',
         id: 47200134,
+        defense: 114,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -264,10 +274,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Godfrey, First Elden Lord [Boss]',
         id: 47200070,
+        defense: 120,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -301,6 +313,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Hoarah Loux [Boss]',
         id: 47210070,
+        defense: 120,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -352,10 +365,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Sir Gideon Ofnir, the All-Knowing [Boss]',
         id: 523240070,
+        defense: 120,
         phase: 1,
         tarnished: true,
         weakPart: 1.5,
@@ -375,7 +390,7 @@ export const encounters: Encounter[] = [
           rot: 114,
           bleed: 114,
           frost: 114,
-          madness: '0',
+          madness: 0,
           sleep: 1143,
           deathblight: 'Immune',
         },
@@ -401,10 +416,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Dragonkin Soldier of Nokstella [Boss]',
         id: 46500960,
+        defense: 106,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -453,10 +470,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Dragonkin Soldier [Boss]',
         id: 46500262,
+        defense: 117,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -505,10 +524,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Valiant Gargoyle (Greatsword) [Boss]',
         id: 47700165,
+        defense: 111,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -544,6 +565,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Valiant Gargoyle (Twinblade) [Boss]',
         id: 47701165,
+        defense: 111,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -591,10 +613,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Dragonkin Soldier [Boss]',
         id: 46500265,
+        defense: 114,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -640,10 +664,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Mimic Tear [Boss]',
         id: 526100965,
+        defense: 100,
         phase: 1,
         tarnished: true,
         weakPart: 1.5,
@@ -665,7 +691,7 @@ export const encounters: Encounter[] = [
           rot: 0,
           bleed: 0,
           frost: 0,
-          madness: '0',
+          madness: 0,
           sleep: 0,
           deathblight: 'Immune',
         },
@@ -691,10 +717,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Crucible Knight Siluria [Boss]',
         id: 25001066,
+        defense: 117,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -740,10 +768,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: "Fia's Champion [Boss]",
         id: 523610066,
+        defense: 100,
         phase: 1,
         tarnished: true,
         weakPart: 1.5,
@@ -763,9 +793,9 @@ export const encounters: Encounter[] = [
           rot: 100,
           bleed: 100,
           frost: 100,
-          madness: '0',
+          madness: 0,
           sleep: 999,
-          deathblight: '999',
+          deathblight: 999,
         },
         poise: {
           base: 100,
@@ -789,10 +819,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Lichdragon Fortissax [Boss]',
         id: 45110066,
+        defense: 114,
         phase: 1,
         tarnished: false,
         weakPart: 2,
@@ -838,10 +870,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Astel, Naturalborn of the Void [Boss]',
         id: 46200062,
+        defense: 114,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -890,10 +924,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Mohg, Lord of Blood [Boss]',
         id: 48000068,
+        defense: 122,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -942,6 +978,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -957,6 +994,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -972,6 +1010,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -987,6 +1026,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -1002,6 +1042,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -1017,9 +1058,11 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Rennala, Queen of the Full Moon (Phase 1) [Boss]',
+        defense: 109,
         phase: 1,
         tarnished: false,
         weakPart: 0,
@@ -1046,11 +1089,12 @@ export const encounters: Encounter[] = [
           sleep: 'Immune',
           deathblight: 'Immune',
         },
-        poise: { base: -1, mult: 1, regenerationDelay: 0 },
+        poise: { base: -1, mult: 1, regenerationDelay: 0, effective: -1 },
       },
       {
         name: 'Rennala, Queen of the Full Moon - Bubble (Phase 1) [Boss]',
         id: 20300024,
+        defense: 109,
         phase: 1,
         tarnished: false,
         weakPart: 0,
@@ -1077,11 +1121,12 @@ export const encounters: Encounter[] = [
           sleep: 'Immune',
           deathblight: 'Immune',
         },
-        poise: { base: -1, mult: 1, regenerationDelay: 0 },
+        poise: { base: -1, mult: 1, regenerationDelay: 0, effective: -1 },
       },
       {
         name: 'Rennala, Queen of the Full Moon (Phase 2) [Boss]',
         id: 20310024,
+        defense: 109,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1130,10 +1175,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Red Wolf of Radagon [Boss]',
         id: 31811024,
+        defense: 107,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1182,11 +1229,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    youtube: 'https://www.youtube.com/watch?v=Ua3J8bmekM0',
+    youtube: ['https://www.youtube.com/watch?v=Ua3J8bmekM0'],
     npcs: [
       {
         name: 'Malenia, Blade of Miquella [Boss]',
         id: 21200056,
+        defense: 123,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1223,6 +1271,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Malenia, Goddess of Rot [Boss]',
         id: 21202056,
+        defense: 123,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1271,6 +1320,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -1286,10 +1336,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'God-Devouring Serpent [Boss]',
         id: 47100038,
+        defense: 115,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1325,6 +1377,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Rykard, Lord of Blasphemy [Boss]',
         id: 47101038,
+        defense: 115,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1372,10 +1425,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Godskin Noble [Boss]',
         id: 35700038,
+        defense: 114,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1424,6 +1479,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -1439,6 +1495,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -1454,6 +1511,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     drops: [],
+    youtube: [],
     npcs: [],
   },
   {
@@ -1469,10 +1527,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Elden Beast [Boss]',
         id: 22000078,
+        defense: 121,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1508,6 +1568,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Radagon of the Golden Order [Boss]',
         id: 21900078,
+        defense: 121,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1556,10 +1617,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Divine Beast Dancing Lion [Boss]',
         id: 52100088,
+        defense: 122,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1607,10 +1670,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Promised Consort Radahn [Boss]',
         id: 52200089,
+        defense: 125,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1647,6 +1712,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Radahn, Consort of Miquella [Boss]',
         id: 52201089,
+        defense: 125,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1695,10 +1761,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Golden Hippopotamus [Boss]',
         id: 50100098,
+        defense: 123,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1746,10 +1814,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Base Serpent Messmer [Boss]',
         id: 51301099,
+        defense: 124,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1786,6 +1856,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Messmer the Impaler [Boss]',
         id: 51300099,
+        defense: 124,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1834,10 +1905,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Putrescent Knight (Phase 1) [Boss]',
         id: 50200087,
+        defense: 123,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1873,6 +1946,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Putrescent Knight (Phase 2) [Boss]',
         id: 50200187,
+        defense: 123,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -1920,10 +1994,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Metyr, Mother of Fingers [Boss]',
         id: 52000097,
+        defense: 124,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -1971,10 +2047,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Midra, Lord of Frenzied Flame [Boss]',
         id: 50510086,
+        defense: 124,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2023,6 +2101,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2038,6 +2117,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2053,6 +2133,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2068,6 +2149,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2083,6 +2165,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2098,6 +2181,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2113,6 +2197,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2128,6 +2213,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2143,6 +2229,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2158,6 +2245,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2173,6 +2261,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2194,6 +2283,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2209,6 +2299,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2224,6 +2315,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2239,6 +2331,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2254,6 +2347,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2269,6 +2363,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2284,6 +2379,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2299,6 +2395,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2314,6 +2411,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2329,6 +2427,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2344,6 +2443,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2359,6 +2459,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2374,6 +2475,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2389,6 +2491,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2404,6 +2507,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2419,6 +2523,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2434,6 +2539,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2449,10 +2555,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Crystalian (Spear) [Boss]',
         id: 33501920,
+        defense: 107,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2488,6 +2596,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Spear) [Boss] [Cracked]',
+        defense: 107,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2524,6 +2633,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crystalian (Staff) [Boss]',
         id: 33502920,
+        defense: 107,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2559,6 +2669,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Staff) [Boss] [Cracked]',
+        defense: 107,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2607,6 +2718,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2622,6 +2734,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2637,6 +2750,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2652,6 +2766,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2667,6 +2782,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2682,6 +2798,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2697,6 +2814,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2712,6 +2830,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2727,6 +2846,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2742,6 +2862,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2757,10 +2878,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Cleanrot Knight (Sickle) [Boss]',
         id: 38001940,
+        defense: 109,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2797,6 +2920,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Cleanrot Knight (Spear) [Boss]',
         id: 38000940,
+        defense: 109,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2845,6 +2969,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -2860,10 +2985,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Godskin Apostle [Boss]',
         id: 35600950,
+        defense: 115,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -2897,6 +3024,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godskin Noble [Boss]',
         id: 35700950,
+        defense: 115,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -2930,6 +3058,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Spiritcaller Snail [Boss]',
         id: 41402950,
+        defense: 115,
         phase: 3,
         tarnished: false,
         weakPart: 1.5,
@@ -2975,10 +3104,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Scaly Misbegotten [Boss]',
         id: 34510912,
+        defense: 102,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -3027,6 +3158,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3042,6 +3174,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3057,6 +3190,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3072,10 +3206,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Crystalian (Ringblade) [Boss]',
         id: 33500930,
+        defense: 110,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -3111,6 +3247,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Ringblade) [Boss] [Cracked]',
+        defense: 110,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -3147,6 +3284,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crystalian (Spear) [Boss]',
         id: 33501930,
+        defense: 110,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -3182,6 +3320,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Spear) [Boss] [Cracked]',
+        defense: 110,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -3230,6 +3369,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3250,6 +3390,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3265,6 +3406,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3280,6 +3422,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3295,6 +3438,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3310,6 +3454,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3325,10 +3470,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Mohg, The Omen [Boss]',
         id: 48001935,
+        defense: 117,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -3376,6 +3523,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3391,6 +3539,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3406,10 +3555,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Death Knight (Twin Axes) [Boss]',
         id: 50700081,
+        defense: 122,
         phase: 1,
         tarnished: false,
         weakPart: 1.3,
@@ -3458,10 +3609,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Death Knight (Longhaft Axe) [Boss]',
         id: 50701095,
+        defense: 123,
         phase: 1,
         tarnished: false,
         weakPart: 1.3,
@@ -3510,6 +3663,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3525,6 +3679,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3540,6 +3695,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3555,6 +3711,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3570,6 +3727,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3585,6 +3743,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3600,6 +3759,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3615,6 +3775,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3630,6 +3791,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3645,6 +3807,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3660,6 +3823,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     drops: [],
+    youtube: [],
     npcs: [],
   },
   {
@@ -3675,6 +3839,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3690,6 +3855,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3705,6 +3871,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3720,6 +3887,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3735,6 +3903,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3750,6 +3919,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3773,6 +3943,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3788,6 +3959,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3803,6 +3975,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3818,6 +3991,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3833,6 +4007,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3848,10 +4023,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Adan, Thief of Fire [Boss]',
         id: 523560020,
+        defense: 110,
         phase: 1,
         tarnished: true,
         weakPart: 1.5,
@@ -3873,9 +4050,9 @@ export const encounters: Encounter[] = [
           rot: 107,
           bleed: 107,
           frost: 107,
-          madness: '0',
+          madness: 0,
           sleep: 1075,
-          deathblight: '999',
+          deathblight: 999,
         },
         poise: {
           base: 100,
@@ -3899,6 +4076,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3914,6 +4092,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     drops: [],
+    youtube: [],
     npcs: [],
   },
   {
@@ -3929,6 +4108,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3944,6 +4124,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3959,6 +4140,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3974,6 +4156,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -3989,10 +4172,12 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: "Night's Cavalry (Flail) [Boss]",
         id: 31501030,
+        defense: 113,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -4041,6 +4226,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4056,6 +4242,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4071,10 +4258,12 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     drops: [],
+    youtube: [],
     npcs: [
       {
         name: 'Sanguine Noble [Boss]',
         id: 35500930,
+        defense: 110,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -4123,6 +4312,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4138,6 +4328,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4153,10 +4344,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Ancient Dragon Lansseax [Boss]',
         id: 45102030,
+        defense: 115,
         phase: 1,
         tarnished: false,
         weakPart: 2,
@@ -4205,6 +4398,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4220,6 +4414,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4235,6 +4430,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4250,6 +4446,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4265,6 +4462,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4280,6 +4478,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4295,6 +4494,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4310,6 +4510,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4325,6 +4526,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4340,6 +4542,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4355,6 +4558,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4370,6 +4574,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4385,6 +4590,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4400,6 +4606,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4415,6 +4622,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4430,6 +4638,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     drops: [],
+    youtube: [],
     npcs: [],
   },
   {
@@ -4445,6 +4654,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4460,6 +4670,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4475,7 +4686,46 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    npcs: [],
+    youtube: [],
+    npcs: [
+      {
+        name: 'Draconic Tree Sentinel [Boss]',
+        id: 32500033,
+        defense: 114,
+        phase: 1,
+        tarnished: false,
+        weakPart: 1.5,
+        flagId: 1045520800,
+        parryable: true,
+        numberOfParries: 1,
+        backstab: false,
+        negation: {
+          standard: 10,
+          strike: 10,
+          slash: 35,
+          pierce: 10,
+          magic: 20,
+          fire: 40,
+          lightning: 40,
+          holy: 20,
+        },
+        resistance: {
+          poison: 337,
+          rot: 337,
+          bleed: 552,
+          frost: 552,
+          madness: 'Immune',
+          sleep: 337,
+          deathblight: 'Immune',
+        },
+        poise: {
+          base: 80,
+          mult: 1,
+          effective: 80,
+          regenerationDelay: 6.154,
+        },
+      },
+    ],
   },
   {
     flagId: 1047400800,
@@ -4490,6 +4740,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4505,7 +4756,45 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    npcs: [],
+    youtube: [],
+    npcs: [
+      {
+        name: 'Decaying Ekzykes [Boss]',
+        id: 45010040,
+        defense: 114,
+        phase: 1,
+        tarnished: false,
+        weakPart: 1.5,
+        flagId: 1048370800,
+        parryable: false,
+        backstab: false,
+        negation: {
+          standard: -40,
+          strike: -40,
+          slash: -40,
+          pierce: -10,
+          magic: -40,
+          fire: -100,
+          lightning: -40,
+          holy: -40,
+        },
+        resistance: {
+          poison: 1188,
+          rot: 1188,
+          bleed: 245,
+          frost: 245,
+          madness: 'Immune',
+          sleep: 'Immune',
+          deathblight: 'Immune',
+        },
+        poise: {
+          base: 120,
+          mult: 1,
+          effective: 120,
+          regenerationDelay: 9.231,
+        },
+      },
+    ],
   },
   {
     flagId: 1048400800,
@@ -4520,6 +4809,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     drops: [],
+    youtube: [],
     npcs: [],
   },
   {
@@ -4535,6 +4825,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4550,6 +4841,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4565,6 +4857,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4580,6 +4873,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4595,6 +4889,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4610,6 +4905,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4625,6 +4921,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4640,6 +4937,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4655,6 +4953,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4670,6 +4969,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4685,6 +4985,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4700,6 +5001,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4715,6 +5017,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4730,6 +5033,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4745,6 +5049,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4760,6 +5065,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4775,6 +5081,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4790,6 +5097,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4805,6 +5113,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4826,6 +5135,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4841,6 +5151,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -4856,10 +5167,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Starscourge Radahn [Boss]',
         id: 47300040,
+        defense: 113,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -4907,10 +5220,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Fire Giant [Boss]',
         id: 47600050,
+        defense: 118,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -4946,6 +5261,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Fire Giant [Boss]',
         id: 47601050,
+        defense: 118,
         phase: 2,
         tarnished: false,
         weakPart: 1.5,
@@ -4993,6 +5309,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5008,10 +5325,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Romina, Saint of the Bud [Boss]',
         id: 50300094,
+        defense: 124,
         phase: 1,
         tarnished: false,
         weakPart: 1,
@@ -5060,6 +5379,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5075,6 +5395,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5090,6 +5411,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5105,6 +5427,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5126,6 +5449,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5141,6 +5465,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5156,6 +5481,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5171,6 +5497,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5186,6 +5513,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5201,6 +5529,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5216,10 +5545,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Rellana, Twin Moon Knight [Boss]',
         id: 53000082,
+        defense: 123,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -5268,6 +5599,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5283,6 +5615,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5298,6 +5631,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5313,6 +5647,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5328,6 +5663,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5343,10 +5679,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Commander Gaius [Boss]',
         id: 50000092,
+        defense: 123,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -5394,6 +5732,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5409,6 +5748,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5424,6 +5764,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5439,6 +5780,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5461,6 +5803,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5476,6 +5819,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5491,10 +5835,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Jori, Elder Inquisitor [Boss]',
         id: 53120086,
+        defense: 124,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -5519,7 +5865,7 @@ export const encounters: Encounter[] = [
           frost: 319,
           madness: 'Immune',
           sleep: 179,
-          deathblight: '999',
+          deathblight: 999,
         },
         poise: {
           base: 80,
@@ -5543,6 +5889,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [],
   },
   {
@@ -5558,10 +5905,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Bayle The Dread [Boss]',
         id: 51200085,
+        defense: 125,
         phase: 1,
         tarnished: false,
         weakPart: 1.5,
@@ -5610,10 +5959,12 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
+    youtube: [],
     npcs: [
       {
         name: 'Ancient Dragon Senessax [Boss]',
         id: 53701185,
+        defense: 125,
         phase: 1,
         tarnished: false,
         weakPart: 2,

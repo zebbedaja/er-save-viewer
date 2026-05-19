@@ -200,9 +200,9 @@ function getResistanceClass(value: number | 'Immune'): string {
 
     <div class="boss-videos">
       <h3 class="boss-videos-title">Boss Kills</h3>
-      <div class="youtube-wrapper" v-if="boss.youtube != null">
+      <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
         <iframe
-          :src="`https://www.youtube-nocookie.com/embed/${boss.youtube.split('=')[1]}`"
+          :src="`https://www.youtube-nocookie.com/embed/${url?.split('=')[1]}`"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -456,6 +456,7 @@ function getResistanceClass(value: number | 'Immune'): string {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  margin: 0.8rem 0;
 }
 
 .youtube-wrapper iframe {
