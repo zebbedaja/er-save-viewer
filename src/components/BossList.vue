@@ -62,20 +62,23 @@ const filteredEncounters = computed(() => {
   })
 })
 
-const groupedBosses = computed(() => {
+function groupByRegion(list: typeof encounters) {
   const groups = new Map<string, typeof encounters>()
 
-  for (const e of filteredEncounters.value) {
-    const list = groups.get(e.region)
-    if (list) {
-      list.push(e)
+  for (const e of list) {
+    const regionList = groups.get(e.region)
+    if (regionList) {
+      regionList.push(e)
     } else {
       groups.set(e.region, [e])
     }
   }
 
   return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]))
-})
+}
+
+const groupedBaseGameBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => !e.dlc)))
+const groupedDlcBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => e.dlc)))
 
 function toggleRegion(region: string) {
   if (expandedRegions.value.has(region)) {
@@ -86,7 +89,10 @@ function toggleRegion(region: string) {
 }
 
 function expandAll() {
-  expandedRegions.value = new Set(groupedBosses.value.map(([region]) => region))
+  expandedRegions.value = new Set([
+    ...groupedBaseGameBosses.value.map(([region]) => region),
+    ...groupedDlcBosses.value.map(([region]) => region),
+  ])
 }
 
 function collapseAll() {
@@ -189,35 +195,79 @@ function formatNumber(n: number | undefined): string {
       </div>
     </div>
 
-    <div v-if="groupedBosses.length === 0" class="no-results">No bosses match your filters.</div>
+    <div v-if="groupedBaseGameBosses.length === 0 && groupedDlcBosses.length === 0" class="no-results">No bosses match your filters.</div>
 
-    <div v-for="[region, bosses] in groupedBosses" :key="region" class="region-group">
-      <div class="region-header" @click="toggleRegion(region)">
-        <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
-        <span class="region-name">{{ region }}</span>
-        <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
+    <template v-if="groupedBaseGameBosses.length">
+      <div class="section-header">
+        <span class="section-title">{{ $t('baseGameSection') }}</span>
+        <span class="section-count">{{ defeatedBaseGame }}/{{ baseGameBosses.length }}</span>
       </div>
 
-      <div v-show="expandedRegions.has(region)" class="boss-rows">
-        <div
-          v-for="boss in bosses"
-          :key="boss.flagId"
-          class="boss-row"
-          :class="{ defeated: isDefeated(boss.flagId) }"
-          @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
-        >
-          <span class="boss-check" v-if="isDefeated(boss.flagId)">&#x2714;</span>
-          <span class="boss-name">{{ boss.flagName }}</span>
-          <span class="boss-location">{{ boss.location }}</span>
-          <span class="boss-stat" :title="$t('runes')">
-            {{ formatNumber(boss.runes) }}
-          </span>
-          <span class="boss-stat" :title="$t('hp')">
-            {{ formatNumber(boss.hp) }}
-          </span>
+      <div v-for="[region, bosses] in groupedBaseGameBosses" :key="'bg-' + region" class="region-group">
+        <div class="region-header" @click="toggleRegion(region)">
+          <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
+          <span class="region-name">{{ region }}</span>
+          <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
+        </div>
+
+        <div v-show="expandedRegions.has(region)" class="boss-rows">
+          <div
+            v-for="boss in bosses"
+            :key="boss.flagId"
+            class="boss-row"
+            :class="{ defeated: isDefeated(boss.flagId) }"
+            @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
+          >
+            <span class="boss-check" v-if="isDefeated(boss.flagId)">&#x2714;</span>
+            <span class="boss-name">{{ boss.flagName }}</span>
+            <span class="boss-location">{{ boss.location }}</span>
+            <span class="boss-stat" :title="$t('runes')">
+              {{ formatNumber(boss.runes) }}
+            </span>
+            <span class="boss-stat" :title="$t('hp')">
+              {{ formatNumber(boss.hp) }}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
+
+    <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" />
+
+    <template v-if="groupedDlcBosses.length">
+      <div class="section-header">
+        <span class="section-title">{{ $t('dlcSection') }}</span>
+        <span class="section-count">{{ defeatedDlc }}/{{ dlcBosses.length }}</span>
+      </div>
+
+      <div v-for="[region, bosses] in groupedDlcBosses" :key="'dlc-' + region" class="region-group">
+        <div class="region-header" @click="toggleRegion(region)">
+          <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
+          <span class="region-name">{{ region }}</span>
+          <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
+        </div>
+
+        <div v-show="expandedRegions.has(region)" class="boss-rows">
+          <div
+            v-for="boss in bosses"
+            :key="boss.flagId"
+            class="boss-row"
+            :class="{ defeated: isDefeated(boss.flagId) }"
+            @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
+          >
+            <span class="boss-check" v-if="isDefeated(boss.flagId)">&#x2714;</span>
+            <span class="boss-name">{{ boss.flagName }}</span>
+            <span class="boss-location">{{ boss.location }}</span>
+            <span class="boss-stat" :title="$t('runes')">
+              {{ formatNumber(boss.runes) }}
+            </span>
+            <span class="boss-stat" :title="$t('hp')">
+              {{ formatNumber(boss.hp) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -358,6 +408,39 @@ function formatNumber(n: number | undefined): string {
   padding: 1.5rem;
   opacity: 0.5;
   font-style: italic;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0 0.3rem;
+  user-select: none;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: var(--highlight-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.section-count {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  color: var(--highlight-color);
+  opacity: 0.5;
+}
+
+.section-divider {
+  height: 2px;
+  margin: 0.4rem 0;
+  border: none;
+  background: linear-gradient(90deg, var(--highlight-color), transparent);
+  opacity: 0.3;
 }
 
 .region-group {

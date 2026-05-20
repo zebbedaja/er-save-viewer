@@ -56,6 +56,8 @@ export interface Npc {
   parryable?: boolean
   numberOfParries?: number
   backstab?: boolean
+  vulnerableToCriticalHit?: boolean,
+  hp: number
   defense: number
   negation: Negation
   resistance: Resistance

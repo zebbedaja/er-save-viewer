@@ -19,6 +19,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godrick the Grafted [Boss]',
         id: 47500014,
+        hp: 6080,
         defense: 105,
         phase: 1,
         tarnished: false,
@@ -26,6 +27,7 @@ export const encounters: Encounter[] = [
         flagId: 10000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: 0, pierce: 0, magic: 20, fire: 20, lightning: 20, holy: 40 },
         resistance: {
           poison: 318,
@@ -58,6 +60,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Margit, the Fell Omen [Boss]',
         id: 21300014,
+        hp: 4174,
         defense: 103,
         phase: 1,
         tarnished: false,
@@ -66,6 +69,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 2,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: 0, lightning: 0, holy: 40 },
         resistance: {
           poison: 316,
@@ -98,6 +102,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Grafted Scion [Boss]',
         id: 46900008,
+        hp: 2596,
         defense: 107,
         phase: 1,
         tarnished: false,
@@ -135,6 +140,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Morgott, the Omen King [Boss]',
         id: 21300534,
+        hp: 10399,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -143,6 +149,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: 0, lightning: 0, holy: 40 },
         resistance: {
           poison: 337,
@@ -175,6 +182,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godfrey, First Elden Lord [Boss]',
         id: 47200134,
+        hp: 7099,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -212,6 +220,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godfrey, First Elden Lord [Boss]',
         id: 47200070,
+        hp: 11831,
         defense: 120,
         phase: 1,
         tarnished: false,
@@ -232,6 +241,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Hoarah Loux [Boss]',
         id: 47210070,
+        hp: 21903,
         defense: 120,
         phase: 2,
         tarnished: false,
@@ -271,20 +281,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [
-      {
-        name: 'Sir Gideon Ofnir, the All-Knowing [Boss]',
-        id: 523240070,
-        defense: 120,
-        phase: 1,
-        tarnished: true,
-        weakPartMultiplier: 1.5,
-        flagId: 11050850,
-        negation: { standard: 0, strike: 0, slash: 0, pierce: 0, magic: 0, fire: 0, lightning: -25, holy: 0 },
-        resistance: { poison: 114, rot: 114, bleed: 114, frost: 114, madness: '0', sleep: 1143, deathblight: 'Immune' },
-        stance: { base: 100, mult: 1, effective: 100, regenerationDelay: 7.692 },
-      },
-    ],
+    npcs: [],
   },
   {
     flagId: 12010800,
@@ -304,6 +301,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Dragonkin Soldier of Nokstella [Boss]',
         id: 46500960,
+        hp: 4372,
         defense: 106,
         phase: 1,
         tarnished: false,
@@ -311,6 +309,7 @@ export const encounters: Encounter[] = [
         flagId: 12010800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 0, pierce: 10, magic: 20, fire: 20, lightning: 40, holy: 20 },
         resistance: {
           poison: 526,
@@ -343,6 +342,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Dragonkin Soldier [Boss]',
         id: 46500262,
+        hp: 7655,
         defense: 117,
         phase: 1,
         tarnished: false,
@@ -350,6 +350,7 @@ export const encounters: Encounter[] = [
         flagId: 12010850,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 0, pierce: 10, magic: 20, fire: 20, lightning: 40, holy: 20 },
         resistance: {
           poison: 561,
@@ -382,6 +383,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Valiant Gargoyle (Greatsword) [Boss]',
         id: 47700165,
+        hp: 5671,
         defense: 111,
         phase: 1,
         tarnished: false,
@@ -389,6 +391,7 @@ export const encounters: Encounter[] = [
         flagId: 12020800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 0, slash: 35, pierce: 35, magic: 20, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 'Immune',
@@ -404,6 +407,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Valiant Gargoyle (Twinblade) [Boss]',
         id: 47701165,
+        hp: 5671,
         defense: 111,
         phase: 1,
         tarnished: false,
@@ -411,6 +415,7 @@ export const encounters: Encounter[] = [
         flagId: 12020800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 0, slash: 35, pierce: 35, magic: 20, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 'Immune',
@@ -443,6 +448,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Dragonkin Soldier [Boss]',
         id: 46500265,
+        hp: 5758,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -480,6 +486,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Mimic Tear [Boss]',
         id: 526100965,
+        hp: 4653,
         defense: 100,
         phase: 1,
         tarnished: true,
@@ -511,6 +518,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crucible Knight Siluria [Boss]',
         id: 25001066,
+        hp: 4606,
         defense: 117,
         phase: 1,
         tarnished: false,
@@ -548,6 +556,7 @@ export const encounters: Encounter[] = [
       {
         name: "Fia's Champion [Boss]",
         id: 523610066,
+        hp: 1551,
         defense: 100,
         phase: 1,
         tarnished: true,
@@ -577,6 +586,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Lichdragon Fortissax [Boss]',
         id: 45110066,
+        hp: 12903,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -614,6 +624,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Astel, Naturalborn of the Void [Boss]',
         id: 46200062,
+        hp: 11170,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -621,6 +632,7 @@ export const encounters: Encounter[] = [
         flagId: 12040800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 10, pierce: 10, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 552,
@@ -653,6 +665,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Mohg, Lord of Blood [Boss]',
         id: 48000068,
+        hp: 18389,
         defense: 122,
         phase: 1,
         tarnished: false,
@@ -772,6 +785,7 @@ export const encounters: Encounter[] = [
     npcs: [
       {
         name: 'Rennala, Queen of the Full Moon (Phase 1) [Boss]',
+        hp: 3493,
         defense: 109,
         phase: 1,
         tarnished: false,
@@ -779,6 +793,7 @@ export const encounters: Encounter[] = [
         flagId: 14000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: { standard: -10, strike: 0, slash: -10, pierce: -10, magic: 80, fire: 20, lightning: 20, holy: 20 },
         resistance: {
           poison: 326,
@@ -794,6 +809,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Rennala, Queen of the Full Moon - Bubble (Phase 1) [Boss]',
         id: 20300024,
+        hp: 3493,
         defense: 109,
         phase: 1,
         tarnished: false,
@@ -801,6 +817,7 @@ export const encounters: Encounter[] = [
         flagId: 14000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: {
           standard: 100,
           strike: 100,
@@ -825,6 +842,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Rennala, Queen of the Full Moon (Phase 2) [Boss]',
         id: 20310024,
+        hp: 4097,
         defense: 109,
         phase: 2,
         tarnished: false,
@@ -832,6 +850,7 @@ export const encounters: Encounter[] = [
         flagId: 14000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: -10, strike: 0, slash: -10, pierce: -10, magic: 80, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 534,
@@ -864,6 +883,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Red Wolf of Radagon [Boss]',
         id: 31811024,
+        hp: 2204,
         defense: 107,
         phase: 1,
         tarnished: false,
@@ -871,6 +891,7 @@ export const encounters: Encounter[] = [
         flagId: 14000850,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 40, fire: 20, lightning: 20, holy: 20 },
         resistance: {
           poison: 324,
@@ -903,6 +924,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Malenia, Blade of Miquella [Boss]',
         id: 21200056,
+        hp: 18473,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -926,6 +948,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Malenia, Goddess of Rot [Boss]',
         id: 21202056,
+        hp: 18473,
         defense: 123,
         phase: 2,
         tarnished: false,
@@ -982,6 +1005,7 @@ export const encounters: Encounter[] = [
       {
         name: 'God-Devouring Serpent [Boss]',
         id: 47100038,
+        hp: 30439,
         defense: 115,
         phase: 1,
         tarnished: false,
@@ -989,6 +1013,7 @@ export const encounters: Encounter[] = [
         flagId: 16000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: { standard: 10, strike: 35, slash: 10, pierce: 10, magic: 40, fire: 80, lightning: 20, holy: 40 },
         resistance: {
           poison: 556,
@@ -1004,6 +1029,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Rykard, Lord of Blasphemy [Boss]',
         id: 47101038,
+        hp: 59174,
         defense: 115,
         phase: 2,
         tarnished: false,
@@ -1011,6 +1037,7 @@ export const encounters: Encounter[] = [
         flagId: 16000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: { standard: 10, strike: 35, slash: 10, pierce: 10, magic: 40, fire: 80, lightning: 20, holy: 40 },
         resistance: {
           poison: 556,
@@ -1043,6 +1070,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godskin Noble [Boss]',
         id: 35700038,
+        hp: 10060,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -1051,6 +1079,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 35, slash: -10, pierce: 0, magic: 20, fire: 40, lightning: 20, holy: 40 },
         resistance: {
           poison: 337,
@@ -1079,7 +1108,56 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Abductor Virgin (Scythe) [Boss]',
+        id: 44700938,
+        hp: 3811,
+        defense: 110,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 2,
+        flagId: 16000860,
+        parryable: false,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 10, strike: 0, slash: 10, pierce: 10, magic: 0, fire: 20, lightning: -20, holy: 20 },
+        resistance: {
+          poison: 'Immune',
+          rot: 'Immune',
+          bleed: 'Immune',
+          frost: 'Immune',
+          madness: 'Immune',
+          sleep: 'Immune',
+          deathblight: 'Immune',
+        },
+        stance: { base: 65, mult: 0, regenerationDelay: 5 },
+      },
+      {
+        name: 'Abductor Virgin (Wheel) [Boss]',
+        id: 44701938,
+        hp: 3811,
+        defense: 110,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 2,
+        flagId: 16000860,
+        parryable: false,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 10, strike: 0, slash: 10, pierce: 10, magic: 0, fire: 20, lightning: -20, holy: 20 },
+        resistance: {
+          poison: 'Immune',
+          rot: 'Immune',
+          bleed: 'Immune',
+          frost: 'Immune',
+          madness: 'Immune',
+          sleep: 'Immune',
+          deathblight: 'Immune',
+        },
+        stance: { base: 65, mult: 0, regenerationDelay: 5 },
+      },
+    ],
   },
   {
     flagId: 18000800,
@@ -1111,7 +1189,33 @@ export const encounters: Encounter[] = [
     category: 'boss',
     drops: [],
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Soldier of Godrick [Boss]',
+        id: 43113906,
+        hp: 384,
+        defense: 100,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 18000850,
+        parryable: true,
+        numberOfParries: 1,
+        backstab: true,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 0, slash: 10, pierce: -10, magic: 0, fire: 0, lightning: -20, holy: 0 },
+        resistance: {
+          poison: 168,
+          rot: 168,
+          bleed: 224,
+          frost: 224,
+          madness: 'Immune',
+          sleep: 224,
+          deathblight: 'Immune',
+        },
+        stance: { base: 15, mult: 1, effective: 15, regenerationDelay: 0 },
+      },
+    ],
   },
   {
     flagId: 19000800,
@@ -1131,6 +1235,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Elden Beast [Boss]',
         id: 22000078,
+        hp: 22127,
         defense: 121,
         phase: 2,
         tarnished: false,
@@ -1138,6 +1243,7 @@ export const encounters: Encounter[] = [
         flagId: 19000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 10, pierce: 10, magic: 40, fire: 40, lightning: 40, holy: 80 },
         resistance: {
           poison: 'Immune',
@@ -1153,6 +1259,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Radagon of the Golden Order [Boss]',
         id: 21900078,
+        hp: 13339,
         defense: 121,
         phase: 1,
         tarnished: false,
@@ -1161,6 +1268,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 35, strike: 10, slash: 35, pierce: 35, magic: 20, fire: 0, lightning: 20, holy: 80 },
         resistance: {
           poison: 627,
@@ -1193,6 +1301,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Divine Beast Dancing Lion [Boss]',
         id: 52100088,
+        hp: 22571,
         defense: 122,
         phase: 1,
         tarnished: false,
@@ -1200,6 +1309,7 @@ export const encounters: Encounter[] = [
         flagId: 20000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 30, strike: 30, slash: 20, pierce: 0, magic: 40, fire: 0, lightning: 40, holy: 40 },
         resistance: {
           poison: 403,
@@ -1232,6 +1342,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Promised Consort Radahn [Boss]',
         id: 52200089,
+        hp: 46134,
         defense: 125,
         phase: 1,
         tarnished: false,
@@ -1240,6 +1351,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 40, strike: 40, slash: 40, pierce: 20, magic: 40, fire: 40, lightning: 40, holy: 0 },
         resistance: {
           poison: 733,
@@ -1255,6 +1367,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Radahn, Consort of Miquella [Boss]',
         id: 52201089,
+        hp: 46134,
         defense: 125,
         phase: 2,
         tarnished: false,
@@ -1263,6 +1376,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 40, strike: 40, slash: 40, pierce: 20, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 733,
@@ -1295,6 +1409,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Golden Hippopotamus [Boss]',
         id: 50100098,
+        hp: 33866,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -1302,6 +1417,7 @@ export const encounters: Encounter[] = [
         flagId: 21000850,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: -20, lightning: -20, holy: 0 },
         resistance: {
           poison: 416,
@@ -1334,6 +1450,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Base Serpent Messmer [Boss]',
         id: 51301099,
+        hp: 38981,
         defense: 124,
         phase: 2,
         tarnished: false,
@@ -1342,6 +1459,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 0, pierce: 20, magic: 20, fire: 40, lightning: 20, holy: 0 },
         resistance: {
           poison: 434,
@@ -1357,6 +1475,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Messmer the Impaler [Boss]',
         id: 51300099,
+        hp: 38981,
         defense: 124,
         phase: 1,
         tarnished: false,
@@ -1365,6 +1484,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 0, pierce: 20, magic: 20, fire: 40, lightning: 20, holy: 40 },
         resistance: {
           poison: 434,
@@ -1397,6 +1517,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Putrescent Knight (Phase 1) [Boss]',
         id: 50200087,
+        hp: 20612,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -1404,6 +1525,7 @@ export const encounters: Encounter[] = [
         flagId: 22000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 0, slash: 40, pierce: 40, magic: 20, fire: 0, lightning: 0, holy: -20 },
         resistance: {
           poison: 'Immune',
@@ -1419,6 +1541,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Putrescent Knight (Phase 2) [Boss]',
         id: 50200187,
+        hp: 20612,
         defense: 123,
         phase: 2,
         tarnished: false,
@@ -1426,6 +1549,7 @@ export const encounters: Encounter[] = [
         flagId: 22000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 0, slash: 40, pierce: 40, magic: 20, fire: 0, lightning: 0, holy: -20 },
         resistance: {
           poison: 'Immune',
@@ -1458,6 +1582,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Metyr, Mother of Fingers [Boss]',
         id: 52000097,
+        hp: 43296,
         defense: 124,
         phase: 1,
         tarnished: false,
@@ -1465,6 +1590,7 @@ export const encounters: Encounter[] = [
         flagId: 25000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 0, pierce: 20, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 726,
@@ -1497,6 +1623,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Midra, Lord of Frenzied Flame [Boss]',
         id: 50510086,
+        hp: 47171,
         defense: 124,
         phase: 1,
         tarnished: false,
@@ -1505,6 +1632,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 3,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 0, pierce: 20, magic: 20, fire: 40, lightning: 20, holy: 20 },
         resistance: {
           poison: 726,
@@ -1991,6 +2119,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crystalian (Spear) [Boss]',
         id: 33501920,
+        hp: 1595,
         defense: 107,
         phase: 1,
         tarnished: false,
@@ -1999,6 +2128,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 91, strike: 10, slash: 93.5, pierce: 93.5, magic: 94, fire: 94, lightning: 94, holy: 94 },
         resistance: {
           poison: 530,
@@ -2013,6 +2143,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Spear) [Boss] [Cracked]',
+        hp: 1595,
         defense: 107,
         phase: 1,
         tarnished: false,
@@ -2021,6 +2152,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 35, pierce: 35, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 530,
@@ -2036,6 +2168,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crystalian (Staff) [Boss]',
         id: 33502920,
+        hp: 1595,
         defense: 107,
         phase: 1,
         tarnished: false,
@@ -2044,6 +2177,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 91, strike: 10, slash: 93.5, pierce: 93.5, magic: 94, fire: 94, lightning: 94, holy: 94 },
         resistance: {
           poison: 530,
@@ -2058,6 +2192,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Staff) [Boss] [Cracked]',
+        hp: 1595,
         defense: 107,
         phase: 1,
         tarnished: false,
@@ -2066,6 +2201,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 35, pierce: 35, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 530,
@@ -2094,7 +2230,58 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Kindred of Rot [Boss]',
+        id: 38100932,
+        hp: 2034,
+        defense: 111,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 31070800,
+        parryable: true,
+        numberOfParries: 1,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 0, slash: 10, pierce: 0, magic: 0, fire: -20, lightning: 0, holy: 0 },
+        resistance: {
+          poison: 543,
+          rot: 543,
+          bleed: 181,
+          frost: 181,
+          madness: 'Immune',
+          sleep: 181,
+          deathblight: 'Immune',
+        },
+        stance: { base: 30, mult: 1, effective: 30, regenerationDelay: 2.308 },
+      },
+      {
+        name: 'Kindred of Rot [Boss]',
+        id: 38102932,
+        hp: 2034,
+        defense: 111,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 31070800,
+        parryable: true,
+        numberOfParries: 1,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 0, slash: 10, pierce: 0, magic: 0, fire: -20, lightning: 0, holy: 0 },
+        resistance: {
+          poison: 543,
+          rot: 543,
+          bleed: 181,
+          frost: 181,
+          madness: 'Immune',
+          sleep: 181,
+          deathblight: 'Immune',
+        },
+        stance: { base: 30, mult: 1, effective: 30, regenerationDelay: 2.308 },
+      },
+    ],
   },
   {
     flagId: 31090800,
@@ -2258,6 +2445,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Cleanrot Knight (Sickle) [Boss]',
         id: 38001940,
+        hp: 2102,
         defense: 109,
         phase: 1,
         tarnished: false,
@@ -2266,6 +2454,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 35, pierce: 0, magic: 20, fire: -20, lightning: 0, holy: 40 },
         resistance: {
           poison: 534,
@@ -2281,6 +2470,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Cleanrot Knight (Spear) [Boss]',
         id: 38000940,
+        hp: 2102,
         defense: 109,
         phase: 1,
         tarnished: false,
@@ -2289,6 +2479,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 35, pierce: 0, magic: 20, fire: -20, lightning: 0, holy: 40 },
         resistance: {
           poison: 534,
@@ -2337,6 +2528,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godskin Apostle [Boss]',
         id: 35600950,
+        hp: 9847,
         defense: 115,
         phase: 1,
         tarnished: false,
@@ -2357,6 +2549,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godskin Noble [Boss]',
         id: 35700950,
+        hp: 11814,
         defense: 115,
         phase: 2,
         tarnished: false,
@@ -2377,6 +2570,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Spiritcaller Snail [Boss]',
         id: 41402950,
+        hp: 1840,
         defense: 115,
         phase: 3,
         tarnished: false,
@@ -2414,6 +2608,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Scaly Misbegotten [Boss]',
         id: 34510912,
+        hp: 1360,
         defense: 102,
         phase: 1,
         tarnished: false,
@@ -2502,6 +2697,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crystalian (Ringblade) [Boss]',
         id: 33500930,
+        hp: 1892,
         defense: 110,
         phase: 1,
         tarnished: false,
@@ -2524,6 +2720,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Ringblade) [Boss] [Cracked]',
+        hp: 1892,
         defense: 110,
         phase: 1,
         tarnished: false,
@@ -2547,6 +2744,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Crystalian (Spear) [Boss]',
         id: 33501930,
+        hp: 1892,
         defense: 110,
         phase: 1,
         tarnished: false,
@@ -2569,6 +2767,7 @@ export const encounters: Encounter[] = [
       },
       {
         name: 'Crystalian (Spear) [Boss] [Cracked]',
+        hp: 1892,
         defense: 110,
         phase: 1,
         tarnished: false,
@@ -2710,6 +2909,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Mohg, The Omen [Boss]',
         id: 48001935,
+        hp: 14000,
         defense: 117,
         phase: 1,
         tarnished: false,
@@ -2717,6 +2917,7 @@ export const encounters: Encounter[] = [
         flagId: 35000800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 10, pierce: 10, magic: 40, fire: 80, lightning: 40, holy: 40 },
         resistance: {
           poison: 'Immune',
@@ -2761,7 +2962,32 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Magma Wyrm Makar [Boss]',
+        id: 49100026,
+        hp: 7141,
+        defense: 109,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 39200800,
+        parryable: false,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 10, strike: 10, slash: 35, pierce: 10, magic: 40, fire: 80, lightning: 40, holy: 40 },
+        resistance: {
+          poison: 534,
+          rot: 534,
+          bleed: 534,
+          frost: 1150,
+          madness: 'Immune',
+          sleep: 237,
+          deathblight: 'Immune',
+        },
+        stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
+      },
+    ],
   },
   {
     flagId: 40000800,
@@ -2781,6 +3007,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Death Knight (Twin Axes) [Boss]',
         id: 50700081,
+        hp: 19285,
         defense: 122,
         phase: 1,
         tarnished: false,
@@ -2789,6 +3016,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 40, strike: 40, slash: 40, pierce: 20, magic: 40, fire: 20, lightning: 40, holy: 0 },
         resistance: {
           poison: 648,
@@ -2821,6 +3049,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Death Knight (Longhaft Axe) [Boss]',
         id: 50701095,
+        hp: 24080,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -2829,6 +3058,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 40, strike: 40, slash: 40, pierce: 20, magic: 40, fire: 20, lightning: 40, holy: 0 },
         resistance: {
           poison: 667,
@@ -3169,7 +3399,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Bell Bearing Hunter [Boss]',
+        id: 31000020,
+        hp: 4050,
+        defense: 110,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1037460800,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 329,
+          rot: 329,
+          bleed: 539,
+          frost: 539,
+          madness: 'Immune',
+          sleep: 329,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1037530800,
@@ -3221,6 +3477,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Adan, Thief of Fire [Boss]',
         id: 523560020,
+        hp: 3758,
         defense: 110,
         phase: 1,
         tarnished: true,
@@ -3268,6 +3525,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Demi-Human Queen [Boss]',
         id: 41301030,
+        hp: 3284,
         defense: 110,
         phase: 1,
         tarnished: false,
@@ -3275,6 +3533,7 @@ export const encounters: Encounter[] = [
         flagId: 1038510800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: -20, lightning: 0, holy: 0 },
         resistance: {
           poison: 179,
@@ -3355,6 +3614,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Godefroy the Grafted [Boss]',
         id: 47500030,
+        hp: 12419,
         defense: 113,
         phase: 1,
         tarnished: false,
@@ -3362,6 +3622,7 @@ export const encounters: Encounter[] = [
         flagId: 1039500800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: 0, pierce: 0, magic: 20, fire: 20, lightning: 20, holy: 40 },
         resistance: {
           poison: 334,
@@ -3394,6 +3655,7 @@ export const encounters: Encounter[] = [
       {
         name: "Night's Cavalry (Flail) [Boss]",
         id: 31501030,
+        hp: 3725,
         defense: 113,
         phase: 1,
         tarnished: false,
@@ -3401,6 +3663,7 @@ export const encounters: Encounter[] = [
         flagId: 1039510800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 20, holy: 40 },
         resistance: {
           poison: 334,
@@ -3433,6 +3696,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Elemer of the Briar [Boss]',
         id: 31000931,
+        hp: 4897,
         defense: 111,
         phase: 1,
         tarnished: false,
@@ -3441,6 +3705,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 2,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 20, holy: 40 },
         resistance: {
           poison: 332,
@@ -3473,6 +3738,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Black Knife Assassin [Boss]',
         id: 21000830,
+        hp: 5413,
         defense: 113,
         phase: 1,
         tarnished: false,
@@ -3481,6 +3747,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 10, pierce: 35, magic: 20, fire: 20, lightning: 20, holy: 40 },
         resistance: {
           poison: 'Immune',
@@ -3513,6 +3780,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Sanguine Noble [Boss]',
         id: 35500930,
+        hp: 3128,
         defense: 110,
         phase: 1,
         tarnished: false,
@@ -3521,6 +3789,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 20, fire: 40, lightning: 20, holy: 20 },
         resistance: {
           poison: 239,
@@ -3585,6 +3854,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Ancient Dragon Lansseax [Boss]',
         id: 45102030,
+        hp: 9087,
         defense: 115,
         phase: 1,
         tarnished: false,
@@ -3592,6 +3862,7 @@ export const encounters: Encounter[] = [
         flagId: 1041520800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 80, holy: 40 },
         resistance: {
           poison: 556,
@@ -3620,7 +3891,32 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Wormface [Boss]',
+        id: 45800030,
+        hp: 5876,
+        defense: 113,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 2,
+        flagId: 1041530800,
+        parryable: false,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: 0, lightning: 0, holy: 40 },
+        resistance: {
+          poison: 334,
+          rot: 334,
+          bleed: 334,
+          frost: 334,
+          madness: 'Immune',
+          sleep: 334,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1042330800,
@@ -3700,7 +3996,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Bell Bearing Hunter [Boss]',
+        id: 31000010,
+        hp: 2495,
+        defense: 103,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1042380850,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 316,
+          rot: 316,
+          bleed: 517,
+          frost: 517,
+          madness: 'Immune',
+          sleep: 316,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1042550800,
@@ -3732,7 +4054,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Leonine Misbegotten [Boss]',
+        id: 34600913,
+        hp: 2199,
+        defense: 103,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1043300800,
+        parryable: true,
+        numberOfParries: 1,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 10, strike: 10, slash: 0, pierce: 10, magic: 20, fire: 0, lightning: 20, holy: 20 },
+        resistance: {
+          poison: 316,
+          rot: 316,
+          bleed: 316,
+          frost: 316,
+          madness: 'Immune',
+          sleep: 316,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1043330800,
@@ -3768,6 +4116,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Flying Dragon Agheel [Boss]',
         id: 45000010,
+        hp: 3200,
         defense: 106,
         phase: 1,
         tarnished: false,
@@ -3776,6 +4125,7 @@ export const encounters: Encounter[] = [
         flagId: 1043360800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 526,
@@ -3820,7 +4170,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Bell Bearing Hunter [Boss]',
+        id: 31000033,
+        hp: 6216,
+        defense: 114,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1043530800,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 337,
+          rot: 337,
+          bleed: 552,
+          frost: 552,
+          madness: 'Immune',
+          sleep: 337,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1044320800,
@@ -3936,6 +4312,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Draconic Tree Sentinel [Boss]',
         id: 32500033,
+        hp: 8398,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -3944,6 +4321,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: { standard: 10, strike: 10, slash: 35, pierce: 10, magic: 20, fire: 40, lightning: 40, holy: 20 },
         resistance: {
           poison: 337,
@@ -3992,6 +4370,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Decaying Ekzykes [Boss]',
         id: 45010040,
+        hp: 23731,
         defense: 114,
         phase: 1,
         tarnished: false,
@@ -3999,6 +4378,7 @@ export const encounters: Encounter[] = [
         flagId: 1048370800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: {
           standard: -40,
           strike: -40,
@@ -4052,7 +4432,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Bell Bearing Hunter [Boss]',
+        id: 31000042,
+        hp: 10619,
+        defense: 121,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1048410800,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 383,
+          rot: 383,
+          bleed: 627,
+          frost: 627,
+          madness: 'Immune',
+          sleep: 383,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1048510800,
@@ -4398,6 +4804,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Starscourge Radahn [Boss]',
         id: 47300040,
+        hp: 9572,
         defense: 113,
         phase: 1,
         tarnished: false,
@@ -4405,6 +4812,7 @@ export const encounters: Encounter[] = [
         flagId: 1252380800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: 10, pierce: 0, magic: 20, fire: 20, lightning: 20, holy: 40 },
         resistance: {
           poison: 334,
@@ -4437,6 +4845,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Fire Giant [Boss]',
         id: 47600050,
+        hp: 22898,
         defense: 118,
         phase: 1,
         tarnished: false,
@@ -4444,6 +4853,7 @@ export const encounters: Encounter[] = [
         flagId: 1252520800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: false,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: 50, lightning: 0, holy: 20 },
         resistance: {
           poison: 565,
@@ -4459,6 +4869,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Fire Giant [Boss]',
         id: 47601050,
+        hp: 43263,
         defense: 118,
         phase: 2,
         tarnished: false,
@@ -4466,6 +4877,7 @@ export const encounters: Encounter[] = [
         flagId: 1252520800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 0, strike: 0, slash: -10, pierce: 0, magic: 0, fire: 50, lightning: 0, holy: 20 },
         resistance: {
           poison: 565,
@@ -4514,6 +4926,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Romina, Saint of the Bud [Boss]',
         id: 50300094,
+        hp: 35798,
         defense: 124,
         phase: 1,
         tarnished: false,
@@ -4522,6 +4935,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 40, pierce: 20, magic: 20, fire: 0, lightning: 20, holy: 20 },
         resistance: {
           poison: 'Immune',
@@ -4656,6 +5070,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Divine Beast Dancing Lion [Boss]',
         id: 52100094,
+        hp: 32838,
         defense: 124,
         phase: 1,
         tarnished: false,
@@ -4663,6 +5078,7 @@ export const encounters: Encounter[] = [
         flagId: 2046460800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 30, strike: 30, slash: 20, pierce: 0, magic: 40, fire: 0, lightning: 40, holy: 40 },
         resistance: {
           poison: 443,
@@ -4711,6 +5127,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Black Knight Garrew [Boss]',
         id: 58400590,
+        hp: 19584,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -4764,6 +5181,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Rellana, Twin Moon Knight [Boss]',
         id: 53000082,
+        hp: 29723,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -4772,6 +5190,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 2,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 40, pierce: 0, magic: 40, fire: 25, lightning: 0, holy: 20 },
         resistance: {
           poison: 296,
@@ -4884,6 +5303,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Commander Gaius [Boss]',
         id: 50000092,
+        hp: 33871,
         defense: 123,
         phase: 1,
         tarnished: false,
@@ -4891,6 +5311,7 @@ export const encounters: Encounter[] = [
         flagId: 2049480800,
         parryable: false,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 20, strike: 20, slash: 40, pierce: 20, magic: 20, fire: 0, lightning: 0, holy: -20 },
         resistance: {
           poison: 425,
@@ -5026,6 +5447,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Jori, Elder Inquisitor [Boss]',
         id: 53120086,
+        hp: 30506,
         defense: 124,
         phase: 1,
         tarnished: false,
@@ -5034,6 +5456,7 @@ export const encounters: Encounter[] = [
         parryable: true,
         numberOfParries: 1,
         backstab: true,
+        vulnerableToCriticalHit: true,
         negation: { standard: 10, strike: 10, slash: -20, pierce: 0, magic: 10, fire: -20, lightning: 10, holy: 10 },
         resistance: {
           poison: 319,
@@ -5082,6 +5505,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Bayle The Dread [Boss]',
         id: 51200085,
+        hp: 41612,
         defense: 125,
         phase: 1,
         tarnished: false,
@@ -5090,6 +5514,7 @@ export const encounters: Encounter[] = [
         parryable: false,
         numberOfParries: 0,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 40, holy: 40 },
         resistance: {
           poison: 744,
@@ -5122,6 +5547,7 @@ export const encounters: Encounter[] = [
       {
         name: 'Ancient Dragon Senessax [Boss]',
         id: 53701185,
+        hp: 45551,
         defense: 125,
         phase: 1,
         tarnished: false,
@@ -5130,6 +5556,7 @@ export const encounters: Encounter[] = [
         parryable: false,
         numberOfParries: 0,
         backstab: false,
+        vulnerableToCriticalHit: true,
         negation: { standard: 35, strike: 35, slash: 35, pierce: 10, magic: 40, fire: 40, lightning: 80, holy: 40 },
         resistance: {
           poison: 733,

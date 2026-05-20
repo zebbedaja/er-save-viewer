@@ -48,6 +48,24 @@ function getResistanceClass(value: number | 'Immune'): string {
         <span class="boss-icon" v-if="isDefeated()">&#x2714;</span>
         <h2 class="boss-name">{{ boss.flagName }}</h2>
       </div>
+
+      <div class="boss-attributes">
+        <span class="attr-badge type">
+          {{ boss.type }}
+        </span>
+        <span v-if="boss.nightOnly" class="attr-badge night">
+          {{ $t('nightOnlyBadge') }}
+        </span>
+        <span v-if="boss.dlc" class="attr-badge dlc-tag">
+          {{ $t('dlcBadge') }}
+        </span>
+        <span v-if="boss.drops.some((d) => /Great Rune/.test(d))" class="attr-badge great-rune">
+          {{ $t('greatRuneBadge') }}
+        </span>
+        <span v-if="boss.drops.some((d) => /Remembrance/.test(d))" class="attr-badge remembrance">
+          {{ $t('remembranceBadge') }}
+        </span>
+      </div>
     </div>
 
     <div class="boss-meta">
@@ -60,20 +78,16 @@ function getResistanceClass(value: number | 'Immune'): string {
         <span class="meta-value">{{ boss.region }}</span>
       </div>
       <div class="meta-row">
-        <span class="meta-label">{{ $t('bossType') }}</span>
-        <span class="meta-value">{{ boss.type }}</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-label">{{ $t('runes') }}</span>
-        <span class="meta-value meta-highlight">{{ formatNumber(boss.runes) }}</span>
+        <span class="meta-label">{{ $t('closestGrace') }}</span>
+        <span class="meta-value">{{ boss.closestSiteOfGrace }}</span>
       </div>
       <div class="meta-row">
         <span class="meta-label">{{ $t('hp') }}</span>
         <span class="meta-value meta-highlight">{{ formatNumber(boss.hp) }}</span>
       </div>
       <div class="meta-row">
-        <span class="meta-label">{{ $t('closestGrace') }}</span>
-        <span class="meta-value">{{ boss.closestSiteOfGrace }}</span>
+        <span class="meta-label">{{ $t('runes') }}</span>
+        <span class="meta-value meta-highlight">{{ formatNumber(boss.runes) }}</span>
       </div>
       <div class="meta-row" v-if="boss.drops.length">
         <span class="meta-label">{{ $t('drops') }}</span>
@@ -88,6 +102,38 @@ function getResistanceClass(value: number | 'Immune'): string {
         {{ $t('phase') }} {{ npc.phase }}
         <span class="npc-name">{{ npc.name }}</span>
       </h3>
+
+      <div class="npc-attributes">
+        <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
+          {{ npc.parryable ? $t('parryable') + ' x' + npc.numberOfParries : $t('notParryable') }}
+        </span>
+        <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
+          {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
+        </span>
+        <span class="attr-badge" :class="npc.tarnished ? 'positive' : 'negative'">
+          {{ npc.tarnished ? $t('tarnished') : $t('notTarnished') }}
+        </span>
+        <span class="attr-badge" :class="npc.vulnerableToCriticalHit ? 'positive' : 'negative'">
+          {{ npc.vulnerableToCriticalHit ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
+        </span>
+      </div>
+
+      <div class="npc-stats-tall">
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('hp') }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.hp) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('npcDefense') }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense) }}</span>
+        </div>
+        <div class="meta-row" v-if="npc.weakPart">
+          <span class="meta-label">{{ $t('weakPart') }}</span>
+          <span class="meta-value meta-highlight">
+            {{ npc.weakPart }} (x{{ npc.weakPartMultiplier }})
+          </span>
+        </div>
+      </div>
 
       <div class="phase-data">
         <div class="data-section">
@@ -334,6 +380,86 @@ function getResistanceClass(value: number | 'Immune'): string {
   font-weight: normal;
 }
 
+.boss-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.3rem 0 0.5rem;
+}
+
+.npc-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.3rem 0 0.5rem;
+}
+
+.attr-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--border-color);
+  opacity: 0.7;
+}
+
+.attr-badge.def {
+  color: var(--main-font-color);
+  border-color: var(--border-color);
+}
+
+.attr-badge.positive {
+  color: rgb(34, 197, 94);
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.attr-badge.negative {
+  color: var(--main-font-color);
+  opacity: 0.35;
+  border-color: var(--border-color);
+}
+
+.attr-badge.type {
+  color: var(--main-font-color);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.attr-badge.night {
+  color: rgb(139, 148, 255);
+  border-color: rgba(139, 148, 255, 0.4);
+  background: rgba(139, 148, 255, 0.08);
+}
+
+.attr-badge.dlc-tag {
+  color: var(--highlight-color);
+  border-color: rgba(181, 158, 98, 0.5);
+  background: rgba(181, 158, 98, 0.1);
+}
+
+.attr-badge.great-rune {
+  color: rgb(255, 215, 0);
+  border-color: rgba(255, 215, 0, 0.4);
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.attr-badge.remembrance {
+  color: rgb(192, 192, 210);
+  border-color: rgba(192, 192, 210, 0.4);
+  background: rgba(192, 192, 210, 0.08);
+}
+
+.npc-stats-tall {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+  padding: 0.2rem 0;
+}
+
 .phase-data {
   display: flex;
   flex-direction: column;
@@ -365,7 +491,7 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .stance-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
 }
 
 .data-cell {
