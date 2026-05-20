@@ -44,7 +44,7 @@ export default {
   phase: 'Phase',
   negation: 'Damage Negation',
   resistance: 'Status Resistance',
-  poise: 'Poise',
+  stance: 'Stance',
   standard: 'Standard',
   strike: 'Strike',
   slash: 'Slash',
@@ -62,5 +62,5 @@ export default {
   base: 'Base',
   multiplier: 'Multiplier',
   effective: 'Effective',
-  regenDelay: 'Regen Delay',
+  regenDelay: 'Regeneration Delay',
 }

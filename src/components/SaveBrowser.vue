@@ -38,7 +38,7 @@ const { save, activeSlot } = storeToRefs(saveStore)
   gap: 1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .save-browser {
     grid-template-columns: 1fr;
   }

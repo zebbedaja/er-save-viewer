@@ -38,7 +38,7 @@ export interface Resistance {
   deathblight: ResistanceValue
 }
 
-export interface Poise {
+export interface Stance {
   base: number
   mult: number
   effective: number
@@ -51,12 +51,13 @@ export interface Npc {
   name: string
   phase: number
   tarnished: boolean
-  weakPart: number
+  weakPart?: string
+  weakPartMultiplier?: number
   parryable?: boolean
   numberOfParries?: number
   backstab?: boolean
   defense: number
   negation: Negation
   resistance: Resistance
-  poise: Poise
+  stance: Stance
 }

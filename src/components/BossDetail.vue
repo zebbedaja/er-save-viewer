@@ -175,30 +175,30 @@ function getResistanceClass(value: number | 'Immune'): string {
         </div>
 
         <div class="data-section">
-          <h4 class="section-title">{{ $t('poise') }}</h4>
-          <div class="negation-grid poise-grid">
+          <h4 class="section-title">{{ $t('stance') }}</h4>
+          <div class="negation-grid stance-grid">
             <div class="data-cell">
               <span class="data-label">{{ $t('base') }}</span>
-              <span class="data-value">{{ npc.poise.base }}</span>
+              <span class="data-value">{{ npc.stance.base }}</span>
             </div>
             <div class="data-cell">
               <span class="data-label">{{ $t('multiplier') }}</span>
-              <span class="data-value">x{{ npc.poise.mult }}</span>
+              <span class="data-value">x{{ npc.stance.mult }}</span>
             </div>
             <div class="data-cell">
               <span class="data-label">{{ $t('effective') }}</span>
-              <span class="data-value">{{ npc.poise.effective }}</span>
+              <span class="data-value">{{ npc.stance.effective }}</span>
             </div>
             <div class="data-cell">
               <span class="data-label">{{ $t('regenDelay') }}</span>
-              <span class="data-value">{{ npc.poise.regenerationDelay }}s</span>
+              <span class="data-value">{{ npc.stance.regenerationDelay }}s</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="boss-videos">
+    <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
       <h3 class="boss-videos-title">Boss Kills</h3>
       <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
         <iframe
@@ -364,7 +364,7 @@ function getResistanceClass(value: number | 'Immune'): string {
   gap: 0.3rem;
 }
 
-.poise-grid {
+.stance-grid {
   grid-template-columns: repeat(4, 1fr);
 }
 

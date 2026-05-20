@@ -44,7 +44,7 @@ export default {
   phase: 'Phase',
   negation: 'Schadensresistenz',
   resistance: 'Statusresistenzen',
-  poise: 'Poise',
+  stance: 'Stance',
   standard: 'Standard',
   strike: 'Schlag',
   slash: 'Hieb',
