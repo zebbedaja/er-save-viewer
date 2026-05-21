@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Slot } from '@zebbedaja/er-save-parser'
 import { encounters } from '@/model/encounters'
+import ProgressRow from '@/components/ProgressRow.vue'
 
 const router = useRouter()
 
@@ -13,6 +14,9 @@ const props = defineProps<{
 const searchQuery = ref('')
 const filterGreatRune = ref(false)
 const filterRemembrance = ref(false)
+const filterNightOnly = ref(false)
+const filterParryable = ref(false)
+const filterTarnished = ref(false)
 const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
@@ -47,6 +51,18 @@ const filteredEncounters = computed(() => {
     if (filterRemembrance.value) {
       const has = e.drops.some((d) => /Remembrance/.test(d))
       if (!has) return false
+    }
+
+    if (filterNightOnly.value && !e.nightOnly) {
+      return false
+    }
+
+    if (filterParryable.value && !e.npcs.some((npc) => npc.parryable)) {
+      return false
+    }
+
+    if (filterTarnished.value && !e.npcs.some((npc) => npc.tarnished)) {
+      return false
     }
 
     const defeated = isDefeated(e.flagId)
@@ -112,38 +128,21 @@ function formatNumber(n: number | undefined): string {
     </div>
 
     <div class="progression-container">
-      <div class="progression-item">
-        <div class="progression-header">
-          <span class="progression-label">{{ $t('overallProgress') }}</span>
-          <span class="progression-count">{{ defeatedOverall }}/{{ encounters.length }}</span>
-        </div>
-        <div class="progression-bar">
-          <div class="progression-fill" :style="{ width: (defeatedOverall / encounters.length) * 100 + '%' }"></div>
-        </div>
-      </div>
-
-      <div class="progression-item">
-        <div class="progression-header">
-          <span class="progression-label">{{ $t('baseGameProgress') }}</span>
-          <span class="progression-count">{{ defeatedBaseGame }}/{{ baseGameBosses.length }}</span>
-        </div>
-        <div class="progression-bar">
-          <div
-            class="progression-fill base-game"
-            :style="{ width: (defeatedBaseGame / baseGameBosses.length) * 100 + '%' }"
-          ></div>
-        </div>
-      </div>
-
-      <div class="progression-item">
-        <div class="progression-header">
-          <span class="progression-label">{{ $t('dlcProgress') }}</span>
-          <span class="progression-count">{{ defeatedDlc }}/{{ dlcBosses.length }}</span>
-        </div>
-        <div class="progression-bar">
-          <div class="progression-fill dlc" :style="{ width: (defeatedDlc / dlcBosses.length) * 100 + '%' }"></div>
-        </div>
-      </div>
+      <ProgressRow
+        :label="$t('overallProgress')"
+        :value="`${defeatedOverall}/${encounters.length}`"
+        :percentage="(defeatedOverall / encounters.length) * 100"
+      />
+      <ProgressRow
+        :label="$t('baseGameProgress')"
+        :value="`${defeatedBaseGame}/${baseGameBosses.length}`"
+        :percentage="(defeatedBaseGame / baseGameBosses.length) * 100"
+      />
+      <ProgressRow
+        :label="$t('dlcProgress')"
+        :value="`${defeatedDlc}/${dlcBosses.length}`"
+        :percentage="(defeatedDlc / dlcBosses.length) * 100"
+      />
     </div>
 
     <div class="filters">
@@ -164,6 +163,24 @@ function formatNumber(n: number | undefined): string {
               <input type="checkbox" v-model="filterRemembrance" />
               <span class="check-box" :class="{ checked: filterRemembrance }"></span>
               <span class="filter-label">{{ $t('remembrance') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterNightOnly" />
+              <span class="check-box" :class="{ checked: filterNightOnly }"></span>
+              <span class="filter-label">{{ $t('nightOnly') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterParryable" />
+              <span class="check-box" :class="{ checked: filterParryable }"></span>
+              <span class="filter-label">{{ $t('parryableFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterTarnished" />
+              <span class="check-box" :class="{ checked: filterTarnished }"></span>
+              <span class="filter-label">{{ $t('tarnishedFilter') }}</span>
             </label>
           </div>
 
@@ -555,59 +572,10 @@ function formatNumber(n: number | undefined): string {
 }
 
 .progression-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  padding: 0.8rem 0;
+  gap: 0.3rem;
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 0.5rem;
 }
 
-.progression-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
 
-.progression-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.progression-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  color: var(--highlight-color);
-  opacity: 0.85;
-}
-
-.progression-count {
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  color: var(--highlight-color);
-  opacity: 0.7;
-}
-
-.progression-bar {
-  height: 6px;
-  background: var(--border-color);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.progression-fill {
-  height: 100%;
-  background: var(--highlight-color);
-  border-radius: 3px;
-  transition: width 0.4s ease;
-}
-
-.progression-fill.base-game {
-  opacity: 0.85;
-}
-
-.progression-fill.dlc {
-  opacity: 0.65;
-}
 </style>

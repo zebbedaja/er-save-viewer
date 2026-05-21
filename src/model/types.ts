@@ -63,3 +63,8 @@ export interface Npc {
   resistance: Resistance
   stance: Stance
 }
+
+export interface Region {
+  name: string
+  scaling: number
+}

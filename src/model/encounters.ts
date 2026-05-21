@@ -135,7 +135,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=ozxXs2yIHZo'],
     npcs: [
       {
         name: 'Morgott, the Omen King [Boss]',
@@ -619,7 +619,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=pGBWE42ADuc'],
     npcs: [
       {
         name: 'Astel, Naturalborn of the Void [Boss]',
@@ -984,7 +984,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=Fcve5_zpy_0'],
     npcs: [],
   },
   {
@@ -1445,7 +1445,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=B61mB_m9Vj0'],
     npcs: [
       {
         name: 'Base Serpent Messmer [Boss]',
@@ -4307,7 +4307,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=9sHyVGYxv3Y'],
     npcs: [
       {
         name: 'Draconic Tree Sentinel [Boss]',
@@ -4431,7 +4431,7 @@ export const encounters: Encounter[] = [
     nightOnly: true,
     dlc: false,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=J_12cVVCZIo'],
     npcs: [
       {
         name: 'Bell Bearing Hunter [Boss]',
@@ -4681,7 +4681,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=tnOj6KhHnXs'],
     npcs: [],
   },
   {
@@ -4921,7 +4921,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=UYwAybkg20k'],
     npcs: [
       {
         name: 'Romina, Saint of the Bud [Boss]',
@@ -5500,7 +5500,7 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: true,
     category: 'boss',
-    youtube: [],
+    youtube: ['https://www.youtube.com/watch?v=E3KTrz9aiqg'],
     npcs: [
       {
         name: 'Bayle The Dread [Boss]',

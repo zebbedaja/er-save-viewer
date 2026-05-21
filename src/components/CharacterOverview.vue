@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import type { Character, Slot } from '@zebbedaja/er-save-parser'
 
 import { useSaveStore } from '@/stores/save'
+import ProgressRow from '@/components/ProgressRow.vue'
 
 import erWretchMale from '@/assets/img/er-wretch-male.png'
 import erWretchFemale from '@/assets/img/er-wretch-female.png'
@@ -77,65 +78,14 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
     </div>
 
     <div class="attributes-grid">
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('vigor') }}</span>
-        <span class="attr-value">{{ character?.vigor ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.vigor ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('mind') }}</span>
-        <span class="attr-value">{{ character?.mind ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.mind ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('endurance') }}</span>
-        <span class="attr-value">{{ character?.endurance ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.endurance ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('strength') }}</span>
-        <span class="attr-value">{{ character?.strength ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.strength ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('dexterity') }}</span>
-        <span class="attr-value">{{ character?.dexterity ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('faith') }}</span>
-        <span class="attr-value">{{ character?.faith ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.faith ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('intelligence') }}</span>
-        <span class="attr-value">{{ character?.intelligence ?? 0 }}</span>
-        <div class="bar-track">
-          <div
-            class="bar-fill"
-            :style="{ width: `${Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)}%` }"
-          ></div>
-        </div>
-      </div>
-      <div class="attr-row">
-        <span class="attr-label">{{ $t('arcane') }}</span>
-        <span class="attr-value">{{ character?.arcane ?? 0 }}</span>
-        <div class="bar-track">
-          <div class="bar-fill" :style="{ width: `${Math.min(((character?.arcane ?? 0) / 99) * 100, 100)}%` }"></div>
-        </div>
-      </div>
+      <ProgressRow :label="$t('vigor')" :value="String(character?.vigor ?? 0)" :percentage="Math.min(((character?.vigor ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('mind')" :value="String(character?.mind ?? 0)" :percentage="Math.min(((character?.mind ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('endurance')" :value="String(character?.endurance ?? 0)" :percentage="Math.min(((character?.endurance ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('strength')" :value="String(character?.strength ?? 0)" :percentage="Math.min(((character?.strength ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('dexterity')" :value="String(character?.dexterity ?? 0)" :percentage="Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('faith')" :value="String(character?.faith ?? 0)" :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('intelligence')" :value="String(character?.intelligence ?? 0)" :percentage="Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('arcane')" :value="String(character?.arcane ?? 0)" :percentage="Math.min(((character?.arcane ?? 0) / 99) * 100, 100)" />
     </div>
     <div class="button-row">
       <button class="button" @click="resetActiveSlot">{{ $t('selectDifferentCharacter') }}</button>
@@ -227,47 +177,6 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
   gap: 0.3rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid var(--border-color);
-}
-
-.attr-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.15rem 0;
-}
-
-.attr-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  width: 5.5rem;
-  flex-shrink: 0;
-  opacity: 0.7;
-}
-
-.attr-value {
-  font-family: 'Cinzel', serif;
-  font-size: 0.75rem;
-  color: var(--highlight-color);
-  font-weight: bold;
-  width: 1.5rem;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.bar-track {
-  flex: 1;
-  height: 3px;
-  background: var(--border-color);
-  border-radius: 1.5px;
-  overflow: hidden;
-}
-
-.bar-fill {
-  height: 100%;
-  background: var(--highlight-color);
-  border-radius: 1.5px;
-  transition: width 0.4s ease;
 }
 
 .button-row {

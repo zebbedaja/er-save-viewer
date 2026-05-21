@@ -3,7 +3,7 @@ import BaseTile from './BaseTile.vue'
 import { useSaveStore } from '@/stores/save'
 
 const saveStore = useSaveStore()
-const { readFile } = saveStore
+const { readFile, setActiveSlotId } = saveStore
 
 async function onFileChange(event: Event) {
   const input = event.target as HTMLInputElement
@@ -11,6 +11,7 @@ async function onFileChange(event: Event) {
   if (!file) return
 
   await readFile(file)
+  setActiveSlotId(0)
 }
 </script>
 

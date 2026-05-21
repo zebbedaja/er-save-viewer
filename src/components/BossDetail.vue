@@ -247,6 +247,7 @@ function getResistanceClass(value: number | 'Immune'): string {
     <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
       <h3 class="boss-videos-title">Boss Kills</h3>
       <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
+        <!-- https://img.youtube.com/vi/E3KTrz9aiqg/maxresdefault.jpg -->
         <iframe
           :src="`https://www.youtube-nocookie.com/embed/${url?.split('=')[1]}`"
           title="YouTube video player"
