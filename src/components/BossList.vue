@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Slot } from '@zebbedaja/er-save-parser'
 import { encounters } from '@/model/encounters'
-import ProgressRow from '@/components/ProgressRow.vue'
+import { isBossDefeated } from '@/util/index'
 
 const router = useRouter()
 
@@ -20,20 +20,15 @@ const filterTarnished = ref(false)
 const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
-function isDefeated(flagId: number): boolean {
-  return props.saveSlot?.eventFlags?.some((f) => f.id === flagId && f.state) ?? false
-}
-
 function countDefeated(bosses: typeof encounters): number {
-  return bosses.filter((b) => isDefeated(b.flagId)).length
+  return bosses.filter((b) => isBossDefeated(props.saveSlot, b.flagId)).length
 }
 
 const baseGameBosses = encounters.filter((e) => !e.dlc)
 const dlcBosses = encounters.filter((e) => e.dlc)
 
-const defeatedOverall = computed(() => encounters.filter((e) => isDefeated(e.flagId)).length)
-const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => isDefeated(e.flagId)).length)
-const defeatedDlc = computed(() => dlcBosses.filter((e) => isDefeated(e.flagId)).length)
+const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
+const defeatedDlc = computed(() => dlcBosses.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
 
 const filteredEncounters = computed(() => {
   const query = searchQuery.value.toLowerCase()
@@ -65,7 +60,7 @@ const filteredEncounters = computed(() => {
       return false
     }
 
-    const defeated = isDefeated(e.flagId)
+    const defeated = isBossDefeated(props.saveSlot, e.flagId)
 
     if (defeatFilter.value === 'defeated' && !defeated) {
       return false
@@ -123,28 +118,6 @@ function formatNumber(n: number | undefined): string {
 
 <template>
   <div class="boss-list">
-    <div class="boss-list-header">
-      <h2 class="boss-title">{{ $t('bosses') }}</h2>
-    </div>
-
-    <div class="progression-container">
-      <ProgressRow
-        :label="$t('overallProgress')"
-        :value="`${defeatedOverall}/${encounters.length}`"
-        :percentage="(defeatedOverall / encounters.length) * 100"
-      />
-      <ProgressRow
-        :label="$t('baseGameProgress')"
-        :value="`${defeatedBaseGame}/${baseGameBosses.length}`"
-        :percentage="(defeatedBaseGame / baseGameBosses.length) * 100"
-      />
-      <ProgressRow
-        :label="$t('dlcProgress')"
-        :value="`${defeatedDlc}/${dlcBosses.length}`"
-        :percentage="(defeatedDlc / dlcBosses.length) * 100"
-      />
-    </div>
-
     <div class="filters">
       <div class="search-group">
         <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
@@ -232,10 +205,10 @@ function formatNumber(n: number | undefined): string {
             v-for="boss in bosses"
             :key="boss.flagId"
             class="boss-row"
-            :class="{ defeated: isDefeated(boss.flagId) }"
+            :class="{ defeated: isBossDefeated(props.saveSlot, boss.flagId) }"
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
-            <span class="boss-check" v-if="isDefeated(boss.flagId)">&#x2714;</span>
+            <span class="boss-check" v-if="isBossDefeated(props.saveSlot, boss.flagId)">&#x2714;</span>
             <span class="boss-name">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
@@ -269,10 +242,10 @@ function formatNumber(n: number | undefined): string {
             v-for="boss in bosses"
             :key="boss.flagId"
             class="boss-row"
-            :class="{ defeated: isDefeated(boss.flagId) }"
+            :class="{ defeated: isBossDefeated(props.saveSlot, boss.flagId) }"
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
-            <span class="boss-check" v-if="isDefeated(boss.flagId)">&#x2714;</span>
+            <span class="boss-check" v-if="isBossDefeated(props.saveSlot, boss.flagId)">&#x2714;</span>
             <span class="boss-name">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
@@ -294,14 +267,6 @@ function formatNumber(n: number | undefined): string {
   padding: 1rem 0.8rem;
   border: 1px solid var(--border-color);
   overflow-y: auto;
-}
-
-.boss-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
-  color: var(--highlight-color);
-  margin: 0 0 0.8rem;
-  text-align: center;
 }
 
 .filters {
@@ -569,12 +534,6 @@ function formatNumber(n: number | undefined): string {
   flex-shrink: 0;
   min-width: 2.5rem;
   text-align: right;
-}
-
-.progression-container {
-  gap: 0.3rem;
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 0.5rem;
 }
 
 
