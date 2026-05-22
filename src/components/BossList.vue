@@ -281,7 +281,6 @@ function formatNumber(n: number | undefined): string {
 .search-input {
   width: 100%;
   padding: 0.4rem 0.6rem;
-  font-family: 'CrimsonText', sans-serif;
   font-size: 0.9rem;
   background: var(--hover-background);
   color: var(--main-font-color);
@@ -340,12 +339,10 @@ function formatNumber(n: number | undefined): string {
 }
 
 .filter-label {
-  font-family: 'Cinzel', serif;
   opacity: 0.8;
 }
 
 .defeat-toggle-btn {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
   background: var(--hover-background);
@@ -371,7 +368,6 @@ function formatNumber(n: number | undefined): string {
 }
 
 .expand-all-btn {
-  font-family: 'Cinzel', serif;
   font-size: 0.65rem;
   padding: 0.2rem 0.45rem;
   background: var(--hover-background);
@@ -401,7 +397,6 @@ function formatNumber(n: number | undefined): string {
 }
 
 .section-title {
-  font-family: 'Cinzel', serif;
   font-size: 0.95rem;
   color: var(--highlight-color);
   font-weight: bold;
@@ -411,7 +406,6 @@ function formatNumber(n: number | undefined): string {
 }
 
 .section-count {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   color: var(--highlight-color);
   opacity: 0.5;
@@ -456,14 +450,12 @@ function formatNumber(n: number | undefined): string {
 }
 
 .region-name {
-  font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   color: var(--highlight-color);
   flex: 1;
 }
 
 .region-count {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   opacity: 0.5;
 }
@@ -498,7 +490,6 @@ function formatNumber(n: number | undefined): string {
 }
 
 .boss-name {
-  font-family: 'Cinzel', serif;
   font-size: 0.8rem;
   flex: 1;
   min-width: 0;
@@ -527,7 +518,6 @@ function formatNumber(n: number | undefined): string {
 }
 
 .boss-stat {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   color: var(--highlight-color);
   opacity: 0.7;

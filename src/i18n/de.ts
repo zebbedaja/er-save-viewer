@@ -1,4 +1,6 @@
 export default {
+  appTitle: 'ER Save Viewer',
+  about: 'Über',
   level: 'Level',
   uploadSaveFile: 'Save-File hochladen',
   characterName: 'Charaktername',

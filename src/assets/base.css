@@ -60,9 +60,12 @@
   src: url('@/assets/fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
-body {
+body, button, select, input {
   /* font-family: 'Macondo', sans-serif; */
-  font-family: 'CrimsonText', sans-serif;
+  /* font-family: 'CrimsonText', sans-serif; */
+  /* font-family: 'ModernAntiqua', sans-serif; */
+  /* font-family: 'Metamorphous', sans-serif; */
+  font-family: 'Cinzel', serif;
   font-size: 15px;
   background: var(--main-bg-color);
   color: var(--main-font-color);

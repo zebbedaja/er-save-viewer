@@ -20,8 +20,7 @@ async function onFileChange(event: Event) {
     <div class="headline">ER Save Viewer</div>
     <div class="divider"></div>
     <p>
-      Connect your Elden Ring save file by uploading it here! You can then see your character information and see
-      defeated bosses. The save file location on Windows is
+      Connect your Elden Ring save file by uploading it here! The save file location on Windows is
     </p>
     <p>%APPDATA%\EldenRing\&lt;YOUR_STEAM_ID&gt;\ER0000.sl2</p>
     <p>

@@ -104,6 +104,9 @@ function getResistanceClass(value: number | 'Immune'): string {
       </h3>
 
       <div class="npc-attributes">
+        <span class="attr-badge" :class="npc.vulnerableToCriticalHit ? 'positive' : 'negative'">
+          {{ npc.vulnerableToCriticalHit ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
+        </span>
         <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
           {{ npc.parryable ? $t('parryable') + ' x' + npc.numberOfParries : $t('notParryable') }}
         </span>
@@ -112,9 +115,6 @@ function getResistanceClass(value: number | 'Immune'): string {
         </span>
         <span class="attr-badge" :class="npc.tarnished ? 'positive' : 'negative'">
           {{ npc.tarnished ? $t('tarnished') : $t('notTarnished') }}
-        </span>
-        <span class="attr-badge" :class="npc.vulnerableToCriticalHit ? 'positive' : 'negative'">
-          {{ npc.vulnerableToCriticalHit ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
         </span>
       </div>
 
@@ -286,7 +286,6 @@ function getResistanceClass(value: number | 'Immune'): string {
   background: none;
   border: 1px solid var(--border-color);
   color: var(--main-font-color);
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
@@ -311,7 +310,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .boss-name {
-  font-family: 'Cinzel', serif;
   font-size: 1.1rem;
   color: var(--highlight-color);
   margin: 0;
@@ -338,7 +336,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .meta-value {
-  font-family: 'Cinzel', serif;
   font-size: 0.8rem;
 }
 
@@ -368,7 +365,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .phase-title {
-  font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   color: var(--highlight-color);
   margin: 0;
@@ -396,7 +392,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .attr-badge {
-  font-family: 'Cinzel', serif;
   font-size: 0.6rem;
   padding: 0.15rem 0.4rem;
   border-radius: 2px;
@@ -474,7 +469,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .section-title {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -520,7 +514,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .data-value {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
 }
 
@@ -561,7 +554,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .boss-not-found p {
-  font-family: 'Cinzel', serif;
   color: var(--main-font-color);
   opacity: 0.5;
 }
@@ -572,7 +564,6 @@ function getResistanceClass(value: number | 'Immune'): string {
 }
 
 .boss-videos-title {
-  font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   color: var(--highlight-color);
   margin: 0;

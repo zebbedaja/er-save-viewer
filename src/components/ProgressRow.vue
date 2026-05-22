@@ -26,7 +26,6 @@ defineProps<{
 }
 
 .progress-row-label {
-  font-family: 'Cinzel', serif;
   font-size: 0.7rem;
   text-transform: uppercase;
   opacity: 0.7;
@@ -36,7 +35,6 @@ defineProps<{
 }
 
 .progress-row-value {
-  font-family: 'Cinzel', serif;
   font-size: 0.75rem;
   color: var(--highlight-color);
   font-weight: bold;

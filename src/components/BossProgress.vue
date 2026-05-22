@@ -54,7 +54,6 @@ const defeatedDlc = computed(() => dlcBosses.filter((e) => isBossDefeated(props.
 }
 
 .boss-title {
-  font-family: 'Cinzel', serif;
   font-size: 1.4rem;
   color: var(--highlight-color);
   border-bottom: 1px solid var(--border-color);

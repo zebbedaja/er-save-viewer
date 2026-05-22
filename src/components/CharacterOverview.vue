@@ -127,7 +127,6 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
 }
 
 .char-name {
-  font-family: 'Cinzel', serif;
   font-size: 1.4rem;
   color: var(--highlight-color);
 }
@@ -161,12 +160,10 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
 }
 
 .mini-label {
-  font-family: 'Cinzel', serif;
   opacity: 0.7;
 }
 
 .mini-value {
-  font-family: 'Cinzel', serif;
   color: var(--highlight-color);
   font-weight: bold;
 }

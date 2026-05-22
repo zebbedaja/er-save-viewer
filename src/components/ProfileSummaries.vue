@@ -15,7 +15,7 @@ function goBack() {
 
 <template>
   <div class="profile-summaries">
-    <div class="select-character">{{ $t('selectCharacter') }}</div>
+    <!-- <div class="select-character">{{ $t('selectCharacter') }}</div> -->
     <ProfileSummary
       v-for="(profileSummary, i) in save?.profileSummaries"
       v-bind:key="profileSummary.name"

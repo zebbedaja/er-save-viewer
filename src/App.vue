@@ -7,13 +7,9 @@ import AppNav from '@/components/AppNav.vue'
 <template>
   <ThemeAnimations />
 
-  <div class="app-content">
-    <header>
-      <div>
-        <AppNav />
-      </div>
-    </header>
+  <AppNav />
 
+  <div class="app-content">
     <RouterView />
   </div>
 </template>
@@ -22,5 +18,6 @@ import AppNav from '@/components/AppNav.vue'
 .app-content {
   position: relative;
   z-index: 1;
+  padding-top: 3.5rem;
 }
 </style>
