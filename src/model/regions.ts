@@ -1,0 +1,32 @@
+export const REGION_ORDER: string[] = [
+  // Base game
+  'Limgrave',
+  'Liurnia of the Lakes',
+  'Caelid',
+  'Siofra River',
+  'Ainsel River',
+  'Lake of Rot',
+  'Nokron, Eternal City',
+  'Mt. Gelmir',
+  'Altus Plateau',
+  'Leyndell, Royal Capital',
+  'Consecrated Snowfield',
+  'Mountaintops of the Giants',
+  'Crumbling Farum Azula',
+  'Leyndell, Ashen Capital',
+  'Deeproot Depths',
+  'Mohgwyn Palace',
+
+  // DLC
+  'Gravesite Plain',
+  'Abyssal Woods',
+  'Scadu Altus',
+  'Ancient Ruins of Rauh',
+  'Rauh Base',
+  'Forbidden Lands',
+  'Jagged Peak',
+  'Scaduview',
+  'Cerulean Coast',
+  'Enir-Ilim',
+  'Shadow Keep',
+]

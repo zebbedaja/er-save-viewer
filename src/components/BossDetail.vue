@@ -108,7 +108,14 @@ function getResistanceClass(value: number | 'Immune'): string {
           {{ npc.vulnerableToCriticalHit ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
         </span>
         <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
-          {{ npc.parryable ? $t('parryable') + ' x' + npc.numberOfParries : $t('notParryable') }}
+          {{
+            npc.parryable
+              ? $t('parryable') +
+                (npc.numberOfParries != null && npc.numberOfParries > 1
+                  ? ' (requires ' + npc.numberOfParries + ' parries)'
+                  : '')
+              : $t('notParryable')
+          }}
         </span>
         <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
           {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
@@ -129,9 +136,7 @@ function getResistanceClass(value: number | 'Immune'): string {
         </div>
         <div class="meta-row" v-if="npc.weakPart">
           <span class="meta-label">{{ $t('weakPart') }}</span>
-          <span class="meta-value meta-highlight">
-            {{ npc.weakPart }} (x{{ npc.weakPartMultiplier }})
-          </span>
+          <span class="meta-value meta-highlight"> {{ npc.weakPart }} (x{{ npc.weakPartMultiplier }}) </span>
         </div>
       </div>
 
@@ -199,16 +204,16 @@ function getResistanceClass(value: number | 'Immune'): string {
                 npc.resistance.frost === 'Immune' ? $t('immune') : npc.resistance.frost
               }}</span>
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.madness)">
-              <span class="data-label">{{ $t('madness') }}</span>
-              <span class="data-value">{{
-                npc.resistance.madness === 'Immune' ? $t('immune') : npc.resistance.madness
-              }}</span>
-            </div>
             <div class="data-cell" :class="getResistanceClass(npc.resistance.sleep)">
               <span class="data-label">{{ $t('sleep') }}</span>
               <span class="data-value">{{
                 npc.resistance.sleep === 'Immune' ? $t('immune') : npc.resistance.sleep
+              }}</span>
+            </div>
+            <div class="data-cell" :class="getResistanceClass(npc.resistance.madness)">
+              <span class="data-label">{{ $t('madness') }}</span>
+              <span class="data-value">{{
+                npc.resistance.madness === 'Immune' ? $t('immune') : npc.resistance.madness
               }}</span>
             </div>
             <div class="data-cell" :class="getResistanceClass(npc.resistance.deathblight)">

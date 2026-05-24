@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Slot } from '@zebbedaja/er-save-parser'
 import { encounters } from '@/model/encounters'
+import { REGION_ORDER } from '@/model/regions'
 import { isBossDefeated } from '@/util/index'
 
 const router = useRouter()
@@ -85,7 +86,13 @@ function groupByRegion(list: typeof encounters) {
     }
   }
 
-  return [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0]))
+  return [...groups.entries()].sort((a, b) => {
+    const iA = REGION_ORDER.indexOf(a[0])
+    const iB = REGION_ORDER.indexOf(b[0])
+    const oA = iA === -1 ? REGION_ORDER.length : iA
+    const oB = iB === -1 ? REGION_ORDER.length : iB
+    return oA - oB
+  })
 }
 
 const groupedBaseGameBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => !e.dlc)))
@@ -222,7 +229,7 @@ function formatNumber(n: number | undefined): string {
       </div>
     </template>
 
-    <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" />
+    <!-- <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" /> -->
 
     <template v-if="groupedDlcBosses.length">
       <div class="section-header">

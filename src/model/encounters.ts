@@ -17,7 +17,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Godrick the Grafted [Boss]',
+        name: 'Godrick the Grafted',
         id: 47500014,
         hp: 6080,
         defense: 105,
@@ -58,7 +58,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Margit, the Fell Omen [Boss]',
+        name: 'Margit, the Fell Omen',
         id: 21300014,
         hp: 4174,
         defense: 103,
@@ -100,7 +100,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Grafted Scion [Boss]',
+        name: 'Grafted Scion',
         id: 46900008,
         hp: 2596,
         defense: 107,
@@ -138,7 +138,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=ozxXs2yIHZo'],
     npcs: [
       {
-        name: 'Morgott, the Omen King [Boss]',
+        name: 'Morgott, the Omen King',
         id: 21300534,
         hp: 10399,
         defense: 114,
@@ -180,7 +180,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Godfrey, First Elden Lord [Boss]',
+        name: 'Godfrey, First Elden Lord',
         id: 47200134,
         hp: 7099,
         defense: 114,
@@ -218,7 +218,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Godfrey, First Elden Lord [Boss]',
+        name: 'Godfrey, First Elden Lord',
         id: 47200070,
         hp: 11831,
         defense: 120,
@@ -239,7 +239,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
       },
       {
-        name: 'Hoarah Loux [Boss]',
+        name: 'Hoarah Loux',
         id: 47210070,
         hp: 21903,
         defense: 120,
@@ -299,7 +299,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Dragonkin Soldier of Nokstella [Boss]',
+        name: 'Dragonkin Soldier of Nokstella',
         id: 46500960,
         hp: 4372,
         defense: 106,
@@ -340,7 +340,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Dragonkin Soldier [Boss]',
+        name: 'Dragonkin Soldier',
         id: 46500262,
         hp: 7655,
         defense: 117,
@@ -381,7 +381,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Valiant Gargoyle (Greatsword) [Boss]',
+        name: 'Valiant Gargoyle (Greatsword)',
         id: 47700165,
         hp: 5671,
         defense: 111,
@@ -405,7 +405,7 @@ export const encounters: Encounter[] = [
         stance: { base: 110, mult: 1, effective: 110, regenerationDelay: 8.462 },
       },
       {
-        name: 'Valiant Gargoyle (Twinblade) [Boss]',
+        name: 'Valiant Gargoyle (Twinblade)',
         id: 47701165,
         hp: 5671,
         defense: 111,
@@ -446,7 +446,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Dragonkin Soldier [Boss]',
+        name: 'Dragonkin Soldier',
         id: 46500265,
         hp: 5758,
         defense: 114,
@@ -482,23 +482,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [
-      {
-        name: 'Mimic Tear [Boss]',
-        id: 526100965,
-        hp: 4653,
-        defense: 100,
-        phase: 1,
-        tarnished: true,
-        weakPartMultiplier: 1.5,
-        flagId: 12020850,
-        parryable: false,
-        backstab: true,
-        negation: { standard: 0, strike: 0, slash: 0, pierce: 0, magic: 0, fire: 0, lightning: -25, holy: 0 },
-        resistance: { poison: 0, rot: 0, bleed: 0, frost: 0, madness: '0', sleep: 0, deathblight: 'Immune' },
-        stance: { base: 100, mult: 1, effective: 100, regenerationDelay: 7.692 },
-      },
-    ],
+    npcs: [],
   },
   {
     flagId: 12030390,
@@ -516,7 +500,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Crucible Knight Siluria [Boss]',
+        name: 'Crucible Knight Siluria',
         id: 25001066,
         hp: 4606,
         defense: 117,
@@ -552,21 +536,7 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [
-      {
-        name: "Fia's Champion [Boss]",
-        id: 523610066,
-        hp: 1551,
-        defense: 100,
-        phase: 1,
-        tarnished: true,
-        weakPartMultiplier: 1.5,
-        flagId: 12030800,
-        negation: { standard: 0, strike: 0, slash: 0, pierce: 0, magic: 0, fire: 0, lightning: -25, holy: 0 },
-        resistance: { poison: 100, rot: 100, bleed: 100, frost: 100, madness: '0', sleep: 999, deathblight: '999' },
-        stance: { base: 100, mult: 1, effective: 100, regenerationDelay: 7.692 },
-      },
-    ],
+    npcs: [],
   },
   {
     flagId: 12030850,
@@ -584,7 +554,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Lichdragon Fortissax [Boss]',
+        name: 'Lichdragon Fortissax',
         id: 45110066,
         hp: 12903,
         defense: 114,
@@ -622,7 +592,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=pGBWE42ADuc'],
     npcs: [
       {
-        name: 'Astel, Naturalborn of the Void [Boss]',
+        name: 'Astel, Naturalborn of the Void',
         id: 46200062,
         hp: 11170,
         defense: 114,
@@ -663,7 +633,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Mohg, Lord of Blood [Boss]',
+        name: 'Mohg, Lord of Blood',
         id: 48000068,
         hp: 18389,
         defense: 122,
@@ -736,7 +706,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Beast Clergyman [Boss]',
+        name: 'Beast Clergyman',
         id: 21100072,
         hp: 10620,
         defense: 120,
@@ -759,7 +729,7 @@ export const encounters: Encounter[] = [
         stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
       },
       {
-        name: 'Maliketh, The Black Blade [Boss]',
+        name: 'Maliketh, The Black Blade',
         id: 21101072,
         hp: 10620,
         defense: 120,
@@ -815,7 +785,57 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Godskin Apostle',
+        id: 35600172,
+        hp: 6668,
+        defense: 118,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 13000850,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 10, slash: -10, pierce: 0, magic: 20, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 345,
+          rot: 345,
+          bleed: 251,
+          frost: 345,
+          madness: 'Immune',
+          sleep: 251,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+      {
+        name: 'Godskin Noble',
+        id: 35700172,
+        hp: 8000,
+        defense: 118,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 13000850,
+        parryable: true,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 35, slash: -10, pierce: 0, magic: 20, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 345,
+          rot: 345,
+          bleed: 251,
+          frost: 345,
+          madness: 'Immune',
+          sleep: 251,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 14000800,
@@ -833,7 +853,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Rennala, Queen of the Full Moon (Phase 1) [Boss]',
+        name: 'Rennala, Queen of the Full Moon (Phase 1)',
         hp: 3493,
         defense: 109,
         phase: 1,
@@ -856,7 +876,7 @@ export const encounters: Encounter[] = [
         stance: { base: -1, mult: 1, regenerationDelay: 0 },
       },
       {
-        name: 'Rennala, Queen of the Full Moon - Bubble (Phase 1) [Boss]',
+        name: 'Rennala, Queen of the Full Moon - Bubble (Phase 1)',
         id: 20300024,
         hp: 3493,
         defense: 109,
@@ -889,7 +909,7 @@ export const encounters: Encounter[] = [
         stance: { base: -1, mult: 1, regenerationDelay: 0 },
       },
       {
-        name: 'Rennala, Queen of the Full Moon (Phase 2) [Boss]',
+        name: 'Rennala, Queen of the Full Moon (Phase 2)',
         id: 20310024,
         hp: 4097,
         defense: 109,
@@ -930,7 +950,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Red Wolf of Radagon [Boss]',
+        name: 'Red Wolf of Radagon',
         id: 31811024,
         hp: 2204,
         defense: 107,
@@ -971,7 +991,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=Ua3J8bmekM0'],
     npcs: [
       {
-        name: 'Malenia, Blade of Miquella [Boss]',
+        name: 'Malenia, Blade of Miquella',
         id: 21200056,
         hp: 18473,
         defense: 123,
@@ -995,7 +1015,7 @@ export const encounters: Encounter[] = [
         stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
       },
       {
-        name: 'Malenia, Goddess of Rot [Boss]',
+        name: 'Malenia, Goddess of Rot',
         id: 21202056,
         hp: 18473,
         defense: 123,
@@ -1052,7 +1072,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'God-Devouring Serpent [Boss]',
+        name: 'God-Devouring Serpent',
         id: 47100038,
         hp: 30439,
         defense: 115,
@@ -1076,7 +1096,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
       },
       {
-        name: 'Rykard, Lord of Blasphemy [Boss]',
+        name: 'Rykard, Lord of Blasphemy',
         id: 47101038,
         hp: 59174,
         defense: 115,
@@ -1117,7 +1137,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Godskin Noble [Boss]',
+        name: 'Godskin Noble',
         id: 35700038,
         hp: 10060,
         defense: 114,
@@ -1159,7 +1179,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Abductor Virgin (Scythe) [Boss]',
+        name: 'Abductor Virgin (Scythe)',
         id: 44700938,
         hp: 3811,
         defense: 110,
@@ -1183,7 +1203,7 @@ export const encounters: Encounter[] = [
         stance: { base: 65, mult: 0, regenerationDelay: 5 },
       },
       {
-        name: 'Abductor Virgin (Wheel) [Boss]',
+        name: 'Abductor Virgin (Wheel)',
         id: 44701938,
         hp: 3811,
         defense: 110,
@@ -1240,7 +1260,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Soldier of Godrick [Boss]',
+        name: 'Soldier of Godrick',
         id: 43113906,
         hp: 384,
         defense: 100,
@@ -1282,7 +1302,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Elden Beast [Boss]',
+        name: 'Elden Beast',
         id: 22000078,
         hp: 22127,
         defense: 121,
@@ -1306,7 +1326,7 @@ export const encounters: Encounter[] = [
         stance: { base: 150, mult: 1, effective: 150, regenerationDelay: 11.538 },
       },
       {
-        name: 'Radagon of the Golden Order [Boss]',
+        name: 'Radagon of the Golden Order',
         id: 21900078,
         hp: 13339,
         defense: 121,
@@ -1348,7 +1368,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Divine Beast Dancing Lion [Boss]',
+        name: 'Divine Beast Dancing Lion',
         id: 52100088,
         hp: 22571,
         defense: 122,
@@ -1389,7 +1409,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=-xeeuv1AGgI'],
     npcs: [
       {
-        name: 'Promised Consort Radahn [Boss]',
+        name: 'Promised Consort Radahn',
         id: 52200089,
         hp: 46134,
         defense: 125,
@@ -1414,7 +1434,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 6.154 },
       },
       {
-        name: 'Radahn, Consort of Miquella [Boss]',
+        name: 'Radahn, Consort of Miquella',
         id: 52201089,
         hp: 46134,
         defense: 125,
@@ -1456,7 +1476,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Golden Hippopotamus [Boss]',
+        name: 'Golden Hippopotamus',
         id: 50100098,
         hp: 33866,
         defense: 123,
@@ -1497,7 +1517,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=B61mB_m9Vj0'],
     npcs: [
       {
-        name: 'Base Serpent Messmer [Boss]',
+        name: 'Base Serpent Messmer',
         id: 51301099,
         hp: 38981,
         defense: 124,
@@ -1522,7 +1542,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
       },
       {
-        name: 'Messmer the Impaler [Boss]',
+        name: 'Messmer the Impaler',
         id: 51300099,
         hp: 38981,
         defense: 124,
@@ -1564,7 +1584,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Putrescent Knight (Phase 1) [Boss]',
+        name: 'Putrescent Knight (Phase 1)',
         id: 50200087,
         hp: 20612,
         defense: 123,
@@ -1588,7 +1608,7 @@ export const encounters: Encounter[] = [
         stance: { base: 100, mult: 1, effective: 100, regenerationDelay: 7.692 },
       },
       {
-        name: 'Putrescent Knight (Phase 2) [Boss]',
+        name: 'Putrescent Knight (Phase 2)',
         id: 50200187,
         hp: 20612,
         defense: 123,
@@ -1629,7 +1649,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Metyr, Mother of Fingers [Boss]',
+        name: 'Metyr, Mother of Fingers',
         id: 52000097,
         hp: 43296,
         defense: 124,
@@ -1670,7 +1690,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Midra, Lord of Frenzied Flame [Boss]',
+        name: 'Midra, Lord of Frenzied Flame',
         id: 50510086,
         hp: 47171,
         defense: 124,
@@ -1872,7 +1892,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Red Wolf of the Champion [Boss]',
+        name: 'Red Wolf of the Champion',
         id: 31811032,
         hp: 3162,
         defense: 111,
@@ -2191,7 +2211,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Crystalian (Spear) [Boss]',
+        name: 'Crystalian (Spear)',
         id: 33501920,
         hp: 1595,
         defense: 107,
@@ -2216,7 +2236,7 @@ export const encounters: Encounter[] = [
         stance: { base: 70, mult: 1, effective: 70, regenerationDelay: 5.385 },
       },
       {
-        name: 'Crystalian (Spear) [Boss] [Cracked]',
+        name: 'Crystalian (Spear) [Cracked]',
         hp: 1595,
         defense: 107,
         phase: 1,
@@ -2240,7 +2260,7 @@ export const encounters: Encounter[] = [
         stance: { base: 70, mult: 1, effective: 70, regenerationDelay: 5.385 },
       },
       {
-        name: 'Crystalian (Staff) [Boss]',
+        name: 'Crystalian (Staff)',
         id: 33502920,
         hp: 1595,
         defense: 107,
@@ -2265,7 +2285,7 @@ export const encounters: Encounter[] = [
         stance: { base: 70, mult: 1, effective: 70, regenerationDelay: 5.385 },
       },
       {
-        name: 'Crystalian (Staff) [Boss] [Cracked]',
+        name: 'Crystalian (Staff) [Cracked]',
         hp: 1595,
         defense: 107,
         phase: 1,
@@ -2306,7 +2326,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Kindred of Rot [Boss]',
+        name: 'Kindred of Rot',
         id: 38100932,
         hp: 2034,
         defense: 111,
@@ -2331,7 +2351,7 @@ export const encounters: Encounter[] = [
         stance: { base: 30, mult: 1, effective: 30, regenerationDelay: 2.308 },
       },
       {
-        name: 'Kindred of Rot [Boss]',
+        name: 'Kindred of Rot',
         id: 38102932,
         hp: 2034,
         defense: 111,
@@ -2410,7 +2430,7 @@ export const encounters: Encounter[] = [
     flagName: 'Misbegotten Crusader',
     hp: 9130,
     runes: 93000,
-    region: 'Concecrated Snowfield',
+    region: 'Consecrated Snowfield',
     location: 'Cave of the Forlorn',
     closestSiteOfGrace: 'Cave of the Forlorn',
     type: 'Enemy',
@@ -2421,7 +2441,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Misbegotten Crusader [Boss]',
+        name: 'Misbegotten Crusader',
         id: 34601952,
         hp: 9130,
         defense: 120,
@@ -2543,7 +2563,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Cleanrot Knight (Sickle) [Boss]',
+        name: 'Cleanrot Knight (Sickle)',
         id: 38001940,
         hp: 2102,
         defense: 109,
@@ -2568,7 +2588,7 @@ export const encounters: Encounter[] = [
         stance: { base: 65, mult: 1, effective: 65, regenerationDelay: 5 },
       },
       {
-        name: 'Cleanrot Knight (Spear) [Boss]',
+        name: 'Cleanrot Knight (Spear)',
         id: 38000940,
         hp: 2102,
         defense: 109,
@@ -2626,7 +2646,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Godskin Apostle [Boss]',
+        name: 'Godskin Apostle',
         id: 35600950,
         hp: 9847,
         defense: 115,
@@ -2647,7 +2667,7 @@ export const encounters: Encounter[] = [
         stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
       },
       {
-        name: 'Godskin Noble [Boss]',
+        name: 'Godskin Noble',
         id: 35700950,
         hp: 11814,
         defense: 115,
@@ -2668,7 +2688,7 @@ export const encounters: Encounter[] = [
         stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
       },
       {
-        name: 'Spiritcaller Snail [Boss]',
+        name: 'Spiritcaller Snail',
         id: 41402950,
         hp: 1840,
         defense: 115,
@@ -2706,7 +2726,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Scaly Misbegotten [Boss]',
+        name: 'Scaly Misbegotten',
         id: 34510912,
         hp: 1360,
         defense: 102,
@@ -2795,7 +2815,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Crystalian (Ringblade) [Boss]',
+        name: 'Crystalian (Ringblade)',
         id: 33500930,
         hp: 1892,
         defense: 110,
@@ -2819,7 +2839,7 @@ export const encounters: Encounter[] = [
         stance: { base: 70, mult: 1, effective: 70, regenerationDelay: 5.385 },
       },
       {
-        name: 'Crystalian (Ringblade) [Boss] [Cracked]',
+        name: 'Crystalian (Ringblade) [Cracked]',
         hp: 1892,
         defense: 110,
         phase: 1,
@@ -2842,7 +2862,7 @@ export const encounters: Encounter[] = [
         stance: { base: 70, mult: 1, effective: 70, regenerationDelay: 5.385 },
       },
       {
-        name: 'Crystalian (Spear) [Boss]',
+        name: 'Crystalian (Spear)',
         id: 33501930,
         hp: 1892,
         defense: 110,
@@ -2866,7 +2886,7 @@ export const encounters: Encounter[] = [
         stance: { base: 70, mult: 1, effective: 70, regenerationDelay: 5.385 },
       },
       {
-        name: 'Crystalian (Spear) [Boss] [Cracked]',
+        name: 'Crystalian (Spear) [Cracked]',
         hp: 1892,
         defense: 110,
         phase: 1,
@@ -2932,7 +2952,7 @@ export const encounters: Encounter[] = [
     flagName: 'Astel, Stars of Darkness',
     hp: 18617,
     runes: 120000,
-    region: 'Concecrated Snowfield',
+    region: 'Consecrated Snowfield',
     location: 'Yelough Anix Tunnel',
     closestSiteOfGrace: 'Yelough Anix Tunnel',
     type: 'Enemy',
@@ -2973,7 +2993,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Godskin Apostle',
+        id: 35600042,
+        hp: 13596,
+        defense: 120,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 34130800,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 10, slash: -10, pierce: 0, magic: 20, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 351,
+          rot: 351,
+          bleed: 255,
+          frost: 351,
+          madness: 'Immune',
+          sleep: 255,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 34140850,
@@ -3007,7 +3053,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Mohg, The Omen [Boss]',
+        name: 'Mohg, The Omen',
         id: 48001935,
         hp: 14000,
         defense: 117,
@@ -3064,7 +3110,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Magma Wyrm Makar [Boss]',
+        name: 'Magma Wyrm Makar',
         id: 49100026,
         hp: 7141,
         defense: 109,
@@ -3105,7 +3151,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Death Knight (Twin Axes) [Boss]',
+        name: 'Death Knight (Twin Axes)',
         id: 50700081,
         hp: 19285,
         defense: 122,
@@ -3147,7 +3193,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Death Knight (Longhaft Axe) [Boss]',
+        name: 'Death Knight (Longhaft Axe)',
         id: 50701095,
         hp: 24080,
         defense: 123,
@@ -3493,7 +3539,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Bell Bearing Hunter [Boss]',
+        name: 'Bell Bearing Hunter',
         id: 31000020,
         hp: 4050,
         defense: 110,
@@ -3599,7 +3645,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Demi-Human Queen [Boss]',
+        name: 'Demi-Human Queen',
         id: 41301030,
         hp: 3284,
         defense: 110,
@@ -3688,7 +3734,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Godefroy the Grafted [Boss]',
+        name: 'Godefroy the Grafted',
         id: 47500030,
         hp: 12419,
         defense: 113,
@@ -3729,7 +3775,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: "Night's Cavalry (Flail) [Boss]",
+        name: "Night's Cavalry (Flail)",
         id: 31501030,
         hp: 3725,
         defense: 113,
@@ -3770,7 +3816,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Elemer of the Briar [Boss]',
+        name: 'Elemer of the Briar',
         id: 31000931,
         hp: 4897,
         defense: 111,
@@ -3812,7 +3858,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Black Knife Assassin [Boss]',
+        name: 'Black Knife Assassin',
         id: 21000830,
         hp: 5413,
         defense: 113,
@@ -3854,7 +3900,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Sanguine Noble [Boss]',
+        name: 'Sanguine Noble',
         id: 35500930,
         hp: 3128,
         defense: 110,
@@ -3894,7 +3940,32 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Fallingstar Beast',
+        id: 46801930,
+        hp: 7009,
+        defense: 113,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1041500800,
+        parryable: false,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 35, strike: 35, slash: 35, pierce: 35, magic: 20, fire: 20, lightning: 20, holy: 20 },
+        resistance: {
+          poison: 548,
+          rot: 548,
+          bleed: 'Immune',
+          frost: 'Immune',
+          madness: 'Immune',
+          sleep: 'Immune',
+          deathblight: 'Immune',
+        },
+        stance: { base: 100, mult: 1, effective: 100, regenerationDelay: 7.692 },
+      },
+    ],
   },
   {
     flagId: 1041510800,
@@ -3910,7 +3981,56 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Tree Sentinel (Torch)',
+        id: 32511030,
+        hp: 5384,
+        defense: 113,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1041510800,
+        parryable: true,
+        backstab: false,
+        vulnerableToCriticalHit: false,
+        negation: { standard: 10, strike: 10, slash: 35, pierce: 10, magic: 20, fire: 40, lightning: 0, holy: 40 },
+        resistance: {
+          poison: 334,
+          rot: 334,
+          bleed: 548,
+          frost: 548,
+          madness: 'Immune',
+          sleep: 334,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+      {
+        name: 'Tree Sentinel',
+        id: 32510030,
+        hp: 6461,
+        defense: 113,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1041510800,
+        parryable: true,
+        backstab: false,
+        vulnerableToCriticalHit: false,
+        negation: { standard: 10, strike: 10, slash: 35, pierce: 10, magic: 20, fire: 40, lightning: 0, holy: 40 },
+        resistance: {
+          poison: 334,
+          rot: 334,
+          bleed: 548,
+          frost: 548,
+          madness: 'Immune',
+          sleep: 334,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1041520800,
@@ -3928,7 +4048,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Ancient Dragon Lansseax [Boss]',
+        name: 'Ancient Dragon Lansseax',
         id: 45102030,
         hp: 9087,
         defense: 115,
@@ -3969,7 +4089,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Wormface [Boss]',
+        name: 'Wormface',
         id: 45800030,
         hp: 5876,
         defense: 113,
@@ -4074,7 +4194,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Bell Bearing Hunter [Boss]',
+        name: 'Bell Bearing Hunter',
         id: 31000010,
         hp: 2495,
         defense: 103,
@@ -4114,7 +4234,33 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: [],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Godskin Apostle',
+        id: 35600030,
+        hp: 7528,
+        defense: 113,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1042550800,
+        parryable: true,
+        numberOfParries: 2,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 0, strike: 10, slash: -10, pierce: 0, magic: 20, fire: 40, lightning: 20, holy: 40 },
+        resistance: {
+          poison: 334,
+          rot: 334,
+          bleed: 243,
+          frost: 334,
+          madness: 'Immune',
+          sleep: 243,
+          deathblight: 'Immune',
+        },
+        stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
+      },
+    ],
   },
   {
     flagId: 1043300800,
@@ -4132,7 +4278,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Leonine Misbegotten [Boss]',
+        name: 'Leonine Misbegotten',
         id: 34600913,
         hp: 2199,
         defense: 103,
@@ -4190,7 +4336,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Flying Dragon Agheel [Boss]',
+        name: 'Flying Dragon Agheel',
         id: 45000010,
         hp: 3200,
         defense: 106,
@@ -4248,7 +4394,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Bell Bearing Hunter [Boss]',
+        name: 'Bell Bearing Hunter',
         id: 31000033,
         hp: 6216,
         defense: 114,
@@ -4386,7 +4532,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=9sHyVGYxv3Y'],
     npcs: [
       {
-        name: 'Draconic Tree Sentinel [Boss]',
+        name: 'Draconic Tree Sentinel',
         id: 32500033,
         hp: 8398,
         defense: 114,
@@ -4444,7 +4590,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Decaying Ekzykes [Boss]',
+        name: 'Decaying Ekzykes',
         id: 45010040,
         hp: 23731,
         defense: 114,
@@ -4510,7 +4656,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=J_12cVVCZIo'],
     npcs: [
       {
-        name: 'Bell Bearing Hunter [Boss]',
+        name: 'Bell Bearing Hunter',
         id: 31000042,
         hp: 10619,
         defense: 121,
@@ -4557,8 +4703,8 @@ export const encounters: Encounter[] = [
     flagName: 'Death Rite Bird',
     hp: 17625,
     runes: 220000,
-    region: 'Concecrated Snowfield',
-    location: 'Concecrated Snowfield',
+    region: 'Consecrated Snowfield',
+    location: 'Consecrated Snowfield',
     closestSiteOfGrace: 'Apostate Derelict',
     type: 'Enemy',
     drops: ['Explosive Ghostflame'],
@@ -4669,8 +4815,8 @@ export const encounters: Encounter[] = [
     flagName: 'Great Wyrm Theodorix',
     hp: 25649,
     runes: 180000,
-    region: 'Concecrated Snowfield',
-    location: 'Concecrated Snowfield',
+    region: 'Consecrated Snowfield',
+    location: 'Consecrated Snowfield',
     closestSiteOfGrace: 'Cave of the Forlorn',
     type: 'Great Enemy',
     drops: ['Dragon Heart', 'Dragon Heart', 'Dragon Heart'],
@@ -4701,7 +4847,7 @@ export const encounters: Encounter[] = [
     flagName: 'Putrid Avatar',
     hp: 12569,
     runes: 160000,
-    region: 'Concecrated Snowfield',
+    region: 'Consecrated Snowfield',
     location: 'Minor Erdtree (Consecrated Snowfield)',
     closestSiteOfGrace: 'Ordina, Liturgical Town',
     type: 'Enemy',
@@ -4758,7 +4904,31 @@ export const encounters: Encounter[] = [
     dlc: false,
     category: 'boss',
     youtube: ['https://www.youtube.com/watch?v=tnOj6KhHnXs'],
-    npcs: [],
+    npcs: [
+      {
+        name: 'Black Blade Kindred (Twinblade)',
+        id: 47701242,
+        hp: 12297,
+        defense: 121,
+        phase: 1,
+        tarnished: false,
+        weakPartMultiplier: 1.5,
+        flagId: 1051430800,
+        backstab: false,
+        vulnerableToCriticalHit: true,
+        negation: { standard: 10, strike: 0, slash: 35, pierce: 35, magic: 20, fire: 40, lightning: 40, holy: 80 },
+        resistance: {
+          poison: 'Immune',
+          rot: 'Immune',
+          bleed: 'Immune',
+          frost: 'Immune',
+          madness: 'Immune',
+          sleep: 'Immune',
+          deathblight: 'Immune',
+        },
+        stance: { base: 110, mult: 1, effective: 110, regenerationDelay: 8.462 },
+      },
+    ],
   },
   {
     flagId: 1051570800,
@@ -4878,7 +5048,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Starscourge Radahn [Boss]',
+        name: 'Starscourge Radahn',
         id: 47300040,
         hp: 9572,
         defense: 113,
@@ -4919,7 +5089,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Fire Giant [Boss]',
+        name: 'Fire Giant',
         id: 47600050,
         hp: 22898,
         defense: 118,
@@ -4943,7 +5113,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
       },
       {
-        name: 'Fire Giant [Boss]',
+        name: 'Fire Giant',
         id: 47601050,
         hp: 43263,
         defense: 118,
@@ -5000,7 +5170,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=UYwAybkg20k'],
     npcs: [
       {
-        name: 'Romina, Saint of the Bud [Boss]',
+        name: 'Romina, Saint of the Bud',
         id: 50300094,
         hp: 35798,
         defense: 124,
@@ -5144,7 +5314,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Divine Beast Dancing Lion [Boss]',
+        name: 'Divine Beast Dancing Lion',
         id: 52100094,
         hp: 32838,
         defense: 124,
@@ -5201,7 +5371,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Black Knight Garrew [Boss]',
+        name: 'Black Knight Garrew',
         id: 58400590,
         hp: 19584,
         defense: 123,
@@ -5255,7 +5425,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Rellana, Twin Moon Knight [Boss]',
+        name: 'Rellana, Twin Moon Knight',
         id: 53000082,
         hp: 29723,
         defense: 123,
@@ -5377,7 +5547,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Commander Gaius [Boss]',
+        name: 'Commander Gaius',
         id: 50000092,
         hp: 33871,
         defense: 123,
@@ -5434,7 +5604,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Scadutree Avatar (Phase 1) [Boss]',
+        name: 'Scadutree Avatar (Phase 1)',
         id: 52300096,
         hp: 7560,
         defense: 123,
@@ -5458,7 +5628,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
       },
       {
-        name: 'Scadutree Avatar (Phase 2) [Boss]',
+        name: 'Scadutree Avatar (Phase 2)',
         id: 52300296,
         hp: 13608,
         defense: 123,
@@ -5482,7 +5652,7 @@ export const encounters: Encounter[] = [
         stance: { base: 120, mult: 1, effective: 120, regenerationDelay: 9.231 },
       },
       {
-        name: 'Scadutree Avatar (Phase 3) [Boss]',
+        name: 'Scadutree Avatar (Phase 3)',
         id: 52300496,
         hp: 13608,
         defense: 123,
@@ -5594,7 +5764,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Jori, Elder Inquisitor [Boss]',
+        name: 'Jori, Elder Inquisitor',
         id: 53120086,
         hp: 30506,
         defense: 124,
@@ -5614,7 +5784,7 @@ export const encounters: Encounter[] = [
           frost: 319,
           madness: 'Immune',
           sleep: 179,
-          deathblight: '999',
+          deathblight: 'Immune',
         },
         stance: { base: 80, mult: 1, effective: 80, regenerationDelay: 6.154 },
       },
@@ -5652,7 +5822,7 @@ export const encounters: Encounter[] = [
     youtube: ['https://www.youtube.com/watch?v=E3KTrz9aiqg'],
     npcs: [
       {
-        name: 'Bayle The Dread [Boss]',
+        name: 'Bayle The Dread',
         id: 51200085,
         hp: 41612,
         defense: 125,
@@ -5694,7 +5864,7 @@ export const encounters: Encounter[] = [
     youtube: [],
     npcs: [
       {
-        name: 'Ancient Dragon Senessax [Boss]',
+        name: 'Ancient Dragon Senessax',
         id: 53701185,
         hp: 45551,
         defense: 125,

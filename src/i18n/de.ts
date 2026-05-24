@@ -72,7 +72,7 @@ export default {
   effective: 'Effektiv',
   regenDelay: 'Verzögerung',
   npcDefense: 'Defense',
-  parryable: 'PARRY',
+  parryable: 'PARRIABLE',
   notParryable: 'NICHT PARRIABLE',
   backstab: 'RÜCKSTICH',
   noBackstab: 'KEIN RÜCKSTICH',
