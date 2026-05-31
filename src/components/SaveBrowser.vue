@@ -5,7 +5,7 @@ import { useSaveStore } from '@/stores/save'
 import { storeToRefs } from 'pinia'
 import SaveFileUpload from './SaveFileUpload.vue'
 import ProfileSummaries from './ProfileSummaries.vue'
-import BossProgress from './BossProgress.vue'
+import ProgressionSummary from './ProgressionSummary.vue'
 
 const saveStore = useSaveStore()
 const { save, activeSlot } = storeToRefs(saveStore)
@@ -17,7 +17,7 @@ const { save, activeSlot } = storeToRefs(saveStore)
       <SaveFileUpload v-if="save == null"></SaveFileUpload>
       <ProfileSummaries v-if="activeSlot == null && save != null"></ProfileSummaries>
       <CharacterOverview v-if="activeSlot != null" :saveSlot="activeSlot"></CharacterOverview>
-      <BossProgress v-if="activeSlot != null" :saveSlot="activeSlot"></BossProgress>
+      <ProgressionSummary v-if="activeSlot != null" :saveSlot="activeSlot"></ProgressionSummary>
     </div>
     <div>
       <slot :saveSlot="activeSlot"></slot>

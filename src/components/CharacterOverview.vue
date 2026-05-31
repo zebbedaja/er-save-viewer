@@ -83,8 +83,8 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
       <ProgressRow :label="$t('endurance')" :value="String(character?.endurance ?? 0)" :percentage="Math.min(((character?.endurance ?? 0) / 99) * 100, 100)" />
       <ProgressRow :label="$t('strength')" :value="String(character?.strength ?? 0)" :percentage="Math.min(((character?.strength ?? 0) / 99) * 100, 100)" />
       <ProgressRow :label="$t('dexterity')" :value="String(character?.dexterity ?? 0)" :percentage="Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('faith')" :value="String(character?.faith ?? 0)" :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)" />
       <ProgressRow :label="$t('intelligence')" :value="String(character?.intelligence ?? 0)" :percentage="Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)" />
+      <ProgressRow :label="$t('faith')" :value="String(character?.faith ?? 0)" :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)" />
       <ProgressRow :label="$t('arcane')" :value="String(character?.arcane ?? 0)" :percentage="Math.min(((character?.arcane ?? 0) / 99) * 100, 100)" />
     </div>
     <div class="button-row">

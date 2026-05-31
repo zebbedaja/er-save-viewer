@@ -117,6 +117,10 @@ function collapseAll() {
   expandedRegions.value = new Set()
 }
 
+function isRegionComplete(bosses: typeof encounters): boolean {
+  return bosses.every((b) => isBossDefeated(props.saveSlot, b.flagId))
+}
+
 function formatNumber(n: number | undefined): string {
   if (n === undefined) return '—'
   return n.toLocaleString()
@@ -197,13 +201,15 @@ function formatNumber(n: number | undefined): string {
     <template v-if="groupedBaseGameBosses.length">
       <div class="section-header">
         <span class="section-title">{{ $t('baseGameSection') }}</span>
+        <span class="section-complete" v-if="defeatedBaseGame === baseGameBosses.length">✓</span>
         <span class="section-count">{{ defeatedBaseGame }}/{{ baseGameBosses.length }}</span>
       </div>
 
-      <div v-for="[region, bosses] in groupedBaseGameBosses" :key="'bg-' + region" class="region-group">
+      <div v-for="[region, bosses] in groupedBaseGameBosses" :key="'bg-' + region" class="region-group" :class="{ completed: isRegionComplete(bosses) }">
         <div class="region-header" @click="toggleRegion(region)">
           <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
           <span class="region-name">{{ region }}</span>
+          <span class="region-complete" v-if="isRegionComplete(bosses)">✓</span>
           <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
         </div>
 
@@ -234,13 +240,15 @@ function formatNumber(n: number | undefined): string {
     <template v-if="groupedDlcBosses.length">
       <div class="section-header">
         <span class="section-title">{{ $t('dlcSection') }}</span>
+        <span class="section-complete" v-if="defeatedDlc === dlcBosses.length">✓</span>
         <span class="section-count">{{ defeatedDlc }}/{{ dlcBosses.length }}</span>
       </div>
 
-      <div v-for="[region, bosses] in groupedDlcBosses" :key="'dlc-' + region" class="region-group">
+      <div v-for="[region, bosses] in groupedDlcBosses" :key="'dlc-' + region" class="region-group" :class="{ completed: isRegionComplete(bosses) }">
         <div class="region-header" @click="toggleRegion(region)">
           <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
           <span class="region-name">{{ region }}</span>
+          <span class="region-complete" v-if="isRegionComplete(bosses)">✓</span>
           <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
         </div>
 
@@ -410,12 +418,24 @@ function formatNumber(n: number | undefined): string {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   opacity: 0.7;
+  flex: 1;
 }
 
 .section-count {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: bold;
   color: var(--highlight-color);
-  opacity: 0.5;
+  background: var(--hover-background);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.section-complete {
+  color: var(--highlight-color);
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-right: 0.3rem;
 }
 
 .section-divider {
@@ -463,8 +483,26 @@ function formatNumber(n: number | undefined): string {
 }
 
 .region-count {
-  font-size: 0.7rem;
-  opacity: 0.5;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background: var(--hover-background);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+.region-group.completed .region-count {
+  color: var(--highlight-color);
+  opacity: 1;
+}
+
+.region-complete {
+  color: var(--highlight-color);
+  font-size: 0.85rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  width: 1rem;
+  text-align: center;
 }
 
 .boss-row {
