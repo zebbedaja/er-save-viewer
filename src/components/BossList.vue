@@ -196,7 +196,7 @@ function formatNumber(n: number | undefined): string {
       </div>
     </div>
 
-    <div v-if="groupedBaseGameBosses.length === 0 && groupedDlcBosses.length === 0" class="no-results">No bosses match your filters.</div>
+    <div v-if="groupedBaseGameBosses.length === 0 && groupedDlcBosses.length === 0" class="no-results">{{ $t('noBossesMatch') }}</div>
 
     <template v-if="groupedBaseGameBosses.length">
       <div class="section-header">

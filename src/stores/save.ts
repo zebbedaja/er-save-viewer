@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { parse, type Save } from '@zebbedaja/er-save-parser'
+import i18n from '@/i18n'
 
 export const useSaveStore = defineStore('save', () => {
   const save = ref<Save | null>(null)
@@ -27,7 +28,7 @@ export const useSaveStore = defineStore('save', () => {
       }
 
       reader.onerror = () => {
-        error.value = 'Error while reading file'
+        error.value = i18n.global.t('errorReadingFile')
         isLoading.value = false
         reject(reader.error)
       }

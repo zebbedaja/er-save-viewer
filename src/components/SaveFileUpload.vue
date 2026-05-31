@@ -17,15 +17,15 @@ async function onFileChange(event: Event) {
 
 <template>
   <BaseTile class="upload">
-    <div class="headline">ER Save Viewer</div>
+    <div class="headline">{{ $t('appTitle') }}</div>
     <div class="divider"></div>
     <p>
-      Connect your Elden Ring save file by uploading it here! The save file location on Windows is
+      {{ $t('uploadConnectSave') }}
     </p>
     <p>%APPDATA%\EldenRing\&lt;YOUR_STEAM_ID&gt;\ER0000.sl2</p>
     <p>
-      You can also download the save file from the<br />
-      <a href="https://store.steampowered.com/account/remotestorageapp/?appid=1245620" target="_blank">Steam Cloud</a>
+      {{ $t('uploadDownloadFrom') }}<br />
+      <a href="https://store.steampowered.com/account/remotestorageapp/?appid=1245620" target="_blank">{{ $t('uploadSteamCloud') }}</a>
     </p>
 
     <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>

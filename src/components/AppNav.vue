@@ -5,16 +5,16 @@ import { useI18n } from 'vue-i18n'
 import { useThemeStore, type Theme } from '@/stores/theme'
 import erWretchFemale from '@/assets/img/er-wretch-female.png'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const themeStore = useThemeStore()
 
-const themeLabels: Record<Theme, string> = {
-  dark: 'Dark',
-  pink: 'Pink',
-  blue: 'Blue',
+const themeKeys: Record<Theme, string> = {
+  dark: 'themeDark',
+  pink: 'themePink',
+  blue: 'themeBlue',
 }
 
-const currentThemeLabel = computed(() => themeLabels[themeStore.theme])
+const currentThemeLabel = computed(() => t(themeKeys[themeStore.theme]))
 
 function cycleTheme() {
   themeStore.cycle()
@@ -26,8 +26,8 @@ function switchLocale(newLocale: string) {
 }
 
 const languages = [
-  { code: 'en', label: 'EN' },
-  { code: 'de', label: 'DE' },
+  { code: 'en', label: 'English' },
+  { code: 'de', label: 'Deutsch' },
 ]
 </script>
 
@@ -35,7 +35,7 @@ const languages = [
   <nav class="app-nav">
     <div class="nav-left">
       <RouterLink to="/" class="nav-brand">
-        <img :src="erWretchFemale" class="nav-logo" alt="ER Save Viewer" />
+        <img :src="erWretchFemale" class="nav-logo" :alt="$t('appTitle')" />
         <span class="nav-title">{{ $t('appTitle') }}</span>
       </RouterLink>
       <RouterLink to="/about" class="nav-link">{{ $t('about') }}</RouterLink>
@@ -43,7 +43,7 @@ const languages = [
 
     <div class="nav-right">
       <button class="nav-btn" @click="cycleTheme">
-        <span class="btn-label">Theme</span>
+        <span class="btn-label">{{ $t('theme') }}</span>
         <span class="btn-value">{{ currentThemeLabel }}</span>
       </button>
 

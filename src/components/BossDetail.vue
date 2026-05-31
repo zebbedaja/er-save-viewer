@@ -112,7 +112,7 @@ function getResistanceClass(value: number | 'Immune'): string {
             npc.parryable
               ? $t('parryable') +
                 (npc.numberOfParries != null && npc.numberOfParries > 1
-                  ? ' (requires ' + npc.numberOfParries + ' parries)'
+                  ? ' (' + $t('requiresNParries', { count: npc.numberOfParries }) + ')'
                   : '')
               : $t('notParryable')
           }}
@@ -250,12 +250,12 @@ function getResistanceClass(value: number | 'Immune'): string {
     </div>
 
     <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
-      <h3 class="boss-videos-title">Boss Kills</h3>
+      <h3 class="boss-videos-title">{{ $t('bossKills') }}</h3>
       <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
         <!-- https://img.youtube.com/vi/E3KTrz9aiqg/maxresdefault.jpg -->
         <iframe
           :src="`https://www.youtube-nocookie.com/embed/${url?.split('=')[1]}`"
-          title="YouTube video player"
+          :title="$t('youtubePlayer')"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
@@ -267,7 +267,7 @@ function getResistanceClass(value: number | 'Immune'): string {
 
   <div class="boss-not-found" v-else>
     <button class="back-btn" @click="goBack">{{ $t('backToBosses') }}</button>
-    <p>Boss not found</p>
+    <p>{{ $t('bossNotFound') }}</p>
   </div>
 </template>
 
