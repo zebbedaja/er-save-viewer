@@ -3,10 +3,12 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useThemeStore, type Theme } from '@/stores/theme'
+import { useSpoilerStore } from '@/stores/spoiler'
 import erWretchFemale from '@/assets/img/er-wretch-female.png'
 
 const { locale, t } = useI18n()
 const themeStore = useThemeStore()
+const spoilerStore = useSpoilerStore()
 
 const themeKeys: Record<Theme, string> = {
   dark: 'themeDark',
@@ -45,6 +47,16 @@ const languages = [
       <button class="nav-btn" @click="cycleTheme">
         <span class="btn-label">{{ $t('theme') }}</span>
         <span class="btn-value">{{ currentThemeLabel }}</span>
+      </button>
+
+      <button class="nav-btn" @click="spoilerStore.toggle">
+        <span class="btn-label">{{ $t('spoiler') }}</span>
+        <span
+          class="btn-value"
+          :class="{ 'spoiler-active': spoilerStore.spoilerMode }"
+        >
+          {{ spoilerStore.spoilerMode ? $t('spoilerOn') : $t('spoilerOff') }}
+        </span>
       </button>
 
       <select class="nav-select" :value="locale" @change="switchLocale(($event.target as HTMLSelectElement).value)">
@@ -146,6 +158,10 @@ const languages = [
 .btn-value {
   color: var(--highlight-color);
   font-weight: bold;
+}
+
+.btn-value.spoiler-active {
+  color: #e74c3c;
 }
 
 .nav-select {

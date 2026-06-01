@@ -222,7 +222,7 @@ function formatNumber(n: number | undefined): string {
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
             <span class="boss-check" v-if="isBossDefeated(props.saveSlot, boss.flagId)">&#x2714;</span>
-            <span class="boss-name">{{ boss.flagName }}</span>
+            <span class="boss-name" :class="{ 'spoiler-sensitive': !isBossDefeated(props.saveSlot, boss.flagId) }">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
               {{ formatNumber(boss.runes) }}
@@ -261,7 +261,7 @@ function formatNumber(n: number | undefined): string {
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
             <span class="boss-check" v-if="isBossDefeated(props.saveSlot, boss.flagId)">&#x2714;</span>
-            <span class="boss-name">{{ boss.flagName }}</span>
+            <span class="boss-name" :class="{ 'spoiler-sensitive': !isBossDefeated(props.saveSlot, boss.flagId) }">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
               {{ formatNumber(boss.runes) }}

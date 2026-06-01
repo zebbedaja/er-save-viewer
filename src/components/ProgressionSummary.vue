@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 import type { EventFlag, Slot } from '@zebbedaja/er-save-parser'
 import { encounters } from '@/model/encounters'
 import { isBossDefeated } from '@/util/index'
 import ProgressRow from './ProgressRow.vue'
+
+const router = useRouter()
+
+function openEventCategory(category: string) {
+  router.push({ name: 'event-detail', params: { category } })
+}
 
 const props = defineProps<{
   saveSlot: Slot | null
@@ -32,6 +39,7 @@ const eventCategories: Record<string, string> = {
   crackedPot: 'eventsCrackedPot',
   heftyCrackedPot: 'eventsHeftyCrackedPot',
   perfumeBottle: 'eventsPerfumeBottle',
+  grace: 'eventsGrace',
 }
 
 const eventProgress = computed(() => {
@@ -91,14 +99,19 @@ const eventProgress = computed(() => {
       <div class="events-title">
         {{ $t('events') }}
       </div>
-      <div class="attributes-grid">
-        <ProgressRow
+    <div class="attributes-grid">
+        <div
           v-for="item in eventProgress"
           :key="item.category"
-          :label="$t(item.label)"
-          :value="`${item.completed}/${item.total}`"
-          :percentage="item.percentage"
-        />
+          class="category-click"
+          @click="openEventCategory(item.category)"
+        >
+          <ProgressRow
+            :label="$t(item.label)"
+            :value="`${item.completed}/${item.total}`"
+            :percentage="item.percentage"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -144,5 +157,14 @@ const eventProgress = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+}
+
+.category-click {
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.category-click:hover {
+  opacity: 0.75;
 }
 </style>

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^14.3.0",
-    "@zebbedaja/er-save-parser": "^0.0.9",
+    "@zebbedaja/er-save-parser": "^0.1.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.32",
     "vue-i18n": "^11.4.4",

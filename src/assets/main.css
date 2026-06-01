@@ -37,3 +37,14 @@ a {
 .d-none {
   display: none;
 }
+
+[data-spoiler="true"] .spoiler-sensitive {
+  filter: blur(4px);
+  user-select: none;
+  transition: filter 0.2s;
+  pointer-events: auto;
+}
+
+[data-spoiler="true"] .spoiler-sensitive:hover {
+  filter: blur(0);
+}

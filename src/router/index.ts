@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BossList from '../components/BossList.vue'
 import BossDetail from '../components/BossDetail.vue'
+import EventCategoryDetail from '../components/EventCategoryDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
           path: 'boss/:flagId',
           name: 'boss-detail',
           component: BossDetail,
+        },
+        {
+          path: 'events/:category',
+          name: 'event-detail',
+          component: EventCategoryDetail,
         },
       ],
     },
