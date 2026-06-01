@@ -110,6 +110,7 @@ export default {
     'Verbinde dein Elden Ring Save-File, indem du es hier hochlädst! Der Speicherort auf Windows ist',
   uploadDownloadFrom: 'Du kannst das Save-File auch herunterladen von der',
   uploadSteamCloud: 'Steam Cloud',
+  uploadLoadingSave: 'Save-File wird geladen...',
   noBossesMatch: 'Keine Bosse passen zu deinen Filtern.',
   requiresNParries: 'Erfordert {count} Paraden',
   bossKills: 'Boss-Tötungen',

@@ -110,6 +110,7 @@ export default {
     'Connect your Elden Ring save file by uploading it here! The save file location on Windows is',
   uploadDownloadFrom: 'You can also download the save file from the',
   uploadSteamCloud: 'Steam Cloud',
+  uploadLoadingSave: 'Loading save file...',
   noBossesMatch: 'No bosses match your filters.',
   requiresNParries: 'Requires {count} parries',
   bossKills: 'Boss Kills',

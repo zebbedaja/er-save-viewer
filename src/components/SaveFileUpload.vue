@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import BaseTile from './BaseTile.vue'
+import LoadingIndicator from './LoadingIndicator.vue'
+import { storeToRefs } from 'pinia'
 import { useSaveStore } from '@/stores/save'
 
 const saveStore = useSaveStore()
 const { readFile, setActiveSlotId } = saveStore
+const { isLoading } = storeToRefs(saveStore)
 
 async function onFileChange(event: Event) {
   const input = event.target as HTMLInputElement
@@ -28,8 +31,11 @@ async function onFileChange(event: Event) {
       <a href="https://store.steampowered.com/account/remotestorageapp/?appid=1245620" target="_blank">{{ $t('uploadSteamCloud') }}</a>
     </p>
 
-    <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>
-    <input class="d-none" id="file-upload" type="file" @change="onFileChange" />
+    <LoadingIndicator v-if="isLoading" :message="$t('uploadLoadingSave')" :size="2" />
+    <div v-else>
+      <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>
+      <input class="d-none" id="file-upload" type="file" @change="onFileChange" />
+    </div>
   </BaseTile>
 </template>
 
