@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import type { EventFlag, Slot } from '@zebbedaja/er-save-parser'
+import type { Slot } from '@zebbedaja/er-save-parser'
+import { useSaveStore } from '@/stores/save'
 import { encounters } from '@/model/encounters'
-import { isBossDefeated } from '@/util/index'
 import ProgressRow from './ProgressRow.vue'
 
 const router = useRouter()
+const saveStore = useSaveStore()
 
 function openEventCategory(category: string) {
   router.push({ name: 'event-detail', params: { category } })
@@ -19,9 +20,9 @@ const props = defineProps<{
 const baseGameBosses = encounters.filter((e) => !e.dlc)
 const dlcBosses = encounters.filter((e) => e.dlc)
 
-const defeatedOverall = computed(() => encounters.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
-const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
-const defeatedDlc = computed(() => dlcBosses.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
+const defeatedOverall = computed(() => encounters.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedDlc = computed(() => dlcBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 
 const eventCategories: Record<string, string> = {
   story: 'eventsStory',
@@ -44,7 +45,7 @@ const eventCategories: Record<string, string> = {
 
 const eventProgress = computed(() => {
   if (!props.saveSlot) return []
-  const flags = props.saveSlot.eventFlags as EventFlag[]
+  const flags = props.saveSlot.eventFlags || []
   const grouped: Record<string, { total: number; completed: number }> = {}
   for (const flag of flags) {
     const cat = flag.category || ''

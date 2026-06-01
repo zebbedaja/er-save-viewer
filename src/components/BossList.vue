@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import type { Slot } from '@zebbedaja/er-save-parser'
+import { useSaveStore } from '@/stores/save'
+import { storeToRefs } from 'pinia'
 import { encounters } from '@/model/encounters'
 import { REGION_ORDER } from '@/model/regions'
-import { isBossDefeated } from '@/util/index'
 
 const router = useRouter()
-
-const props = defineProps<{
-  saveSlot: Slot | null
-}>()
+const saveStore = useSaveStore()
+const { defeatedFlags } = storeToRefs(saveStore)
 
 const searchQuery = ref('')
 const filterGreatRune = ref(false)
@@ -22,17 +20,18 @@ const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
 function countDefeated(bosses: typeof encounters): number {
-  return bosses.filter((b) => isBossDefeated(props.saveSlot, b.flagId)).length
+  return bosses.filter((b) => saveStore.defeatedFlags.has(b.flagId)).length
 }
 
 const baseGameBosses = encounters.filter((e) => !e.dlc)
 const dlcBosses = encounters.filter((e) => e.dlc)
 
-const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
-const defeatedDlc = computed(() => dlcBosses.filter((e) => isBossDefeated(props.saveSlot, e.flagId)).length)
+const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedDlc = computed(() => dlcBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 
 const filteredEncounters = computed(() => {
   const query = searchQuery.value.toLowerCase()
+  const flags = saveStore.defeatedFlags
 
   return encounters.filter((e) => {
     if (query && !e.flagName.toLowerCase().includes(query)) {
@@ -61,7 +60,7 @@ const filteredEncounters = computed(() => {
       return false
     }
 
-    const defeated = isBossDefeated(props.saveSlot, e.flagId)
+    const defeated = flags.has(e.flagId)
 
     if (defeatFilter.value === 'defeated' && !defeated) {
       return false
@@ -118,7 +117,7 @@ function collapseAll() {
 }
 
 function isRegionComplete(bosses: typeof encounters): boolean {
-  return bosses.every((b) => isBossDefeated(props.saveSlot, b.flagId))
+  return bosses.every((b) => saveStore.defeatedFlags.has(b.flagId))
 }
 
 function formatNumber(n: number | undefined): string {
@@ -218,11 +217,11 @@ function formatNumber(n: number | undefined): string {
             v-for="boss in bosses"
             :key="boss.flagId"
             class="boss-row"
-            :class="{ defeated: isBossDefeated(props.saveSlot, boss.flagId) }"
+            :class="{ defeated: defeatedFlags.has(boss.flagId) }"
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
-            <span class="boss-check" v-if="isBossDefeated(props.saveSlot, boss.flagId)">&#x2714;</span>
-            <span class="boss-name" :class="{ 'spoiler-sensitive': !isBossDefeated(props.saveSlot, boss.flagId) }">{{ boss.flagName }}</span>
+            <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
+            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
               {{ formatNumber(boss.runes) }}
@@ -257,11 +256,11 @@ function formatNumber(n: number | undefined): string {
             v-for="boss in bosses"
             :key="boss.flagId"
             class="boss-row"
-            :class="{ defeated: isBossDefeated(props.saveSlot, boss.flagId) }"
+            :class="{ defeated: defeatedFlags.has(boss.flagId) }"
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
-            <span class="boss-check" v-if="isBossDefeated(props.saveSlot, boss.flagId)">&#x2714;</span>
-            <span class="boss-name" :class="{ 'spoiler-sensitive': !isBossDefeated(props.saveSlot, boss.flagId) }">{{ boss.flagName }}</span>
+            <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
+            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
               {{ formatNumber(boss.runes) }}

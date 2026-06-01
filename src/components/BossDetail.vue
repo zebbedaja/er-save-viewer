@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { Slot } from '@zebbedaja/er-save-parser'
+import { useSaveStore } from '@/stores/save'
 import { encounters } from '@/model/encounters'
 
-const props = defineProps<{
-  saveSlot: Slot | null
-}>()
+const saveStore = useSaveStore()
 
 const route = useRoute()
 const router = useRouter()
@@ -14,9 +12,7 @@ const router = useRouter()
 const flagId = computed(() => Number(route.params.flagId))
 const boss = computed(() => encounters.find((e) => e.flagId === flagId.value))
 
-function isDefeated(): boolean {
-  return props.saveSlot?.eventFlags?.some((f) => f.id === flagId.value && f.state) ?? false
-}
+const isDefeated = computed(() => saveStore.defeatedFlags.has(flagId.value))
 
 function formatNumber(n: number): string {
   return n.toLocaleString()
@@ -45,7 +41,7 @@ function getResistanceClass(value: number | 'Immune'): string {
     <div class="boss-detail-header">
       <button class="back-btn" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="boss-title-row">
-        <span class="boss-icon" v-if="isDefeated()">&#x2714;</span>
+        <span class="boss-icon" v-if="isDefeated">&#x2714;</span>
         <h2 class="boss-name">{{ boss.flagName }}</h2>
       </div>
 

@@ -13,6 +13,11 @@ export const useSaveStore = defineStore('save', () => {
   const activeSlot = computed(() =>
     activeSlotId.value !== null ? (save.value?.slots?.[activeSlotId.value] ?? null) : null,
   )
+  const defeatedFlags = computed(() => {
+    const slot = activeSlot.value
+    if (!slot?.eventFlags) return new Set<number>()
+    return new Set(slot.eventFlags.filter((f) => f.state).map((f) => f.id))
+  })
 
   async function readFile(file: File) {
     isLoading.value = true
@@ -58,6 +63,7 @@ export const useSaveStore = defineStore('save', () => {
     save,
     activeSlotId,
     activeSlot,
+    defeatedFlags,
     profileSummaries,
     isLoading,
     error,
