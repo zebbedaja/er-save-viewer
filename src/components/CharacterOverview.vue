@@ -5,6 +5,12 @@ import type { Character, Slot } from '@zebbedaja/er-save-parser'
 import { useSaveStore } from '@/stores/save'
 import ProgressRow from '@/components/ProgressRow.vue'
 
+import erAstrologerMale from '@/assets/img/er-astrologer-male.png'
+import erAstrologerFemale from '@/assets/img/er-astrologer-female.png'
+
+import erSamuraiMale from '@/assets/img/er-samurai-male.png'
+import erSamuraiFemale from '@/assets/img/er-samurai-female.png'
+
 import erWretchMale from '@/assets/img/er-wretch-male.png'
 import erWretchFemale from '@/assets/img/er-wretch-female.png'
 
@@ -16,14 +22,29 @@ const props = defineProps<{
 }>()
 
 const character = computed<Character | undefined>(() => props.saveSlot?.character)
+
+const characterImage = computed<string | undefined>(() => {
+  if (character.value != null) {
+    switch (character.value.archetype) {
+      case 0:
+        return character.value.bodyType === 0 ? erAstrologerFemale : erAstrologerMale
+      case 7:
+        return character.value.bodyType === 0 ? erSamuraiFemale : erSamuraiMale
+      case 9:
+        return character.value.bodyType === 0 ? erWretchFemale : erWretchMale
+    }
+  }
+  return undefined
+})
 </script>
 
 <template>
   <div class="character-overview">
     <div class="profile-header">
       <div class="profile-image">
-        <img :src="erWretchFemale" v-if="character?.bodyType === 0" />
-        <img :src="erWretchMale" v-else />
+        <!-- <img :src="erWretchFemale" v-if="character?.bodyType === 0" />
+        <img :src="erWretchMale" v-else /> -->
+        <img :src="characterImage" />
       </div>
       <div class="char-name">
         {{ character?.characterName }}
@@ -78,14 +99,46 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
     </div>
 
     <div class="attributes-grid">
-      <ProgressRow :label="$t('vigor')" :value="String(character?.vigor ?? 0)" :percentage="Math.min(((character?.vigor ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('mind')" :value="String(character?.mind ?? 0)" :percentage="Math.min(((character?.mind ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('endurance')" :value="String(character?.endurance ?? 0)" :percentage="Math.min(((character?.endurance ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('strength')" :value="String(character?.strength ?? 0)" :percentage="Math.min(((character?.strength ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('dexterity')" :value="String(character?.dexterity ?? 0)" :percentage="Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('intelligence')" :value="String(character?.intelligence ?? 0)" :percentage="Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('faith')" :value="String(character?.faith ?? 0)" :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)" />
-      <ProgressRow :label="$t('arcane')" :value="String(character?.arcane ?? 0)" :percentage="Math.min(((character?.arcane ?? 0) / 99) * 100, 100)" />
+      <ProgressRow
+        :label="$t('vigor')"
+        :value="String(character?.vigor ?? 0)"
+        :percentage="Math.min(((character?.vigor ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('mind')"
+        :value="String(character?.mind ?? 0)"
+        :percentage="Math.min(((character?.mind ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('endurance')"
+        :value="String(character?.endurance ?? 0)"
+        :percentage="Math.min(((character?.endurance ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('strength')"
+        :value="String(character?.strength ?? 0)"
+        :percentage="Math.min(((character?.strength ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('dexterity')"
+        :value="String(character?.dexterity ?? 0)"
+        :percentage="Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('intelligence')"
+        :value="String(character?.intelligence ?? 0)"
+        :percentage="Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('faith')"
+        :value="String(character?.faith ?? 0)"
+        :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)"
+      />
+      <ProgressRow
+        :label="$t('arcane')"
+        :value="String(character?.arcane ?? 0)"
+        :percentage="Math.min(((character?.arcane ?? 0) / 99) * 100, 100)"
+      />
     </div>
     <div class="button-row">
       <button class="button" @click="resetActiveSlot">{{ $t('selectDifferentCharacter') }}</button>

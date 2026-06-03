@@ -65,9 +65,7 @@ function goBack() {
   router.push({ name: 'boss-list' })
 }
 
-function formatFlagId(id: number): string {
-  return id.toLocaleString()
-}
+
 </script>
 
 <template>
@@ -114,7 +112,6 @@ function formatFlagId(id: number): string {
       <div class="flag-header">
         <span class="header-check"></span>
         <span class="header-name">{{ $t('flagName') }}</span>
-        <span class="header-id">{{ $t('flagId') }}</span>
         <span class="header-location">{{ $t('flagLocation') }}</span>
       </div>
 
@@ -127,7 +124,6 @@ function formatFlagId(id: number): string {
         <span class="flag-check" v-if="flag.state">&#x2714;</span>
         <span class="flag-check-placeholder" v-else></span>
         <span class="flag-name" :class="{ 'spoiler-sensitive': !flag.state }">{{ flag.name || '—' }}</span>
-        <span class="flag-id">{{ formatFlagId(flag.id) }}</span>
         <span class="flag-location">{{ flag.location || '—' }}</span>
       </div>
     </div>
@@ -291,12 +287,6 @@ function formatFlagId(id: number): string {
   min-width: 0;
 }
 
-.header-id {
-  flex-shrink: 0;
-  width: 4rem;
-  text-align: right;
-}
-
 .header-location {
   flex-shrink: 0;
   max-width: 10rem;
@@ -354,16 +344,6 @@ function formatFlagId(id: number): string {
 
 .flag-row:not(.activated) .flag-name {
   opacity: 0.55;
-}
-
-.flag-id {
-  font-size: 0.7rem;
-  color: var(--highlight-color);
-  opacity: 0.7;
-  flex-shrink: 0;
-  width: 4rem;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
 }
 
 .flag-location {

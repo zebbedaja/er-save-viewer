@@ -16,7 +16,7 @@ const themeKeys: Record<Theme, string> = {
   blue: 'themeBlue',
 }
 
-const currentThemeLabel = computed(() => t(themeKeys[themeStore.theme]))
+const currentThemeLabel = computed(() => t(themeKeys[themeStore.theme ?? 'dark']))
 
 function cycleTheme() {
   themeStore.cycle()

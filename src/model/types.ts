@@ -41,7 +41,7 @@ export interface Resistance {
 export interface Stance {
   base: number
   mult: number
-  effective: number
+  effective?: number
   regenerationDelay: number
 }
 
