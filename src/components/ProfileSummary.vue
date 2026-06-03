@@ -2,8 +2,7 @@
 import { secondsToHMS } from '@/util'
 import type { ProfileSummary } from '@zebbedaja/er-save-parser'
 
-import erWretchMale from '@/assets/img/er-wretch-male.png'
-import erWretchFemale from '@/assets/img/er-wretch-female.png'
+import CharacterImage from '@/components/CharacterImage.vue'
 
 defineProps<{
   profileSummary: ProfileSummary
@@ -13,8 +12,7 @@ defineProps<{
 <template>
   <div class="profile-summary button">
     <div class="profile-image">
-      <img :src="erWretchFemale" v-if="profileSummary.bodyType === 0" />
-      <img :src="erWretchMale" v-else />
+      <CharacterImage :char="profileSummary" />
     </div>
     <div class="profile-row-1">
       <div class="profile-text">
@@ -42,12 +40,6 @@ defineProps<{
 .profile-image {
   width: 5rem;
   padding: 0 0 0 0.8rem;
-}
-
-.profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .profile-row-1 {

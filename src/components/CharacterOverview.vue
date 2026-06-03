@@ -4,15 +4,7 @@ import type { Character, Slot } from '@zebbedaja/er-save-parser'
 
 import { useSaveStore } from '@/stores/save'
 import ProgressRow from '@/components/ProgressRow.vue'
-
-import erAstrologerMale from '@/assets/img/er-astrologer-male.png'
-import erAstrologerFemale from '@/assets/img/er-astrologer-female.png'
-
-import erSamuraiMale from '@/assets/img/er-samurai-male.png'
-import erSamuraiFemale from '@/assets/img/er-samurai-female.png'
-
-import erWretchMale from '@/assets/img/er-wretch-male.png'
-import erWretchFemale from '@/assets/img/er-wretch-female.png'
+import CharacterImage from '@/components/CharacterImage.vue'
 
 const saveStore = useSaveStore()
 const { resetActiveSlot, resetSaveFile } = saveStore
@@ -22,29 +14,13 @@ const props = defineProps<{
 }>()
 
 const character = computed<Character | undefined>(() => props.saveSlot?.character)
-
-const characterImage = computed<string | undefined>(() => {
-  if (character.value != null) {
-    switch (character.value.archetype) {
-      case 0:
-        return character.value.bodyType === 0 ? erAstrologerFemale : erAstrologerMale
-      case 7:
-        return character.value.bodyType === 0 ? erSamuraiFemale : erSamuraiMale
-      case 9:
-        return character.value.bodyType === 0 ? erWretchFemale : erWretchMale
-    }
-  }
-  return undefined
-})
 </script>
 
 <template>
   <div class="character-overview">
     <div class="profile-header">
       <div class="profile-image">
-        <!-- <img :src="erWretchFemale" v-if="character?.bodyType === 0" />
-        <img :src="erWretchMale" v-else /> -->
-        <img :src="characterImage" />
+        <CharacterImage :char="{ archetype: character?.archetype, bodyType: character?.bodyType }" />
       </div>
       <div class="char-name">
         {{ character?.characterName }}
@@ -171,12 +147,6 @@ const characterImage = computed<string | undefined>(() => {
   width: 3rem;
   height: 3rem;
   border: 1px solid var(--border-color);
-}
-
-.profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .char-name {
