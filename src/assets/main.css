@@ -48,3 +48,107 @@ a {
 [data-spoiler="true"] .spoiler-sensitive:hover {
   filter: blur(0);
 }
+
+/* === Shared containers === */
+
+.bordered-content {
+  color: var(--main-font-color);
+  padding: 1rem 0.8rem;
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+/* === Filters === */
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* === Search input === */
+
+.search-input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  background: var(--hover-background);
+  color: var(--main-font-color);
+  border: 1px solid var(--border-color);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  border-color: var(--highlight-color);
+}
+
+/* === Toggle buttons === */
+
+.toggle-btn {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--hover-background);
+  color: var(--main-font-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle-btn:hover {
+  border-color: var(--border-hover-color);
+}
+
+.toggle-btn.active {
+  background: var(--highlight-color);
+  color: var(--main-bg-color);
+  border-color: var(--highlight-color);
+}
+
+/* === States === */
+
+.no-results {
+  text-align: center;
+  padding: 1.5rem;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* === Navigation === */
+
+.back-button {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--main-font-color);
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  border-color: var(--highlight-color);
+  color: var(--highlight-color);
+}
+
+/* === Section titles === */
+
+.section-title-bar {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  margin: 0;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--border-color);
+  border-bottom-color: rgba(89, 88, 84, 0.3);
+}

@@ -69,35 +69,35 @@ function goBack() {
 </script>
 
 <template>
-  <div class="event-detail" v-if="category in eventCategories">
+  <div class="bordered-content event-detail" v-if="category in eventCategories">
     <div class="event-detail-header">
-      <button class="back-btn" @click="goBack">{{ $t('backToBosses') }}</button>
+      <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="title-section">
         <h2 class="event-title">{{ $t(eventCategories[category] as unknown as keyof typeof $t) }}</h2>
         <span class="event-count">{{ activatedCount }}/{{ categoryFlags.length }}</span>
       </div>
     </div>
 
-    <div class="filters">
+    <div class="filters-container">
       <input type="text" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
 
       <div class="filter-group">
         <button
-          class="defeat-toggle-btn"
+          class="toggle-btn"
           :class="{ active: activationFilter === 'all' }"
           @click="activationFilter = 'all'"
         >
           {{ $t('allFlags') }}
         </button>
         <button
-          class="defeat-toggle-btn"
+          class="toggle-btn"
           :class="{ active: activationFilter === 'activated' }"
           @click="activationFilter = 'activated'"
         >
           {{ $t('activatedOnly') }}
         </button>
         <button
-          class="defeat-toggle-btn"
+          class="toggle-btn"
           :class="{ active: activationFilter === 'notActivated' }"
           @click="activationFilter = 'notActivated'"
         >
@@ -138,13 +138,6 @@ function goBack() {
 </template>
 
 <style scoped>
-.event-detail {
-  color: var(--main-font-color);
-  padding: 1rem 0.8rem;
-  border: 1px solid var(--border-color);
-  overflow-y: auto;
-}
-
 .event-detail-header {
   display: flex;
   flex-direction: column;
@@ -152,21 +145,6 @@ function goBack() {
   margin-bottom: 0.8rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--border-color);
-}
-
-.back-btn {
-  align-self: flex-start;
-  font-size: 0.75rem;
-  padding: 0.3rem 0.6rem;
-  background: var(--hover-background);
-  color: var(--main-font-color);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.back-btn:hover {
-  border-color: var(--border-hover-color);
 }
 
 .title-section {
@@ -192,62 +170,6 @@ function goBack() {
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   opacity: 0.7;
-}
-
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.4rem 0.6rem;
-  font-size: 0.9rem;
-  background: var(--hover-background);
-  color: var(--main-font-color);
-  border: 1px solid var(--border-color);
-  outline: none;
-  box-sizing: border-box;
-}
-
-.search-input:focus {
-  border-color: var(--highlight-color);
-}
-
-.filter-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.defeat-toggle-btn {
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--hover-background);
-  color: var(--main-font-color);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.defeat-toggle-btn:hover {
-  border-color: var(--border-hover-color);
-}
-
-.defeat-toggle-btn.active {
-  background: var(--highlight-color);
-  color: var(--main-bg-color);
-  border-color: var(--highlight-color);
-}
-
-.no-results {
-  text-align: center;
-  padding: 1.5rem;
-  opacity: 0.5;
-  font-style: italic;
 }
 
 .not-found {

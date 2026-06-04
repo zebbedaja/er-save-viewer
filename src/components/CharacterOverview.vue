@@ -18,7 +18,7 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
 </script>
 
 <template>
-  <div class="character-overview">
+  <div class="bordered-content">
     <div class="profile-header">
       <div class="profile-image">
         <CharacterImage :char="{ archetype: character?.archetype, bodyType: character?.bodyType }" />
@@ -125,13 +125,11 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
 </template>
 
 <style scoped>
-.character-overview {
+.bordered-content {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  color: var(--main-font-color);
   padding: 0.8rem;
-  border: 1px solid var(--border-color);
   transition: 0.3s;
 }
 

@@ -123,11 +123,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 </script>
 
 <template>
-  <div class="boss-list">
-    <div class="filters">
-      <div class="search-group">
-        <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
-      </div>
+  <div class="bordered-content boss-list">
+    <div class="filters-container">
+      <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
 
       <div class="filter-row">
         <div class="filter-row-content">
@@ -164,18 +162,18 @@ function isRegionComplete(bosses: typeof encounters): boolean {
           </div>
 
           <div class="filter-group">
-            <button class="defeat-toggle-btn" :class="{ active: defeatFilter === 'all' }" @click="defeatFilter = 'all'">
+            <button class="toggle-btn" :class="{ active: defeatFilter === 'all' }" @click="defeatFilter = 'all'">
               {{ $t('allBosses') }}
             </button>
             <button
-              class="defeat-toggle-btn"
+              class="toggle-btn"
               :class="{ active: defeatFilter === 'defeated' }"
               @click="defeatFilter = 'defeated'"
             >
               {{ $t('defeatedOnly') }}
             </button>
             <button
-              class="defeat-toggle-btn"
+              class="toggle-btn"
               :class="{ active: defeatFilter === 'undefeated' }"
               @click="defeatFilter = 'undefeated'"
             >
@@ -272,37 +270,6 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 </template>
 
 <style scoped>
-.boss-list {
-  color: var(--main-font-color);
-  padding: 1rem 0.8rem;
-  border: 1px solid var(--border-color);
-  overflow-y: auto;
-}
-
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.4rem 0.6rem;
-  font-size: 0.9rem;
-  background: var(--hover-background);
-  color: var(--main-font-color);
-  border: 1px solid var(--border-color);
-  outline: none;
-  box-sizing: border-box;
-}
-
-.search-input:focus {
-  border-color: var(--highlight-color);
-}
-
 .filter-row {
   display: flex;
   flex-direction: column;
@@ -313,11 +280,6 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.filter-group {
-  display: flex;
-  gap: 0.5rem;
 }
 
 .filter-checkbox {
@@ -352,26 +314,6 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   opacity: 0.8;
 }
 
-.defeat-toggle-btn {
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--hover-background);
-  color: var(--main-font-color);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.defeat-toggle-btn:hover {
-  border-color: var(--border-hover-color);
-}
-
-.defeat-toggle-btn.active {
-  background: var(--highlight-color);
-  color: var(--main-bg-color);
-  border-color: var(--highlight-color);
-}
-
 .expand-all-group {
   display: flex;
   gap: 0.5rem;
@@ -389,13 +331,6 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 
 .expand-all-btn:hover {
   border-color: var(--border-hover-color);
-}
-
-.no-results {
-  text-align: center;
-  padding: 1.5rem;
-  opacity: 0.5;
-  font-style: italic;
 }
 
 .section-header {

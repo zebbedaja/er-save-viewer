@@ -39,7 +39,7 @@ function getResistanceClass(value: number | 'Immune'): string {
 <template>
   <div class="boss-detail" v-if="boss">
     <div class="boss-detail-header">
-      <button class="back-btn" @click="goBack">{{ $t('backToBosses') }}</button>
+      <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="boss-title-row">
         <span class="boss-icon" v-if="isDefeated">&#x2714;</span>
         <h2 class="boss-name">{{ boss.flagName }}</h2>
@@ -138,7 +138,7 @@ function getResistanceClass(value: number | 'Immune'): string {
 
       <div class="phase-data">
         <div class="data-section">
-          <h4 class="section-title">{{ $t('negation') }}</h4>
+          <h4 class="section-title-bar">{{ $t('negation') }}</h4>
           <div class="negation-grid">
             <div class="data-cell" :class="getNegationClass(npc.negation.standard)">
               <span class="data-label">{{ $t('standard') }}</span>
@@ -176,7 +176,7 @@ function getResistanceClass(value: number | 'Immune'): string {
         </div>
 
         <div class="data-section">
-          <h4 class="section-title">{{ $t('resistance') }}</h4>
+          <h4 class="section-title-bar">{{ $t('resistance') }}</h4>
           <div class="negation-grid">
             <div class="data-cell" :class="getResistanceClass(npc.resistance.poison)">
               <span class="data-label">{{ $t('poison') }}</span>
@@ -222,7 +222,7 @@ function getResistanceClass(value: number | 'Immune'): string {
         </div>
 
         <div class="data-section">
-          <h4 class="section-title">{{ $t('stance') }}</h4>
+          <h4 class="section-title-bar">{{ $t('stance') }}</h4>
           <div class="negation-grid stance-grid">
             <div class="data-cell">
               <span class="data-label">{{ $t('base') }}</span>
@@ -262,7 +262,7 @@ function getResistanceClass(value: number | 'Immune'): string {
   </div>
 
   <div class="boss-not-found" v-else>
-    <button class="back-btn" @click="goBack">{{ $t('backToBosses') }}</button>
+    <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
     <p>{{ $t('bossNotFound') }}</p>
   </div>
 </template>
@@ -280,22 +280,6 @@ function getResistanceClass(value: number | 'Immune'): string {
   gap: 0.6rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--border-color);
-}
-
-.back-btn {
-  align-self: flex-start;
-  background: none;
-  border: 1px solid var(--border-color);
-  color: var(--main-font-color);
-  font-size: 0.7rem;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.back-btn:hover {
-  border-color: var(--highlight-color);
-  color: var(--highlight-color);
 }
 
 .boss-title-row {
@@ -467,17 +451,6 @@ function getResistanceClass(value: number | 'Immune'): string {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-}
-
-.section-title {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.5;
-  margin: 0;
-  padding-bottom: 0.2rem;
-  border-bottom: 1px solid var(--border-color);
-  border-bottom-color: rgba(89, 88, 84, 0.3);
 }
 
 .negation-grid {
