@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import BaseTile from './BaseTile.vue'
 import LoadingIndicator from './LoadingIndicator.vue'
 import { storeToRefs } from 'pinia'
 import { useSaveStore } from '@/stores/save'
@@ -19,7 +18,7 @@ async function onFileChange(event: Event) {
 </script>
 
 <template>
-  <BaseTile class="upload">
+  <div class="upload bordered-content">
     <div class="headline">{{ $t('appTitle') }}</div>
     <div class="divider"></div>
     <p>
@@ -36,7 +35,7 @@ async function onFileChange(event: Event) {
       <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>
       <input class="d-none" id="file-upload" type="file" @change="onFileChange" />
     </div>
-  </BaseTile>
+  </div>
 </template>
 
 <style scoped>
