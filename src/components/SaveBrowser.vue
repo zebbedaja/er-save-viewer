@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import CharacterOverview from './CharacterOverview.vue'
-
 import { useSaveStore } from '@/stores/save'
 import { storeToRefs } from 'pinia'
 import SaveFileUpload from './SaveFileUpload.vue'
 import ProfileSummaries from './ProfileSummaries.vue'
+import CharacterOverview from './CharacterOverview.vue'
 import ProgressionSummary from './ProgressionSummary.vue'
+import LiveSyncStatus from './LiveSyncStatus.vue'
 
 const saveStore = useSaveStore()
 const { save, activeSlot } = storeToRefs(saveStore)
@@ -14,10 +14,14 @@ const { save, activeSlot } = storeToRefs(saveStore)
 <template>
   <div class="save-browser">
     <div class="overview">
-      <SaveFileUpload v-if="save == null"></SaveFileUpload>
-      <ProfileSummaries v-if="activeSlot == null && save != null"></ProfileSummaries>
-      <CharacterOverview v-if="activeSlot != null" :saveSlot="activeSlot"></CharacterOverview>
-      <ProgressionSummary v-if="activeSlot != null" :saveSlot="activeSlot"></ProgressionSummary>
+      <SaveFileUpload v-if="save == null" />
+      <ProfileSummaries v-if="activeSlot == null && save != null" />
+      <CharacterOverview v-if="activeSlot != null" :saveSlot="activeSlot" />
+      <ProgressionSummary v-if="activeSlot != null" :saveSlot="activeSlot" />
+
+      <template v-if="save != null">
+        <LiveSyncStatus />
+      </template>
     </div>
     <div>
       <slot :saveSlot="activeSlot"></slot>

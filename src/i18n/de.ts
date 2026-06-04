@@ -123,6 +123,9 @@ export default {
   uploadConnectSave:
     'Verbinde dein Elden Ring Save-File, indem du es hier hochlädst! Der Speicherort auf Windows ist',
   uploadDownloadFrom: 'Du kannst das Save-File auch herunterladen von der',
+  uploadLastModified: 'Zuletzt geändert: {time}',
+  uploadLiveSyncActive: 'Live-Synchronisierung aktiv',
+  uploadLiveSyncDisconnected: 'Speicherdatei getrennt',
   uploadLoadingSave: 'Save-File wird geladen...',
   uploadSaveFile: 'Save-File hochladen',
   uploadSteamCloud: 'Steam Cloud',

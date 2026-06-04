@@ -123,6 +123,9 @@ export default {
   uploadConnectSave:
     'Connect your Elden Ring save file by uploading it here! The save file location on Windows is',
   uploadDownloadFrom: 'You can also download the save file from the',
+  uploadLastModified: 'Last changed: {time}',
+  uploadLiveSyncActive: 'Live sync active',
+  uploadLiveSyncDisconnected: 'Save file disconnected',
   uploadLoadingSave: 'Loading save file...',
   uploadSaveFile: 'Upload Save File',
   uploadSteamCloud: 'Steam Cloud',

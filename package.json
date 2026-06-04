@@ -29,6 +29,7 @@
     "@tsconfig/node24": "^24.0.4",
     "@types/jsdom": "^28.0.3",
     "@types/node": "^24.12.4",
+    "@types/wicg-file-system-access": "^2023.10.7",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitest/eslint-plugin": "^1.6.19",
     "@vue/eslint-config-typescript": "^14.7.0",

@@ -4,8 +4,10 @@ import { storeToRefs } from 'pinia'
 import { useSaveStore } from '@/stores/save'
 
 const saveStore = useSaveStore()
-const { readFile, setActiveSlotId } = saveStore
+const { readFile, connectFile } = saveStore
 const { isLoading } = storeToRefs(saveStore)
+
+const supportsFilePicker = typeof window.showOpenFilePicker !== 'undefined'
 
 async function onFileChange(event: Event) {
   const input = event.target as HTMLInputElement
@@ -13,7 +15,20 @@ async function onFileChange(event: Event) {
   if (!file) return
 
   await readFile(file)
-  setActiveSlotId(0)
+}
+
+async function openFilePicker() {
+  try {
+    const [handle] = await window.showOpenFilePicker({
+      types: [{ accept: { '*/*': ['.sl2'] } }],
+      excludeAcceptAllOption: true,
+    })
+    await connectFile(handle)
+  } catch (err: unknown) {
+    if ((err as DOMException).name !== 'AbortError') {
+      throw err
+    }
+  }
 }
 </script>
 
@@ -32,8 +47,14 @@ async function onFileChange(event: Event) {
 
     <LoadingIndicator v-if="isLoading" :message="$t('uploadLoadingSave')" :size="2" />
     <div v-else>
-      <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>
-      <input class="d-none" id="file-upload" type="file" @change="onFileChange" />
+      <button v-if="supportsFilePicker" class="button button-lg" @click="openFilePicker">
+        {{ $t('uploadSaveFile') }}
+      </button>
+
+      <template v-else>
+        <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>
+        <input class="d-none" id="file-upload" type="file" accept=".sl2" @change="onFileChange" />
+      </template>
     </div>
   </div>
 </template>

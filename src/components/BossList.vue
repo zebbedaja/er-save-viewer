@@ -479,11 +479,11 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 }
 
 .boss-row:not(.defeated) .boss-name {
-  opacity: 0.55;
+  opacity: 0.7;
 }
 
 .boss-location {
-  opacity: 0.4;
+  opacity: 0.7;
   font-size: 0.7rem;
   flex-shrink: 0;
   max-width: 10rem;
