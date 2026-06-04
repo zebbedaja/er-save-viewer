@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { storeToRefs } from 'pinia'
+import { formatNumber } from '@/util'
 import { encounters } from '@/model/encounters'
 import { REGION_ORDER } from '@/model/regions'
 
@@ -118,11 +119,6 @@ function collapseAll() {
 
 function isRegionComplete(bosses: typeof encounters): boolean {
   return bosses.every((b) => saveStore.defeatedFlags.has(b.flagId))
-}
-
-function formatNumber(n: number | undefined): string {
-  if (n === undefined) return '—'
-  return n.toLocaleString()
 }
 </script>
 

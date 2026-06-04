@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import type { Character, Slot } from '@zebbedaja/er-save-parser'
 
 import { useSaveStore } from '@/stores/save'
+import { formatNumber } from '@/util'
 import ProgressRow from '@/components/ProgressRow.vue'
 import CharacterImage from '@/components/CharacterImage.vue'
 
@@ -30,46 +31,46 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
     <div class="level-row">
       <div class="mini-stat">
         <span class="mini-label">{{ $t('level') }}</span>
-        <span class="mini-value">{{ character?.level ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.level ?? 0) }}</span>
       </div>
       <div class="mini-stat">
         <span class="mini-label">{{ $t('runes') }}</span>
-        <span class="mini-value">{{ character?.runesMemory ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.runesMemory ?? 0) }}</span>
       </div>
     </div>
 
     <div class="vitals-row">
       <div class="mini-stat">
         <span class="mini-label">{{ $t('maxHp') }}</span>
-        <span class="mini-value">{{ character?.maxHp ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxHp ?? 0) }}</span>
       </div>
       <div class="mini-stat">
         <span class="mini-label">{{ $t('maxFp') }}</span>
-        <span class="mini-value">{{ character?.maxFp ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxFp ?? 0) }}</span>
       </div>
       <div class="mini-stat">
         <span class="mini-label">{{ $t('maxSp') }}</span>
-        <span class="mini-value">{{ character?.maxSp ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxSp ?? 0) }}</span>
       </div>
       <div class="mini-stat">
         <span class="mini-label">{{ $t('totalDeaths') }}</span>
-        <span class="mini-value">{{ props.saveSlot.totalDeathCount ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(props.saveSlot.totalDeathCount ?? 0) }}</span>
       </div>
     </div>
 
     <div class="flask-row">
       <div class="mini-stat">
         <span class="mini-label">{{ $t('crimsonTears') }}</span>
-        <span class="mini-value">{{ character?.maxCrimsonTearFlaskCount ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxCrimsonTearFlaskCount ?? 0) }}</span>
       </div>
       <div class="mini-stat">
         <span class="mini-label">{{ $t('ceruleanTears') }}</span>
-        <span class="mini-value">{{ character?.maxCeruleanTearFlaskCount ?? 0 }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxCeruleanTearFlaskCount ?? 0) }}</span>
       </div>
       <div class="mini-stat">
         <span class="mini-label">{{ $t('talismanSlots') }}</span>
         <span class="mini-value">{{
-          character?.additionalTalismanSlotCount ? character?.additionalTalismanSlotCount + 1 : 0
+          formatNumber(character?.additionalTalismanSlotCount ? character?.additionalTalismanSlotCount + 1 : 0)
         }}</span>
       </div>
     </div>
@@ -77,42 +78,42 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
     <div class="attributes-grid">
       <ProgressRow
         :label="$t('vigor')"
-        :value="String(character?.vigor ?? 0)"
+        :value="formatNumber(character?.vigor ?? 0)"
         :percentage="Math.min(((character?.vigor ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('mind')"
-        :value="String(character?.mind ?? 0)"
+        :value="formatNumber(character?.mind ?? 0)"
         :percentage="Math.min(((character?.mind ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('endurance')"
-        :value="String(character?.endurance ?? 0)"
+        :value="formatNumber(character?.endurance ?? 0)"
         :percentage="Math.min(((character?.endurance ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('strength')"
-        :value="String(character?.strength ?? 0)"
+        :value="formatNumber(character?.strength ?? 0)"
         :percentage="Math.min(((character?.strength ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('dexterity')"
-        :value="String(character?.dexterity ?? 0)"
+        :value="formatNumber(character?.dexterity ?? 0)"
         :percentage="Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('intelligence')"
-        :value="String(character?.intelligence ?? 0)"
+        :value="formatNumber(character?.intelligence ?? 0)"
         :percentage="Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('faith')"
-        :value="String(character?.faith ?? 0)"
+        :value="formatNumber(character?.faith ?? 0)"
         :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)"
       />
       <ProgressRow
         :label="$t('arcane')"
-        :value="String(character?.arcane ?? 0)"
+        :value="formatNumber(character?.arcane ?? 0)"
         :percentage="Math.min(((character?.arcane ?? 0) / 99) * 100, 100)"
       />
     </div>

@@ -56,9 +56,9 @@ const characterImage = computed<string | undefined>(() => {
       case 5:
         return props.char.bodyType === 0 ? erProhpetFemale : erProhpetMale
       case 6:
-        return props.char.bodyType === 0 ? erSamuraiFemale : erSamuraiMale
-      case 7:
         return props.char.bodyType === 0 ? erPrisonerFemale : erPrisonerMale
+      case 7:
+        return props.char.bodyType === 0 ? erSamuraiFemale : erSamuraiMale
       case 8:
         return props.char.bodyType === 0 ? erConfessorFemale : erConfessorMale
       case 9:

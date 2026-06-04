@@ -5,3 +5,8 @@ export function secondsToHMS(seconds: number): string {
 
   return [h, m, s].map((v) => String(v).padStart(2, '0')).join(':')
 }
+
+export function formatNumber(n: number | undefined): string {
+  if (n === undefined) return '\u2014'
+  return n.toLocaleString()
+}
