@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useSaveStore } from '@/stores/save'
 
 const saveStore = useSaveStore()
-const { readFile, connectFile } = saveStore
+const { readFile, connectFile, setActiveSlotId } = saveStore
 const { isLoading } = storeToRefs(saveStore)
 
 const supportsFilePicker = typeof window.showOpenFilePicker !== 'undefined'
@@ -15,6 +15,7 @@ async function onFileChange(event: Event) {
   if (!file) return
 
   await readFile(file)
+  setActiveSlotId(0)
 }
 
 async function openFilePicker() {

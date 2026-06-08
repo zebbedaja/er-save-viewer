@@ -215,6 +215,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
             <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
+            <span class="boss-check-placeholder" v-else></span>
             <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
@@ -254,6 +255,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
             @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
           >
             <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
+            <span class="boss-check-placeholder" v-else></span>
             <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{ boss.flagName }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
@@ -464,6 +466,11 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   text-align: center;
 }
 
+.boss-check-placeholder {
+  flex-shrink: 0;
+  width: 1rem;
+}
+
 .boss-name {
   font-size: 0.8rem;
   flex: 1;
@@ -500,6 +507,4 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   min-width: 2.5rem;
   text-align: right;
 }
-
-
 </style>
