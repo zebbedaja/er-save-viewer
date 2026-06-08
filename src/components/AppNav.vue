@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useThemeStore, type Theme } from '@/stores/theme'
 import { useSpoilerStore } from '@/stores/spoiler'
-import erWretchFemale from '@/assets/img/er-wretch-female.png'
+import faviconSvg from '@/assets/img/favicon.svg'
 
 const { locale, t } = useI18n()
 const themeStore = useThemeStore()
@@ -38,7 +38,7 @@ const languages = [
   <nav class="app-nav">
     <div class="nav-left">
       <RouterLink to="/" class="nav-brand">
-        <img :src="erWretchFemale" class="nav-logo" :alt="$t('appTitle')" />
+        <img :src="faviconSvg" class="nav-logo" :alt="$t('appTitle')" />
         <span class="nav-title">{{ $t('appTitle') }}</span>
       </RouterLink>
       <RouterLink to="/about" class="nav-link">{{ $t('about') }}</RouterLink>
