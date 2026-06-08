@@ -12,6 +12,7 @@ const spoilerStore = useSpoilerStore()
 
 const themeKeys: Record<Theme, string> = {
   dark: 'themeDark',
+  light: 'themeLight',
   pink: 'themePink',
   blue: 'themeBlue',
 }

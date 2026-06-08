@@ -11,6 +11,18 @@
   --hover-background: rgba(50, 49, 35, 0.5);
 }
 
+.light-theme {
+  --main-bg-color: #f3efe6;
+  --main-font-color: #2a2720;
+  --border-color: #8a7e6b;
+  --border-hover-color: #6b5f4c;
+  --highlight-color: #8b6914;
+  --link-color: var(--highlight-color);
+  --divider-gradient: linear-gradient(to right, transparent, #8b6914, transparent);
+  --hover-shadow: 0px 0px 12px 2px rgba(139, 105, 20, 0.25);
+  --hover-background: rgba(200, 190, 170, 0.4);
+}
+
 .pink-theme {
   --main-bg-color: #1a0a10;
   --main-font-color: #f0d0e0;

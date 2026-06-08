@@ -58,7 +58,7 @@ defineProps<{
 }
 
 .profile-text {
-  border-bottom: 1px solid #393832;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .profile-level {

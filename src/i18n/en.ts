@@ -117,6 +117,7 @@ export default {
   theme: 'Theme',
   themeBlue: 'Blue',
   themeDark: 'Dark',
+  themeLight: 'Light',
   themePink: 'Pink',
   totalDeaths: 'Total Deaths',
   undefeatedOnly: 'Undefeated only',
