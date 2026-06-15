@@ -43,7 +43,9 @@ async function openFilePicker() {
     <p>%APPDATA%\EldenRing\&lt;YOUR_STEAM_ID&gt;\ER0000.sl2</p>
     <p>
       {{ $t('uploadDownloadFrom') }}<br />
-      <a href="https://store.steampowered.com/account/remotestorageapp/?appid=1245620" target="_blank">{{ $t('uploadSteamCloud') }}</a>
+      <a href="https://store.steampowered.com/account/remotestorageapp/?appid=1245620" target="_blank">{{
+        $t('uploadSteamCloud')
+      }}</a>
     </p>
 
     <LoadingIndicator v-if="isLoading" :message="$t('uploadLoadingSave')" :size="2" />

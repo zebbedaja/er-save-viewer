@@ -36,9 +36,7 @@ const activationFilter = ref<'all' | 'activated' | 'notActivated'>('all')
 
 const categoryFlags = computed<EventFlag[]>(() => {
   if (!props.saveSlot?.eventFlags) return []
-  return props.saveSlot.eventFlags
-    .filter((f) => f.category === category.value)
-    .sort((a, b) => a.id - b.id)
+  return props.saveSlot.eventFlags.filter((f) => f.category === category.value).sort((a, b) => a.id - b.id)
 })
 
 const filteredFlags = computed(() => {
@@ -64,8 +62,6 @@ const activatedCount = computed(() => categoryFlags.value.filter((f) => f.state)
 function goBack() {
   router.push({ name: 'boss-list' })
 }
-
-
 </script>
 
 <template>
@@ -82,11 +78,7 @@ function goBack() {
       <input type="text" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
 
       <div class="filter-group">
-        <button
-          class="toggle-btn"
-          :class="{ active: activationFilter === 'all' }"
-          @click="activationFilter = 'all'"
-        >
+        <button class="toggle-btn" :class="{ active: activationFilter === 'all' }" @click="activationFilter = 'all'">
           {{ $t('allFlags') }}
         </button>
         <button
@@ -115,12 +107,7 @@ function goBack() {
         <span class="header-location">{{ $t('flagLocation') }}</span>
       </div>
 
-      <div
-        v-for="flag in filteredFlags"
-        :key="flag.id"
-        class="flag-row"
-        :class="{ activated: flag.state }"
-      >
+      <div v-for="flag in filteredFlags" :key="flag.id" class="flag-row" :class="{ activated: flag.state }">
         <span class="flag-check" v-if="flag.state">&#x2714;</span>
         <span class="flag-check-placeholder" v-else></span>
         <span class="flag-name" :class="{ 'spoiler-sensitive': !flag.state }">{{ flag.name || '—' }}</span>

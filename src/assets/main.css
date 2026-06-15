@@ -38,14 +38,14 @@ a {
   display: none;
 }
 
-[data-spoiler="true"] .spoiler-sensitive {
+[data-spoiler='true'] .spoiler-sensitive {
   filter: blur(4px);
   user-select: none;
   transition: filter 0.2s;
   pointer-events: auto;
 }
 
-[data-spoiler="true"] .spoiler-sensitive:hover {
+[data-spoiler='true'] .spoiler-sensitive:hover {
   filter: blur(0);
 }
 
@@ -96,6 +96,7 @@ a {
 .toggle-btn {
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
+  white-space: nowrap;
   background: var(--hover-background);
   color: var(--main-font-color);
   border: 1px solid var(--border-color);

@@ -5,6 +5,7 @@ import { useSaveStore } from '@/stores/save'
 import { storeToRefs } from 'pinia'
 import { formatNumber } from '@/util'
 import { encounters } from '@/model/encounters'
+import type { Npc } from '@/model/types'
 import { REGION_ORDER } from '@/model/regions'
 
 const router = useRouter()
@@ -17,12 +18,10 @@ const filterRemembrance = ref(false)
 const filterNightOnly = ref(false)
 const filterParryable = ref(false)
 const filterHuman = ref(false)
+const filterDuoBoss = ref(false)
+const filterMultiPhase = ref(false)
 const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
-
-function countDefeated(bosses: typeof encounters): number {
-  return bosses.filter((b) => saveStore.defeatedFlags.has(b.flagId)).length
-}
 
 const baseGameBosses = encounters.filter((e) => !e.dlc)
 const dlcBosses = encounters.filter((e) => e.dlc)
@@ -61,6 +60,14 @@ const filteredEncounters = computed(() => {
       return false
     }
 
+    if (filterDuoBoss.value && !hasDuoPhase(e.npcs)) {
+      return false
+    }
+
+    if (filterMultiPhase.value && !hasMultiplePhases(e.npcs)) {
+      return false
+    }
+
     const defeated = flags.has(e.flagId)
 
     if (defeatFilter.value === 'defeated' && !defeated) {
@@ -73,6 +80,22 @@ const filteredEncounters = computed(() => {
     return true
   })
 })
+
+function hasMultiplePhases(npcs: Npc[]): boolean {
+  return npcs.length >= 2 && npcs.some((npc) => npc.phase >= 2)
+}
+
+function hasDuoPhase(npcs: Npc[]): boolean {
+  const phaseCounts = new Map<number, number>()
+  for (const npc of npcs) {
+    phaseCounts.set(npc.phase, (phaseCounts.get(npc.phase) ?? 0) + 1)
+  }
+  return [...phaseCounts.values()].some((count) => count >= 2)
+}
+
+function countDefeated(bosses: typeof encounters): number {
+  return bosses.filter((b) => saveStore.defeatedFlags.has(b.flagId)).length
+}
 
 function groupByRegion(list: typeof encounters) {
   const groups = new Map<string, typeof encounters>()
@@ -129,7 +152,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 
       <div class="filter-row">
         <div class="filter-row-content">
-          <div class="filter-group">
+          <div class="filter-group checkboxes">
             <label class="filter-checkbox">
               <input type="checkbox" v-model="filterGreatRune" />
               <span class="check-box" :class="{ checked: filterGreatRune }"></span>
@@ -158,6 +181,18 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               <input type="checkbox" v-model="filterHuman" />
               <span class="check-box" :class="{ checked: filterHuman }"></span>
               <span class="filter-label">{{ $t('humanFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterDuoBoss" />
+              <span class="check-box" :class="{ checked: filterDuoBoss }"></span>
+              <span class="filter-label">{{ $t('duoBoss') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterMultiPhase" />
+              <span class="check-box" :class="{ checked: filterMultiPhase }"></span>
+              <span class="filter-label">{{ $t('multiPhaseBoss') }}</span>
             </label>
           </div>
 
@@ -189,7 +224,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
       </div>
     </div>
 
-    <div v-if="groupedBaseGameBosses.length === 0 && groupedDlcBosses.length === 0" class="no-results">{{ $t('noBossesMatch') }}</div>
+    <div v-if="groupedBaseGameBosses.length === 0 && groupedDlcBosses.length === 0" class="no-results">
+      {{ $t('noBossesMatch') }}
+    </div>
 
     <template v-if="groupedBaseGameBosses.length">
       <div class="section-header">
@@ -198,7 +235,12 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         <span class="section-count">{{ defeatedBaseGame }}/{{ baseGameBosses.length }}</span>
       </div>
 
-      <div v-for="[region, bosses] in groupedBaseGameBosses" :key="'bg-' + region" class="region-group" :class="{ completed: isRegionComplete(bosses) }">
+      <div
+        v-for="[region, bosses] in groupedBaseGameBosses"
+        :key="'bg-' + region"
+        class="region-group"
+        :class="{ completed: isRegionComplete(bosses) }"
+      >
         <div class="region-header" @click="toggleRegion(region)">
           <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
           <span class="region-name">{{ region }}</span>
@@ -216,7 +258,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
           >
             <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
             <span class="boss-check-placeholder" v-else></span>
-            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{ boss.flagName }}</span>
+            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{
+              boss.flagName
+            }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
               {{ formatNumber(boss.runes) }}
@@ -238,7 +282,12 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         <span class="section-count">{{ defeatedDlc }}/{{ dlcBosses.length }}</span>
       </div>
 
-      <div v-for="[region, bosses] in groupedDlcBosses" :key="'dlc-' + region" class="region-group" :class="{ completed: isRegionComplete(bosses) }">
+      <div
+        v-for="[region, bosses] in groupedDlcBosses"
+        :key="'dlc-' + region"
+        class="region-group"
+        :class="{ completed: isRegionComplete(bosses) }"
+      >
         <div class="region-header" @click="toggleRegion(region)">
           <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
           <span class="region-name">{{ region }}</span>
@@ -256,7 +305,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
           >
             <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
             <span class="boss-check-placeholder" v-else></span>
-            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{ boss.flagName }}</span>
+            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{
+              boss.flagName
+            }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
               {{ formatNumber(boss.runes) }}
@@ -278,10 +329,21 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   gap: 0.4rem;
 }
 
+.filter-group.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-group:not(.checkboxes) {
+  display: flex;
+  gap: 0.4rem;
+}
+
 .filter-row-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .filter-checkbox {

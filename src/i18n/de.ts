@@ -113,6 +113,8 @@ export default {
   strike: 'Schlag',
   talismanSlots: 'Talismansteckplätze',
   human: 'HUMAN',
+  multiPhaseBoss: 'Mehrphasig',
+  duoBoss: 'Duo-Boss',
   humanFilter: 'Menschlich',
   theme: 'Thema',
   themeBlue: 'Blau',

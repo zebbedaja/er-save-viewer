@@ -4,7 +4,7 @@ withDefaults(
     percentage: number
     flex?: boolean
   }>(),
-  { flex: false }
+  { flex: false },
 )
 </script>
 

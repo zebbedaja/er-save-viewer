@@ -112,6 +112,8 @@ export default {
   strength: 'Strength',
   strike: 'Strike',
   talismanSlots: 'Talisman Slots',
+  multiPhaseBoss: 'Multi Phase',
+  duoBoss: 'Duo Boss',
   human: 'HUMAN',
   humanFilter: 'Human',
   theme: 'Theme',

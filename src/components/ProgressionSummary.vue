@@ -100,7 +100,7 @@ const eventProgress = computed(() => {
       <div class="events-title">
         {{ $t('events') }}
       </div>
-    <div class="attributes-grid">
+      <div class="attributes-grid">
         <div
           v-for="item in eventProgress"
           :key="item.category"

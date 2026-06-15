@@ -72,7 +72,10 @@
   src: url('@/assets/fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
-body, button, select, input {
+body,
+button,
+select,
+input {
   /* font-family: 'Macondo', sans-serif; */
   /* font-family: 'CrimsonText', sans-serif; */
   /* font-family: 'ModernAntiqua', sans-serif; */

@@ -52,10 +52,7 @@ const languages = [
 
       <button class="nav-btn" @click="spoilerStore.toggle">
         <span class="btn-label">{{ $t('spoiler') }}</span>
-        <span
-          class="btn-value"
-          :class="{ 'spoiler-active': spoilerStore.spoilerMode }"
-        >
+        <span class="btn-value" :class="{ 'spoiler-active': spoilerStore.spoilerMode }">
           {{ spoilerStore.spoilerMode ? $t('spoilerOn') : $t('spoilerOff') }}
         </span>
       </button>
