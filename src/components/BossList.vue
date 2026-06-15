@@ -57,7 +57,7 @@ const filteredEncounters = computed(() => {
       return false
     }
 
-    if (filterTarnished.value && !e.npcs.some((npc) => npc.tarnished)) {
+    if (filterTarnished.value && !e.npcs.some((npc) => npc.human)) {
       return false
     }
 

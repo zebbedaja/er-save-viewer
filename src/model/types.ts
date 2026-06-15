@@ -10,12 +10,14 @@ export interface Encounter {
   drops: string[]
   nightOnly: boolean
   dlc: boolean
-  category: string
   npcs: Npc[]
   youtube: string[]
 }
 
-export type ResistanceValue = number | 'Immune'
+export interface ResistanceValue {
+  immune: boolean
+  thresholds: number[]
+}
 
 export interface Negation {
   standard: number
@@ -30,38 +32,56 @@ export interface Negation {
 
 export interface Resistance {
   poison: ResistanceValue
-  rot: ResistanceValue
-  bleed: ResistanceValue
-  frost: ResistanceValue
+  scarletRot: ResistanceValue
+  bloodLoss: ResistanceValue
+  frostBite: ResistanceValue
   madness: ResistanceValue
   sleep: ResistanceValue
-  deathblight: ResistanceValue
+  deathBlight: ResistanceValue
 }
 
-export interface Stance {
+export interface Poise {
   base: number
-  mult: number
+  absorption: number
   effective?: number
-  regenerationDelay: number
+  regenDelay: number
+}
+
+export interface Defense {
+  physical: number
+  magic: number
+  fire: number
+  lightning: number
+  holy: number
 }
 
 export interface Npc {
-  id?: number
+  id: number
+  entityId: string
+  think?: number
+  talk?: number
   flagId: number
   name: string
   phase: number
-  tarnished: boolean
-  weakPart?: string
-  weakPartMultiplier?: number
-  parryable?: boolean
-  numberOfParries?: number
-  backstab?: boolean
-  vulnerableToCriticalHit?: boolean,
+  level: number
+  spEffectID: number
+  stanceCritical: boolean
+  backstab: boolean
+  parryable: boolean
   hp: number
-  defense: number
+  defense: Defense
+  weakPartsDamageRate: number
+  weakPart?: string
+  numberOfParries: number
+  void: boolean
+  thoseWhoLiveInDeath: boolean
+  ancientDragon: boolean
+  dragon: boolean
+  undead: boolean
+  human: boolean
   negation: Negation
   resistance: Resistance
-  stance: Stance
+  poise: Poise
 }
 
 export interface Region {

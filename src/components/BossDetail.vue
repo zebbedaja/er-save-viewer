@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { encounters } from '@/model/encounters'
+import type { ResistanceValue } from '@/model/types'
 
 const saveStore = useSaveStore()
 
@@ -28,11 +29,15 @@ function getNegationClass(value: number): string {
   return 'neutral'
 }
 
-function getResistanceClass(value: number | 'Immune'): string {
-  if (value === 'Immune') return 'immune'
-  if (value > 600) return 'resistant'
-  if (value < 400) return 'vulnerable'
+function getResistanceClass(value: ResistanceValue): string {
+  if (value.immune) return 'immune'
+  if ((value.thresholds[0] ?? 500) > 600) return 'resistant'
+  if ((value.thresholds[0] ?? 500) < 400) return 'vulnerable'
   return 'neutral'
+}
+
+function formatResistanceThresholds(value: ResistanceValue): string {
+  return value.thresholds.join(', ')
 }
 </script>
 
@@ -100,8 +105,8 @@ function getResistanceClass(value: number | 'Immune'): string {
       </h3>
 
       <div class="npc-attributes">
-        <span class="attr-badge" :class="npc.vulnerableToCriticalHit ? 'positive' : 'negative'">
-          {{ npc.vulnerableToCriticalHit ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
+        <span class="attr-badge" :class="npc.stanceCritical ? 'positive' : 'negative'">
+          {{ npc.stanceCritical ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
         </span>
         <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
           {{
@@ -116,8 +121,8 @@ function getResistanceClass(value: number | 'Immune'): string {
         <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
           {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
         </span>
-        <span class="attr-badge" :class="npc.tarnished ? 'positive' : 'negative'">
-          {{ npc.tarnished ? $t('tarnished') : $t('notTarnished') }}
+        <span class="attr-badge" :class="npc.human ? 'positive' : 'negative'">
+          {{ npc.human ? $t('tarnished') : $t('notTarnished') }}
         </span>
       </div>
 
@@ -128,11 +133,11 @@ function getResistanceClass(value: number | 'Immune'): string {
         </div>
         <div class="meta-row">
           <span class="meta-label">{{ $t('npcDefense') }}</span>
-          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense) }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.physical) }}</span>
         </div>
         <div class="meta-row" v-if="npc.weakPart">
           <span class="meta-label">{{ $t('weakPart') }}</span>
-          <span class="meta-value meta-highlight"> {{ npc.weakPart }} (x{{ npc.weakPartMultiplier }}) </span>
+          <span class="meta-value meta-highlight"> {{ npc.weakPart }} (x{{ npc.weakPartsDamageRate }}) </span>
         </div>
       </div>
 
@@ -181,64 +186,68 @@ function getResistanceClass(value: number | 'Immune'): string {
             <div class="data-cell" :class="getResistanceClass(npc.resistance.poison)">
               <span class="data-label">{{ $t('poison') }}</span>
               <span class="data-value">{{
-                npc.resistance.poison === 'Immune' ? $t('immune') : npc.resistance.poison
+                npc.resistance.poison.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.poison)
               }}</span>
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.rot)">
+            <div class="data-cell" :class="getResistanceClass(npc.resistance.scarletRot)">
               <span class="data-label">{{ $t('rot') }}</span>
-              <span class="data-value">{{ npc.resistance.rot === 'Immune' ? $t('immune') : npc.resistance.rot }}</span>
+              <span class="data-value">{{
+                npc.resistance.scarletRot.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.scarletRot)
+              }}</span>
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.bleed)">
+            <div class="data-cell" :class="getResistanceClass(npc.resistance.bloodLoss)">
               <span class="data-label">{{ $t('bleed') }}</span>
               <span class="data-value">{{
-                npc.resistance.bleed === 'Immune' ? $t('immune') : npc.resistance.bleed
+                npc.resistance.bloodLoss.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.bloodLoss)
               }}</span>
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.frost)">
+            <div class="data-cell" :class="getResistanceClass(npc.resistance.frostBite)">
               <span class="data-label">{{ $t('frost') }}</span>
               <span class="data-value">{{
-                npc.resistance.frost === 'Immune' ? $t('immune') : npc.resistance.frost
+                npc.resistance.frostBite.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.frostBite)
               }}</span>
             </div>
             <div class="data-cell" :class="getResistanceClass(npc.resistance.sleep)">
               <span class="data-label">{{ $t('sleep') }}</span>
               <span class="data-value">{{
-                npc.resistance.sleep === 'Immune' ? $t('immune') : npc.resistance.sleep
+                npc.resistance.sleep.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.sleep)
               }}</span>
             </div>
             <div class="data-cell" :class="getResistanceClass(npc.resistance.madness)">
               <span class="data-label">{{ $t('madness') }}</span>
               <span class="data-value">{{
-                npc.resistance.madness === 'Immune' ? $t('immune') : npc.resistance.madness
+                npc.resistance.madness.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.madness)
               }}</span>
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.deathblight)">
+            <div class="data-cell" :class="getResistanceClass(npc.resistance.deathBlight)">
               <span class="data-label">{{ $t('deathblight') }}</span>
               <span class="data-value">{{
-                npc.resistance.deathblight === 'Immune' ? $t('immune') : npc.resistance.deathblight
+                npc.resistance.deathBlight.immune
+                  ? $t('immune')
+                  : formatResistanceThresholds(npc.resistance.deathBlight)
               }}</span>
             </div>
           </div>
         </div>
 
         <div class="data-section">
-          <h4 class="section-title-bar">{{ $t('stance') }}</h4>
-          <div class="negation-grid stance-grid">
+          <h4 class="section-title-bar">{{ $t('poise') }}</h4>
+          <div class="negation-grid poise-grid">
             <div class="data-cell">
               <span class="data-label">{{ $t('base') }}</span>
-              <span class="data-value">{{ npc.stance.base }}</span>
+              <span class="data-value">{{ npc.poise.base }}</span>
             </div>
             <div class="data-cell">
-              <span class="data-label">{{ $t('multiplier') }}</span>
-              <span class="data-value">x{{ npc.stance.mult }}</span>
+              <span class="data-label">{{ $t('absorption') }}</span>
+              <span class="data-value">x{{ npc.poise.absorption }}</span>
             </div>
             <div class="data-cell">
               <span class="data-label">{{ $t('effective') }}</span>
-              <span class="data-value">{{ npc.stance.effective }}</span>
+              <span class="data-value">{{ npc.poise.effective }}</span>
             </div>
             <div class="data-cell">
               <span class="data-label">{{ $t('regenDelay') }}</span>
-              <span class="data-value">{{ npc.stance.regenerationDelay }}s</span>
+              <span class="data-value">{{ npc.poise.regenDelay }}s</span>
             </div>
           </div>
         </div>
@@ -459,7 +468,7 @@ function getResistanceClass(value: number | 'Immune'): string {
   gap: 0.3rem;
 }
 
-.stance-grid {
+.poise-grid {
   grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
 }
 
