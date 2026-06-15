@@ -16,7 +16,7 @@ const filterGreatRune = ref(false)
 const filterRemembrance = ref(false)
 const filterNightOnly = ref(false)
 const filterParryable = ref(false)
-const filterTarnished = ref(false)
+const filterHuman = ref(false)
 const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
@@ -57,7 +57,7 @@ const filteredEncounters = computed(() => {
       return false
     }
 
-    if (filterTarnished.value && !e.npcs.some((npc) => npc.human)) {
+    if (filterHuman.value && !e.npcs.some((npc) => npc.human)) {
       return false
     }
 
@@ -155,9 +155,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
             </label>
 
             <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterTarnished" />
-              <span class="check-box" :class="{ checked: filterTarnished }"></span>
-              <span class="filter-label">{{ $t('tarnishedFilter') }}</span>
+              <input type="checkbox" v-model="filterHuman" />
+              <span class="check-box" :class="{ checked: filterHuman }"></span>
+              <span class="filter-label">{{ $t('humanFilter') }}</span>
             </label>
           </div>
 

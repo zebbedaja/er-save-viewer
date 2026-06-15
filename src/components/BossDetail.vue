@@ -37,7 +37,7 @@ function getResistanceClass(value: ResistanceValue): string {
 }
 
 function formatResistanceThresholds(value: ResistanceValue): string {
-  return value.thresholds.join(', ')
+  return value.thresholds.filter((t, i) => i === 0 || t !== value.thresholds[i - 1]).join(', ')
 }
 </script>
 
@@ -122,7 +122,7 @@ function formatResistanceThresholds(value: ResistanceValue): string {
           {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
         </span>
         <span class="attr-badge" :class="npc.human ? 'positive' : 'negative'">
-          {{ npc.human ? $t('tarnished') : $t('notTarnished') }}
+          {{ npc.human ? $t('human') : $t('notHuman') }}
         </span>
       </div>
 
