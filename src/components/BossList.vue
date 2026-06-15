@@ -20,14 +20,20 @@ const filterParryable = ref(false)
 const filterHuman = ref(false)
 const filterDuoBoss = ref(false)
 const filterMultiPhase = ref(false)
+const filterVoid = ref(false)
+const filterDragon = ref(false)
+const filterAncientDragon = ref(false)
+const filterUndead = ref(false)
+const filterThoseWhoLiveInDeath = ref(false)
+const filterBackstab = ref(false)
 const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
-const baseGameBosses = encounters.filter((e) => !e.dlc)
-const dlcBosses = encounters.filter((e) => e.dlc)
+const filteredBaseGameCount = computed(() => filteredEncounters.value.filter((e) => !e.dlc).length)
+const filteredDlcCount = computed(() => filteredEncounters.value.filter((e) => e.dlc).length)
 
-const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
-const defeatedDlc = computed(() => dlcBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedBaseGame = computed(() => filteredEncounters.value.filter((e) => !e.dlc && saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedDlc = computed(() => filteredEncounters.value.filter((e) => e.dlc && saveStore.defeatedFlags.has(e.flagId)).length)
 
 const filteredEncounters = computed(() => {
   const query = searchQuery.value.toLowerCase()
@@ -65,6 +71,30 @@ const filteredEncounters = computed(() => {
     }
 
     if (filterMultiPhase.value && !hasMultiplePhases(e.npcs)) {
+      return false
+    }
+
+    if (filterVoid.value && !e.npcs.some((npc) => npc.void)) {
+      return false
+    }
+
+    if (filterDragon.value && !e.npcs.some((npc) => npc.dragon)) {
+      return false
+    }
+
+    if (filterAncientDragon.value && !e.npcs.some((npc) => npc.ancientDragon)) {
+      return false
+    }
+
+    if (filterUndead.value && !e.npcs.some((npc) => npc.undead)) {
+      return false
+    }
+
+    if (filterThoseWhoLiveInDeath.value && !e.npcs.some((npc) => npc.thoseWhoLiveInDeath)) {
+      return false
+    }
+
+    if (filterBackstab.value && !e.npcs.some((npc) => npc.backstab)) {
       return false
     }
 
@@ -194,6 +224,42 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               <span class="check-box" :class="{ checked: filterMultiPhase }"></span>
               <span class="filter-label">{{ $t('multiPhaseBoss') }}</span>
             </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterVoid" />
+              <span class="check-box" :class="{ checked: filterVoid }"></span>
+              <span class="filter-label">{{ $t('voidFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterDragon" />
+              <span class="check-box" :class="{ checked: filterDragon }"></span>
+              <span class="filter-label">{{ $t('dragonFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterAncientDragon" />
+              <span class="check-box" :class="{ checked: filterAncientDragon }"></span>
+              <span class="filter-label">{{ $t('ancientDragonFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterUndead" />
+              <span class="check-box" :class="{ checked: filterUndead }"></span>
+              <span class="filter-label">{{ $t('undeadFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterThoseWhoLiveInDeath" />
+              <span class="check-box" :class="{ checked: filterThoseWhoLiveInDeath }"></span>
+              <span class="filter-label">{{ $t('thoseWhoLiveInDeathFilter') }}</span>
+            </label>
+
+            <label class="filter-checkbox">
+              <input type="checkbox" v-model="filterBackstab" />
+              <span class="check-box" :class="{ checked: filterBackstab }"></span>
+              <span class="filter-label">{{ $t('backstabFilter') }}</span>
+            </label>
           </div>
 
           <div class="filter-group">
@@ -231,8 +297,8 @@ function isRegionComplete(bosses: typeof encounters): boolean {
     <template v-if="groupedBaseGameBosses.length">
       <div class="section-header">
         <span class="section-title">{{ $t('baseGameSection') }}</span>
-        <span class="section-complete" v-if="defeatedBaseGame === baseGameBosses.length">✓</span>
-        <span class="section-count">{{ defeatedBaseGame }}/{{ baseGameBosses.length }}</span>
+        <span class="section-complete" v-if="defeatedBaseGame === filteredBaseGameCount">✓</span>
+        <span class="section-count">{{ defeatedBaseGame }}/{{ filteredBaseGameCount }}</span>
       </div>
 
       <div
@@ -278,8 +344,8 @@ function isRegionComplete(bosses: typeof encounters): boolean {
     <template v-if="groupedDlcBosses.length">
       <div class="section-header">
         <span class="section-title">{{ $t('dlcSection') }}</span>
-        <span class="section-complete" v-if="defeatedDlc === dlcBosses.length">✓</span>
-        <span class="section-count">{{ defeatedDlc }}/{{ dlcBosses.length }}</span>
+        <span class="section-complete" v-if="defeatedDlc === filteredDlcCount">✓</span>
+        <span class="section-count">{{ defeatedDlc }}/{{ filteredDlcCount }}</span>
       </div>
 
       <div
