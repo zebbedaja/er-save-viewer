@@ -39,6 +39,13 @@ function getResistanceClass(value: ResistanceValue): string {
 function formatResistanceThresholds(value: ResistanceValue): string {
   return value.thresholds.filter((t, i) => i === 0 || t !== value.thresholds[i - 1]).join(', ')
 }
+
+const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*.jpg', { eager: true })
+
+function getNpcImageUrl(npcId: number): string | undefined {
+  const key = Object.keys(bossImages).find((k) => k.includes(`${npcId}.jpg`))
+  return key ? bossImages[key]?.default : undefined
+}
 </script>
 
 <template>
@@ -103,6 +110,8 @@ function formatResistanceThresholds(value: ResistanceValue): string {
         {{ $t('phase') }} {{ npc.phase }}
         <span class="npc-name">{{ npc.name }}</span>
       </h3>
+
+      <img v-if="getNpcImageUrl(npc.id)" :src="getNpcImageUrl(npc.id)" class="npc-image" :alt="npc.name" />
 
       <div class="npc-attributes">
         <span class="attr-badge" :class="npc.stanceCritical ? 'positive' : 'negative'">
@@ -348,6 +357,13 @@ function formatResistanceThresholds(value: ResistanceValue): string {
   padding: 0.1rem 0.4rem;
   border: 1px solid var(--border-color);
   border-radius: 2px;
+}
+
+.npc-image {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
 }
 
 .npc-phase {
