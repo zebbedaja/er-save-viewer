@@ -37,7 +37,7 @@ function getResistanceClass(value: ResistanceValue): string {
 }
 
 function formatResistanceThresholds(value: ResistanceValue): string {
-  return value.thresholds.filter((t, i) => i === 0 || t !== value.thresholds[i - 1]).join(', ')
+  return value.thresholds.filter((t, i) => i === 0 || t !== value.thresholds[i - 1]).join(' / ')
 }
 
 const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*.jpg', { eager: true })
@@ -363,7 +363,7 @@ function getNpcImageUrl(npcId: number): string | undefined {
   width: 100%;
   display: block;
   margin: 0 auto;
-  border-radius: 4px;
+  /* border-radius: 4px; */
 }
 
 .npc-phase {
