@@ -133,6 +133,21 @@ function getNpcImageUrl(npcId: number): string | undefined {
         <span class="attr-badge" :class="npc.human ? 'positive' : 'negative'">
           {{ npc.human ? $t('human') : $t('notHuman') }}
         </span>
+        <span v-if="npc.void" class="attr-badge void">
+          {{ $t('voidBadge') }}
+        </span>
+        <span v-if="npc.dragon" class="attr-badge dragon">
+          {{ $t('dragonBadge') }}
+        </span>
+        <span v-if="npc.ancientDragon" class="attr-badge ancient-dragon">
+          {{ $t('ancientDragonBadge') }}
+        </span>
+        <span v-if="npc.thoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">
+          {{ $t('thoseWhoLiveInDeathBadge') }}
+        </span>
+        <span v-if="npc.undead" class="attr-badge undead">
+          {{ $t('undeadBadge') }}
+        </span>
       </div>
 
       <div class="npc-stats-tall">
@@ -456,6 +471,36 @@ function getNpcImageUrl(npcId: number): string | undefined {
   color: rgb(192, 192, 210);
   border-color: rgba(192, 192, 210, 0.4);
   background: rgba(192, 192, 210, 0.08);
+}
+
+.attr-badge.void {
+  color: rgb(168, 85, 247);
+  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(168, 85, 247, 0.08);
+}
+
+.attr-badge.dragon {
+  color: rgb(255, 130, 60);
+  border-color: rgba(255, 130, 60, 0.4);
+  background: rgba(255, 130, 60, 0.08);
+}
+
+.attr-badge.ancient-dragon {
+  color: rgb(255, 210, 80);
+  border-color: rgba(255, 210, 80, 0.4);
+  background: rgba(255, 210, 80, 0.08);
+}
+
+.attr-badge.those-who-live-in-death {
+  color: rgb(180, 40, 40);
+  border-color: rgba(180, 40, 40, 0.4);
+  background: rgba(180, 40, 40, 0.08);
+}
+
+.attr-badge.undead {
+  color: rgb(130, 200, 100);
+  border-color: rgba(130, 200, 100, 0.4);
+  background: rgba(130, 200, 100, 0.08);
 }
 
 .npc-stats-tall {
