@@ -36,7 +36,9 @@ const activationFilter = ref<'all' | 'activated' | 'notActivated'>('all')
 
 const categoryFlags = computed<EventFlag[]>(() => {
   if (!props.saveSlot?.eventFlags) return []
-  return props.saveSlot.eventFlags.filter((f) => f.category === category.value).sort((a, b) => a.id - b.id)
+  const flags = props.saveSlot.eventFlags.filter((f) => f.category === category.value)
+  const shouldSortByName = ['cookbook', 'ashOfWar'].includes(category.value)
+  return flags.sort(shouldSortByName ? (a, b) => (a.name || '').localeCompare(b.name || '', undefined, { numeric: true }) : (a, b) => a.id - b.id)
 })
 
 const filteredFlags = computed(() => {

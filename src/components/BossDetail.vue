@@ -156,8 +156,24 @@ function getNpcImageUrl(npcId: number): string | undefined {
           <span class="meta-value meta-highlight">{{ formatNumber(npc.hp) }}</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">{{ $t('npcDefense') }}</span>
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('physical') }})</span>
           <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.physical) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('magic') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('fire') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('lightning') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('holy') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
         </div>
         <div class="meta-row" v-if="npc.weakPart">
           <span class="meta-label">{{ $t('weakPart') }}</span>
