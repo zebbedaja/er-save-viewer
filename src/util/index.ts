@@ -10,3 +10,19 @@ export function formatNumber(n: number | undefined): string {
   if (n === undefined) return '\u2014'
   return n.toLocaleString()
 }
+
+export function downloadBinaryFile(
+  uint8Array: Uint8Array<ArrayBuffer>,
+  filename: string = 'file.bin',
+  mimeType: string = 'application/octet-stream',
+): void {
+  const blob = new Blob([uint8Array], { type: mimeType })
+  const url = URL.createObjectURL(blob)
+
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  a.click()
+
+  URL.revokeObjectURL(url)
+}

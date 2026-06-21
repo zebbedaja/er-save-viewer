@@ -50,7 +50,7 @@ export const useSaveStore = defineStore('save', () => {
   }
 
   async function parseFileBuffer(buffer: ArrayBuffer) {
-    return parse(buffer, { logLevel: 'debug' })
+    return parse(buffer, { logLevel: 'debug', includeEventFlagUInt8Array: true })
   }
 
   async function connectFile(handle: FileSystemFileHandle) {
