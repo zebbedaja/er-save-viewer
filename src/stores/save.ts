@@ -47,8 +47,8 @@ export const useSaveStore = defineStore('save', () => {
       return []
     }
 
-    const prev = history.value[history.value.length - 2].data.slots?.[8]?.eventFlagUint8Array
-    const curr = history.value[history.value.length - 1].data.slots?.[8]?.eventFlagUint8Array
+    const prev = history.value[history.value.length - 2]?.data.slots?.[8]?.eventFlagUint8Array
+    const curr = history.value[history.value.length - 1]?.data.slots?.[8]?.eventFlagUint8Array
     if (!prev || !curr) return []
 
     const map = getBstMap()
