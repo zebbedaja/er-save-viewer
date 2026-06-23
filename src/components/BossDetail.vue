@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { encounters } from '@/model/encounters'
 import type { ResistanceValue } from '@/model/types'
+import { formatNumber } from '@/util'
 
 const saveStore = useSaveStore()
 
@@ -15,9 +16,9 @@ const boss = computed(() => encounters.find((e) => e.flagId === flagId.value))
 
 const isDefeated = computed(() => saveStore.defeatedFlags.has(flagId.value))
 
-function formatNumber(n: number): string {
-  return n.toLocaleString()
-}
+const hasGreatRune = computed(() => boss.value?.drops.some(d => /Great Rune/.test(d)) ?? false)
+
+const hasRemembrance = computed(() => boss.value?.drops.some(d => /Remembrance/.test(d)) ?? false)
 
 function goBack() {
   router.push({ name: 'boss-list' })
@@ -67,10 +68,10 @@ function getNpcImageUrl(npcId: number): string | undefined {
         <span v-if="boss.dlc" class="attr-badge dlc-tag">
           {{ $t('dlcBadge') }}
         </span>
-        <span v-if="boss.drops.some((d) => /Great Rune/.test(d))" class="attr-badge great-rune">
+        <span v-if="hasGreatRune" class="attr-badge great-rune">
           {{ $t('greatRuneBadge') }}
         </span>
-        <span v-if="boss.drops.some((d) => /Remembrance/.test(d))" class="attr-badge remembrance">
+        <span v-if="hasRemembrance" class="attr-badge remembrance">
           {{ $t('remembranceBadge') }}
         </span>
       </div>
@@ -165,15 +166,15 @@ function getNpcImageUrl(npcId: number): string | undefined {
         </div>
         <div class="meta-row">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('fire') }})</span>
-          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.fire) }}</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('lightning') }})</span>
-          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.lightning) }}</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('holy') }})</span>
-          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.holy) }}</span>
         </div>
         <div class="meta-row" v-if="npc.weakPart">
           <span class="meta-label">{{ $t('weakPart') }}</span>

@@ -43,18 +43,23 @@ export const useSaveStore = defineStore('save', () => {
   })
 
   const differences = computed(() => {
-    if (history.value == null || history.value.length < 2) {
+    if (history.value.length < 2) {
       return []
     }
 
+    const prev = history.value[history.value.length - 2].data.slots?.[8]?.eventFlagUint8Array
+    const curr = history.value[history.value.length - 1].data.slots?.[8]?.eventFlagUint8Array
+    if (!prev || !curr) return []
+
+    const map = getBstMap()
     return (
       compareUint8Arrays(
-        history.value[history.value.length - 2].data.slots[8].eventFlagUint8Array,
-        history.value[history.value.length - 1].data.slots[8].eventFlagUint8Array,
+        prev,
+        curr,
       )
         // .map((difference) => getEventIdFromPosition(getBstMap(), difference.offset, difference.bitIndex))
         .map((difference) => ({
-          eventId: getEventIdFromPosition(getBstMap(), difference.offset, difference.bitIndex),
+          eventId: getEventIdFromPosition(map, difference.offset, difference.bitIndex),
           ...difference,
         })).toSorted((a, b) => a.eventId - b.eventId)
     )
