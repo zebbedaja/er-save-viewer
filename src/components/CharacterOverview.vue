@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import type { Character, Slot } from '@zebbedaja/er-save-parser'
 
 import { useSaveStore } from '@/stores/save'
-import { downloadBinaryFile, formatNumber } from '@/util'
+import { formatNumber } from '@/util'
 import ProgressRow from '@/components/ProgressRow.vue'
 import CharacterImage from '@/components/CharacterImage.vue'
 
@@ -120,7 +120,6 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
     <div class="button-row">
       <button class="button" @click="resetActiveSlot">{{ $t('selectDifferentCharacter') }}</button>
       <button class="button" @click="resetSaveFile">{{ $t('selectDifferentSave') }}</button>
-      <button class="button" @click="downloadBinaryFile(props.saveSlot.eventFlagUint8Array)">aaa</button>
     </div>
   </div>
 </template>

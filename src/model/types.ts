@@ -1,3 +1,5 @@
+import type { Save } from "@zebbedaja/er-save-parser"
+
 export interface Encounter {
   flagId: number
   flagName: string
@@ -87,4 +89,10 @@ export interface Npc {
 export interface Region {
   name: string
   scaling: number
+}
+
+export interface HistoryEntry {
+  data: Save
+  timestamp: number
+  lastModified: number
 }

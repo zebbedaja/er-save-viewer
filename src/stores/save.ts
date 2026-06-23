@@ -1,9 +1,11 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { parse, type Save } from '@zebbedaja/er-save-parser'
+import { parse, compareUint8Arrays, type Save, getEventIdFromPosition, getBstMap } from '@zebbedaja/er-save-parser'
 import i18n from '@/i18n'
+import type { HistoryEntry } from '@/model/types'
 
 const pollIntervalMs = 1000
+const MAX_HISTORY = 50
 
 export const useSaveStore = defineStore('save', () => {
   const save = ref<Save | null>(null)
@@ -13,6 +15,20 @@ export const useSaveStore = defineStore('save', () => {
   const fileHandle = ref<FileSystemFileHandle | null>(null)
   const lastModified = ref<number>(0)
   const pollInterval = ref<ReturnType<typeof setInterval> | null>(null)
+  const history = ref<HistoryEntry[]>([])
+
+  function pushToHistory(data: Save, modified: number) {
+    if (history.value.length === 0) {
+      history.value.push({ data, timestamp: Date.now(), lastModified: modified })
+      return
+    }
+    const latest = history.value[history.value.length - 1]?.lastModified
+    if (latest === modified) return
+    history.value.push({ data, timestamp: Date.now(), lastModified: modified })
+    if (history.value.length > MAX_HISTORY) {
+      history.value.shift()
+    }
+  }
 
   const isLiveSyncActive = computed(() => pollInterval.value !== null)
 
@@ -26,6 +42,24 @@ export const useSaveStore = defineStore('save', () => {
     return new Set(slot.eventFlags.filter((f) => f.state).map((f) => f.id))
   })
 
+  const differences = computed(() => {
+    if (history.value == null || history.value.length < 2) {
+      return []
+    }
+
+    return (
+      compareUint8Arrays(
+        history.value[history.value.length - 2].data.slots[8].eventFlagUint8Array,
+        history.value[history.value.length - 1].data.slots[8].eventFlagUint8Array,
+      )
+        // .map((difference) => getEventIdFromPosition(getBstMap(), difference.offset, difference.bitIndex))
+        .map((difference) => ({
+          eventId: getEventIdFromPosition(getBstMap(), difference.offset, difference.bitIndex),
+          ...difference,
+        })).toSorted((a, b) => a.eventId - b.eventId)
+    )
+  })
+
   async function readFile(file: File) {
     isLoading.value = true
     error.value = null
@@ -34,7 +68,9 @@ export const useSaveStore = defineStore('save', () => {
       const reader = new FileReader()
 
       reader.onload = () => {
-        save.value = parse(reader.result as ArrayBuffer)
+        const parsed = parse(reader.result as ArrayBuffer)
+        save.value = parsed
+        pushToHistory(parsed, file.lastModified)
         isLoading.value = false
         resolve()
       }
@@ -63,7 +99,9 @@ export const useSaveStore = defineStore('save', () => {
       lastModified.value = file.lastModified
 
       const buffer = await file.arrayBuffer()
-      save.value = await parseFileBuffer(buffer)
+      const parsed = await parseFileBuffer(buffer)
+      save.value = parsed
+      pushToHistory(parsed, lastModified.value)
       setActiveSlotId(0)
 
       pollInterval.value = setInterval(async () => {
@@ -77,7 +115,9 @@ export const useSaveStore = defineStore('save', () => {
             lastModified.value = updatedFile.lastModified
 
             const buffer = await updatedFile.arrayBuffer()
-            save.value = await parseFileBuffer(buffer)
+            const parsed = await parseFileBuffer(buffer)
+            save.value = parsed
+            pushToHistory(parsed, lastModified.value)
           }
         } catch {
           // File may be in use by the game, skip this tick
@@ -116,6 +156,7 @@ export const useSaveStore = defineStore('save', () => {
     save.value = null
     activeSlotId.value = null
     error.value = null
+    // history.value = []
   }
 
   return {
@@ -123,6 +164,7 @@ export const useSaveStore = defineStore('save', () => {
     activeSlotId,
     activeSlot,
     defeatedFlags,
+    differences,
     profileSummaries,
     isLoading,
     error,
@@ -134,5 +176,6 @@ export const useSaveStore = defineStore('save', () => {
     resetSaveFile,
     resetActiveSlot,
     setActiveSlotId,
+    history,
   }
 })
