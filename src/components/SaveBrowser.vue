@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { useSaveStore } from '@/stores/save'
+import { useTrackChangesStore } from '@/stores/trackChanges'
 import { storeToRefs } from 'pinia'
 import SaveFileUpload from './SaveFileUpload.vue'
 import ProfileSummaries from './ProfileSummaries.vue'
 import CharacterOverview from './CharacterOverview.vue'
 import ProgressionSummary from './ProgressionSummary.vue'
 import LiveSyncStatus from './LiveSyncStatus.vue'
+import TrackChanges from './TrackChanges.vue'
 
 const saveStore = useSaveStore()
 const { save, activeSlot } = storeToRefs(saveStore)
+const trackChangesStore = useTrackChangesStore()
 </script>
 
 <template>
@@ -18,6 +21,8 @@ const { save, activeSlot } = storeToRefs(saveStore)
       <ProfileSummaries v-if="activeSlot == null && save != null" />
       <CharacterOverview v-if="activeSlot != null" :saveSlot="activeSlot" />
       <ProgressionSummary v-if="activeSlot != null" :saveSlot="activeSlot" />
+
+      <TrackChanges v-if="save != null && trackChangesStore.trackChangesMode" />
 
       <template v-if="save != null">
         <LiveSyncStatus />

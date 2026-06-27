@@ -4,11 +4,13 @@ import { RouterLink } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useThemeStore, type Theme } from '@/stores/theme'
 import { useSpoilerStore } from '@/stores/spoiler'
+import { useTrackChangesStore } from '@/stores/trackChanges'
 import faviconSvg from '@/assets/img/favicon.svg'
 
 const { locale, t } = useI18n()
 const themeStore = useThemeStore()
 const spoilerStore = useSpoilerStore()
+const trackChangesStore = useTrackChangesStore()
 
 const themeKeys: Record<Theme, string> = {
   dark: 'themeDark',
@@ -54,6 +56,13 @@ const languages = [
         <span class="btn-label">{{ $t('spoiler') }}</span>
         <span class="btn-value" :class="{ 'spoiler-active': spoilerStore.spoilerMode }">
           {{ spoilerStore.spoilerMode ? $t('spoilerOn') : $t('spoilerOff') }}
+        </span>
+      </button>
+
+      <button class="nav-btn" @click="trackChangesStore.toggle">
+        <span class="btn-label">{{ $t('trackChanges') }}</span>
+        <span class="btn-value" :class="{ 'track-active': trackChangesStore.trackChangesMode }">
+          {{ trackChangesStore.trackChangesMode ? $t('trackChangesOn') : $t('trackChangesOff') }}
         </span>
       </button>
 
@@ -160,6 +169,10 @@ const languages = [
 
 .btn-value.spoiler-active {
   color: #e74c3c;
+}
+
+.btn-value.track-active {
+  color: #4ade80;
 }
 
 .nav-select {

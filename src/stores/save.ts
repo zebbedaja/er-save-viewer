@@ -2,6 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { parse, compareUint8Arrays, type Save, getEventIdFromPosition, getBstMap } from '@zebbedaja/er-save-parser'
 import i18n from '@/i18n'
+import { useTrackChangesStore } from './trackChanges'
 import type { HistoryEntry } from '@/model/types'
 
 const pollIntervalMs = 1000
@@ -9,6 +10,7 @@ const MAX_HISTORY = 50
 const BST_MAP = getBstMap()
 
 export const useSaveStore = defineStore('save', () => {
+  const trackChangesStore = useTrackChangesStore()
   const save = ref<Save | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
@@ -67,8 +69,9 @@ export const useSaveStore = defineStore('save', () => {
     return new Promise<void>((resolve, reject) => {
       const reader = new FileReader()
 
-      reader.onload = () => {
-        const parsed = parse(reader.result as ArrayBuffer)
+      reader.onload = async () => {
+        const buffer = reader.result as ArrayBuffer
+        const parsed = await parseFileBuffer(buffer)
         save.value = parsed
         pushToHistory(parsed, file.lastModified)
         isLoading.value = false
@@ -86,7 +89,7 @@ export const useSaveStore = defineStore('save', () => {
   }
 
   async function parseFileBuffer(buffer: ArrayBuffer) {
-    return parse(buffer, { logLevel: 'debug', includeEventFlagUInt8Array: true })
+    return parse(buffer, { logLevel: 'debug', includeEventFlagUInt8Array: trackChangesStore.trackChangesMode })
   }
 
   async function connectFile(handle: FileSystemFileHandle) {
