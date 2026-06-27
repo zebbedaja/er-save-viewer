@@ -6,6 +6,7 @@ import type { HistoryEntry } from '@/model/types'
 
 const pollIntervalMs = 1000
 const MAX_HISTORY = 50
+const BST_MAP = getBstMap()
 
 export const useSaveStore = defineStore('save', () => {
   const save = ref<Save | null>(null)
@@ -47,22 +48,16 @@ export const useSaveStore = defineStore('save', () => {
       return []
     }
 
-    const prev = history.value[history.value.length - 2]?.data.slots?.[8]?.eventFlagUint8Array
-    const curr = history.value[history.value.length - 1]?.data.slots?.[8]?.eventFlagUint8Array
+    const prev = history.value[history.value.length - 2]?.data.slots?.[activeSlotId.value ?? 0]?.eventFlagUint8Array
+    const curr = history.value[history.value.length - 1]?.data.slots?.[activeSlotId.value ?? 0]?.eventFlagUint8Array
     if (!prev || !curr) return []
 
-    const map = getBstMap()
-    return (
-      compareUint8Arrays(
-        prev,
-        curr,
-      )
-        // .map((difference) => getEventIdFromPosition(getBstMap(), difference.offset, difference.bitIndex))
-        .map((difference) => ({
-          eventId: getEventIdFromPosition(map, difference.offset, difference.bitIndex),
-          ...difference,
-        })).toSorted((a, b) => a.eventId - b.eventId)
-    )
+    return compareUint8Arrays(prev, curr)
+      .map((difference) => ({
+        eventId: getEventIdFromPosition(BST_MAP, difference.offset, difference.bitIndex),
+        ...difference,
+      }))
+      .toSorted((a, b) => a.eventId - b.eventId)
   })
 
   async function readFile(file: File) {
