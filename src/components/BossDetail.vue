@@ -131,8 +131,8 @@ function getNpcImageUrl(npcId: number): string | undefined {
         <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
           {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
         </span>
-        <span class="attr-badge" :class="npc.human ? 'positive' : 'negative'">
-          {{ npc.human ? $t('human') : $t('notHuman') }}
+        <span v-if="npc.human" class="attr-badge positive">
+          {{ $t('human') }}
         </span>
         <span v-if="npc.void" class="attr-badge void">
           {{ $t('voidBadge') }}

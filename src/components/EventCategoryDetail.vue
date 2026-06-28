@@ -42,9 +42,10 @@ const searchQuery = computed({
 })
 
 const activationFilter = computed<'all' | 'activated' | 'notActivated'>({
-  get: () => (['all', 'activated', 'notActivated'].includes(route.query.activationFilter as string)
-    ? route.query.activationFilter as 'all' | 'activated' | 'notActivated'
-    : 'all'),
+  get: () =>
+    ['all', 'activated', 'notActivated'].includes(route.query.activationFilter as string)
+      ? (route.query.activationFilter as 'all' | 'activated' | 'notActivated')
+      : 'all',
   set: (v: 'all' | 'activated' | 'notActivated') => {
     const q = { ...route.query }
     if (v !== 'all') q.activationFilter = v
@@ -57,7 +58,11 @@ const categoryFlags = computed<EventFlag[]>(() => {
   if (!props.saveSlot?.eventFlags) return []
   const flags = props.saveSlot.eventFlags.filter((f) => f.category === category.value)
   const shouldSortByName = ['cookbook', 'ashOfWar'].includes(category.value)
-  return flags.toSorted(shouldSortByName ? (a, b) => (a.name || '').localeCompare(b.name || '', undefined, { numeric: true }) : (a, b) => a.id - b.id)
+  return flags.toSorted(
+    shouldSortByName
+      ? (a, b) => (a.name || '').localeCompare(b.name || '', undefined, { numeric: true })
+      : (a, b) => a.id - b.id,
+  )
 })
 
 const filteredFlags = computed(() => {
@@ -81,7 +86,7 @@ const filteredFlags = computed(() => {
 const activatedCount = computed(() => categoryFlags.value.filter((f) => f.state).length)
 
 function goBack() {
-  router.back()
+  router.push({ name: 'boss-list' })
 }
 </script>
 

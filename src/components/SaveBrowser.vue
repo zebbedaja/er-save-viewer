@@ -21,8 +21,7 @@ const trackChangesStore = useTrackChangesStore()
       <ProfileSummaries v-if="activeSlot == null && save != null" />
       <CharacterOverview v-if="activeSlot != null" :saveSlot="activeSlot" />
       <ProgressionSummary v-if="activeSlot != null" :saveSlot="activeSlot" />
-
-      <TrackChanges v-if="save != null && trackChangesStore.trackChangesMode" />
+      <TrackChanges v-if="activeSlot != null && trackChangesStore.trackChangesMode" />
 
       <template v-if="save != null">
         <LiveSyncStatus />

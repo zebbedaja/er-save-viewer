@@ -38,7 +38,7 @@ export default {
   effective: 'Effektiv',
   endurance: 'Kondition',
   errorReadingFile: 'Fehler beim Lesen der Datei',
-  eventFlags: 'Ereignisflags',
+  eventFlagChanges: 'Event Flag Changes',
   events: 'Ereignisse',
   eventsAcquiredMap: 'Karten',
   eventsAffinity: 'Affinitäten',

@@ -11,15 +11,15 @@ const hasDifferences = computed(() => differences.value.length > 0)
 
 <template>
   <div class="track-changes">
-    <h3>{{ $t('eventFlags') }}</h3>
+    <div class="title">{{ $t('eventFlagChanges') }}</div>
     <div v-if="!hasDifferences" class="empty-state">
       {{ $t('trackChangesEmpty') }}
     </div>
     <div v-else class="changes-list">
       <div v-for="diff in differences" :key="`${diff.offset}-${diff.bitIndex}`" class="change-row">
-        <span class="change-id">Event #{{ diff.eventId }}</span>
+        <span class="change-id">{{ diff.eventId }}</span>
         <span class="change-detail">
-          Offset: {{ diff.offset }}, Bit: {{ diff.bitIndex }}
+          Offset: {{ diff.offset }}, Bit: {{ diff.bitIndex }}, Change: {{ diff.oldBit }} -> {{ diff.newBit }}
         </span>
       </div>
     </div>
@@ -30,7 +30,6 @@ const hasDifferences = computed(() => differences.value.length > 0)
 .track-changes {
   background: var(--card-bg-color);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
   padding: 1rem;
 }
 
@@ -60,7 +59,6 @@ const hasDifferences = computed(() => differences.value.length > 0)
   align-items: center;
   padding: 0.35rem 0.5rem;
   background: var(--hover-background);
-  border-radius: 4px;
   font-size: 0.8rem;
 }
 
@@ -74,5 +72,11 @@ const hasDifferences = computed(() => differences.value.length > 0)
   opacity: 0.6;
   font-family: monospace;
   font-size: 0.75rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+  padding-bottom: 0.4rem;
 }
 </style>

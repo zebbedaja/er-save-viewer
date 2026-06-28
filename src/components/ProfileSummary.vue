@@ -24,7 +24,7 @@ defineProps<{
       </div>
     </div>
     <div class="profile-row-2">
-      <div class="profile-text">{{ profileSummary.mapId }}</div>
+      <div class="profile-text">{{ profileSummary.mapName?.split(" - ")?.[0] }}</div>
       <div class="profile-text seconds-played">{{ secondsToHMS(profileSummary.secondsPlayed!) }}</div>
     </div>
   </div>
@@ -49,12 +49,15 @@ defineProps<{
 }
 
 .profile-row-2 {
-  width: 120px;
+  width: 160px;
   padding: 1rem 1rem 1rem 2rem;
 }
 
 .profile-row-2 .profile-text {
   text-align: end;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-text {
