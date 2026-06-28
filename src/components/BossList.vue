@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { storeToRefs } from 'pinia'
 import { formatNumber } from '@/util'
@@ -9,24 +9,58 @@ import type { Npc } from '@/model/types'
 import { REGION_ORDER } from '@/model/regions'
 
 const router = useRouter()
+const route = useRoute()
 const saveStore = useSaveStore()
 const { defeatedFlags } = storeToRefs(saveStore)
 
-const searchQuery = ref('')
-const filterGreatRune = ref(false)
-const filterRemembrance = ref(false)
-const filterNightOnly = ref(false)
-const filterParryable = ref(false)
-const filterHuman = ref(false)
-const filterDuoBoss = ref(false)
-const filterMultiPhase = ref(false)
-const filterVoid = ref(false)
-const filterDragon = ref(false)
-const filterAncientDragon = ref(false)
-const filterUndead = ref(false)
-const filterThoseWhoLiveInDeath = ref(false)
-const filterBackstab = ref(false)
-const defeatFilter = ref<'all' | 'defeated' | 'undefeated'>('all')
+const searchQuery = computed({
+  get: () => (route.query.q as string) || '',
+  set: (v: string) => {
+    const q = { ...route.query }
+    if (v) q.q = v
+    else delete q.q
+    router.replace({ query: q })
+  },
+})
+
+function createBoolFilterRef(key: string) {
+  return computed({
+    get: () => route.query[key] === '1',
+    set: (v: boolean) => {
+      const q = { ...route.query }
+      if (v) q[key] = '1'
+      else delete q[key]
+      router.replace({ query: q })
+    },
+  })
+}
+
+const filterGreatRune = createBoolFilterRef('filterGreatRune')
+const filterRemembrance = createBoolFilterRef('filterRemembrance')
+const filterNightOnly = createBoolFilterRef('filterNightOnly')
+const filterParryable = createBoolFilterRef('filterParryable')
+const filterHuman = createBoolFilterRef('filterHuman')
+const filterDuoBoss = createBoolFilterRef('filterDuoBoss')
+const filterMultiPhase = createBoolFilterRef('filterMultiPhase')
+const filterVoid = createBoolFilterRef('filterVoid')
+const filterDragon = createBoolFilterRef('filterDragon')
+const filterAncientDragon = createBoolFilterRef('filterAncientDragon')
+const filterUndead = createBoolFilterRef('filterUndead')
+const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
+const filterBackstab = createBoolFilterRef('filterBackstab')
+
+const defeatFilter = computed<('all' | 'defeated' | 'undefeated')>({
+  get: () => (['all', 'defeated', 'undefeated'].includes(route.query.defeatFilter as string)
+    ? route.query.defeatFilter as 'all' | 'defeated' | 'undefeated'
+    : 'all'),
+  set: (v: 'all' | 'defeated' | 'undefeated') => {
+    const q = { ...route.query }
+    if (v !== 'all') q.defeatFilter = v
+    else delete q.defeatFilter
+    router.replace({ query: q })
+  },
+})
+
 const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
 
 const filteredBaseGameCount = computed(() => filteredEncounters.value.filter((e) => !e.dlc).length)
@@ -170,6 +204,13 @@ function collapseAll() {
   expandedRegions.value = new Set()
 }
 
+const hasActiveFilters = computed(() => Object.keys(route.query).length > 0)
+
+function clearFilters() {
+  router.replace({ query: {} })
+  expandedRegions.value = new Set(encounters.map((e) => e.region))
+}
+
 function isRegionComplete(bosses: typeof encounters): boolean {
   return bosses.every((b) => saveStore.defeatedFlags.has(b.flagId))
 }
@@ -178,7 +219,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 <template>
   <div class="bordered-content boss-list">
     <div class="filters-container">
-      <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
+      <input type="search" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
 
       <div class="filter-row">
         <div class="filter-row-content">
@@ -286,6 +327,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         <div class="expand-all-group">
           <button class="expand-all-btn" @click="expandAll">{{ $t('expandAll') }}</button>
           <button class="expand-all-btn" @click="collapseAll">{{ $t('collapseAll') }}</button>
+          <button class="expand-all-btn" v-show="hasActiveFilters" @click="clearFilters">{{ $t('clearFilters') }}</button>
         </div>
       </div>
     </div>

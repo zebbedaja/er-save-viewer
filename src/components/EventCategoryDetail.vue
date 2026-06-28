@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import type { Slot, EventFlag } from '@zebbedaja/er-save-parser'
 
@@ -31,8 +31,27 @@ const eventCategories: Record<string, string> = {
   grace: 'eventsGrace',
 }
 
-const searchQuery = ref('')
-const activationFilter = ref<'all' | 'activated' | 'notActivated'>('all')
+const searchQuery = computed({
+  get: () => (route.query.q as string) || '',
+  set: (v: string) => {
+    const q = { ...route.query }
+    if (v) q.q = v
+    else delete q.q
+    router.replace({ query: q })
+  },
+})
+
+const activationFilter = computed<'all' | 'activated' | 'notActivated'>({
+  get: () => (['all', 'activated', 'notActivated'].includes(route.query.activationFilter as string)
+    ? route.query.activationFilter as 'all' | 'activated' | 'notActivated'
+    : 'all'),
+  set: (v: 'all' | 'activated' | 'notActivated') => {
+    const q = { ...route.query }
+    if (v !== 'all') q.activationFilter = v
+    else delete q.activationFilter
+    router.replace({ query: q })
+  },
+})
 
 const categoryFlags = computed<EventFlag[]>(() => {
   if (!props.saveSlot?.eventFlags) return []
@@ -62,7 +81,7 @@ const filteredFlags = computed(() => {
 const activatedCount = computed(() => categoryFlags.value.filter((f) => f.state).length)
 
 function goBack() {
-  router.push({ name: 'boss-list' })
+  router.back()
 }
 </script>
 

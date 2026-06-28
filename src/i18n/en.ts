@@ -25,6 +25,7 @@ export default {
   characterName: 'Character Name',
   closestGrace: 'Closest Site of Grace',
   collapseAll: 'Collapse All',
+  clearFilters: 'Clear Filters',
   crimsonTears: 'Crimson Tears',
   deathblight: 'Death Blight',
   defeatedOnly: 'Defeated only',

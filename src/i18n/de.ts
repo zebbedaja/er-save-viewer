@@ -25,6 +25,7 @@ export default {
   characterName: 'Charaktername',
   closestGrace: 'Nächste Gnade',
   collapseAll: 'Alle einklappen',
+  clearFilters: 'Filter zurücksetzen',
   crimsonTears: 'Karmesintränen',
   deathblight: 'Tod',
   defeatedOnly: 'Nur besiegt',

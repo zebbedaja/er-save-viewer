@@ -21,7 +21,7 @@ const hasGreatRune = computed(() => boss.value?.drops.some(d => /Great Rune/.tes
 const hasRemembrance = computed(() => boss.value?.drops.some(d => /Remembrance/.test(d)) ?? false)
 
 function goBack() {
-  router.push({ name: 'boss-list' })
+  router.back()
 }
 
 function getNegationClass(value: number): string {
