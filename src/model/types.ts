@@ -84,6 +84,8 @@ export interface Npc {
   negation: Negation
   resistance: Resistance
   poise: Poise
+  stats: Stats
+  armor: Armor
 }
 
 export interface Region {
@@ -95,4 +97,23 @@ export interface HistoryEntry {
   data: Save
   timestamp: number
   lastModified: number
+}
+
+export interface Stats {
+  runeLevel?: number
+  vigor?: number
+  mind?: number
+  endurance?: number
+  strength?: number
+  dexterity?: number
+  intelligence?: number
+  faith?: number
+  arcane?: number
+}
+
+export interface Armor {
+  helm?: string
+  chestArmor?: string
+  gauntlets?: string
+  legArmor?: string
 }
