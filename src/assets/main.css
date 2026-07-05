@@ -1,8 +1,13 @@
 @import './base.css';
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   font-weight: normal;
 }
 

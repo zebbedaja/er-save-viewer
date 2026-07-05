@@ -49,10 +49,11 @@ const filterUndead = createBoolFilterRef('filterUndead')
 const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
 const filterBackstab = createBoolFilterRef('filterBackstab')
 
-const defeatFilter = computed<('all' | 'defeated' | 'undefeated')>({
-  get: () => (['all', 'defeated', 'undefeated'].includes(route.query.defeatFilter as string)
-    ? route.query.defeatFilter as 'all' | 'defeated' | 'undefeated'
-    : 'all'),
+const defeatFilter = computed<'all' | 'defeated' | 'undefeated'>({
+  get: () =>
+    ['all', 'defeated', 'undefeated'].includes(route.query.defeatFilter as string)
+      ? (route.query.defeatFilter as 'all' | 'defeated' | 'undefeated')
+      : 'all',
   set: (v: 'all' | 'defeated' | 'undefeated') => {
     const q = { ...route.query }
     if (v !== 'all') q.defeatFilter = v
@@ -66,8 +67,12 @@ const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)
 const filteredBaseGameCount = computed(() => filteredEncounters.value.filter((e) => !e.dlc).length)
 const filteredDlcCount = computed(() => filteredEncounters.value.filter((e) => e.dlc).length)
 
-const defeatedBaseGame = computed(() => filteredEncounters.value.filter((e) => !e.dlc && saveStore.defeatedFlags.has(e.flagId)).length)
-const defeatedDlc = computed(() => filteredEncounters.value.filter((e) => e.dlc && saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedBaseGame = computed(
+  () => filteredEncounters.value.filter((e) => !e.dlc && saveStore.defeatedFlags.has(e.flagId)).length,
+)
+const defeatedDlc = computed(
+  () => filteredEncounters.value.filter((e) => e.dlc && saveStore.defeatedFlags.has(e.flagId)).length,
+)
 
 const filteredEncounters = computed(() => {
   const query = searchQuery.value.toLowerCase()
@@ -327,7 +332,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         <div class="expand-all-group">
           <button class="expand-all-btn" @click="expandAll">{{ $t('expandAll') }}</button>
           <button class="expand-all-btn" @click="collapseAll">{{ $t('collapseAll') }}</button>
-          <button class="expand-all-btn" v-show="hasActiveFilters" @click="clearFilters">{{ $t('clearFilters') }}</button>
+          <button class="expand-all-btn" v-show="hasActiveFilters" @click="clearFilters">
+            {{ $t('clearFilters') }}
+          </button>
         </div>
       </div>
     </div>

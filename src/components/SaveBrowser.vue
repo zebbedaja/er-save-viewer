@@ -42,11 +42,11 @@ const trackChangesStore = useTrackChangesStore()
 
 .save-browser {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 400px minmax(0, 1fr);
   gap: 1rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   .save-browser {
     grid-template-columns: 1fr;
   }
