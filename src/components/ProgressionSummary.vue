@@ -41,6 +41,7 @@ const eventCategories: Record<string, string> = {
   heftyCrackedPot: 'eventsHeftyCrackedPot',
   perfumeBottle: 'eventsPerfumeBottle',
   grace: 'eventsGrace',
+  illusoryWall: 'eventsIllusoryWall',
 }
 
 const eventProgress = computed(() => {

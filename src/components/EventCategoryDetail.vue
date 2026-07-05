@@ -29,6 +29,7 @@ const eventCategories: Record<string, string> = {
   heftyCrackedPot: 'eventsHeftyCrackedPot',
   perfumeBottle: 'eventsPerfumeBottle',
   grace: 'eventsGrace',
+  illusoryWall: 'eventsIllusoryWall',
 }
 
 const searchQuery = computed({
@@ -57,7 +58,7 @@ const activationFilter = computed<'all' | 'activated' | 'notActivated'>({
 const categoryFlags = computed<EventFlag[]>(() => {
   if (!props.saveSlot?.eventFlags) return []
   const flags = props.saveSlot.eventFlags.filter((f) => f.category === category.value)
-  const shouldSortByName = ['cookbook', 'ashOfWar'].includes(category.value)
+  const shouldSortByName = ['cookbook', 'ashOfWar', 'illusoryWall'].includes(category.value)
   return flags.toSorted(
     shouldSortByName
       ? (a, b) => (a.name || '').localeCompare(b.name || '', undefined, { numeric: true })

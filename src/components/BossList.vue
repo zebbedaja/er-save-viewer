@@ -219,7 +219,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 <template>
   <div class="bordered-content boss-list">
     <div class="filters-container">
-      <input type="search" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
+      <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
 
       <div class="filter-row">
         <div class="filter-row-content">

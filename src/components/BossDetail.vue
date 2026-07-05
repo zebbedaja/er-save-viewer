@@ -292,6 +292,70 @@ function getNpcImageUrl(npcId: number): string | undefined {
             </div>
           </div>
         </div>
+
+        <div v-if="npc.human && npc.stats.runeLevel != null" class="data-section">
+          <h4 class="section-title-bar">{{ $t('stats') }}</h4>
+          <div class="negation-grid stats-grid">
+            <div class="data-cell">
+              <span class="data-label">{{ $t('runeLevel') }}</span>
+              <span class="data-value">{{ npc.stats.runeLevel }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('vigor') }}</span>
+              <span class="data-value">{{ npc.stats.vigor }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('mind') }}</span>
+              <span class="data-value">{{ npc.stats.mind }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('endurance') }}</span>
+              <span class="data-value">{{ npc.stats.endurance }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('strength') }}</span>
+              <span class="data-value">{{ npc.stats.strength }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('dexterity') }}</span>
+              <span class="data-value">{{ npc.stats.dexterity }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('intelligence') }}</span>
+              <span class="data-value">{{ npc.stats.intelligence }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('faith') }}</span>
+              <span class="data-value">{{ npc.stats.faith }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('arcane') }}</span>
+              <span class="data-value">{{ npc.stats.arcane }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="npc.human && npc.armor.helm" class="data-section">
+          <h4 class="section-title-bar">{{ $t('equipment') }}</h4>
+          <div class="negation-grid equipment-grid">
+            <div class="data-cell">
+              <span class="data-label">{{ $t('helm') }}</span>
+              <span class="data-value">{{ npc.armor.helm }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('chest') }}</span>
+              <span class="data-value">{{ npc.armor.chestArmor }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('gauntlets') }}</span>
+              <span class="data-value">{{ npc.armor.gauntlets }}</span>
+            </div>
+            <div class="data-cell">
+              <span class="data-label">{{ $t('legs') }}</span>
+              <span class="data-value">{{ npc.armor.legArmor }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -548,6 +612,14 @@ function getNpcImageUrl(npcId: number): string | undefined {
 
 .poise-grid {
   grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+}
+
+.stats-grid {
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+}
+
+.equipment-grid {
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
 }
 
 .data-cell {
