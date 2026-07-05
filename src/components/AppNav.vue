@@ -111,7 +111,7 @@ const languages = [
   width: 2rem;
   height: 2rem;
   object-fit: cover;
-  border: 1px solid var(--border-color);
+  /* border: 1px solid var(--border-color); */
   border-radius: 4px;
 }
 

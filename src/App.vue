@@ -6,7 +6,6 @@ import AppNav from '@/components/AppNav.vue'
 
 <template>
   <ThemeAnimations />
-
   <AppNav />
 
   <div class="app-content">
