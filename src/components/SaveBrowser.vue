@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import { useSaveStore } from '@/stores/save'
 import { useTrackChangesStore } from '@/stores/trackChanges'
 import { storeToRefs } from 'pinia'
@@ -10,8 +11,12 @@ import LiveSyncStatus from './LiveSyncStatus.vue'
 import TrackChanges from './TrackChanges.vue'
 
 const saveStore = useSaveStore()
-const { save, activeSlot } = storeToRefs(saveStore)
+const { save, activeSlot, activeSlotId } = storeToRefs(saveStore)
 const trackChangesStore = useTrackChangesStore()
+
+watch(activeSlotId, () => {
+  window.scrollTo({ top: 0 })
+})
 </script>
 
 <template>
@@ -42,7 +47,7 @@ const trackChangesStore = useTrackChangesStore()
 
 .save-browser {
   display: grid;
-  grid-template-columns: 400px minmax(0, 1fr);
+  grid-template-columns: 420px minmax(0, 1fr);
   gap: 1rem;
 }
 

@@ -13,6 +13,10 @@ function openEventCategory(category: string) {
   router.push({ name: 'event-detail', params: { category } })
 }
 
+function openBossList(hash?: string) {
+  router.push({ name: 'boss-list', hash })
+}
+
 const props = defineProps<{
   saveSlot: Slot | null
 }>()
@@ -81,21 +85,27 @@ const eventProgress = computed(() => {
       {{ $t('bosses') }}
     </div>
     <div class="attributes-grid">
-      <ProgressRow
-        :label="$t('overall')"
-        :value="`${defeatedOverall}/${encounters.length}`"
-        :percentage="(defeatedOverall / encounters.length) * 100"
-      />
-      <ProgressRow
-        :label="$t('baseGame')"
-        :value="`${defeatedBaseGame}/${baseGameBosses.length}`"
-        :percentage="(defeatedBaseGame / baseGameBosses.length) * 100"
-      />
-      <ProgressRow
-        :label="$t('dlc')"
-        :value="`${defeatedDlc}/${dlcBosses.length}`"
-        :percentage="(defeatedDlc / dlcBosses.length) * 100"
-      />
+      <div @click="openBossList()" class="category-click">
+        <ProgressRow
+          :label="$t('overall')"
+          :value="`${defeatedOverall}/${encounters.length}`"
+          :percentage="(defeatedOverall / encounters.length) * 100"
+        />
+      </div>
+      <div @click="openBossList('#base')" class="category-click">
+        <ProgressRow
+          :label="$t('baseGame')"
+          :value="`${defeatedBaseGame}/${baseGameBosses.length}`"
+          :percentage="(defeatedBaseGame / baseGameBosses.length) * 100"
+        />
+      </div>
+      <div @click="openBossList('#dlc')" class="category-click">
+        <ProgressRow
+          :label="$t('dlc')"
+          :value="`${defeatedDlc}/${dlcBosses.length}`"
+          :percentage="(defeatedDlc / dlcBosses.length) * 100"
+        />
+      </div>
     </div>
     <div class="events-section">
       <div class="events-title">

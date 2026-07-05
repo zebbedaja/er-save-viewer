@@ -40,9 +40,9 @@ async function openFilePicker() {
     <p>
       {{ $t('uploadConnectSave') }}
     </p>
-    <p>%APPDATA%\EldenRing\&lt;YOUR_STEAM_ID&gt;\ER0000.sl2</p>
+    <p class="file-path">%APPDATA%\EldenRing\&lt;STEAM_ID&gt;\ER0000.sl2</p>
     <p>
-      {{ $t('uploadDownloadFrom') }}<br />
+      {{ $t('uploadDownloadFrom') }}
       <a href="https://store.steampowered.com/account/remotestorageapp/?appid=1245620" target="_blank">{{
         $t('uploadSteamCloud')
       }}</a>
@@ -67,6 +67,12 @@ async function openFilePicker() {
   text-align: center;
 }
 
+.file-path {
+  color: var(--main-font-color);
+  opacity: 0.6;
+  font-family: monospace;
+}
+
 .headline {
   font-size: 1.5rem;
   font-weight: bold;
@@ -79,7 +85,7 @@ async function openFilePicker() {
 }
 
 .divider {
-  margin: 2rem;
+  margin: 1.8rem;
   background: var(--divider-gradient);
   height: 2px;
 }

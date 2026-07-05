@@ -344,7 +344,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
     </div>
 
     <template v-if="groupedBaseGameBosses.length">
-      <div class="section-header">
+      <div class="section-header" id="base">
         <span class="section-title">{{ $t('baseGameSection') }}</span>
         <span class="section-complete" v-if="defeatedBaseGame === filteredBaseGameCount">✓</span>
         <span class="section-count">{{ defeatedBaseGame }}/{{ filteredBaseGameCount }}</span>
@@ -391,7 +391,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
     <!-- <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" /> -->
 
     <template v-if="groupedDlcBosses.length">
-      <div class="section-header">
+      <div class="section-header" id="dlc">
         <span class="section-title">{{ $t('dlcSection') }}</span>
         <span class="section-complete" v-if="defeatedDlc === filteredDlcCount">✓</span>
         <span class="section-count">{{ defeatedDlc }}/{{ filteredDlcCount }}</span>

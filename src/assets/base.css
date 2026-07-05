@@ -72,6 +72,15 @@
   src: url('@/assets/fonts/CrimsonText-Regular.ttf') format('truetype');
 }
 
+html {
+  scroll-padding-top: 50px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 body,
 button,
 select,
