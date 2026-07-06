@@ -1,7 +1,16 @@
 {
   "name": "er-save-viewer",
   "version": "0.0.4",
-  "private": true,
+  "author": "zebbedaja",
+  "license": "MIT",
+  "homepage": "https://zebbedaja.github.io/er-save-viewer/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zebbedaja/er-save-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zebbedaja/er-save-viewer/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

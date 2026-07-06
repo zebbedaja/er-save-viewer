@@ -9,6 +9,7 @@ import CharacterOverview from './CharacterOverview.vue'
 import ProgressionSummary from './ProgressionSummary.vue'
 import LiveSyncStatus from './LiveSyncStatus.vue'
 import TrackChanges from './TrackChanges.vue'
+import SaveInfo from './SaveInfo.vue'
 
 const saveStore = useSaveStore()
 const { save, activeSlot, activeSlotId } = storeToRefs(saveStore)
@@ -29,6 +30,7 @@ watch(activeSlotId, () => {
       <TrackChanges v-if="activeSlot != null && trackChangesStore.trackChangesMode" />
 
       <template v-if="save != null">
+        <SaveInfo />
         <LiveSyncStatus />
       </template>
     </div>
