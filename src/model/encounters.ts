@@ -396,7 +396,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 47, absorption: 1, effective: 47, regenDelay: 30 },
         defense: { physical: 105, magic: 139, fire: 129, lightning: 103, holy: 110 },
         negation: { standard: 26, slash: 27, strike: 24, pierce: 24, magic: 25, fire: 19, lightning: 20, holy: 18 },
         resistance: {
@@ -707,7 +707,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 46, absorption: 1, effective: 46, regenDelay: 30 },
         defense: { physical: 113, magic: 118, fire: 122, lightning: 100, holy: 112 },
         negation: { standard: 26, slash: 24, strike: 22, pierce: 23, magic: 19, fire: 21, lightning: 17, holy: 17 },
         resistance: {
@@ -826,7 +826,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 46, absorption: 1, effective: 46, regenDelay: 30 },
         defense: { physical: 139, magic: 134, fire: 150, lightning: 120, holy: 136 },
         negation: { standard: 26, slash: 27, strike: 23, pierce: 26, magic: 20, fire: 21, lightning: 16, holy: 22 },
         resistance: {
@@ -877,7 +877,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 15, absorption: 1, effective: 15, regenDelay: 30 },
         defense: { physical: 93, magic: 129, fire: 106, lightning: 90, holy: 97 },
         negation: { standard: 9, slash: 9, strike: 6, pierce: 9, magic: 25, fire: 23, lightning: 24, holy: 25 },
         resistance: {
@@ -928,7 +928,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 86, absorption: 1, effective: 86, regenDelay: 30 },
         defense: { physical: 96, magic: 124, fire: 106, lightning: 90, holy: 99 },
         negation: { standard: 34, slash: 36, strike: 32, pierce: 37, magic: 27, fire: 29, lightning: 26, holy: 27 },
         resistance: {
@@ -979,7 +979,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 49, absorption: 1, effective: 49, regenDelay: 30 },
         defense: { physical: 139, magic: 134, fire: 150, lightning: 120, holy: 136 },
         negation: { standard: 27, slash: 29, strike: 24, pierce: 28, magic: 21, fire: 23, lightning: 19, holy: 22 },
         resistance: {
@@ -1030,7 +1030,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 18, absorption: 1, effective: 18, regenDelay: 30 },
         defense: { physical: 123, magic: 180, fire: 137, lightning: 120, holy: 144 },
         negation: { standard: 11, slash: 10, strike: 11, pierce: 7, magic: 26, fire: 24, lightning: 25, holy: 26 },
         resistance: {
@@ -3975,7 +3975,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 46, absorption: 1, effective: 46, regenDelay: 30 },
         defense: { physical: 161, magic: 148, fire: 178, lightning: 130, holy: 144 },
         negation: { standard: 26, slash: 24, strike: 22, pierce: 23, magic: 19, fire: 21, lightning: 17, holy: 17 },
         resistance: {
@@ -4043,7 +4043,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 22, absorption: 1, effective: 22, regenDelay: 30 },
         defense: { physical: 85, magic: 98, fire: 98, lightning: 81, holy: 96 },
         negation: { standard: 14, slash: 14, strike: 16, pierce: 15, magic: 16, fire: 16, lightning: 18, holy: 18 },
         resistance: {
@@ -5155,7 +5155,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 12, absorption: 1, effective: 12, regenDelay: 30 },
         defense: { physical: 100, magic: 131, fire: 117, lightning: 95, holy: 100 },
         negation: { standard: 10, slash: 9, strike: 9, pierce: 6, magic: 20, fire: 19, lightning: 19, holy: 20 },
         resistance: {
@@ -6182,7 +6182,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 20, absorption: 1, effective: 20, regenDelay: 30 },
         defense: { physical: 94, magic: 101, fire: 109, lightning: 92, holy: 101 },
         negation: { standard: 12, slash: 11, strike: 11, pierce: 11, magic: 24, fire: 22, lightning: 24, holy: 25 },
         resistance: {
@@ -6504,7 +6504,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 0, absorption: 1, effective: 0, regenDelay: 30 },
         defense: { physical: 162, magic: 180, fire: 183, lightning: 156, holy: 183 },
         negation: { standard: -5, slash: -5, strike: -5, pierce: -5, magic: -5, fire: -5, lightning: -5, holy: -5 },
         resistance: {
@@ -6618,7 +6618,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 0, absorption: 1, effective: 0, regenDelay: 30 },
         defense: { physical: 173, magic: 184, fire: 211, lightning: 166, holy: 206 },
         negation: { standard: -5, slash: -5, strike: -5, pierce: -5, magic: -5, fire: -5, lightning: -5, holy: -5 },
         resistance: {
@@ -7564,7 +7564,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 86, absorption: 1, effective: 86, regenDelay: 30 },
         defense: { physical: 92, magic: 91, fire: 103, lightning: 87, holy: 93 },
         negation: { standard: 34, slash: 33, strike: 30, pierce: 32, magic: 25, fire: 34, lightning: 24, holy: 24 },
         resistance: {
@@ -10607,7 +10607,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 0, absorption: 1, effective: 0, regenDelay: 30 },
         defense: { physical: 104, magic: 108, fire: 120, lightning: 98, holy: 108 },
         negation: { standard: 0, slash: 0, strike: 0, pierce: 0, magic: 0, fire: 0, lightning: 0, holy: 0 },
         resistance: {
@@ -11105,7 +11105,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 10, absorption: 1, effective: 10, regenDelay: 30 },
         defense: { physical: 118, magic: 129, fire: 161, lightning: 112, holy: 139 },
         negation: { standard: 8, slash: 12, strike: 5, pierce: 5, magic: 25, fire: 25, lightning: 24, holy: 24 },
         resistance: {
@@ -11230,7 +11230,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 96, absorption: 1, effective: 96, regenDelay: 30 },
         defense: { physical: 128, magic: 134, fire: 144, lightning: 116, holy: 144 },
         negation: { standard: 36, slash: 35, strike: 34, pierce: 34, magic: 26, fire: 28, lightning: 27, holy: 27 },
         resistance: {
@@ -11297,7 +11297,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 33, absorption: 1, effective: 33, regenDelay: 30 },
         defense: { physical: 149, magic: 158, fire: 168, lightning: 140, holy: 199 },
         negation: { standard: 18, slash: 18, strike: 18, pierce: 18, magic: 21, fire: 21, lightning: 22, holy: 20 },
         resistance: {
@@ -11781,7 +11781,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 21, absorption: 1, effective: 21, regenDelay: 30 },
         defense: { physical: 159, magic: 191, fire: 177, lightning: 149, holy: 207 },
         negation: { standard: 11, slash: 9, strike: 14, pierce: 9, magic: 28, fire: 24, lightning: 25, holy: 28 },
         resistance: {
@@ -12180,7 +12180,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 58, absorption: 1, effective: 58, regenDelay: 30 },
         defense: { physical: 125, magic: 136, fire: 156, lightning: 118, holy: 146 },
         negation: { standard: 26, slash: 27, strike: 24, pierce: 27, magic: 23, fire: 25, lightning: 22, holy: 23 },
         resistance: {
@@ -12255,7 +12255,7 @@ export const encounters: Encounter[] = [
         dragon: false,
         undead: false,
         human: true,
-        poise: { base: 100, absorption: 1, effective: 100, regenDelay: 7.69230785 },
+        poise: { base: 23, absorption: 1, effective: 23, regenDelay: 30 },
         defense: { physical: 158, magic: 210, fire: 179, lightning: 152, holy: 199 },
         negation: { standard: 12, slash: 10, strike: 13, pierce: 7, magic: 26, fire: 25, lightning: 25, holy: 25 },
         resistance: {

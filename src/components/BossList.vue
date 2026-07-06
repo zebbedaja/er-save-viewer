@@ -537,7 +537,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   background: var(--hover-background);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .section-complete {
