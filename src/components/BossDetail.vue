@@ -107,85 +107,80 @@ function getNpcImageUrl(npcId: number): string | undefined {
     </div>
 
     <div class="npc-phase" v-for="(npc, index) in boss.npcs" :key="index">
-      <div class="npc-phase-row">
-        <div class="npc-phase-info">
-          <h3 class="phase-title">
-            {{ $t('phase') }} {{ npc.phase }} &mdash;
-            <span class="npc-name">{{ npc.name }}</span>
-          </h3>
+      <h3 class="phase-title">
+        {{ $t('phase') }} {{ npc.phase }} &mdash;
+        <span class="npc-name">{{ npc.name }}</span>
+      </h3>
 
-          <div class="npc-attributes">
-            <span class="attr-badge" :class="npc.stanceCritical ? 'positive' : 'negative'">
-              {{ npc.stanceCritical ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
-            </span>
-            <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
-              {{
-                npc.parryable
-                  ? $t('parryable') +
-                    (npc.numberOfParries != null && npc.numberOfParries > 1
-                      ? ' (' + $t('requiresNParries', { count: npc.numberOfParries }) + ')'
-                      : '')
-                  : $t('notParryable')
-              }}
-            </span>
-            <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
-              {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
-            </span>
-            <span v-if="npc.human" class="attr-badge positive">
-              {{ $t('human') }}
-            </span>
-            <span v-if="npc.void" class="attr-badge void">
-              {{ $t('voidBadge') }}
-            </span>
-            <span v-if="npc.dragon" class="attr-badge dragon">
-              {{ $t('dragonBadge') }}
-            </span>
-            <span v-if="npc.ancientDragon" class="attr-badge ancient-dragon">
-              {{ $t('ancientDragonBadge') }}
-            </span>
-            <span v-if="npc.thoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">
-              {{ $t('thoseWhoLiveInDeathBadge') }}
-            </span>
-            <span v-if="npc.undead" class="attr-badge undead">
-              {{ $t('undeadBadge') }}
-            </span>
-          </div>
+      <div class="npc-attributes">
+        <span class="attr-badge" :class="npc.stanceCritical ? 'positive' : 'negative'">
+          {{ npc.stanceCritical ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
+        </span>
+        <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
+          {{
+            npc.parryable
+              ? $t('parryable') +
+                (npc.numberOfParries != null && npc.numberOfParries > 1
+                  ? ' (' + $t('requiresNParries', { count: npc.numberOfParries }) + ')'
+                  : '')
+              : $t('notParryable')
+          }}
+        </span>
+        <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
+          {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
+        </span>
+        <span v-if="npc.human" class="attr-badge positive">
+          {{ $t('human') }}
+        </span>
+        <span v-if="npc.void" class="attr-badge void">
+          {{ $t('voidBadge') }}
+        </span>
+        <span v-if="npc.dragon" class="attr-badge dragon">
+          {{ $t('dragonBadge') }}
+        </span>
+        <span v-if="npc.ancientDragon" class="attr-badge ancient-dragon">
+          {{ $t('ancientDragonBadge') }}
+        </span>
+        <span v-if="npc.thoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">
+          {{ $t('thoseWhoLiveInDeathBadge') }}
+        </span>
+        <span v-if="npc.undead" class="attr-badge undead">
+          {{ $t('undeadBadge') }}
+        </span>
+      </div>
 
-          <div class="npc-stats-tall">
-            <div class="meta-row">
-              <span class="meta-label">{{ $t('hp') }}</span>
-              <span class="meta-value meta-highlight">{{ formatNumber(npc.hp) }}</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">{{ $t('defense') }} ({{ $t('physical') }})</span>
-              <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.physical) }}</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">{{ $t('defense') }} ({{ $t('magic') }})</span>
-              <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">{{ $t('defense') }} ({{ $t('fire') }})</span>
-              <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.fire) }}</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">{{ $t('defense') }} ({{ $t('lightning') }})</span>
-              <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.lightning) }}</span>
-            </div>
-            <div class="meta-row">
-              <span class="meta-label">{{ $t('defense') }} ({{ $t('holy') }})</span>
-              <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.holy) }}</span>
-            </div>
-            <div class="meta-row" v-if="npc.weakPart">
-              <span class="meta-label">{{ $t('weakPart') }}</span>
-              <span class="meta-value meta-highlight"> {{ npc.weakPart }} (x{{ npc.weakPartsDamageRate }}) </span>
-            </div>
-          </div>
+      <div class="npc-stats-tall">
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('hp') }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.hp) }}</span>
         </div>
-        <div class="npc-image-container">
-          <img v-if="getNpcImageUrl(npc.id)" :src="getNpcImageUrl(npc.id)" class="npc-image" :alt="npc.name" />
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('physical') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.physical) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('magic') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('fire') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.fire) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('lightning') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.lightning) }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ $t('defense') }} ({{ $t('holy') }})</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.holy) }}</span>
+        </div>
+        <div class="meta-row" v-if="npc.weakPart">
+          <span class="meta-label">{{ $t('weakPart') }}</span>
+          <span class="meta-value meta-highlight"> {{ npc.weakPart }} (x{{ npc.weakPartsDamageRate }}) </span>
         </div>
       </div>
+
+      <img v-if="getNpcImageUrl(npc.id) && false" :src="getNpcImageUrl(npc.id)" class="npc-image" :alt="npc.name" />
 
       <div class="phase-data">
         <div class="data-section">
@@ -462,33 +457,6 @@ function getNpcImageUrl(npcId: number): string | undefined {
 
 .npc-image {
   width: 100%;
-}
-
-.npc-phase-row {
-  display: flex;
-  gap: 1rem;
-}
-
-.npc-phase-info {
-  width: 100%;
-}
-
-.npc-image-container {
-  width: 400px;
-}
-
-@media (max-width: 786px) {
-  .npc-phase-row {
-    flex-direction: column-reverse;
-  }
-
-  .npc-phase-info {
-    width: 100%;
-  }
-
-  .npc-image-container {
-    width: 100%;
-  }
 }
 
 .npc-phase {

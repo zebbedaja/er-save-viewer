@@ -378,10 +378,12 @@ function isRegionComplete(bosses: typeof encounters): boolean {
             }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
-              {{ formatNumber(boss.runes) }}
+              <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
+              <span class="stat-icon">✦</span>
             </span>
             <span class="boss-stat" :title="$t('hp')">
-              {{ formatNumber(boss.hp) }}
+              <span class="stat-value">{{ formatNumber(boss.hp) }}</span>
+              <span class="stat-icon">♥</span>
             </span>
           </div>
         </div>
@@ -425,10 +427,12 @@ function isRegionComplete(bosses: typeof encounters): boolean {
             }}</span>
             <span class="boss-location">{{ boss.location }}</span>
             <span class="boss-stat" :title="$t('runes')">
-              {{ formatNumber(boss.runes) }}
+              <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
+              <span class="stat-icon">✦</span>
             </span>
             <span class="boss-stat" :title="$t('hp')">
-              {{ formatNumber(boss.hp) }}
+              <span class="stat-value">{{ formatNumber(boss.hp) }}</span>
+              <span class="stat-icon">♥</span>
             </span>
           </div>
         </div>
@@ -681,7 +685,10 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   color: var(--highlight-color);
   opacity: 0.7;
   flex-shrink: 0;
-  min-width: 2.5rem;
-  text-align: right;
+  width: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
 }
 </style>
