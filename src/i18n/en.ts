@@ -113,7 +113,7 @@ export default {
   resistance: 'Status Resistance',
   rot: 'Scarlet Rot',
   runes: 'Runes',
-  searchBosses: 'Search bosses...',
+  searchBosses: 'Search bosses',
   searchFlags: 'Search flags...',
   selectCharacter: 'Select your character',
   selectDifferentCharacter: 'Select character',

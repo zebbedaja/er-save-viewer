@@ -185,7 +185,6 @@ const languages = [
 }
 
 .nav-link:hover {
-  opacity: 1;
   color: var(--highlight-color);
 }
 
@@ -201,7 +200,7 @@ const languages = [
 }
 
 .nav-btn {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   padding: 0.3rem 0.6rem;
   background: var(--hover-background);
   color: var(--main-font-color);
@@ -218,7 +217,7 @@ const languages = [
 }
 
 .btn-label {
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .btn-value {
@@ -235,7 +234,7 @@ const languages = [
 }
 
 .nav-select {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   padding: 0.3rem 0.4rem;
   background: var(--hover-background);
   color: var(--main-font-color);

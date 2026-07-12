@@ -15,6 +15,10 @@ const props = defineProps<{
 }>()
 
 const character = computed<Character | undefined>(() => props.saveSlot?.character)
+
+function calculatePercantage(max: number, value?: number): number {
+  return Math.min(((value ?? 0) / max) * 100, 100)
+}
 </script>
 
 <template>
@@ -79,42 +83,60 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
       <ProgressRow
         :label="$t('vigor')"
         :value="formatNumber(character?.vigor ?? 0)"
-        :percentage="Math.min(((character?.vigor ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.vigor)"
+        :caps="[calculatePercantage(99, 40), calculatePercantage(99, 60)]"
       />
       <ProgressRow
         :label="$t('mind')"
         :value="formatNumber(character?.mind ?? 0)"
-        :percentage="Math.min(((character?.mind ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.mind)"
+        :caps="[calculatePercantage(99, 50), calculatePercantage(99, 60)]"
       />
       <ProgressRow
         :label="$t('endurance')"
         :value="formatNumber(character?.endurance ?? 0)"
-        :percentage="Math.min(((character?.endurance ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.endurance)"
+        :caps="[calculatePercantage(99, 15), calculatePercantage(99, 30), calculatePercantage(99, 50)]"
       />
       <ProgressRow
         :label="$t('strength')"
         :value="formatNumber(character?.strength ?? 0)"
-        :percentage="Math.min(((character?.strength ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.strength)"
+        :caps="[
+          calculatePercantage(99, 18),
+          calculatePercantage(99, 50),
+          calculatePercantage(99, 60),
+          calculatePercantage(99, 80),
+        ]"
       />
       <ProgressRow
         :label="$t('dexterity')"
         :value="formatNumber(character?.dexterity ?? 0)"
-        :percentage="Math.min(((character?.dexterity ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.dexterity)"
+        :caps="[
+          calculatePercantage(99, 18),
+          calculatePercantage(99, 50),
+          calculatePercantage(99, 60),
+          calculatePercantage(99, 80),
+        ]"
       />
       <ProgressRow
         :label="$t('intelligence')"
         :value="formatNumber(character?.intelligence ?? 0)"
-        :percentage="Math.min(((character?.intelligence ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.intelligence)"
+        :caps="[calculatePercantage(99, 20), calculatePercantage(99, 50), calculatePercantage(99, 80)]"
       />
       <ProgressRow
         :label="$t('faith')"
         :value="formatNumber(character?.faith ?? 0)"
-        :percentage="Math.min(((character?.faith ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.faith)"
+        :caps="[calculatePercantage(99, 20), calculatePercantage(99, 50), calculatePercantage(99, 80)]"
       />
       <ProgressRow
         :label="$t('arcane')"
         :value="formatNumber(character?.arcane ?? 0)"
-        :percentage="Math.min(((character?.arcane ?? 0) / 99) * 100, 100)"
+        :percentage="calculatePercantage(99, character?.arcane)"
+        :caps="[calculatePercantage(99, 20), calculatePercantage(99, 60), calculatePercantage(99, 80)]"
       />
     </div>
     <div class="button-row">
@@ -137,7 +159,6 @@ const character = computed<Character | undefined>(() => props.saveSlot?.characte
   display: flex;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.6rem;
-  /* justify-content: space-between; */
   gap: 0.8rem;
   align-items: center;
 }

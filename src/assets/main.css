@@ -19,7 +19,6 @@ a {
   transition: 0.3s;
   text-align: center;
   background: transparent;
-  color: var(--link-color);
   font-size: 0.8rem;
 }
 
@@ -64,9 +63,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .filter-group {
@@ -79,13 +75,12 @@ a {
 }
 
 .filter-group-connected button {
-  border-right: 0;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.filter-group-connected button:last-child {
-  border-right: 1px solid var(--border-color);
+.filter-group-connected button:not(:first-child) {
+  margin-left: -0.5px;
 }
 
 /* === Search input === */
@@ -144,7 +139,7 @@ a {
   background: none;
   border: 1px solid var(--border-color);
   color: var(--main-font-color);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   padding: 0.3rem 0.6rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -158,10 +153,8 @@ a {
 /* === Section titles === */
 
 .section-title-bar {
-  font-size: 0.7rem;
-  text-transform: uppercase;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
-  opacity: 0.5;
   margin: 0;
   padding-bottom: 0.2rem;
   border-bottom: 1px solid var(--border-color);

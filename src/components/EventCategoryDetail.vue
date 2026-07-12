@@ -97,31 +97,33 @@ function goBack() {
       <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="title-section">
         <h2 class="event-title">{{ $t(eventCategories[category] as unknown as keyof typeof $t) }}</h2>
-        <span class="event-count">{{ activatedCount }}/{{ categoryFlags.length }}</span>
+        <span class="event-count">{{ activatedCount }} / {{ categoryFlags.length }}</span>
       </div>
     </div>
 
     <div class="filters-container">
-      <input type="text" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
+      <div class="search-and-filter">
+        <input type="text" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
 
-      <div class="filter-group">
-        <button class="toggle-btn" :class="{ active: activationFilter === 'all' }" @click="activationFilter = 'all'">
-          {{ $t('allFlags') }}
-        </button>
-        <button
-          class="toggle-btn"
-          :class="{ active: activationFilter === 'activated' }"
-          @click="activationFilter = 'activated'"
-        >
-          {{ $t('activatedOnly') }}
-        </button>
-        <button
-          class="toggle-btn"
-          :class="{ active: activationFilter === 'notActivated' }"
-          @click="activationFilter = 'notActivated'"
-        >
-          {{ $t('notActivatedOnly') }}
-        </button>
+        <div class="filter-group filter-group-connected">
+          <button class="toggle-btn" :class="{ active: activationFilter === 'all' }" @click="activationFilter = 'all'">
+            {{ $t('allFlags') }}
+          </button>
+          <button
+            class="toggle-btn"
+            :class="{ active: activationFilter === 'activated' }"
+            @click="activationFilter = 'activated'"
+          >
+            {{ $t('activatedOnly') }}
+          </button>
+          <button
+            class="toggle-btn"
+            :class="{ active: activationFilter === 'notActivated' }"
+            @click="activationFilter = 'notActivated'"
+          >
+            {{ $t('notActivatedOnly') }}
+          </button>
+        </div>
       </div>
     </div>
 
@@ -152,6 +154,29 @@ function goBack() {
 </template>
 
 <style scoped>
+.search-and-filter {
+  display: flex;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.search-and-filter .search-input {
+  flex: 1;
+}
+
+.search-and-filter .toggle-btn {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: transparent;
+}
+
+.toggle-btn.active {
+  background: var(--highlight-color);
+}
+
 .event-detail-header {
   display: flex;
   flex-direction: column;
@@ -180,10 +205,8 @@ function goBack() {
   font-size: 0.8rem;
   font-weight: bold;
   color: var(--highlight-color);
-  background: var(--hover-background);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
-  opacity: 0.7;
 }
 
 .not-found {
@@ -240,14 +263,10 @@ function goBack() {
   font-size: 0.75rem;
   border-bottom: 1px solid var(--border-color);
   border-bottom-color: rgba(89, 88, 84, 0.3);
-  transition: background 0.15s;
+  transition: background-color 0.15s;
 }
 
 .flag-row:hover {
-  background: var(--hover-background);
-}
-
-.flag-row.activated {
   background: var(--hover-background);
 }
 
@@ -284,7 +303,7 @@ function goBack() {
 
 .flag-location {
   opacity: 0.4;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   flex-shrink: 0;
   max-width: 10rem;
   white-space: nowrap;

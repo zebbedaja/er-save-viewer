@@ -42,7 +42,7 @@ const hasDifferences = computed(() => differences.value.length > 0)
 .empty-state {
   color: var(--main-font-color);
   opacity: 0.5;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-align: center;
   padding: 0.75rem 0;
 }
@@ -71,7 +71,7 @@ const hasDifferences = computed(() => differences.value.length > 0)
   color: var(--main-font-color);
   opacity: 0.6;
   font-family: monospace;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .title {

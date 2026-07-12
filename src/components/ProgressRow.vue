@@ -5,6 +5,7 @@ defineProps<{
   label: string
   value: string
   percentage: number
+  caps?: number[]
 }>()
 </script>
 
@@ -12,7 +13,7 @@ defineProps<{
   <div class="progress-row">
     <span class="progress-row-label">{{ label }}</span>
     <span class="progress-row-value">{{ value }}</span>
-    <ProgressBar flex :percentage="percentage" />
+    <ProgressBar flex :percentage="percentage" :caps="caps" />
   </div>
 </template>
 
@@ -26,7 +27,7 @@ defineProps<{
 }
 
 .progress-row-label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   opacity: 0.7;
   overflow: hidden;

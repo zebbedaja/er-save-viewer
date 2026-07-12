@@ -255,7 +255,11 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               {{ $t('greatRune') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterRemembrance }" @click="filterRemembrance = !filterRemembrance">
+            <button
+              class="toggle-btn"
+              :class="{ active: filterRemembrance }"
+              @click="filterRemembrance = !filterRemembrance"
+            >
               {{ $t('remembrance') }}
             </button>
 
@@ -275,7 +279,11 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               {{ $t('duoBoss') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterMultiPhase }" @click="filterMultiPhase = !filterMultiPhase">
+            <button
+              class="toggle-btn"
+              :class="{ active: filterMultiPhase }"
+              @click="filterMultiPhase = !filterMultiPhase"
+            >
               {{ $t('multiPhaseBoss') }}
             </button>
 
@@ -287,7 +295,11 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               {{ $t('dragonFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterAncientDragon }" @click="filterAncientDragon = !filterAncientDragon">
+            <button
+              class="toggle-btn"
+              :class="{ active: filterAncientDragon }"
+              @click="filterAncientDragon = !filterAncientDragon"
+            >
               {{ $t('ancientDragonFilter') }}
             </button>
 
@@ -295,7 +307,11 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               {{ $t('undeadFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterThoseWhoLiveInDeath }" @click="filterThoseWhoLiveInDeath = !filterThoseWhoLiveInDeath">
+            <button
+              class="toggle-btn"
+              :class="{ active: filterThoseWhoLiveInDeath }"
+              @click="filterThoseWhoLiveInDeath = !filterThoseWhoLiveInDeath"
+            >
               {{ $t('thoseWhoLiveInDeathFilter') }}
             </button>
 
@@ -323,7 +339,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
       <div class="section-header" id="base">
         <span class="section-title">{{ $t('baseGameSection') }}</span>
         <span class="section-complete" v-if="defeatedBaseGame === filteredBaseGameCount">✓</span>
-        <span class="section-count">{{ defeatedBaseGame }}/{{ filteredBaseGameCount }}</span>
+        <span class="section-count">{{ defeatedBaseGame }} / {{ filteredBaseGameCount }}</span>
       </div>
 
       <div
@@ -333,10 +349,10 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         :class="{ completed: isRegionComplete(bosses) }"
       >
         <div class="region-header" @click="toggleRegion(region)">
-          <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
-          <span class="region-name">{{ region }}</span>
-          <span class="region-complete" v-if="isRegionComplete(bosses)">✓</span>
-          <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
+          <div class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</div>
+          <div class="region-name">{{ region }}</div>
+          <div class="region-complete" v-if="isRegionComplete(bosses)">✓</div>
+          <div class="region-count">{{ countDefeated(bosses) }} / {{ bosses.length }}</div>
         </div>
 
         <div v-show="expandedRegions.has(region)" class="boss-rows">
@@ -366,7 +382,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
       </div>
     </template>
 
-    <!-- <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" /> -->
+    <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" />
 
     <template v-if="groupedDlcBosses.length">
       <div class="section-header" id="dlc">
@@ -454,6 +470,9 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 .expand-all-group {
   display: flex;
   gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .expand-all-link {
@@ -465,7 +484,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 }
 
 .expand-all-link:hover {
-  text-decoration: underline;
+  color: var(--link-color);
 }
 
 .section-header {
@@ -479,21 +498,13 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 .section-title {
   font-size: 0.95rem;
   color: var(--highlight-color);
-  font-weight: bold;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
-  opacity: 0.7;
   flex: 1;
 }
 
 .section-count {
   font-size: 0.8rem;
   font-weight: bold;
-  color: var(--highlight-color);
-  background: var(--hover-background);
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  opacity: 1;
 }
 
 .section-complete {
@@ -507,7 +518,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   height: 2px;
   margin: 0.4rem 0;
   border: none;
-  background: linear-gradient(90deg, var(--highlight-color), transparent);
+  /* background: linear-gradient(90deg, var(--highlight-color), transparent); */
   opacity: 0.3;
 }
 
@@ -526,7 +537,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   padding: 0.5rem 0;
   cursor: pointer;
   user-select: none;
-  transition: 0.2s;
+  transition: all 0.2s;
 }
 
 .region-header:hover {
@@ -543,22 +554,16 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 
 .region-name {
   font-size: 0.85rem;
-  color: var(--highlight-color);
   flex: 1;
 }
 
 .region-count {
   font-size: 0.8rem;
   font-weight: bold;
-  background: var(--hover-background);
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  opacity: 0.7;
 }
 
 .region-group.completed .region-count {
   color: var(--highlight-color);
-  opacity: 1;
 }
 
 .region-complete {
@@ -570,23 +575,21 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   text-align: center;
 }
 
+.boss-rows {
+  margin-left: 1.3rem;
+}
+
 .boss-row {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem 0.5rem;
+  padding: 0.4rem 0 0.4rem 0.4rem;
   font-size: 0.75rem;
   border-bottom: 1px solid var(--border-color);
-  border-bottom-color: rgba(89, 88, 84, 0.3);
-  transition: background 0.15s;
   cursor: pointer;
 }
 
 .boss-row:hover {
-  background: var(--hover-background);
-}
-
-.boss-row.defeated {
   background: var(--hover-background);
 }
 
@@ -615,7 +618,6 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 
 .boss-row.defeated .boss-name {
   color: var(--highlight-color);
-  font-weight: bold;
 }
 
 .boss-row:not(.defeated) .boss-name {
