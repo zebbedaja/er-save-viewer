@@ -74,6 +74,20 @@ a {
   gap: 0.5rem;
 }
 
+.filter-group-connected {
+  gap: 0;
+}
+
+.filter-group-connected button {
+  border-right: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.filter-group-connected button:last-child {
+  border-right: 1px solid var(--border-color);
+}
+
 /* === Search input === */
 
 .search-input {

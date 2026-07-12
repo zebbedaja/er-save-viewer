@@ -224,117 +224,93 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 <template>
   <div class="bordered-content boss-list">
     <div class="filters-container">
-      <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
+      <div class="search-and-filter">
+        <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
+
+        <div class="filter-group filter-group-connected">
+          <button class="toggle-btn" :class="{ active: defeatFilter === 'all' }" @click="defeatFilter = 'all'">
+            {{ $t('allBosses') }}
+          </button>
+          <button
+            class="toggle-btn"
+            :class="{ active: defeatFilter === 'defeated' }"
+            @click="defeatFilter = 'defeated'"
+          >
+            {{ $t('defeatedOnly') }}
+          </button>
+          <button
+            class="toggle-btn"
+            :class="{ active: defeatFilter === 'undefeated' }"
+            @click="defeatFilter = 'undefeated'"
+          >
+            {{ $t('undefeatedOnly') }}
+          </button>
+        </div>
+      </div>
 
       <div class="filter-row">
         <div class="filter-row-content">
-          <div class="filter-group checkboxes">
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterGreatRune" />
-              <span class="check-box" :class="{ checked: filterGreatRune }"></span>
-              <span class="filter-label">{{ $t('greatRune') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterRemembrance" />
-              <span class="check-box" :class="{ checked: filterRemembrance }"></span>
-              <span class="filter-label">{{ $t('remembrance') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterNightOnly" />
-              <span class="check-box" :class="{ checked: filterNightOnly }"></span>
-              <span class="filter-label">{{ $t('nightOnly') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterParryable" />
-              <span class="check-box" :class="{ checked: filterParryable }"></span>
-              <span class="filter-label">{{ $t('parryableFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterHuman" />
-              <span class="check-box" :class="{ checked: filterHuman }"></span>
-              <span class="filter-label">{{ $t('humanFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterDuoBoss" />
-              <span class="check-box" :class="{ checked: filterDuoBoss }"></span>
-              <span class="filter-label">{{ $t('duoBoss') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterMultiPhase" />
-              <span class="check-box" :class="{ checked: filterMultiPhase }"></span>
-              <span class="filter-label">{{ $t('multiPhaseBoss') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterVoid" />
-              <span class="check-box" :class="{ checked: filterVoid }"></span>
-              <span class="filter-label">{{ $t('voidFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterDragon" />
-              <span class="check-box" :class="{ checked: filterDragon }"></span>
-              <span class="filter-label">{{ $t('dragonFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterAncientDragon" />
-              <span class="check-box" :class="{ checked: filterAncientDragon }"></span>
-              <span class="filter-label">{{ $t('ancientDragonFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterUndead" />
-              <span class="check-box" :class="{ checked: filterUndead }"></span>
-              <span class="filter-label">{{ $t('undeadFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterThoseWhoLiveInDeath" />
-              <span class="check-box" :class="{ checked: filterThoseWhoLiveInDeath }"></span>
-              <span class="filter-label">{{ $t('thoseWhoLiveInDeathFilter') }}</span>
-            </label>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" v-model="filterBackstab" />
-              <span class="check-box" :class="{ checked: filterBackstab }"></span>
-              <span class="filter-label">{{ $t('backstabFilter') }}</span>
-            </label>
-          </div>
-
           <div class="filter-group">
-            <button class="toggle-btn" :class="{ active: defeatFilter === 'all' }" @click="defeatFilter = 'all'">
-              {{ $t('allBosses') }}
+            <button class="toggle-btn" :class="{ active: filterGreatRune }" @click="filterGreatRune = !filterGreatRune">
+              {{ $t('greatRune') }}
             </button>
-            <button
-              class="toggle-btn"
-              :class="{ active: defeatFilter === 'defeated' }"
-              @click="defeatFilter = 'defeated'"
-            >
-              {{ $t('defeatedOnly') }}
+
+            <button class="toggle-btn" :class="{ active: filterRemembrance }" @click="filterRemembrance = !filterRemembrance">
+              {{ $t('remembrance') }}
             </button>
-            <button
-              class="toggle-btn"
-              :class="{ active: defeatFilter === 'undefeated' }"
-              @click="defeatFilter = 'undefeated'"
-            >
-              {{ $t('undefeatedOnly') }}
+
+            <button class="toggle-btn" :class="{ active: filterNightOnly }" @click="filterNightOnly = !filterNightOnly">
+              {{ $t('nightOnly') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterParryable }" @click="filterParryable = !filterParryable">
+              {{ $t('parryableFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterHuman }" @click="filterHuman = !filterHuman">
+              {{ $t('humanFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterDuoBoss }" @click="filterDuoBoss = !filterDuoBoss">
+              {{ $t('duoBoss') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterMultiPhase }" @click="filterMultiPhase = !filterMultiPhase">
+              {{ $t('multiPhaseBoss') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterVoid }" @click="filterVoid = !filterVoid">
+              {{ $t('voidFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterDragon }" @click="filterDragon = !filterDragon">
+              {{ $t('dragonFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterAncientDragon }" @click="filterAncientDragon = !filterAncientDragon">
+              {{ $t('ancientDragonFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterUndead }" @click="filterUndead = !filterUndead">
+              {{ $t('undeadFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterThoseWhoLiveInDeath }" @click="filterThoseWhoLiveInDeath = !filterThoseWhoLiveInDeath">
+              {{ $t('thoseWhoLiveInDeathFilter') }}
+            </button>
+
+            <button class="toggle-btn" :class="{ active: filterBackstab }" @click="filterBackstab = !filterBackstab">
+              {{ $t('backstabFilter') }}
             </button>
           </div>
         </div>
 
         <div class="expand-all-group">
-          <button class="expand-all-btn" @click="expandAll">{{ $t('expandAll') }}</button>
-          <button class="expand-all-btn" @click="collapseAll">{{ $t('collapseAll') }}</button>
-          <button class="expand-all-btn" v-show="hasActiveFilters" @click="clearFilters">
+          <a class="expand-all-link" href="#" @click.prevent="expandAll">{{ $t('expandAll') }}</a>
+          <a class="expand-all-link" href="#" @click.prevent="collapseAll">{{ $t('collapseAll') }}</a>
+          <a class="expand-all-link" href="#" v-show="hasActiveFilters" @click.prevent="clearFilters">
             {{ $t('clearFilters') }}
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -442,59 +418,37 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 </template>
 
 <style scoped>
+.search-and-filter {
+  display: flex;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+.search-and-filter .search-input {
+  flex: 1;
+}
+
+.search-and-filter .toggle-btn {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-btn {
+  background: transparent;
+}
+
+.toggle-btn.active {
+  background: var(--highlight-color);
+}
+
 .filter-row {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
 
-.filter-group.checkboxes {
-  display: flex;
+.filter-row .filter-group {
   flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.filter-group:not(.checkboxes) {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.filter-row-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.filter-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-  user-select: none;
-}
-
-.filter-checkbox input {
-  display: none;
-}
-
-.check-box {
-  width: 14px;
-  height: 14px;
-  border: 1px solid var(--border-color);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.check-box.checked {
-  background: var(--highlight-color);
-  border-color: var(--highlight-color);
-}
-
-.filter-label {
-  opacity: 0.8;
 }
 
 .expand-all-group {
@@ -502,18 +456,16 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   gap: 0.5rem;
 }
 
-.expand-all-btn {
+.expand-all-link {
   font-size: 0.65rem;
-  padding: 0.2rem 0.45rem;
-  background: var(--hover-background);
   color: var(--main-font-color);
-  border: 1px solid var(--border-color);
+  text-decoration: none;
   cursor: pointer;
   transition: 0.2s;
 }
 
-.expand-all-btn:hover {
-  border-color: var(--border-hover-color);
+.expand-all-link:hover {
+  text-decoration: underline;
 }
 
 .section-header {

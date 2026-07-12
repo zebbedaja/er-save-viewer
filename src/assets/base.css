@@ -85,10 +85,11 @@ body,
 button,
 select,
 input {
-  /* font-family: 'Macondo', sans-serif; */
-  /* font-family: 'CrimsonText', sans-serif; */
-  /* font-family: 'ModernAntiqua', sans-serif; */
-  /* font-family: 'Metamorphous', sans-serif; */
+  /* font-family: 'Macondo', serif; */
+  /* font-family: 'CrimsonText', serif; */
+  /* font-family: 'ModernAntiqua', serif; */
+  /* font-family: 'Metamorphous', serif; */
+  /* font-family: 'Georgia', serif; */
   font-family: 'Cinzel', serif;
   font-size: 15px;
   background: var(--main-bg-color);
