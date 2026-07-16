@@ -11,10 +11,8 @@ withDefaults(
 </script>
 
 <template>
-  <div class="progress-bar">
-    <div class="progress-bar-track" :class="{ 'progress-bar-track--flex': flex }">
-      <div class="progress-bar-fill" :style="{ width: `${Math.min(percentage, 100)}%` }"></div>
-    </div>
+  <div class="progress-bar-track" :class="{ 'progress-bar-track--flex': flex }">
+    <div class="progress-bar-fill" :style="{ width: `${Math.min(percentage, 100)}%` }"></div>
     <div class="caps" v-if="showCaps">
       <div class="cap" v-for="cap in caps" :key="cap" :style="{ left: cap + '%' }"></div>
     </div>
@@ -22,15 +20,11 @@ withDefaults(
 </template>
 
 <style scoped>
-.progress-bar {
-  position: relative;
-}
-
 .progress-bar-track {
   height: 3px;
   background: var(--border-color);
   border-radius: 1.5px;
-  overflow: hidden;
+  position: relative;
 }
 
 .progress-bar-track--flex {

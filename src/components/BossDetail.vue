@@ -5,6 +5,7 @@ import { useSaveStore } from '@/stores/save'
 import { encounters } from '@/model/encounters'
 import type { ResistanceValue } from '@/model/types'
 import { formatNumber } from '@/util'
+import ProgressBarCenter from './ProgressBarCenter.vue'
 
 const saveStore = useSaveStore()
 
@@ -185,39 +186,32 @@ function getNpcImageUrl(npcId: number): string | undefined {
       <div class="phase-data">
         <div class="data-section">
           <h4 class="section-title-bar">{{ $t('negation') }}</h4>
-          <div class="negation-grid">
-            <div class="data-cell" :class="getNegationClass(npc.negation.standard)">
-              <span class="data-label">{{ $t('standard') }}</span>
-              <span class="data-value">{{ npc.negation.standard }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.strike)">
-              <span class="data-label">{{ $t('strike') }}</span>
-              <span class="data-value">{{ npc.negation.strike }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.slash)">
-              <span class="data-label">{{ $t('slash') }}</span>
-              <span class="data-value">{{ npc.negation.slash }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.pierce)">
-              <span class="data-label">{{ $t('pierce') }}</span>
-              <span class="data-value">{{ npc.negation.pierce }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.magic)">
-              <span class="data-label">{{ $t('magic') }}</span>
-              <span class="data-value">{{ npc.negation.magic }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.fire)">
-              <span class="data-label">{{ $t('fire') }}</span>
-              <span class="data-value">{{ npc.negation.fire }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.lightning)">
-              <span class="data-label">{{ $t('lightning') }}</span>
-              <span class="data-value">{{ npc.negation.lightning }}%</span>
-            </div>
-            <div class="data-cell" :class="getNegationClass(npc.negation.holy)">
-              <span class="data-label">{{ $t('holy') }}</span>
-              <span class="data-value">{{ npc.negation.holy }}%</span>
-            </div>
+
+          <div class="negation-bar-grid">
+            <div>{{ $t('standard') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.standard"></ProgressBarCenter>
+            <div>{{ npc.negation.standard }}%</div>
+            <div>{{ $t('strike') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.strike"></ProgressBarCenter>
+            <div>{{ npc.negation.strike }}%</div>
+            <div>{{ $t('slash') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.slash"></ProgressBarCenter>
+            <div>{{ npc.negation.slash }}%</div>
+            <div>{{ $t('pierce') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.pierce"></ProgressBarCenter>
+            <div>{{ npc.negation.pierce }}%</div>
+            <div>{{ $t('magic') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.magic"></ProgressBarCenter>
+            <div>{{ npc.negation.magic }}%</div>
+            <div>{{ $t('fire') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.fire"></ProgressBarCenter>
+            <div>{{ npc.negation.fire }}%</div>
+            <div>{{ $t('lightning') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.lightning"></ProgressBarCenter>
+            <div>{{ npc.negation.lightning }}%</div>
+            <div>{{ $t('holy') }}</div>
+            <ProgressBarCenter :percentage="npc.negation.holy"></ProgressBarCenter>
+            <div>{{ npc.negation.holy }}%</div>
           </div>
         </div>
 
@@ -392,8 +386,6 @@ function getNpcImageUrl(npcId: number): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .boss-title-row {
@@ -478,107 +470,6 @@ function getNpcImageUrl(npcId: number): string | undefined {
   font-weight: normal;
 }
 
-.boss-attributes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0.3rem 0 0.5rem;
-}
-
-.npc-attributes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0.3rem 0 0.5rem;
-}
-
-.attr-badge {
-  font-size: 0.6rem;
-  padding: 0.15rem 0.4rem;
-  border-radius: 2px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border: 1px solid var(--border-color);
-  opacity: 0.7;
-}
-
-.attr-badge.def {
-  color: var(--main-font-color);
-  border-color: var(--border-color);
-}
-
-.attr-badge.positive {
-  color: rgb(34, 197, 94);
-  border-color: rgba(34, 197, 94, 0.4);
-  background: rgba(34, 197, 94, 0.08);
-}
-
-.attr-badge.negative {
-  color: var(--main-font-color);
-  opacity: 0.35;
-  border-color: var(--border-color);
-}
-
-.attr-badge.type {
-  color: var(--main-font-color);
-  text-transform: none;
-  letter-spacing: normal;
-}
-
-.attr-badge.night {
-  color: rgb(139, 148, 255);
-  border-color: rgba(139, 148, 255, 0.4);
-  background: rgba(139, 148, 255, 0.08);
-}
-
-.attr-badge.dlc-tag {
-  color: var(--highlight-color);
-  border-color: rgba(181, 158, 98, 0.5);
-  background: rgba(181, 158, 98, 0.1);
-}
-
-.attr-badge.great-rune {
-  color: rgb(255, 215, 0);
-  border-color: rgba(255, 215, 0, 0.4);
-  background: rgba(255, 215, 0, 0.08);
-}
-
-.attr-badge.remembrance {
-  color: rgb(192, 192, 210);
-  border-color: rgba(192, 192, 210, 0.4);
-  background: rgba(192, 192, 210, 0.08);
-}
-
-.attr-badge.void {
-  color: rgb(168, 85, 247);
-  border-color: rgba(168, 85, 247, 0.4);
-  background: rgba(168, 85, 247, 0.08);
-}
-
-.attr-badge.dragon {
-  color: rgb(255, 130, 60);
-  border-color: rgba(255, 130, 60, 0.4);
-  background: rgba(255, 130, 60, 0.08);
-}
-
-.attr-badge.ancient-dragon {
-  color: rgb(255, 210, 80);
-  border-color: rgba(255, 210, 80, 0.4);
-  background: rgba(255, 210, 80, 0.08);
-}
-
-.attr-badge.those-who-live-in-death {
-  color: rgb(180, 40, 40);
-  border-color: rgba(180, 40, 40, 0.4);
-  background: rgba(180, 40, 40, 0.08);
-}
-
-.attr-badge.undead {
-  color: rgb(130, 200, 100);
-  border-color: rgba(130, 200, 100, 0.4);
-  background: rgba(130, 200, 100, 0.08);
-}
-
 .npc-stats-tall {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -588,8 +479,8 @@ function getNpcImageUrl(npcId: number): string | undefined {
 }
 
 .phase-data {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 0.8rem;
 }
 
@@ -597,12 +488,6 @@ function getNpcImageUrl(npcId: number): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-}
-
-.negation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-  gap: 0.3rem;
 }
 
 .poise-grid {
@@ -711,5 +596,13 @@ function getNpcImageUrl(npcId: number): string | undefined {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.negation-bar-grid {
+  font-size: 0.8rem;
+  display: grid;
+  gap: 0.5rem 2rem ;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
 }
 </style>

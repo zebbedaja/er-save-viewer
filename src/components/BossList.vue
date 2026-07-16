@@ -7,6 +7,7 @@ import { formatNumber } from '@/util'
 import { encounters } from '@/model/encounters'
 import type { Npc } from '@/model/types'
 import { REGION_ORDER } from '@/model/regions'
+import ProgressBar from './ProgressBar.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -351,6 +352,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         <div class="region-header" @click="toggleRegion(region)">
           <div class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</div>
           <div class="region-name">{{ region }}</div>
+          <ProgressBar :percentage="(countDefeated(bosses) / bosses.length) * 100" :flex="true"></ProgressBar>
           <div class="region-complete" v-if="isRegionComplete(bosses)">✓</div>
           <div class="region-count">{{ countDefeated(bosses) }} / {{ bosses.length }}</div>
         </div>
@@ -365,18 +367,40 @@ function isRegionComplete(bosses: typeof encounters): boolean {
           >
             <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
             <span class="boss-check-placeholder" v-else></span>
-            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{
-              boss.flagName
-            }}</span>
-            <span class="boss-location">{{ boss.location }}</span>
-            <span class="boss-stat" :title="$t('runes')">
-              <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
-              <span class="stat-icon">✦</span>
-            </span>
-            <span class="boss-stat" :title="$t('hp')">
-              <span class="stat-value">{{ formatNumber(boss.hp) }}</span>
-              <span class="stat-icon">♥</span>
-            </span>
+            <div style="flex: 1">
+              <div class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">
+                {{ boss.flagName }}
+              </div>
+              <div class="boss-location">{{ boss.location }}</div>
+            </div>
+            <div class="boss-attributes">
+              <span class="attr-badge type">
+                {{ boss.type }}
+              </span>
+              <span v-if="boss.nightOnly" class="attr-badge night">
+                {{ $t('nightOnlyBadge') }}
+              </span>
+              <span v-if="boss.dlc" class="attr-badge dlc-tag">
+                {{ $t('dlcBadge') }}
+              </span>
+              <!-- <span v-if="hasGreatRune" class="attr-badge great-rune">
+                {{ $t('greatRuneBadge') }}
+              </span>
+              <span v-if="hasRemembrance" class="attr-badge remembrance">
+                {{ $t('remembranceBadge') }}
+              </span> -->
+            </div>
+            <!-- <span class="boss-location">{{ boss.location }}</span> -->
+            <div>
+              <div class="boss-stat" :title="$t('runes')">
+                <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
+                <span class="stat-icon">✦</span>
+              </div>
+              <div class="boss-stat" :title="$t('hp')">
+                <span class="stat-value">{{ formatNumber(boss.hp) }}</span>
+                <span class="stat-icon">♥</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -400,6 +424,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
         <div class="region-header" @click="toggleRegion(region)">
           <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
           <span class="region-name">{{ region }}</span>
+          <ProgressBar :percentage="(countDefeated(bosses) / bosses.length) * 100" :flex="true"></ProgressBar>
           <span class="region-complete" v-if="isRegionComplete(bosses)">✓</span>
           <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
         </div>
@@ -554,12 +579,14 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 
 .region-name {
   font-size: 0.85rem;
-  flex: 1;
+  width: 240px;
 }
 
 .region-count {
   font-size: 0.8rem;
   font-weight: bold;
+  width: 60px;
+  text-align: end;
 }
 
 .region-group.completed .region-count {
@@ -583,10 +610,14 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0 0.4rem 0.4rem;
+  padding: 0.5rem 0.4rem;
   font-size: 0.75rem;
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
+}
+
+.boss-row:last-child {
+  border-bottom: 0;
 }
 
 .boss-row:hover {
@@ -620,12 +651,8 @@ function isRegionComplete(bosses: typeof encounters): boolean {
   color: var(--highlight-color);
 }
 
-.boss-row:not(.defeated) .boss-name {
-  opacity: 0.7;
-}
-
 .boss-location {
-  opacity: 0.7;
+  opacity: 0.6;
   font-size: 0.7rem;
   flex-shrink: 0;
   max-width: 10rem;
@@ -635,7 +662,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 }
 
 .boss-stat {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--highlight-color);
   opacity: 0.7;
   flex-shrink: 0;
