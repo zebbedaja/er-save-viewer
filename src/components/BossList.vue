@@ -2,16 +2,17 @@
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
+import { useEncounterStore } from '@/stores/encounter'
 import { storeToRefs } from 'pinia'
 import { formatNumber } from '@/util'
-import { encounters } from '@/model/encounters'
-import type { Npc } from '@/model/types'
+import type { ProcessedEncounter } from '@/model/types'
 import { REGION_ORDER } from '@/model/regions'
 import ProgressBar from './ProgressBar.vue'
 
 const router = useRouter()
 const route = useRoute()
 const saveStore = useSaveStore()
+const encounterStore = useEncounterStore()
 const { defeatedFlags } = storeToRefs(saveStore)
 
 const searchQuery = computed({
@@ -63,7 +64,7 @@ const defeatFilter = computed<'all' | 'defeated' | 'undefeated'>({
   },
 })
 
-const expandedRegions = ref<Set<string>>(new Set(encounters.map((e) => e.region)))
+const expandedRegions = ref<Set<string>>(new Set(encounterStore.encounters.map((e) => e.region)))
 
 const filteredBaseGameCount = computed(() => filteredEncounters.value.filter((e) => !e.dlc).length)
 const filteredDlcCount = computed(() => filteredEncounters.value.filter((e) => e.dlc).length)
@@ -79,96 +80,40 @@ const filteredEncounters = computed(() => {
   const query = searchQuery.value.toLowerCase()
   const flags = saveStore.defeatedFlags
 
-  return encounters.filter((e) => {
+  return encounterStore.encounters.filter((e) => {
     if (query && !e.flagName.toLowerCase().includes(query)) {
       return false
     }
 
-    if (filterGreatRune.value) {
-      const has = e.drops.some((d) => /Great Rune/.test(d))
-      if (!has) return false
-    }
-
-    if (filterRemembrance.value) {
-      const has = e.drops.some((d) => /Remembrance/.test(d))
-      if (!has) return false
-    }
-
-    if (filterNightOnly.value && !e.nightOnly) {
-      return false
-    }
-
-    if (filterParryable.value && !e.npcs.some((npc) => npc.parryable)) {
-      return false
-    }
-
-    if (filterHuman.value && !e.npcs.some((npc) => npc.human)) {
-      return false
-    }
-
-    if (filterDuoBoss.value && !hasDuoPhase(e.npcs)) {
-      return false
-    }
-
-    if (filterMultiPhase.value && !hasMultiplePhases(e.npcs)) {
-      return false
-    }
-
-    if (filterVoid.value && !e.npcs.some((npc) => npc.void)) {
-      return false
-    }
-
-    if (filterDragon.value && !e.npcs.some((npc) => npc.dragon)) {
-      return false
-    }
-
-    if (filterAncientDragon.value && !e.npcs.some((npc) => npc.ancientDragon)) {
-      return false
-    }
-
-    if (filterUndead.value && !e.npcs.some((npc) => npc.undead)) {
-      return false
-    }
-
-    if (filterThoseWhoLiveInDeath.value && !e.npcs.some((npc) => npc.thoseWhoLiveInDeath)) {
-      return false
-    }
-
-    if (filterBackstab.value && !e.npcs.some((npc) => npc.backstab)) {
-      return false
-    }
+    if (filterGreatRune.value && !e.hasGreatRune) return false
+    if (filterRemembrance.value && !e.hasRemembrance) return false
+    if (filterNightOnly.value && !e.nightOnly) return false
+    if (filterParryable.value && !e.hasParryable) return false
+    if (filterHuman.value && !e.hasHuman) return false
+    if (filterDuoBoss.value && !e.hasDuoPhase) return false
+    if (filterMultiPhase.value && !e.hasMultiplePhases) return false
+    if (filterVoid.value && !e.hasVoid) return false
+    if (filterDragon.value && !e.hasDragon) return false
+    if (filterAncientDragon.value && !e.hasAncientDragon) return false
+    if (filterUndead.value && !e.hasUndead) return false
+    if (filterThoseWhoLiveInDeath.value && !e.hasThoseWhoLiveInDeath) return false
+    if (filterBackstab.value && !e.hasBackstab) return false
 
     const defeated = flags.has(e.flagId)
 
-    if (defeatFilter.value === 'defeated' && !defeated) {
-      return false
-    }
-    if (defeatFilter.value === 'undefeated' && defeated) {
-      return false
-    }
+    if (defeatFilter.value === 'defeated' && !defeated) return false
+    if (defeatFilter.value === 'undefeated' && defeated) return false
 
     return true
   })
 })
 
-function hasMultiplePhases(npcs: Npc[]): boolean {
-  return npcs.length >= 2 && npcs.some((npc) => npc.phase >= 2)
-}
-
-function hasDuoPhase(npcs: Npc[]): boolean {
-  const phaseCounts = new Map<number, number>()
-  for (const npc of npcs) {
-    phaseCounts.set(npc.phase, (phaseCounts.get(npc.phase) ?? 0) + 1)
-  }
-  return [...phaseCounts.values()].some((count) => count >= 2)
-}
-
-function countDefeated(bosses: typeof encounters): number {
+function countDefeated(bosses: ProcessedEncounter[]): number {
   return bosses.filter((b) => saveStore.defeatedFlags.has(b.flagId)).length
 }
 
-function groupByRegion(list: typeof encounters) {
-  const groups = new Map<string, typeof encounters>()
+function groupByRegion(list: ProcessedEncounter[]) {
+  const groups = new Map<string, ProcessedEncounter[]>()
 
   for (const e of list) {
     const regionList = groups.get(e.region)
@@ -214,10 +159,10 @@ const hasActiveFilters = computed(() => Object.keys(route.query).length > 0)
 
 function clearFilters() {
   router.replace({ query: {} })
-  expandedRegions.value = new Set(encounters.map((e) => e.region))
+  expandedRegions.value = new Set(encounterStore.encounters.map((e) => e.region))
 }
 
-function isRegionComplete(bosses: typeof encounters): boolean {
+function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   return bosses.every((b) => saveStore.defeatedFlags.has(b.flagId))
 }
 </script>
@@ -383,12 +328,12 @@ function isRegionComplete(bosses: typeof encounters): boolean {
               <span v-if="boss.dlc" class="attr-badge dlc-tag">
                 {{ $t('dlcBadge') }}
               </span>
-              <!-- <span v-if="hasGreatRune" class="attr-badge great-rune">
+              <span v-if="boss.hasGreatRune" class="attr-badge great-rune">
                 {{ $t('greatRuneBadge') }}
               </span>
-              <span v-if="hasRemembrance" class="attr-badge remembrance">
+              <span v-if="boss.hasRemembrance" class="attr-badge remembrance">
                 {{ $t('remembranceBadge') }}
-              </span> -->
+              </span>
             </div>
             <!-- <span class="boss-location">{{ boss.location }}</span> -->
             <div>
@@ -604,6 +549,7 @@ function isRegionComplete(bosses: typeof encounters): boolean {
 
 .boss-rows {
   margin-left: 1.3rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .boss-row {

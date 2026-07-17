@@ -24,10 +24,10 @@ const progressBarStyle = computed(() => {
   <div class="progress-bar">
     <div
       class="progress-bar-track"
-      :style="{ height: height + 'px', background: showTrack ? 'var(--border-color)' : 'transparent' }"
+      :style="{ height: `${height}px`, background: showTrack ? 'var(--border-color)' : 'transparent' }"
     >
       <div class="progress-bar-fill" :style="progressBarStyle"></div>
-      <div class="progress-center" :style="{ height: height * 2 + 'px', top: height / -2 + 'px' }"></div>
+      <div class="progress-center" :style="{ height: `${height * 2}px`, top: `${height / -2}px` }"></div>
     </div>
   </div>
 </template>

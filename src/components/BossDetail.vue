@@ -2,44 +2,37 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
-import { encounters } from '@/model/encounters'
+import { useEncounterStore } from '@/stores/encounter'
 import type { ResistanceValue } from '@/model/types'
 import { formatNumber } from '@/util'
 import ProgressBarCenter from './ProgressBarCenter.vue'
+import ProgressBar from './ProgressBar.vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const saveStore = useSaveStore()
+const encounterStore = useEncounterStore()
 
 const route = useRoute()
 const router = useRouter()
 
 const flagId = computed(() => Number(route.params.flagId))
-const boss = computed(() => encounters.find((e) => e.flagId === flagId.value))
+const boss = computed(() => encounterStore.getByFlagId(flagId.value))
 
 const isDefeated = computed(() => saveStore.defeatedFlags.has(flagId.value))
-
-const hasGreatRune = computed(() => boss.value?.drops.some((d) => /Great Rune/.test(d)) ?? false)
-
-const hasRemembrance = computed(() => boss.value?.drops.some((d) => /Remembrance/.test(d)) ?? false)
 
 function goBack() {
   router.back()
 }
 
-function getNegationClass(value: number): string {
-  if (value > 20) return 'resistant'
-  if (value < 10) return 'vulnerable'
-  return 'neutral'
+function formatResistanceThresholds(resistance: ResistanceValue): string {
+  return resistance.immune
+    ? t('immune')
+    : resistance.thresholds.filter((t, i) => i === 0 || t !== resistance.thresholds[i - 1]).join(' / ')
 }
 
-function getResistanceClass(value: ResistanceValue): string {
-  if (value.immune) return 'immune'
-  if ((value.thresholds[0] ?? 500) > 600) return 'resistant'
-  if ((value.thresholds[0] ?? 500) < 400) return 'vulnerable'
-  return 'neutral'
-}
-
-function formatResistanceThresholds(value: ResistanceValue): string {
-  return value.thresholds.filter((t, i) => i === 0 || t !== value.thresholds[i - 1]).join(' / ')
+function calculateResistancePercentage(resistance: ResistanceValue): number {
+  return resistance.immune ? Number.MAX_VALUE : (resistance?.thresholds?.[0] ?? 0) / 20
 }
 
 const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*.jpg', { eager: true })
@@ -69,10 +62,10 @@ function getNpcImageUrl(npcId: number): string | undefined {
         <span v-if="boss.dlc" class="attr-badge dlc-tag">
           {{ $t('dlcBadge') }}
         </span>
-        <span v-if="hasGreatRune" class="attr-badge great-rune">
+        <span v-if="boss.hasGreatRune" class="attr-badge great-rune">
           {{ $t('greatRuneBadge') }}
         </span>
-        <span v-if="hasRemembrance" class="attr-badge remembrance">
+        <span v-if="boss.hasRemembrance" class="attr-badge remembrance">
           {{ $t('remembranceBadge') }}
         </span>
       </div>
@@ -156,22 +149,34 @@ function getNpcImageUrl(npcId: number): string | undefined {
           <span class="meta-value meta-highlight">{{ formatNumber(npc.hp) }}</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">{{ $t('defense') }} ({{ $t('physical') }})</span>
-          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.physical) }}</span>
+          <span class="meta-label">{{ $t('poise') }}</span>
+          <span class="meta-value meta-highlight"
+            >{{ formatNumber(npc.poise.base) }} {{ npc.poise.absorption !== 1 ? `(${npc.poise.effective})` : '' }}</span
+          >
         </div>
         <div class="meta-row">
+          <span class="meta-label">{{ $t('poise') }} {{ $t('delay') }}</span>
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.poise.regenDelay) }}s</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label"
+            >{{ $t('defense') }} <span v-if="npc.human">({{ $t('physical') }})</span></span
+          >
+          <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.physical) }}</span>
+        </div>
+        <div class="meta-row" v-if="npc.human">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('magic') }})</span>
           <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.magic) }}</span>
         </div>
-        <div class="meta-row">
+        <div class="meta-row" v-if="npc.human">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('fire') }})</span>
           <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.fire) }}</span>
         </div>
-        <div class="meta-row">
+        <div class="meta-row" v-if="npc.human">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('lightning') }})</span>
           <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.lightning) }}</span>
         </div>
-        <div class="meta-row">
+        <div class="meta-row" v-if="npc.human">
           <span class="meta-label">{{ $t('defense') }} ({{ $t('holy') }})</span>
           <span class="meta-value meta-highlight">{{ formatNumber(npc.defense.holy) }}</span>
         </div>
@@ -186,7 +191,6 @@ function getNpcImageUrl(npcId: number): string | undefined {
       <div class="phase-data">
         <div class="data-section">
           <h4 class="section-title-bar">{{ $t('negation') }}</h4>
-
           <div class="negation-bar-grid">
             <div>{{ $t('standard') }}</div>
             <ProgressBarCenter :percentage="npc.negation.standard"></ProgressBarCenter>
@@ -217,137 +221,106 @@ function getNpcImageUrl(npcId: number): string | undefined {
 
         <div class="data-section">
           <h4 class="section-title-bar">{{ $t('resistance') }}</h4>
-          <div class="negation-grid">
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.poison)">
-              <span class="data-label">{{ $t('poison') }}</span>
-              <span class="data-value">{{
-                npc.resistance.poison.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.poison)
-              }}</span>
+          <div class="negation-bar-grid">
+            <div>{{ $t('poison') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.poison)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.poison) }}
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.scarletRot)">
-              <span class="data-label">{{ $t('rot') }}</span>
-              <span class="data-value">{{
-                npc.resistance.scarletRot.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.scarletRot)
-              }}</span>
+            <div>{{ $t('rot') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.scarletRot)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.scarletRot) }}
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.bloodLoss)">
-              <span class="data-label">{{ $t('bleed') }}</span>
-              <span class="data-value">{{
-                npc.resistance.bloodLoss.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.bloodLoss)
-              }}</span>
+            <div>{{ $t('bleed') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.bloodLoss)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.bloodLoss) }}
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.frostBite)">
-              <span class="data-label">{{ $t('frost') }}</span>
-              <span class="data-value">{{
-                npc.resistance.frostBite.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.frostBite)
-              }}</span>
+            <div>{{ $t('frost') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.frostBite)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.frostBite) }}
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.sleep)">
-              <span class="data-label">{{ $t('sleep') }}</span>
-              <span class="data-value">{{
-                npc.resistance.sleep.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.sleep)
-              }}</span>
+            <div>{{ $t('sleep') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.sleep)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.sleep) }}
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.madness)">
-              <span class="data-label">{{ $t('madness') }}</span>
-              <span class="data-value">{{
-                npc.resistance.madness.immune ? $t('immune') : formatResistanceThresholds(npc.resistance.madness)
-              }}</span>
+            <div>{{ $t('madness') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.madness)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.madness) }}
             </div>
-            <div class="data-cell" :class="getResistanceClass(npc.resistance.deathBlight)">
-              <span class="data-label">{{ $t('deathblight') }}</span>
-              <span class="data-value">{{
-                npc.resistance.deathBlight.immune
-                  ? $t('immune')
-                  : formatResistanceThresholds(npc.resistance.deathBlight)
-              }}</span>
+            <div>{{ $t('deathblight') }}</div>
+            <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.deathBlight)"></ProgressBar>
+            <div>
+              {{ formatResistanceThresholds(npc.resistance.deathBlight) }}
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="data-section">
-          <h4 class="section-title-bar">{{ $t('poise') }}</h4>
-          <div class="negation-grid poise-grid">
-            <div class="data-cell">
-              <span class="data-label">{{ $t('base') }}</span>
-              <span class="data-value">{{ npc.poise.base }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('absorption') }}</span>
-              <span class="data-value">x{{ npc.poise.absorption }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('effective') }}</span>
-              <span class="data-value">{{ npc.poise.effective }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('regenDelay') }}</span>
-              <span class="data-value">{{ npc.poise.regenDelay }}s</span>
-            </div>
+      <div v-if="npc.human && npc.stats.runeLevel != null" class="data-section">
+        <h4 class="section-title-bar">{{ $t('stats') }}</h4>
+        <div class="negation-grid stats-grid">
+          <div class="data-cell">
+            <span class="data-label">{{ $t('runeLevel') }}</span>
+            <span class="data-value">{{ npc.stats.runeLevel }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('vigor') }}</span>
+            <span class="data-value">{{ npc.stats.vigor }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('mind') }}</span>
+            <span class="data-value">{{ npc.stats.mind }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('endurance') }}</span>
+            <span class="data-value">{{ npc.stats.endurance }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('strength') }}</span>
+            <span class="data-value">{{ npc.stats.strength }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('dexterity') }}</span>
+            <span class="data-value">{{ npc.stats.dexterity }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('intelligence') }}</span>
+            <span class="data-value">{{ npc.stats.intelligence }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('faith') }}</span>
+            <span class="data-value">{{ npc.stats.faith }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('arcane') }}</span>
+            <span class="data-value">{{ npc.stats.arcane }}</span>
           </div>
         </div>
+      </div>
 
-        <div v-if="npc.human && npc.stats.runeLevel != null" class="data-section">
-          <h4 class="section-title-bar">{{ $t('stats') }}</h4>
-          <div class="negation-grid stats-grid">
-            <div class="data-cell">
-              <span class="data-label">{{ $t('runeLevel') }}</span>
-              <span class="data-value">{{ npc.stats.runeLevel }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('vigor') }}</span>
-              <span class="data-value">{{ npc.stats.vigor }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('mind') }}</span>
-              <span class="data-value">{{ npc.stats.mind }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('endurance') }}</span>
-              <span class="data-value">{{ npc.stats.endurance }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('strength') }}</span>
-              <span class="data-value">{{ npc.stats.strength }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('dexterity') }}</span>
-              <span class="data-value">{{ npc.stats.dexterity }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('intelligence') }}</span>
-              <span class="data-value">{{ npc.stats.intelligence }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('faith') }}</span>
-              <span class="data-value">{{ npc.stats.faith }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('arcane') }}</span>
-              <span class="data-value">{{ npc.stats.arcane }}</span>
-            </div>
+      <div v-if="npc.human && npc.armor.helm" class="data-section">
+        <h4 class="section-title-bar">{{ $t('equipment') }}</h4>
+        <div class="negation-grid equipment-grid">
+          <div class="data-cell">
+            <span class="data-label">{{ $t('helm') }}</span>
+            <span class="data-value">{{ npc.armor.helm }}</span>
           </div>
-        </div>
-
-        <div v-if="npc.human && npc.armor.helm" class="data-section">
-          <h4 class="section-title-bar">{{ $t('equipment') }}</h4>
-          <div class="negation-grid equipment-grid">
-            <div class="data-cell">
-              <span class="data-label">{{ $t('helm') }}</span>
-              <span class="data-value">{{ npc.armor.helm }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('chest') }}</span>
-              <span class="data-value">{{ npc.armor.chestArmor }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('gauntlets') }}</span>
-              <span class="data-value">{{ npc.armor.gauntlets }}</span>
-            </div>
-            <div class="data-cell">
-              <span class="data-label">{{ $t('legs') }}</span>
-              <span class="data-value">{{ npc.armor.legArmor }}</span>
-            </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('chest') }}</span>
+            <span class="data-value">{{ npc.armor.chestArmor }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('gauntlets') }}</span>
+            <span class="data-value">{{ npc.armor.gauntlets }}</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-label">{{ $t('legs') }}</span>
+            <span class="data-value">{{ npc.armor.legArmor }}</span>
           </div>
         </div>
       </div>
@@ -380,6 +353,7 @@ function getNpcImageUrl(npcId: number): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 10rem;
 }
 
 .boss-detail-header {
@@ -480,8 +454,8 @@ function getNpcImageUrl(npcId: number): string | undefined {
 
 .phase-data {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 2rem;
 }
 
 .data-section {
@@ -490,16 +464,16 @@ function getNpcImageUrl(npcId: number): string | undefined {
   gap: 0.4rem;
 }
 
-.poise-grid {
-  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
-}
-
 .stats-grid {
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 0.4rem;
 }
 
 .equipment-grid {
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.4rem;
 }
 
 .data-cell {
@@ -601,8 +575,12 @@ function getNpcImageUrl(npcId: number): string | undefined {
 .negation-bar-grid {
   font-size: 0.8rem;
   display: grid;
-  gap: 0.5rem 2rem ;
+  gap: 0.5rem 2rem;
   grid-template-columns: max-content 1fr max-content;
   align-items: center;
+}
+
+.negation-bar-grid div:nth-child(3n) {
+  justify-self: end;
 }
 </style>

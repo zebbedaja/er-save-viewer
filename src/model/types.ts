@@ -88,6 +88,21 @@ export interface Npc {
   armor: Armor
 }
 
+export interface ProcessedEncounter extends Encounter {
+  hasGreatRune: boolean
+  hasRemembrance: boolean
+  hasParryable: boolean
+  hasHuman: boolean
+  hasDuoPhase: boolean
+  hasMultiplePhases: boolean
+  hasVoid: boolean
+  hasDragon: boolean
+  hasAncientDragon: boolean
+  hasUndead: boolean
+  hasThoseWhoLiveInDeath: boolean
+  hasBackstab: boolean
+}
+
 export interface Region {
   name: string
   scaling: number

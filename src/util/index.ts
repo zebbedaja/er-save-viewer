@@ -1,3 +1,17 @@
+import type { Npc } from '@/model/types'
+
+export function hasDuoPhase(npcs: Npc[]): boolean {
+  const phaseCounts = new Map<number, number>()
+  for (const npc of npcs) {
+    phaseCounts.set(npc.phase, (phaseCounts.get(npc.phase) ?? 0) + 1)
+  }
+  return [...phaseCounts.values()].some((count) => count >= 2)
+}
+
+export function hasMultiplePhases(npcs: Npc[]): boolean {
+  return npcs.length >= 2 && npcs.some((npc) => npc.phase >= 2)
+}
+
 export function secondsToHMS(seconds: number): string {
   const h = Math.floor(seconds / 3600)
   const m = Math.floor((seconds % 3600) / 60)

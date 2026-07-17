@@ -1,20 +1,21 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    percentage: number
+    percentage?: number
     flex?: boolean
     caps?: number[]
     showCaps?: boolean
+    background?: string
   }>(),
-  { flex: false, caps: () => [], showCaps: false },
+  { percentage: 0, flex: false, caps: () => [], showCaps: false, background: 'var(--highlight-color)' },
 )
 </script>
 
 <template>
   <div class="progress-bar-track" :class="{ 'progress-bar-track--flex': flex }">
-    <div class="progress-bar-fill" :style="{ width: `${Math.min(percentage, 100)}%` }"></div>
+    <div class="progress-bar-fill" :style="{ width: `${Math.min(percentage, 100)}%`, background }"></div>
     <div class="caps" v-if="showCaps">
-      <div class="cap" v-for="cap in caps" :key="cap" :style="{ left: cap + '%' }"></div>
+      <div class="cap" v-for="cap in caps" :key="cap" :style="{ left: `${cap}%` }"></div>
     </div>
   </div>
 </template>
@@ -33,7 +34,6 @@ withDefaults(
 
 .progress-bar-fill {
   height: 100%;
-  background: var(--highlight-color);
   border-radius: 1.5px;
   transition: width 0.4s ease;
 }

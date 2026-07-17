@@ -34,7 +34,7 @@ watch(activeSlotId, () => {
         <LiveSyncStatus />
       </template>
     </div>
-    <div>
+    <div class="container">
       <slot :saveSlot="activeSlot"></slot>
     </div>
   </div>

@@ -3,11 +3,12 @@ import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Slot } from '@zebbedaja/er-save-parser'
 import { useSaveStore } from '@/stores/save'
-import { encounters } from '@/model/encounters'
+import { useEncounterStore } from '@/stores/encounter'
 import ProgressRow from './ProgressRow.vue'
 
 const router = useRouter()
 const saveStore = useSaveStore()
+const encounterStore = useEncounterStore()
 
 function openEventCategory(category: string) {
   router.push({ name: 'event-detail', params: { category } })
@@ -21,10 +22,10 @@ const props = defineProps<{
   saveSlot: Slot | null
 }>()
 
-const baseGameBosses = encounters.filter((e) => !e.dlc)
-const dlcBosses = encounters.filter((e) => e.dlc)
+const baseGameBosses = encounterStore.encounters.filter((e) => !e.dlc)
+const dlcBosses = encounterStore.encounters.filter((e) => e.dlc)
 
-const defeatedOverall = computed(() => encounters.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedOverall = computed(() => encounterStore.encounters.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 const defeatedDlc = computed(() => dlcBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 
@@ -88,8 +89,8 @@ const eventProgress = computed(() => {
       <div @click="openBossList()" class="category-click">
         <ProgressRow
           :label="$t('overall')"
-          :value="`${defeatedOverall}/${encounters.length}`"
-          :percentage="(defeatedOverall / encounters.length) * 100"
+          :value="`${defeatedOverall}/${encounterStore.encounters.length}`"
+          :percentage="(defeatedOverall / encounterStore.encounters.length) * 100"
         />
       </div>
       <div @click="openBossList('#base')" class="category-click">
