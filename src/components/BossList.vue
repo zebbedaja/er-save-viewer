@@ -136,6 +136,37 @@ function groupByRegion(list: ProcessedEncounter[]) {
 const groupedBaseGameBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => !e.dlc)))
 const groupedDlcBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => e.dlc)))
 
+interface Section {
+  id: string
+  labelKey: string
+  keyPrefix: string
+  bosses: [string, ProcessedEncounter[]][]
+  defeated: number
+  total: number
+  showAttributes: boolean
+}
+
+const sections = computed<Section[]>(() => [
+  {
+    id: 'base',
+    labelKey: 'baseGameSection',
+    keyPrefix: 'bg',
+    bosses: groupedBaseGameBosses.value,
+    defeated: defeatedBaseGame.value,
+    total: filteredBaseGameCount.value,
+    showAttributes: true,
+  },
+  {
+    id: 'dlc',
+    labelKey: 'dlcSection',
+    keyPrefix: 'dlc',
+    bosses: groupedDlcBosses.value,
+    defeated: defeatedDlc.value,
+    total: filteredDlcCount.value,
+    showAttributes: false,
+  },
+].filter(s => s.bosses.length > 0))
+
 function toggleRegion(region: string) {
   if (expandedRegions.value.has(region)) {
     expandedRegions.value.delete(region)
@@ -145,10 +176,7 @@ function toggleRegion(region: string) {
 }
 
 function expandAll() {
-  expandedRegions.value = new Set([
-    ...groupedBaseGameBosses.value.map(([region]) => region),
-    ...groupedDlcBosses.value.map(([region]) => region),
-  ])
+  expandedRegions.value = new Set(sections.value.flatMap(s => s.bosses.map(([region]) => region)))
 }
 
 function collapseAll() {
@@ -277,20 +305,22 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
       </div>
     </div>
 
-    <div v-if="groupedBaseGameBosses.length === 0 && groupedDlcBosses.length === 0" class="no-results">
+    <div v-if="!sections.length" class="no-results">
       {{ $t('noBossesMatch') }}
     </div>
 
-    <template v-if="groupedBaseGameBosses.length">
-      <div class="section-header" id="base">
-        <span class="section-title">{{ $t('baseGameSection') }}</span>
-        <span class="section-complete" v-if="defeatedBaseGame === filteredBaseGameCount">✓</span>
-        <span class="section-count">{{ defeatedBaseGame }} / {{ filteredBaseGameCount }}</span>
+    <template v-for="(section, idx) in sections" :key="section.id">
+      <hr v-if="idx > 0" class="section-divider" />
+
+      <div class="section-header" :id="section.id">
+        <span class="section-title">{{ $t(section.labelKey) }}</span>
+        <span class="section-complete" v-if="section.defeated === section.total">✓</span>
+        <span class="section-count">{{ section.defeated }} / {{ section.total }}</span>
       </div>
 
       <div
-        v-for="[region, bosses] in groupedBaseGameBosses"
-        :key="'bg-' + region"
+        v-for="[region, bosses] in section.bosses"
+        :key="section.keyPrefix + '-' + region"
         class="region-group"
         :class="{ completed: isRegionComplete(bosses) }"
       >
@@ -318,24 +348,15 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
               </div>
               <div class="boss-location">{{ boss.location }}</div>
             </div>
-            <div class="boss-attributes">
-              <span class="attr-badge type">
-                {{ boss.type }}
-              </span>
-              <span v-if="boss.nightOnly" class="attr-badge night">
-                {{ $t('nightOnlyBadge') }}
-              </span>
-              <span v-if="boss.dlc" class="attr-badge dlc-tag">
-                {{ $t('dlcBadge') }}
-              </span>
-              <span v-if="boss.hasGreatRune" class="attr-badge great-rune">
-                {{ $t('greatRuneBadge') }}
-              </span>
-              <span v-if="boss.hasRemembrance" class="attr-badge remembrance">
-                {{ $t('remembranceBadge') }}
-              </span>
-            </div>
-            <!-- <span class="boss-location">{{ boss.location }}</span> -->
+            <template v-if="section.showAttributes">
+              <div class="boss-attributes">
+                <span class="attr-badge type">{{ boss.type }}</span>
+                <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnlyBadge') }}</span>
+                <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span>
+                <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRuneBadge') }}</span>
+                <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembranceBadge') }}</span>
+              </div>
+            </template>
             <div>
               <div class="boss-stat" :title="$t('runes')">
                 <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
@@ -346,56 +367,6 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
                 <span class="stat-icon">♥</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </template>
-
-    <hr v-if="groupedBaseGameBosses.length && groupedDlcBosses.length" class="section-divider" />
-
-    <template v-if="groupedDlcBosses.length">
-      <div class="section-header" id="dlc">
-        <span class="section-title">{{ $t('dlcSection') }}</span>
-        <span class="section-complete" v-if="defeatedDlc === filteredDlcCount">✓</span>
-        <span class="section-count">{{ defeatedDlc }}/{{ filteredDlcCount }}</span>
-      </div>
-
-      <div
-        v-for="[region, bosses] in groupedDlcBosses"
-        :key="'dlc-' + region"
-        class="region-group"
-        :class="{ completed: isRegionComplete(bosses) }"
-      >
-        <div class="region-header" @click="toggleRegion(region)">
-          <span class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</span>
-          <span class="region-name">{{ region }}</span>
-          <ProgressBar :percentage="(countDefeated(bosses) / bosses.length) * 100" :flex="true"></ProgressBar>
-          <span class="region-complete" v-if="isRegionComplete(bosses)">✓</span>
-          <span class="region-count">{{ countDefeated(bosses) }}/{{ bosses.length }}</span>
-        </div>
-
-        <div v-show="expandedRegions.has(region)" class="boss-rows">
-          <div
-            v-for="boss in bosses"
-            :key="boss.flagId"
-            class="boss-row"
-            :class="{ defeated: defeatedFlags.has(boss.flagId) }"
-            @click="router.push({ name: 'boss-detail', params: { flagId: boss.flagId } })"
-          >
-            <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
-            <span class="boss-check-placeholder" v-else></span>
-            <span class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">{{
-              boss.flagName
-            }}</span>
-            <span class="boss-location">{{ boss.location }}</span>
-            <span class="boss-stat" :title="$t('runes')">
-              <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
-              <span class="stat-icon">✦</span>
-            </span>
-            <span class="boss-stat" :title="$t('hp')">
-              <span class="stat-value">{{ formatNumber(boss.hp) }}</span>
-              <span class="stat-icon">♥</span>
-            </span>
           </div>
         </div>
       </div>
