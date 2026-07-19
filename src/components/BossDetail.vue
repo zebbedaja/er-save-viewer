@@ -81,6 +81,10 @@ function getNpcImageUrl(npcId: number): string | undefined {
         <span class="meta-value">{{ boss.region }}</span>
       </div>
       <div class="meta-row">
+        <span class="meta-label">{{ $t('level') }}</span>
+        <span class="meta-value meta-highlight">{{ formatNumber(boss.level ?? 0) }}</span>
+      </div>
+      <div class="meta-row">
         <span class="meta-label">{{ $t('closestGrace') }}</span>
         <span class="meta-value">{{ boss.closestSiteOfGrace }}</span>
       </div>

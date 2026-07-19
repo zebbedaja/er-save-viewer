@@ -146,26 +146,28 @@ interface Section {
   showAttributes: boolean
 }
 
-const sections = computed<Section[]>(() => [
-  {
-    id: 'base',
-    labelKey: 'baseGameSection',
-    keyPrefix: 'bg',
-    bosses: groupedBaseGameBosses.value,
-    defeated: defeatedBaseGame.value,
-    total: filteredBaseGameCount.value,
-    showAttributes: true,
-  },
-  {
-    id: 'dlc',
-    labelKey: 'dlcSection',
-    keyPrefix: 'dlc',
-    bosses: groupedDlcBosses.value,
-    defeated: defeatedDlc.value,
-    total: filteredDlcCount.value,
-    showAttributes: false,
-  },
-].filter(s => s.bosses.length > 0))
+const sections = computed<Section[]>(() =>
+  [
+    {
+      id: 'base',
+      labelKey: 'baseGameSection',
+      keyPrefix: 'bg',
+      bosses: groupedBaseGameBosses.value,
+      defeated: defeatedBaseGame.value,
+      total: filteredBaseGameCount.value,
+      showAttributes: true,
+    },
+    {
+      id: 'dlc',
+      labelKey: 'dlcSection',
+      keyPrefix: 'dlc',
+      bosses: groupedDlcBosses.value,
+      defeated: defeatedDlc.value,
+      total: filteredDlcCount.value,
+      showAttributes: false,
+    },
+  ].filter((s) => s.bosses.length > 0),
+)
 
 function toggleRegion(region: string) {
   if (expandedRegions.value.has(region)) {
@@ -176,7 +178,7 @@ function toggleRegion(region: string) {
 }
 
 function expandAll() {
-  expandedRegions.value = new Set(sections.value.flatMap(s => s.bosses.map(([region]) => region)))
+  expandedRegions.value = new Set(sections.value.flatMap((s) => s.bosses.map(([region]) => region)))
 }
 
 function collapseAll() {
@@ -342,30 +344,35 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
           >
             <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
             <span class="boss-check-placeholder" v-else></span>
-            <div style="flex: 1">
+            <div class="boss-row-info">
               <div class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">
                 {{ boss.flagName }}
               </div>
-              <div class="boss-location">{{ boss.location }}</div>
+              <div class="boss-location-stats">
+                <span class="boss-location">{{ boss.location }}</span>
+                <span> · </span>
+                <span class="boss-stat" :title="$t('level')">
+                  <!-- <span class="stat-icon">⊕</span> -->
+                  <span class="stat-value">{{ $t('level') }} {{ formatNumber(boss.level ?? 0) }}</span>
+                </span>
+                <span> · </span>
+                <span class="boss-stat" :title="$t('runes')">
+                  <!-- <span class="stat-icon">✦</span> -->
+                  <span class="stat-value">{{ $t('runes') }}: {{ formatNumber(boss.runes) }}</span>
+                </span>
+                <span> · </span>
+                <span class="boss-stat" :title="$t('hp')">
+                  <!-- <span class="stat-icon">♥</span> -->
+                  <span class="stat-value">{{ $t('hp') }}: {{ formatNumber(boss.hp) }}</span>
+                </span>
+              </div>
             </div>
-            <template v-if="section.showAttributes">
-              <div class="boss-attributes">
-                <span class="attr-badge type">{{ boss.type }}</span>
-                <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnlyBadge') }}</span>
-                <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span>
-                <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRuneBadge') }}</span>
-                <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembranceBadge') }}</span>
-              </div>
-            </template>
-            <div>
-              <div class="boss-stat" :title="$t('runes')">
-                <span class="stat-value">{{ formatNumber(boss.runes) }}</span>
-                <span class="stat-icon">✦</span>
-              </div>
-              <div class="boss-stat" :title="$t('hp')">
-                <span class="stat-value">{{ formatNumber(boss.hp) }}</span>
-                <span class="stat-icon">♥</span>
-              </div>
+            <div v-if="section.showAttributes" class="boss-attributes">
+              <span class="attr-badge type">{{ boss.type }}</span>
+              <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnlyBadge') }}</span>
+              <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span>
+              <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRuneBadge') }}</span>
+              <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembranceBadge') }}</span>
             </div>
           </div>
         </div>
@@ -463,13 +470,13 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   opacity: 0.3;
 }
 
-.region-group {
+/* .region-group {
   border-bottom: 1px solid var(--border-color);
 }
 
 .region-group:last-child {
   border-bottom: none;
-}
+} */
 
 .region-header {
   display: flex;
@@ -524,13 +531,34 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
 }
 
 .boss-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1rem 1fr max-content;
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 0.4rem;
   font-size: 0.75rem;
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
+}
+
+.boss-row-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.boss-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  margin: 0;
+}
+
+.boss-location-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
 }
 
 .boss-row:last-child {
@@ -579,11 +607,9 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
 }
 
 .boss-stat {
-  font-size: 0.8rem;
-  color: var(--highlight-color);
+  font-size: 0.7rem;
   opacity: 0.7;
   flex-shrink: 0;
-  width: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;

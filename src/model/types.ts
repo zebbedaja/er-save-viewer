@@ -89,6 +89,7 @@ export interface Npc {
 }
 
 export interface ProcessedEncounter extends Encounter {
+  level: number | null
   hasGreatRune: boolean
   hasRemembrance: boolean
   hasParryable: boolean

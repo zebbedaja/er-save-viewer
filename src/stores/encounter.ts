@@ -5,6 +5,7 @@ import { hasDuoPhase, hasMultiplePhases } from '@/util'
 
 const processedEncounters: ProcessedEncounter[] = encounters.map((e) => ({
   ...e,
+  level: e.npcs[0]?.level ?? null,
   hasGreatRune: e.drops.some((d) => /Great Rune/.test(d)),
   hasRemembrance: e.drops.some((d) => /Remembrance/.test(d)),
   hasParryable: e.npcs.some((n) => n.parryable),
