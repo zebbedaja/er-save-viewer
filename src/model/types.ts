@@ -133,3 +133,13 @@ export interface Armor {
   gauntlets?: string
   legArmor?: string
 }
+
+export interface Section {
+  id: string
+  labelKey: string
+  keyPrefix: string
+  bosses: [string, ProcessedEncounter[]][]
+  defeated: number
+  total: number
+  showAttributes: boolean
+}

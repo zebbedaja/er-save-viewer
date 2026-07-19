@@ -36,11 +36,8 @@ const { save } = storeToRefs(saveStore)
 }
 
 .title-row {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.6;
-  border-bottom: 1px solid var(--border-color);
+  font-size: 1.2rem;
+  color: var(--highlight-color);
   padding-bottom: 0.4rem;
 }
 

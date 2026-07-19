@@ -117,7 +117,7 @@ a {
   border-color: var(--border-hover-color);
 }
 
-.toggle-btn.active {
+button.active, .toggle-btn.active {
   background: var(--highlight-color);
   color: var(--main-bg-color);
   border-color: var(--highlight-color);

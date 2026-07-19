@@ -5,7 +5,7 @@ import { useSaveStore } from '@/stores/save'
 import { useEncounterStore } from '@/stores/encounter'
 import { storeToRefs } from 'pinia'
 import { formatNumber } from '@/util'
-import type { ProcessedEncounter } from '@/model/types'
+import type { ProcessedEncounter, Section } from '@/model/types'
 import { REGION_ORDER } from '@/model/regions'
 import ProgressBar from './ProgressBar.vue'
 
@@ -135,16 +135,6 @@ function groupByRegion(list: ProcessedEncounter[]) {
 
 const groupedBaseGameBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => !e.dlc)))
 const groupedDlcBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => e.dlc)))
-
-interface Section {
-  id: string
-  labelKey: string
-  keyPrefix: string
-  bosses: [string, ProcessedEncounter[]][]
-  defeated: number
-  total: number
-  showAttributes: boolean
-}
 
 const sections = computed<Section[]>(() =>
   [
@@ -401,7 +391,7 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   background: transparent;
 }
 
-.toggle-btn.active {
+.toggle-btn.active, .button.active {
   background: var(--highlight-color);
 }
 
@@ -527,7 +517,9 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
 
 .boss-rows {
   margin-left: 1.3rem;
+  margin-bottom: 1.3rem;
   border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .boss-row {
