@@ -12343,7 +12343,7 @@ export const encounters: Encounter[] = [
     region: 'Abyssal Woods',
     location: 'Darklight Catacombs',
     closestSiteOfGrace: 'Darklight Catacombs',
-    type: 'Enemy',
+    type: 'Great Enemy',
     drops: ['Barbed Staff-Spear'],
     nightOnly: false,
     dlc: true,

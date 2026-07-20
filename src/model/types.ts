@@ -141,5 +141,5 @@ export interface Section {
   bosses: [string, ProcessedEncounter[]][]
   defeated: number
   total: number
-  showAttributes: boolean
+  flatBosses: ProcessedEncounter[]
 }

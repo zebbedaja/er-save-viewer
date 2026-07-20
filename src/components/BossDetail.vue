@@ -41,6 +41,22 @@ function getNpcImageUrl(npcId: number): string | undefined {
   const key = Object.keys(bossImages).find((k) => k.includes(`${npcId}.jpg`))
   return key ? bossImages[key]?.default : undefined
 }
+
+const npcImageUrls = computed(() =>
+  boss?.value?.npcs?.map((npc) => getNpcImageUrl(npc.id)).filter((url) => url != null),
+)
+
+const bossYouTubeImages = import.meta.glob<{ default: string }>('../assets/img/bosses-youtube/*.jpg', { eager: true })
+
+function getYouTubeImageUrl(flagId: number): string | undefined {
+  const key = Object.keys(bossYouTubeImages).find((k) => k.includes(`${flagId}`))
+  return key ? bossYouTubeImages[key]?.default : undefined
+}
+
+function getYouTubeUrl(flagId: number): string | undefined {
+  const key = Object.keys(bossYouTubeImages).find((k) => k.includes(`${flagId}`))
+  return key ? 'https://www.youtube.com/watch?v=' + key.split('(')?.[1]?.split(')')?.[0] : undefined
+}
 </script>
 
 <template>
@@ -190,8 +206,6 @@ function getNpcImageUrl(npcId: number): string | undefined {
         </div>
       </div>
 
-      <img v-if="getNpcImageUrl(npc.id) && false" :src="getNpcImageUrl(npc.id)" class="npc-image" :alt="npc.name" />
-
       <div class="phase-data">
         <div class="data-section">
           <h4 class="section-title-bar">{{ $t('negation') }}</h4>
@@ -228,37 +242,37 @@ function getNpcImageUrl(npcId: number): string | undefined {
           <div class="negation-bar-grid">
             <div>{{ $t('poison') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.poison)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.poison?.immune }">
               {{ formatResistanceThresholds(npc.resistance.poison) }}
             </div>
             <div>{{ $t('rot') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.scarletRot)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.scarletRot?.immune }">
               {{ formatResistanceThresholds(npc.resistance.scarletRot) }}
             </div>
             <div>{{ $t('bleed') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.bloodLoss)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.bloodLoss?.immune }">
               {{ formatResistanceThresholds(npc.resistance.bloodLoss) }}
             </div>
             <div>{{ $t('frost') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.frostBite)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.frostBite?.immune }">
               {{ formatResistanceThresholds(npc.resistance.frostBite) }}
             </div>
             <div>{{ $t('sleep') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.sleep)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.sleep?.immune }">
               {{ formatResistanceThresholds(npc.resistance.sleep) }}
             </div>
             <div>{{ $t('madness') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.madness)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.madness?.immune }">
               {{ formatResistanceThresholds(npc.resistance.madness) }}
             </div>
             <div>{{ $t('deathblight') }}</div>
             <ProgressBar :percentage="calculateResistancePercentage(npc.resistance.deathBlight)"></ProgressBar>
-            <div>
+            <div :class="{ immune: npc?.resistance?.deathBlight?.immune }">
               {{ formatResistanceThresholds(npc.resistance.deathBlight) }}
             </div>
           </div>
@@ -332,8 +346,12 @@ function getNpcImageUrl(npcId: number): string | undefined {
 
     <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
       <h3 class="boss-videos-title">{{ $t('bossKills') }}</h3>
-      <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
-        <!-- https://img.youtube.com/vi/E3KTrz9aiqg/maxresdefault.jpg -->
+      <div class="boss-video-wrapper">
+        <a :href="getYouTubeUrl(boss.flagId)" target="_blank"
+          ><img class="npc-image" :src="getYouTubeImageUrl(boss.flagId)"
+        /></a>
+      </div>
+      <!-- <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
         <iframe
           :src="`https://www.youtube-nocookie.com/embed/${url?.split('=')[1]}`"
           :title="$t('youtubePlayer')"
@@ -342,6 +360,13 @@ function getNpcImageUrl(npcId: number): string | undefined {
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
         ></iframe>
+      </div> -->
+    </div>
+
+    <div class="boss-images" v-if="npcImageUrls?.length !== 0">
+      <h3 class="boss-videos-title">{{ $t('bossImages') }}</h3>
+      <div v-for="(url, index) in npcImageUrls" :key="index">
+        <img :src="url" class="npc-image" />
       </div>
     </div>
   </div>
@@ -557,8 +582,10 @@ function getNpcImageUrl(npcId: number): string | undefined {
 .boss-videos-title {
   font-size: 0.85rem;
   color: var(--highlight-color);
-  margin: 0;
-  opacity: 0.85;
+}
+
+.boss-video-wrapper {
+  position: relative;
 }
 
 .youtube-wrapper {
@@ -576,6 +603,11 @@ function getNpcImageUrl(npcId: number): string | undefined {
   height: 100%;
 }
 
+.boss-images {
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
 .negation-bar-grid {
   font-size: 0.8rem;
   display: grid;
@@ -586,5 +618,10 @@ function getNpcImageUrl(npcId: number): string | undefined {
 
 .negation-bar-grid div:nth-child(3n) {
   justify-self: end;
+}
+
+.immune {
+  color: var(--highlight-color);
+  font-style: italic;
 }
 </style>

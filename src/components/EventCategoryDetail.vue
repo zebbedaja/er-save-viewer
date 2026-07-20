@@ -14,6 +14,7 @@ const category = computed(() => route.params.category as string)
 
 const eventCategories: Record<string, string> = {
   story: 'eventsStory',
+  keyItems: 'keyItems',
   greatRune: 'eventsGreatRune',
   worldEvent: 'eventsWorldEvent',
   multiplayer: 'eventsMultiplayer',

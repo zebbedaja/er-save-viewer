@@ -31,6 +31,7 @@ const defeatedDlc = computed(() => dlcBosses.filter((e) => saveStore.defeatedFla
 
 const eventCategories: Record<string, string> = {
   story: 'eventsStory',
+  keyItems: 'keyItems',
   greatRune: 'eventsGreatRune',
   worldEvent: 'eventsWorldEvent',
   multiplayer: 'eventsMultiplayer',
