@@ -1,10 +1,11 @@
 :root {
   --main-bg-color: #0e0e0c;
-  --main-font-color: #c7c0b2;
+  --main-font-color: #d7d0c2;
+  /* --main-font-color: #c7c0b2; */
   /* --main-font-color: #7d7668; */
   /* --main-font-color: #d1d0cc; */ 
   --border-color: #3e3a34;
-  --border-hover-color: #5e5a54;
+  --border-hover-color: #7e7a74;
   /* --border-hover-color: rgb(133, 132, 121); */
   /* --highlight-color: #c9962a; */
   /* --highlight-color: #d0aa3b; */

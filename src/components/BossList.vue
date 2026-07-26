@@ -359,6 +359,7 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
           :flex="false"
         ></ProgressBar>
         <span class="section-complete" v-if="section.defeated === section.total">✓</span>
+        <div class="boss-check-placeholder" v-else></div>
         <span class="section-count">{{ section.defeated }} / {{ section.total }}</span>
       </div>
 
@@ -531,6 +532,7 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   justify-content: space-between;
   padding: 0.8rem 0 0.3rem;
   user-select: none;
+  gap: 0.4rem;
 }
 
 .section-title {

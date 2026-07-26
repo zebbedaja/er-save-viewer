@@ -1,4 +1,4 @@
-import type { Save } from "@zebbedaja/er-save-parser"
+import type { Save } from '@zebbedaja/er-save-parser'
 
 export interface Encounter {
   flagId: number
@@ -142,4 +142,11 @@ export interface Section {
   defeated: number
   total: number
   flatBosses: ProcessedEncounter[]
+}
+
+export interface YouTubeVideo {
+  flagId: number
+  youTubeId: string
+  youTubeTitle: string
+  youTubeUser: string
 }

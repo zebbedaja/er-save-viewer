@@ -8,6 +8,7 @@ import { formatNumber } from '@/util'
 import ProgressBarCenter from './ProgressBarCenter.vue'
 import ProgressBar from './ProgressBar.vue'
 import { useI18n } from 'vue-i18n'
+import { YOUTUBE_VIDEOS } from '@/model/youtube.ts'
 
 const { t } = useI18n()
 const saveStore = useSaveStore()
@@ -54,8 +55,15 @@ function getYouTubeImageUrl(flagId: number): string | undefined {
 }
 
 function getYouTubeUrl(flagId: number): string | undefined {
-  const key = Object.keys(bossYouTubeImages).find((k) => k.includes(`${flagId}`))
-  return key ? 'https://www.youtube.com/watch?v=' + key.split('(')?.[1]?.split(')')?.[0] : undefined
+  return 'https://www.youtube.com/watch?v=' + YOUTUBE_VIDEOS.find((v) => v.flagId === flagId)?.youTubeId
+}
+
+function getYouTubeTitle(flagId: number): string | undefined {
+  return YOUTUBE_VIDEOS.find((v) => v.flagId === flagId)?.youTubeTitle
+}
+
+function getYouTubeUser(flagId: number): string | undefined {
+  return YOUTUBE_VIDEOS.find((v) => v.flagId === flagId)?.youTubeUser
 }
 </script>
 
@@ -346,21 +354,21 @@ function getYouTubeUrl(flagId: number): string | undefined {
 
     <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
       <h3 class="boss-videos-title">{{ $t('bossKills') }}</h3>
-      <div class="boss-video-wrapper">
-        <a :href="getYouTubeUrl(boss.flagId)" target="_blank"
-          ><img class="npc-image" :src="getYouTubeImageUrl(boss.flagId)"
-        /></a>
-      </div>
-      <!-- <div class="youtube-wrapper" v-for="(url, index) in boss.youtube" :key="index">
-        <iframe
-          :src="`https://www.youtube-nocookie.com/embed/${url?.split('=')[1]}`"
-          :title="$t('youtubePlayer')"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div> -->
+      <a :href="getYouTubeUrl(boss.flagId)" target="_blank">
+        <div class="boss-video-wrapper">
+          <img class="npc-image" :src="getYouTubeImageUrl(boss.flagId)" />
+          <div class="boss-video-title">
+            {{ getYouTubeTitle(boss.flagId) }}<br /><span class="boss-video-user">{{
+              getYouTubeUser(boss.flagId)
+            }}</span>
+          </div>
+          <div class="boss-video-play-button-wrapper">
+            <div class="boss-video-play-button">
+              <div class="boss-video-play-button-triangle"></div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
 
     <div class="boss-images" v-if="npcImageUrls?.length !== 0">
@@ -588,19 +596,55 @@ function getYouTubeUrl(flagId: number): string | undefined {
   position: relative;
 }
 
-.youtube-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin: 0.8rem 0;
-}
-
-.youtube-wrapper iframe {
+.boss-video-play-button-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boss-video-play-button {
+  background: rgb(239, 68, 68);
+  border-radius: 18%/32%;
+  width: 5rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boss-video-play-button-triangle {
+  width: 24%;
+  height: 40%;
+  margin-left: 0.2rem;
+  background: var(--main-font-color);
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.boss-video-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100px;
+  color: var(--main-font-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.boss-video-user {
+  font-size: 0.8rem;
+  font-weight: 100;
 }
 
 .boss-images {
