@@ -8,7 +8,7 @@ const { save } = storeToRefs(saveStore)
 
 <template>
   <div class="bordered-content">
-    <div class="title-row">
+    <div class="save-info-title heading-1">
       {{ $t('saveInfo') }}
     </div>
 
@@ -31,42 +31,18 @@ const { save } = storeToRefs(saveStore)
 
 <style scoped>
 .bordered-content {
-  padding: 0.8rem;
   gap: 0.6rem;
 }
 
-.title-row {
-  font-size: 1.2rem;
-  color: var(--highlight-color);
-  padding-bottom: 0.4rem;
+.save-info-title {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 .meta-grid {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-}
-
-.mini-stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.75rem;
-  background: var(--hover-background);
-}
-
-.mini-label {
-  opacity: 0.7;
-}
-
-.mini-value {
-  color: var(--highlight-color);
-  font-weight: bold;
-}
-
-.monospace {
-  font-family: monospace;
-  word-break: break-all;
 }
 </style>

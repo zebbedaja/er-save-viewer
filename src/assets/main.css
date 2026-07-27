@@ -58,6 +58,39 @@ button.active,
   border-color: var(--highlight-color);
 }
 
+.heading-1 {
+  font-size: 1.4rem;
+  color: var(--highlight-color);
+}
+
+.heading-2 {
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+}
+
+.monospace {
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.mini-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  background: var(--hover-background);
+}
+
+.mini-label {
+  opacity: 0.7;
+}
+
+.mini-value {
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
 [data-spoiler='true'] .spoiler-sensitive {
   filter: blur(4px);
   user-select: none;

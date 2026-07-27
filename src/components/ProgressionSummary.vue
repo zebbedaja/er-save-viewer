@@ -80,10 +80,10 @@ const eventProgress = computed(() => {
 
 <template>
   <div class="bordered-content">
-    <div class="boss-title">
+    <div class="boss-title heading-1">
       {{ $t('bossProgress') }}
     </div>
-    <div class="boss-subtitle">
+    <div class="heading-2">
       {{ $t('bosses') }}
     </div>
     <div class="attributes-grid">
@@ -110,7 +110,7 @@ const eventProgress = computed(() => {
       </div>
     </div>
     <div class="events-section">
-      <div class="events-title">
+      <div class="events-title heading-2">
         {{ $t('events') }}
       </div>
       <div class="attributes-grid">
@@ -141,16 +141,8 @@ const eventProgress = computed(() => {
 }
 
 .boss-title {
-  font-size: 1.4rem;
-  color: var(--highlight-color);
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.6rem;
-}
-
-.boss-subtitle {
-  font-size: 1.2rem;
-  color: var(--highlight-color);
-  padding-bottom: 0.4rem;
 }
 
 .events-section {
@@ -160,8 +152,6 @@ const eventProgress = computed(() => {
 }
 
 .events-title {
-  font-size: 1.2rem;
-  color: var(--highlight-color);
   padding-bottom: 0.4rem;
 }
 

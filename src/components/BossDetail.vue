@@ -70,7 +70,7 @@ function getYouTubeUser(): string | undefined {
 </script>
 
 <template>
-  <div class="boss-detail" v-if="boss">
+  <div class="boss-detail bordered-content" v-if="boss">
     <div class="boss-detail-header">
       <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="boss-title-row">
@@ -390,7 +390,7 @@ function getYouTubeUser(): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 .boss-detail-header {

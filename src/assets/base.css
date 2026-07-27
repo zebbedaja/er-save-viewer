@@ -4,7 +4,7 @@
   /* --main-font-color: #c7c0b2; */
   /* --main-font-color: #7d7668; */
   /* --main-font-color: #d1d0cc; */
-  --border-color: #3e3a34;
+  --border-color: #2e2a24;
   --border-hover-color: #7e7a74;
   /* --border-hover-color: rgb(133, 132, 121); */
   /* --highlight-color: #c9962a; */
@@ -105,9 +105,9 @@ input {
   font-size: 15px;
   background: var(--main-bg-color);
   color: var(--main-font-color);
-  text-rendering: optimizeLegibility;
+  /* text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 a {

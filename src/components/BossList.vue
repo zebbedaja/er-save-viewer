@@ -669,7 +669,7 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem 0.4rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
 }
@@ -689,9 +689,10 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
 
 .boss-location-stats {
   display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0 0.4rem;
+  font-size: 0.6rem;
+  opacity: 0.6;
 }
 
 .boss-row:last-child {
@@ -729,20 +730,7 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   color: var(--highlight-color);
 }
 
-.boss-location {
-  opacity: 0.6;
-  font-size: 0.7rem;
-  flex-shrink: 0;
-  max-width: 10rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .boss-stat {
-  font-size: 0.7rem;
-  opacity: 0.7;
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -751,5 +739,16 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
 
 .region-progress {
   width: 100px;
+}
+
+.boss-list {
+  container-type: inline-size;
+  container-name: boss-list;
+}
+
+@container boss-list (width < 400px) {
+  .boss-attributes {
+    display: none;
+  }
 }
 </style>

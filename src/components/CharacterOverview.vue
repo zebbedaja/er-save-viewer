@@ -27,7 +27,7 @@ function calculatePercantage(max: number, value?: number): number {
       <div class="profile-image">
         <CharacterImage :char="{ archetype: character?.archetype, bodyType: character?.bodyType }" />
       </div>
-      <div class="char-name">
+      <div class="heading-1">
         {{ character?.characterName }}
       </div>
     </div>
@@ -169,11 +169,6 @@ function calculatePercantage(max: number, value?: number): number {
   border: 1px solid var(--border-color);
 }
 
-.char-name {
-  font-size: 1.4rem;
-  color: var(--highlight-color);
-}
-
 .level-row,
 .vitals-row,
 .flask-row {
@@ -191,24 +186,6 @@ function calculatePercantage(max: number, value?: number): number {
 
 .flask-row {
   grid-template-columns: repeat(3, 1fr);
-}
-
-.mini-stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.75rem;
-  background: var(--hover-background);
-}
-
-.mini-label {
-  opacity: 0.7;
-}
-
-.mini-value {
-  color: var(--highlight-color);
-  font-weight: bold;
 }
 
 .attributes-grid {
