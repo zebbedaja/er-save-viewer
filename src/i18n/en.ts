@@ -119,7 +119,7 @@ export default {
   rot: 'Scarlet Rot',
   runes: 'Runes',
   searchBosses: 'Search bosses',
-  searchFlags: 'Search flags...',
+  searchFlags: 'Search flags',
   selectCharacter: 'Select your character',
   selectDifferentCharacter: 'Select character',
   selectDifferentSave: 'Upload save file',

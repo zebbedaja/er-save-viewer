@@ -180,7 +180,6 @@ const languages = [
   font-size: 0.85rem;
   color: var(--main-font-color);
   text-decoration: none;
-  opacity: 0.7;
   transition: 0.2s;
 }
 

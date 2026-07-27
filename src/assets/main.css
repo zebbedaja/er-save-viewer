@@ -1,25 +1,36 @@
 @import './base.css';
 
-#app {
-  margin: 0 auto;
-  padding: 1rem;
-  font-weight: normal;
+.d-none {
+  display: none;
 }
 
-a {
-  text-decoration: none;
-  color: var(--link-color);
-  transition: 0.4s;
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bordered-content {
+  color: var(--main-font-color);
+  padding: 1rem 0.8rem;
+  border: 1px solid var(--border-color);
+  overflow-y: auto;
 }
 
 .button {
   cursor: pointer;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--border-color);
-  transition: 0.3s;
+  transition: 0.2s;
   text-align: center;
   background: transparent;
   font-size: 0.8rem;
+}
+
+.button-sm {
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
 }
 
 .button-lg {
@@ -27,14 +38,24 @@ a {
   padding: 0.5rem 1.1rem;
 }
 
-.button:hover {
+.toggle-button {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.button:hover,
+.toggle-button:hover {
   border-color: var(--border-hover-color);
-  box-shadow: var(--hover-shadow);
+  /* box-shadow: var(--hover-shadow); */
   background: var(--hover-background);
 }
 
-.d-none {
-  display: none;
+button.active,
+.toggle-button.active {
+  background: var(--highlight-color);
+  color: var(--main-bg-color);
+  border-color: var(--highlight-color);
 }
 
 [data-spoiler='true'] .spoiler-sensitive {
@@ -47,17 +68,6 @@ a {
 [data-spoiler='true'] .spoiler-sensitive:hover {
   filter: blur(0);
 }
-
-/* === Shared containers === */
-
-.bordered-content {
-  color: var(--main-font-color);
-  padding: 1rem 0.8rem;
-  border: 1px solid var(--border-color);
-  overflow-y: auto;
-}
-
-/* === Filters === */
 
 .filters-container {
   display: flex;
@@ -83,8 +93,6 @@ a {
   margin-left: -0.5px;
 }
 
-/* === Search input === */
-
 .search-input {
   width: 100%;
   padding: 0.4rem 0.6rem;
@@ -97,33 +105,8 @@ a {
 }
 
 .search-input:focus {
-  border-color: var(--highlight-color);
-}
-
-/* === Toggle buttons === */
-
-.toggle-btn {
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
-  background: var(--hover-background);
-  color: var(--main-font-color);
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.toggle-btn:hover {
   border-color: var(--border-hover-color);
 }
-
-button.active, .toggle-btn.active {
-  background: var(--highlight-color);
-  color: var(--main-bg-color);
-  border-color: var(--highlight-color);
-}
-
-/* === States === */
 
 .no-results {
   text-align: center;
@@ -131,26 +114,6 @@ button.active, .toggle-btn.active {
   opacity: 0.5;
   font-style: italic;
 }
-
-/* === Navigation === */
-
-.back-button {
-  align-self: flex-start;
-  background: none;
-  border: 1px solid var(--border-color);
-  color: var(--main-font-color);
-  font-size: 0.8rem;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.back-button:hover {
-  border-color: var(--highlight-color);
-  color: var(--highlight-color);
-}
-
-/* === Section titles === */
 
 .section-title-bar {
   font-size: 0.75rem;
@@ -260,11 +223,4 @@ button.active, .toggle-btn.active {
   color: rgb(130, 200, 100);
   border-color: rgba(130, 200, 100, 0.4);
   background: rgba(130, 200, 100, 0.08);
-}
-
-.container {
-  max-width: 1200px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
 }

@@ -15,7 +15,6 @@ function goBack() {
 
 <template>
   <div class="profile-summaries">
-    <!-- <div class="select-character">{{ $t('selectCharacter') }}</div> -->
     <ProfileSummary
       v-for="(profileSummary, i) in save?.profileSummaries"
       v-bind:key="profileSummary.name"
@@ -25,10 +24,6 @@ function goBack() {
     <button class="button" @click="goBack">{{ $t('selectDifferentSave') }}</button>
   </div>
 </template>
-
-<!-- <div>
-    <pre><code>{{ save }}</code></pre>
-  </div> -->
 
 <style scoped>
 .profile-summaries {

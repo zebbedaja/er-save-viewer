@@ -216,18 +216,22 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
         <input type="text" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
 
         <div class="filter-group filter-group-connected">
-          <button class="toggle-btn" :class="{ active: defeatFilter === 'all' }" @click="defeatFilter = 'all'">
+          <button
+            class="button toggle-button"
+            :class="{ active: defeatFilter === 'all' }"
+            @click="defeatFilter = 'all'"
+          >
             {{ $t('allBosses') }}
           </button>
           <button
-            class="toggle-btn"
+            class="button toggle-button"
             :class="{ active: defeatFilter === 'defeated' }"
             @click="defeatFilter = 'defeated'"
           >
             {{ $t('defeatedOnly') }}
           </button>
           <button
-            class="toggle-btn"
+            class="button toggle-button"
             :class="{ active: defeatFilter === 'undefeated' }"
             @click="defeatFilter = 'undefeated'"
           >
@@ -239,12 +243,16 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
       <div class="filter-row">
         <div class="filter-row-content">
           <div class="filter-group">
-            <button class="toggle-btn" :class="{ active: filterGreatRune }" @click="filterGreatRune = !filterGreatRune">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterGreatRune }"
+              @click="filterGreatRune = !filterGreatRune"
+            >
               {{ $t('greatRune') }}
             </button>
 
             <button
-              class="toggle-btn"
+              class="button toggle-button"
               :class="{ active: filterRemembrance }"
               @click="filterRemembrance = !filterRemembrance"
             >
@@ -252,85 +260,117 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
             </button>
 
             <button
-              class="toggle-btn"
+              class="button toggle-button"
               :class="{ active: filterGreatEnemy }"
               @click="filterGreatEnemy = !filterGreatEnemy"
             >
               {{ $t('greatEnemyFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterLegend }" @click="filterLegend = !filterLegend">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterLegend }"
+              @click="filterLegend = !filterLegend"
+            >
               {{ $t('legendFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterDemigod }" @click="filterDemigod = !filterDemigod">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterDemigod }"
+              @click="filterDemigod = !filterDemigod"
+            >
               {{ $t('demigodFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterGod }" @click="filterGod = !filterGod">
+            <button class="button toggle-button" :class="{ active: filterGod }" @click="filterGod = !filterGod">
               {{ $t('godFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterNightOnly }" @click="filterNightOnly = !filterNightOnly">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterNightOnly }"
+              @click="filterNightOnly = !filterNightOnly"
+            >
               {{ $t('nightOnly') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterParryable }" @click="filterParryable = !filterParryable">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterParryable }"
+              @click="filterParryable = !filterParryable"
+            >
               {{ $t('parryableFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterHuman }" @click="filterHuman = !filterHuman">
+            <button class="button toggle-button" :class="{ active: filterHuman }" @click="filterHuman = !filterHuman">
               {{ $t('humanFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterDuoBoss }" @click="filterDuoBoss = !filterDuoBoss">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterDuoBoss }"
+              @click="filterDuoBoss = !filterDuoBoss"
+            >
               {{ $t('duoBoss') }}
             </button>
 
             <button
-              class="toggle-btn"
+              class="button toggle-button"
               :class="{ active: filterMultiPhase }"
               @click="filterMultiPhase = !filterMultiPhase"
             >
               {{ $t('multiPhaseBoss') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterVoid }" @click="filterVoid = !filterVoid">
+            <button class="button toggle-button" :class="{ active: filterVoid }" @click="filterVoid = !filterVoid">
               {{ $t('voidFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterDragon }" @click="filterDragon = !filterDragon">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterDragon }"
+              @click="filterDragon = !filterDragon"
+            >
               {{ $t('dragonFilter') }}
             </button>
 
             <button
-              class="toggle-btn"
+              class="button toggle-button"
               :class="{ active: filterAncientDragon }"
               @click="filterAncientDragon = !filterAncientDragon"
             >
               {{ $t('ancientDragonFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterUndead }" @click="filterUndead = !filterUndead">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterUndead }"
+              @click="filterUndead = !filterUndead"
+            >
               {{ $t('undeadFilter') }}
             </button>
 
             <button
-              class="toggle-btn"
+              class="button toggle-button"
               :class="{ active: filterThoseWhoLiveInDeath }"
               @click="filterThoseWhoLiveInDeath = !filterThoseWhoLiveInDeath"
             >
               {{ $t('thoseWhoLiveInDeathFilter') }}
             </button>
 
-            <button class="toggle-btn" :class="{ active: filterBackstab }" @click="filterBackstab = !filterBackstab">
+            <button
+              class="button toggle-button"
+              :class="{ active: filterBackstab }"
+              @click="filterBackstab = !filterBackstab"
+            >
               {{ $t('backstabFilter') }}
             </button>
           </div>
         </div>
 
         <div class="expand-all-group">
-          <button class="toggle-btn" :class="{ active: groupingOn }" @click="groupingOn = !groupingOn">
+          <button class="button toggle-button" :class="{ active: groupingOn }" @click="groupingOn = !groupingOn">
             {{ $t('groupByRegion') }}
           </button>
           <template v-if="groupingOn">
@@ -360,7 +400,9 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
         ></ProgressBar>
         <span class="section-complete" v-if="section.defeated === section.total">✓</span>
         <div class="boss-check-placeholder" v-else></div>
-        <span class="section-count">{{ section.defeated }} / {{ section.total }}</span>
+        <span class="section-count" :class="{ completed: section.defeated === section.total }"
+          >{{ section.defeated }} / {{ section.total }}</span
+        >
       </div>
 
       <template v-if="groupingOn">
@@ -416,9 +458,19 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
               <div class="boss-attributes">
                 <span class="attr-badge type">{{ boss.type }}</span>
                 <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnlyBadge') }}</span>
-                <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span>
+                <!-- <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span> -->
                 <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRuneBadge') }}</span>
                 <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembranceBadge') }}</span>
+                <span v-if="boss.hasHuman" class="attr-badge positive">{{ $t('human') }}</span>
+                <span v-if="boss.hasVoid" class="attr-badge void">{{ $t('voidBadge') }}</span>
+                <span v-if="boss.hasDragon" class="attr-badge dragon">{{ $t('dragonBadge') }}</span>
+                <span v-if="boss.hasAncientDragon" class="attr-badge ancient-dragon">{{
+                  $t('ancientDragonBadge')
+                }}</span>
+                <span v-if="boss.hasThoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">{{
+                  $t('thoseWhoLiveInDeathBadge')
+                }}</span>
+                <span v-if="boss.hasUndead" class="attr-badge undead">{{ $t('undeadBadge') }}</span>
               </div>
             </div>
           </div>
@@ -480,18 +532,9 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   flex: 1;
 }
 
-.search-and-filter .toggle-btn {
+.search-and-filter .toggle-button {
   display: flex;
   align-items: center;
-}
-
-.toggle-btn {
-  background: transparent;
-}
-
-.toggle-btn.active,
-.button.active {
-  background: var(--highlight-color);
 }
 
 .filter-row {
@@ -548,6 +591,10 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   text-align: end;
 }
 
+.section-count.completed {
+  color: var(--highlight-color);
+}
+
 .section-complete {
   color: var(--highlight-color);
   font-size: 0.85rem;
@@ -559,17 +606,8 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   height: 2px;
   margin: 0.4rem 0;
   border: none;
-  /* background: linear-gradient(90deg, var(--highlight-color), transparent); */
   opacity: 0.3;
 }
-
-/* .region-group {
-  border-bottom: 1px solid var(--border-color);
-}
-
-.region-group:last-child {
-  border-bottom: none;
-} */
 
 .region-header {
   display: flex;

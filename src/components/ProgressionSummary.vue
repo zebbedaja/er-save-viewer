@@ -177,6 +177,6 @@ const eventProgress = computed(() => {
 }
 
 .category-click:hover {
-  opacity: 0.75;
+  color: var(--highlight-color);
 }
 </style>

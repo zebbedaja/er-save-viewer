@@ -55,7 +55,7 @@ watch(activeSlotId, () => {
 
 @media (max-width: 768px) {
   .save-browser {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
 </style>

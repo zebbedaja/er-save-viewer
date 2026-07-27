@@ -22,6 +22,8 @@ const boss = computed(() => encounterStore.getByFlagId(flagId.value))
 
 const isDefeated = computed(() => saveStore.defeatedFlags.has(flagId.value))
 
+const youtubeVideo = computed(() => YOUTUBE_VIDEOS.find((v) => v.flagId === flagId.value))
+
 function goBack() {
   router.back()
 }
@@ -54,23 +56,23 @@ function getYouTubeImageUrl(flagId: number): string | undefined {
   return key ? bossYouTubeImages[key]?.default : undefined
 }
 
-function getYouTubeUrl(flagId: number): string | undefined {
-  return 'https://www.youtube.com/watch?v=' + YOUTUBE_VIDEOS.find((v) => v.flagId === flagId)?.youTubeId
+function getYouTubeUrl(): string | undefined {
+  return 'https://www.youtube.com/watch?v=' + youtubeVideo.value?.youTubeId
 }
 
-function getYouTubeTitle(flagId: number): string | undefined {
-  return YOUTUBE_VIDEOS.find((v) => v.flagId === flagId)?.youTubeTitle
+function getYouTubeTitle(): string | undefined {
+  return youtubeVideo.value?.youTubeTitle
 }
 
-function getYouTubeUser(flagId: number): string | undefined {
-  return YOUTUBE_VIDEOS.find((v) => v.flagId === flagId)?.youTubeUser
+function getYouTubeUser(): string | undefined {
+  return youtubeVideo.value?.youTubeUser
 }
 </script>
 
 <template>
   <div class="boss-detail" v-if="boss">
     <div class="boss-detail-header">
-      <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
+      <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="boss-title-row">
         <span class="boss-icon" v-if="isDefeated">&#x2714;</span>
         <h2 class="boss-name">{{ boss.flagName }}</h2>
@@ -354,13 +356,11 @@ function getYouTubeUser(flagId: number): string | undefined {
 
     <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
       <h3 class="boss-videos-title">{{ $t('bossKills') }}</h3>
-      <a :href="getYouTubeUrl(boss.flagId)" target="_blank">
+      <a :href="getYouTubeUrl()" target="_blank">
         <div class="boss-video-wrapper">
           <img class="npc-image" :src="getYouTubeImageUrl(boss.flagId)" />
           <div class="boss-video-title">
-            {{ getYouTubeTitle(boss.flagId) }}<br /><span class="boss-video-user">{{
-              getYouTubeUser(boss.flagId)
-            }}</span>
+            {{ getYouTubeTitle() }}<br /><span class="boss-video-user">{{ getYouTubeUser() }}</span>
           </div>
           <div class="boss-video-play-button-wrapper">
             <div class="boss-video-play-button">
@@ -380,7 +380,7 @@ function getYouTubeUser(flagId: number): string | undefined {
   </div>
 
   <div class="boss-not-found" v-else>
-    <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
+    <button class="button" @click="goBack">{{ $t('backToBosses') }}</button>
     <p>{{ $t('bossNotFound') }}</p>
   </div>
 </template>
@@ -397,6 +397,10 @@ function getYouTubeUser(flagId: number): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+.boss-detail-header .button {
+  align-self: start;
 }
 
 .boss-title-row {

@@ -95,7 +95,7 @@ function goBack() {
 <template>
   <div class="bordered-content event-detail" v-if="category in eventCategories">
     <div class="event-detail-header">
-      <button class="back-button" @click="goBack">{{ $t('backToBosses') }}</button>
+      <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="title-section">
         <h2 class="event-title">{{ $t(eventCategories[category] as unknown as keyof typeof $t) }}</h2>
         <span class="event-count">{{ activatedCount }} / {{ categoryFlags.length }}</span>
@@ -107,18 +107,22 @@ function goBack() {
         <input type="text" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
 
         <div class="filter-group filter-group-connected">
-          <button class="toggle-btn" :class="{ active: activationFilter === 'all' }" @click="activationFilter = 'all'">
+          <button
+            class="button toggle-button"
+            :class="{ active: activationFilter === 'all' }"
+            @click="activationFilter = 'all'"
+          >
             {{ $t('allFlags') }}
           </button>
           <button
-            class="toggle-btn"
+            class="button toggle-button"
             :class="{ active: activationFilter === 'activated' }"
             @click="activationFilter = 'activated'"
           >
             {{ $t('activatedOnly') }}
           </button>
           <button
-            class="toggle-btn"
+            class="button toggle-button"
             :class="{ active: activationFilter === 'notActivated' }"
             @click="activationFilter = 'notActivated'"
           >
@@ -165,17 +169,9 @@ function goBack() {
   flex: 1;
 }
 
-.search-and-filter .toggle-btn {
+.search-and-filter .toggle-button {
   display: flex;
   align-items: center;
-}
-
-.toggle-btn {
-  background: transparent;
-}
-
-.toggle-btn.active {
-  background: var(--highlight-color);
 }
 
 .event-detail-header {
@@ -187,6 +183,10 @@ function goBack() {
   border-bottom: 1px solid var(--border-color);
 }
 
+.event-detail-header .button {
+  align-self: start;
+}
+
 .title-section {
   display: flex;
   align-items: center;
@@ -196,15 +196,12 @@ function goBack() {
 .event-title {
   font-size: 1.1rem;
   color: var(--highlight-color);
-  font-weight: bold;
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .event-count {
   font-size: 0.8rem;
-  font-weight: bold;
   color: var(--highlight-color);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
@@ -220,6 +217,7 @@ function goBack() {
 .flag-list {
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 }
 
 .flag-header {
@@ -249,7 +247,6 @@ function goBack() {
 
 .header-location {
   flex-shrink: 0;
-  max-width: 10rem;
   text-align: right;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -295,7 +292,6 @@ function goBack() {
 
 .flag-row.activated .flag-name {
   color: var(--highlight-color);
-  font-weight: bold;
 }
 
 .flag-row:not(.activated) .flag-name {
@@ -306,7 +302,6 @@ function goBack() {
   opacity: 0.4;
   font-size: 0.8rem;
   flex-shrink: 0;
-  max-width: 10rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
