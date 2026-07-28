@@ -390,7 +390,7 @@ function getYouTubeUser(): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 
 .boss-detail-header {
@@ -469,7 +469,7 @@ function getYouTubeUser(): string | undefined {
 .npc-phase {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.6rem;
   padding: 0.8rem 0;
   border-top: 1px solid var(--border-color);
 }
@@ -503,6 +503,7 @@ function getYouTubeUser(): string | undefined {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  margin-top: 1rem;
 }
 
 .stats-grid {
@@ -615,7 +616,7 @@ function getYouTubeUser(): string | undefined {
   background: rgb(239, 68, 68);
   border-radius: 18%/32%;
   width: 5rem;
-  height: 3.5rem;
+  height: 3.3rem;
   display: flex;
   justify-content: center;
   align-items: center;

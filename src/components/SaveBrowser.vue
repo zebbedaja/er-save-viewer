@@ -42,20 +42,46 @@ watch(activeSlotId, () => {
 
 <style scoped>
 .overview {
+  position: fixed;
+  width: 420px;
+  top: 4.5rem;
+  height: calc(100vh - 6.5rem);
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  overflow-y: auto;
+}
+
+/* .overview::-webkit-scrollbar {
+  display: none;
+} */
+
+.container {
+  grid-column-start: 2;
 }
 
 .save-browser {
   display: grid;
   grid-template-columns: 420px minmax(0, 1fr);
   gap: 1rem;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .save-browser {
     grid-template-columns: 100%;
+  }
+
+  .overview {
+    position: static;
+    height: auto;
+    width: auto;
+    overflow-y: visible;
+  }
+
+  .container {
+    grid-column-start: initial;
   }
 }
 </style>

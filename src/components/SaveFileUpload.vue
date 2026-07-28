@@ -35,7 +35,7 @@ async function openFilePicker() {
 
 <template>
   <div class="upload bordered-content">
-    <div class="headline">{{ $t('appTitle') }}</div>
+    <div class="heading-1">{{ $t('appTitle') }}</div>
     <div class="divider"></div>
     <p>
       {{ $t('uploadConnectSave') }}
@@ -71,12 +71,6 @@ async function openFilePicker() {
   color: var(--main-font-color);
   opacity: 0.6;
   font-family: monospace;
-}
-
-.headline {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--link-color);
 }
 
 .upload .button {
