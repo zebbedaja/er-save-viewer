@@ -25,7 +25,9 @@ const props = defineProps<{
 const baseGameBosses = encounterStore.encounters.filter((e) => !e.dlc)
 const dlcBosses = encounterStore.encounters.filter((e) => e.dlc)
 
-const defeatedOverall = computed(() => encounterStore.encounters.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
+const defeatedOverall = computed(
+  () => encounterStore.encounters.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length,
+)
 const defeatedBaseGame = computed(() => baseGameBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 const defeatedDlc = computed(() => dlcBosses.filter((e) => saveStore.defeatedFlags.has(e.flagId)).length)
 

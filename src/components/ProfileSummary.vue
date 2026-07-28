@@ -24,7 +24,7 @@ defineProps<{
       </div>
     </div>
     <div class="profile-row-2">
-      <div class="profile-text">{{ profileSummary.mapName?.split(" - ")?.[0] }}</div>
+      <div class="profile-text">{{ profileSummary.mapName?.split(' - ')?.[0] }}</div>
       <div class="profile-text seconds-played">{{ secondsToHMS(profileSummary.secondsPlayed!) }}</div>
     </div>
   </div>
