@@ -32,6 +32,12 @@ export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
     youTubeUser: 'Zebbedaja',
   },
   {
+    flagId: 1051430800,
+    youTubeId: 'tnOj6KhHnXs',
+    youTubeTitle: 'Black Blade Kindred RL1+0 NO HIT',
+    youTubeUser: 'Zebbedaja',
+  },
+  {
     flagId: 2054390800,
     youTubeId: 'E3KTrz9aiqg',
     youTubeTitle: 'Bayle the Dread - Level 1, Blood Backhand Blade (RL1, No Hit)',

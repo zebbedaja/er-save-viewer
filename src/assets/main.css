@@ -165,23 +165,7 @@ button.active,
   font-style: italic;
 }
 
-.section-title-bar {
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  margin: 0;
-  padding-bottom: 0.2rem;
-  border-bottom: 1px solid var(--border-color);
-  border-bottom-color: rgba(89, 88, 84, 0.3);
-}
-
 .boss-attributes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0rem 0 0.5rem;
-}
-
-.npc-attributes {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;

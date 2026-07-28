@@ -214,6 +214,18 @@ function getYouTubeUser(): string | undefined {
           <span class="meta-label">{{ $t('weakPart') }}</span>
           <span class="meta-value meta-highlight"> {{ npc.weakPart }} (x{{ npc.weakPartsDamageRate }}) </span>
         </div>
+        <div class="meta-row" v-if="npc.inflictedDamageTypes?.length">
+          <span class="meta-label">{{ $t('inflictedDamageTypes') }}</span>
+          <span class="meta-value drops-list">
+            <span class="drop-item" v-for="dt in npc.inflictedDamageTypes" :key="dt">{{ dt }}</span>
+          </span>
+        </div>
+        <div class="meta-row" v-if="npc.inflictedStatusEffects?.length">
+          <span class="meta-label">{{ $t('inflictedStatusEffects') }}</span>
+          <span class="meta-value drops-list">
+            <span class="drop-item" v-for="se in npc.inflictedStatusEffects" :key="se">{{ se }}</span>
+          </span>
+        </div>
       </div>
 
       <div class="phase-data">
@@ -291,7 +303,7 @@ function getYouTubeUser(): string | undefined {
 
       <div v-if="npc.human && npc.stats.runeLevel != null" class="data-section">
         <h4 class="section-title-bar">{{ $t('stats') }}</h4>
-        <div class="negation-grid stats-grid">
+        <div class="stats-grid">
           <div class="data-cell">
             <span class="data-label">{{ $t('runeLevel') }}</span>
             <span class="data-value">{{ npc.stats.runeLevel }}</span>
@@ -333,7 +345,7 @@ function getYouTubeUser(): string | undefined {
 
       <div v-if="npc.human && npc.armor.helm" class="data-section">
         <h4 class="section-title-bar">{{ $t('equipment') }}</h4>
-        <div class="negation-grid equipment-grid">
+        <div class="equipment-grid">
           <div class="data-cell">
             <span class="data-label">{{ $t('helm') }}</span>
             <span class="data-value">{{ npc.armor.helm }}</span>
@@ -354,7 +366,7 @@ function getYouTubeUser(): string | undefined {
       </div>
     </div>
 
-    <div class="boss-videos" v-if="boss.youtube != null && boss.youtube.length > 0">
+    <div class="boss-videos" v-if="youtubeVideo != null">
       <h3 class="boss-videos-title">{{ $t('bossKills') }}</h3>
       <a :href="getYouTubeUrl()" target="_blank">
         <div class="boss-video-wrapper">
@@ -464,6 +476,7 @@ function getYouTubeUser(): string | undefined {
 
 .npc-image {
   width: 100%;
+  display: block;
 }
 
 .npc-phase {
@@ -588,7 +601,7 @@ function getYouTubeUser(): string | undefined {
 }
 
 .boss-videos {
-  padding: 0.8rem 0;
+  padding-top: 0.8rem;
   border-top: 1px solid var(--border-color);
 }
 
@@ -653,8 +666,11 @@ function getYouTubeUser(): string | undefined {
 }
 
 .boss-images {
-  padding: 0.8rem 0;
+  padding-top: 0.8rem;
   border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .negation-bar-grid {
@@ -672,5 +688,19 @@ function getYouTubeUser(): string | undefined {
 .immune {
   color: var(--highlight-color);
   font-style: italic;
+}
+
+.section-title-bar {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding-bottom: 0.2rem;
+}
+
+.npc-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0rem 0 0.5rem;
 }
 </style>
