@@ -9,6 +9,7 @@
   /* --border-hover-color: rgb(133, 132, 121); */
   /* --highlight-color: #c9962a; */
   /* --highlight-color: #d0aa3b; */
+  /* --highlight-color: #DFC050; */
   --highlight-color: #c9a959;
   --link-color: var(--highlight-color);
   --divider-gradient: linear-gradient(to right, transparent, var(--highlight-color), transparent);
