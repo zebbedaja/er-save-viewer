@@ -11,6 +11,8 @@
   /* --highlight-color: #d0aa3b; */
   /* --highlight-color: #DFC050; */
   --highlight-color: #c9a959;
+  --positive-color: #5d8a5f;
+  --negative-color: #9e4a44;
   --link-color: var(--highlight-color);
   --divider-gradient: linear-gradient(to right, transparent, var(--highlight-color), transparent);
   --hover-shadow: 0px 0px 16px 4px rgba(50, 49, 35, 0.9);

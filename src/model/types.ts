@@ -72,6 +72,8 @@ export interface Npc {
   parryable: boolean
   hp: number
   defense: Defense
+  inflictedDamageTypes?: string[]
+  inflictedStatusEffects?: string[]
   weakPartsDamageRate: number
   weakPart?: string
   numberOfParries: number

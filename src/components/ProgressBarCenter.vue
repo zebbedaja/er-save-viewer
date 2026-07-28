@@ -15,7 +15,7 @@ const progressBarStyle = computed(() => {
     width: `${Math.min(Math.abs(props.percentage) / 2, 100)}%`,
     left: `${props.percentage >= 0 ? 50 : 'initial'}%`,
     right: `${props.percentage < 0 ? 50 : 'initial'}%`,
-    background: props.percentage >= 0 ? '#9e4a44' : '#5d8a5f',
+    background: props.percentage >= 0 ? 'var(--negative-color)' : 'var(--positive-color)',
   }
 })
 </script>
