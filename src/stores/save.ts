@@ -126,7 +126,7 @@ export const useSaveStore = defineStore('save', () => {
           // File may be in use by the game, skip this tick
         }
       }, pollIntervalMs)
-    } catch (e) {
+    } catch {
       error.value = i18n.global.t('errorReadingFile')
       disconnectFile()
     } finally {
