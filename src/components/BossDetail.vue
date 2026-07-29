@@ -703,4 +703,10 @@ function getYouTubeUser(): string | undefined {
   gap: 0.3rem;
   margin: 0rem 0 0.5rem;
 }
+
+@media (max-width: 520px) {
+  .npc-stats-tall {
+    grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  }
+}
 </style>

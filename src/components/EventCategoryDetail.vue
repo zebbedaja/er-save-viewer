@@ -104,7 +104,7 @@ function goBack() {
 
     <div class="filters-container">
       <div class="search-and-filter">
-        <input type="text" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
+        <input type="search" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
 
         <div class="filter-group filter-group-connected">
           <button

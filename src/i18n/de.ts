@@ -151,7 +151,7 @@ export default {
   themeBlue: 'Ranni',
   themeDark: 'Dunkel',
   themeLight: 'Hell',
-  themePink: 'Rosa',
+  themePink: 'Romina',
   totalDeaths: 'Tode insgesamt',
   trackChanges: 'Tracking',
   trackChangesEmpty: 'Keine Änderungen erkannt. Änderungen erscheinen hier, wenn die Datei erneut gelesen wird.',

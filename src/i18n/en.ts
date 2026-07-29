@@ -151,7 +151,7 @@ export default {
   themeBlue: 'Ranni',
   themeDark: 'Dark',
   themeLight: 'Light',
-  themePink: 'Pink',
+  themePink: 'Romina',
   totalDeaths: 'Total Deaths',
   trackChanges: 'Track Changes',
   trackChangesEmpty: 'No changes detected. Changes will appear here when the save file is re-read.',
