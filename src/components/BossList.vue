@@ -41,6 +41,7 @@ function createBoolFilterRef(key: string) {
 const filterGreatRune = createBoolFilterRef('filterGreatRune')
 const filterRemembrance = createBoolFilterRef('filterRemembrance')
 const filterGreatEnemy = createBoolFilterRef('filterGreatEnemy')
+const filterEnemy = createBoolFilterRef('filterEnemy')
 const filterLegend = createBoolFilterRef('filterLegend')
 const filterDemigod = createBoolFilterRef('filterDemigod')
 const filterGod = createBoolFilterRef('filterGod')
@@ -113,6 +114,7 @@ const filteredEncounters = computed(() => {
     if (filterGreatRune.value && !e.hasGreatRune) return false
     if (filterRemembrance.value && !e.hasRemembrance) return false
     if (filterGreatEnemy.value && e.type !== 'Great Enemy') return false
+    if (filterEnemy.value && e.type !== 'Enemy') return false
     if (filterLegend.value && e.type !== 'Legend') return false
     if (filterDemigod.value && e.type !== 'Demigod') return false
     if (filterGod.value && e.type !== 'God') return false
@@ -284,24 +286,28 @@ function onSearch() {
           {{ $t('remembrance') }}
         </button>
 
+        <button class="button toggle-button" :class="{ active: filterLegend }" @click="filterLegend = !filterLegend">
+          {{ $t('legend') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterDemigod }" @click="filterDemigod = !filterDemigod">
+          {{ $t('demigod') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterGod }" @click="filterGod = !filterGod">
+          {{ $t('god') }}
+        </button>
+
         <button
           class="button toggle-button"
           :class="{ active: filterGreatEnemy }"
           @click="filterGreatEnemy = !filterGreatEnemy"
         >
-          {{ $t('greatEnemyFilter') }}
+          {{ $t('greatenemy') }}
         </button>
 
-        <button class="button toggle-button" :class="{ active: filterLegend }" @click="filterLegend = !filterLegend">
-          {{ $t('legendFilter') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterDemigod }" @click="filterDemigod = !filterDemigod">
-          {{ $t('demigodFilter') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterGod }" @click="filterGod = !filterGod">
-          {{ $t('godFilter') }}
+        <button class="button toggle-button" :class="{ active: filterEnemy }" @click="filterEnemy = !filterEnemy">
+          {{ $t('enemy') }}
         </button>
 
         <button
@@ -312,28 +318,8 @@ function onSearch() {
           {{ $t('nightOnly') }}
         </button>
 
-        <button
-          class="button toggle-button"
-          :class="{ active: filterParryable }"
-          @click="filterParryable = !filterParryable"
-        >
-          {{ $t('parryable') }}
-        </button>
-
         <button class="button toggle-button" :class="{ active: filterHuman }" @click="filterHuman = !filterHuman">
           {{ $t('human') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterDuoBoss }" @click="filterDuoBoss = !filterDuoBoss">
-          {{ $t('duoBoss') }}
-        </button>
-
-        <button
-          class="button toggle-button"
-          :class="{ active: filterMultiPhase }"
-          @click="filterMultiPhase = !filterMultiPhase"
-        >
-          {{ $t('multiPhaseBoss') }}
         </button>
 
         <button class="button toggle-button" :class="{ active: filterVoid }" @click="filterVoid = !filterVoid">
@@ -366,10 +352,30 @@ function onSearch() {
 
         <button
           class="button toggle-button"
+          :class="{ active: filterParryable }"
+          @click="filterParryable = !filterParryable"
+        >
+          {{ $t('parryable') }}
+        </button>
+
+        <button
+          class="button toggle-button"
           :class="{ active: filterBackstab }"
           @click="filterBackstab = !filterBackstab"
         >
-          {{ $t('backstab') }}
+          {{ $t('backstabable') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterDuoBoss }" @click="filterDuoBoss = !filterDuoBoss">
+          {{ $t('duoBoss') }}
+        </button>
+
+        <button
+          class="button toggle-button"
+          :class="{ active: filterMultiPhase }"
+          @click="filterMultiPhase = !filterMultiPhase"
+        >
+          {{ $t('multiPhaseBoss') }}
         </button>
       </div>
 
@@ -470,11 +476,10 @@ function onSearch() {
                 </div>
               </div>
               <div v-if="showAttributes" class="boss-attributes">
-                <span class="attr-badge type">{{ boss.type }}</span>
-                <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnly') }}</span>
-                <!-- <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlc') }}</span> -->
                 <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRune') }}</span>
                 <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembrance') }}</span>
+                <span class="attr-badge type">{{ $t(boss.type?.replaceAll(' ', '')?.toLocaleLowerCase()) }}</span>
+                <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnly') }}</span>
                 <span v-if="boss.hasHuman" class="attr-badge positive">{{ $t('human') }}</span>
                 <span v-if="boss.hasVoid" class="attr-badge void">{{ $t('void') }}</span>
                 <span v-if="boss.hasDragon" class="attr-badge dragon">{{ $t('dragon') }}</span>
@@ -482,7 +487,11 @@ function onSearch() {
                 <span v-if="boss.hasThoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">{{
                   $t('thoseWhoLiveInDeath')
                 }}</span>
-                <span v-if="boss.hasUndead" class="attr-badge undead">{{ $t('undead') }}</span>
+                <span v-if="boss.hasUndead" class="attr-badge">{{ $t('undead') }}</span>
+                <span v-if="boss.hasParryable" class="attr-badge">{{ $t('parryable') }}</span>
+                <span v-if="boss.hasBackstab" class="attr-badge">{{ $t('backstabable') }}</span>
+                <span v-if="boss.hasDuoPhase" class="attr-badge">{{ $t('duoBoss') }}</span>
+                <span v-if="boss.hasMultiplePhases" class="attr-badge">{{ $t('multiPhaseBoss') }}</span>
               </div>
             </div>
           </div>

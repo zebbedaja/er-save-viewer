@@ -151,7 +151,7 @@ function getYouTubeUser(): string | undefined {
           }}
         </span>
         <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
-          {{ npc.backstab ? $t('backstab') : $t('noBackstab') }}
+          {{ npc.backstab ? $t('backstabable') : $t('noBackstab') }}
         </span>
         <span v-if="npc.human" class="attr-badge positive">
           {{ $t('human') }}

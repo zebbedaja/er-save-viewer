@@ -32,6 +32,24 @@ export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
     youTubeUser: 'Zebbedaja',
   },
   {
+    flagId: 21010800,
+    youTubeId: 'B61mB_m9Vj0',
+    youTubeTitle: 'Messmer the Impaler - Level 1 Wretch (RL1, No Blessings/Buffs/Aux/AoW, No Hit)',
+    youTubeUser: 'Zebbedaja',
+  },
+  {
+    flagId: 1045520800,
+    youTubeId: '9sHyVGYxv3Y',
+    youTubeTitle: 'Draconic Tree Sentinel RL1+0 NO HIT',
+    youTubeUser: 'Zebbedaja',
+  },
+  {
+    flagId: 1048410800,
+    youTubeId: 'J_12cVVCZIo',
+    youTubeTitle: 'Bell Bearing Hunter RL1+0 NO HIT',
+    youTubeUser: 'Zebbedaja',
+  },
+  {
     flagId: 1051430800,
     youTubeId: 'tnOj6KhHnXs',
     youTubeTitle: 'Black Blade Kindred RL1+0 NO HIT',

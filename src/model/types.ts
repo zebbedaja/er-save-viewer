@@ -13,7 +13,6 @@ export interface Encounter {
   nightOnly: boolean
   dlc: boolean
   npcs: Npc[]
-  youtube: string[]
 }
 
 export interface ResistanceValue {

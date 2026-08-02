@@ -111,7 +111,7 @@ const languages = [
           </span>
         </button>
 
-        <button class="nav-btn" @click="trackChangesStore.toggle" v-if="supportsFilePicker">
+        <button class="nav-btn" @click="trackChangesStore.toggle" v-if="supportsFilePicker" style="display: none">
           <span class="btn-label">{{ $t('trackChanges') }}</span>
           <span class="btn-value" :class="{ 'track-active': trackChangesStore.trackChangesMode }">
             {{ trackChangesStore.trackChangesMode ? $t('trackChangesOn') : $t('trackChangesOff') }}
@@ -213,10 +213,6 @@ const languages = [
 
 .nav-btn:hover {
   border-color: var(--border-hover-color);
-}
-
-.btn-label {
-  opacity: 0.7;
 }
 
 .btn-value {

@@ -9,7 +9,7 @@ const router = createRouter({
   scrollBehavior(to, from) {
     if ((to.hash == null || to.hash === '') && from.path !== to.path) {
       return { top: 0 }
-    } else {
+    } else if (to.hash != null && to.hash !== '') {
       return {
         el: to.hash,
         top: 50,

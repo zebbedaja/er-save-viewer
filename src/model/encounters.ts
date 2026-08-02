@@ -13,7 +13,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Grafted', "Godrick's Great Rune"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47500014,
@@ -66,7 +65,6 @@ export const encounters: Encounter[] = [
     drops: ['Talisman Pouch'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21300014,
@@ -119,7 +117,6 @@ export const encounters: Encounter[] = [
     drops: ['Ornamental Straight Sword', 'Golden Beast Crest Shield'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46900008,
@@ -171,7 +168,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Omen King', "Morgott's Great Rune"],
     nightOnly: false,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=ozxXs2yIHZo'],
     npcs: [
       {
         id: 21300534,
@@ -224,7 +220,6 @@ export const encounters: Encounter[] = [
     drops: ['Talisman Pouch'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47200134,
@@ -276,7 +271,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of Hoarah Loux'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47200070,
@@ -372,7 +366,6 @@ export const encounters: Encounter[] = [
     ],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523240070,
@@ -440,7 +433,6 @@ export const encounters: Encounter[] = [
     drops: ['Frozen Lightning Spear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46500960,
@@ -492,7 +484,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragonscale Blade'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46500262,
@@ -544,7 +535,6 @@ export const encounters: Encounter[] = [
     drops: ["Gargoyle's Greatsword", "Gargoyle's Twinblade"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47700165,
@@ -632,7 +622,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Halberd'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46500265,
@@ -684,7 +673,6 @@ export const encounters: Encounter[] = [
     drops: ['Larval Tear x2', 'Silver Tear Mask'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 526100965,
@@ -751,7 +739,6 @@ export const encounters: Encounter[] = [
     drops: ["Siluria's Tree"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 25001066,
@@ -803,7 +790,6 @@ export const encounters: Encounter[] = [
     drops: ["Fia's Mist"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523610066,
@@ -1074,7 +1060,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Lichdragon'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45110066,
@@ -1126,7 +1111,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Naturalborn'],
     nightOnly: false,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=pGBWE42ADuc'],
     npcs: [
       {
         id: 46200062,
@@ -1178,7 +1162,6 @@ export const encounters: Encounter[] = [
     drops: ["Mohg's Great Rune", 'Remembrance of the Blood Lord'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48000068,
@@ -1232,7 +1215,6 @@ export const encounters: Encounter[] = [
     drops: ['Ancestral Follower Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46700964,
@@ -1284,7 +1266,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Regal Ancestor'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46700065,
@@ -1336,7 +1317,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Black Blade'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21100072,
@@ -1427,7 +1407,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Dragonlord'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45200072,
@@ -1479,7 +1458,6 @@ export const encounters: Encounter[] = [
     drops: ["Smithing-Stone Miner's Bell Bearing [4]", 'Ash of War: Black Flame Tornado'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 35600172,
@@ -1567,7 +1545,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Full Moon Queen', 'Great Rune of the Unborn'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 20300024,
@@ -1657,7 +1634,6 @@ export const encounters: Encounter[] = [
     drops: ['Memory Stone'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31811024,
@@ -1709,7 +1685,6 @@ export const encounters: Encounter[] = [
     drops: ["Malenia's Great Rune", 'Remembrance of the Rot Goddess'],
     nightOnly: false,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=Ua3J8bmekM0'],
     npcs: [
       {
         id: 21200056,
@@ -1801,7 +1776,6 @@ export const encounters: Encounter[] = [
     drops: ["Loretta's Mastery", "Loretta's War Sickle"],
     nightOnly: false,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=Fcve5_zpy_0'],
     npcs: [
       {
         id: 32520054,
@@ -1853,7 +1827,6 @@ export const encounters: Encounter[] = [
     drops: ["Rykard's Great Rune", 'Remembrance of the Blasphemous'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47100038,
@@ -1945,7 +1918,6 @@ export const encounters: Encounter[] = [
     drops: ["Serpent's Amnion", 'Godskin Stitcher', 'Noble Presence'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 35700038,
@@ -1997,7 +1969,6 @@ export const encounters: Encounter[] = [
     drops: ["Inquisitor's Girandole"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 44701938,
@@ -2085,7 +2056,6 @@ export const encounters: Encounter[] = [
     drops: ['Golden Seed', 'Banished Knight Oleg'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46400007,
@@ -2137,7 +2107,6 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     drops: [],
-    youtube: [],
     npcs: [
       {
         id: 43113906,
@@ -2189,7 +2158,6 @@ export const encounters: Encounter[] = [
     drops: ['Elden Remembrance'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21900078,
@@ -2277,7 +2245,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Dancing Lion', 'Divine Beast Head'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 52100088,
@@ -2329,7 +2296,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of a God and a Lord'],
     nightOnly: false,
     dlc: true,
-    youtube: ['https://www.youtube.com/watch?v=-xeeuv1AGgI'],
     npcs: [
       {
         id: 52200089,
@@ -2419,7 +2385,6 @@ export const encounters: Encounter[] = [
     drops: ['Aspects of the Crucible: Thorns', 'Scadutree Fragment', 'Scadutree Fragment'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50100098,
@@ -2471,7 +2436,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Impaler', "Messmer's Kindling"],
     nightOnly: false,
     dlc: true,
-    youtube: ['https://www.youtube.com/watch?v=B61mB_m9Vj0'],
     npcs: [
       {
         id: 51300099,
@@ -2561,7 +2525,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of Putrescence'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50200087,
@@ -2649,7 +2612,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Mother of Fingers'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 52000097,
@@ -2701,7 +2663,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Lord of Frenzied Flame'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50510086,
@@ -2753,7 +2714,6 @@ export const encounters: Encounter[] = [
     drops: ['Lhutel the Headless'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 36640012,
@@ -2807,7 +2767,6 @@ export const encounters: Encounter[] = [
     drops: ['Demi-Human Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42600512,
@@ -2859,7 +2818,6 @@ export const encounters: Encounter[] = [
     drops: ['Noble Sorcerer Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42600110,
@@ -2911,7 +2869,6 @@ export const encounters: Encounter[] = [
     drops: ['Glintstone Sorcerer Ashes '],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 41402920,
@@ -2963,7 +2920,6 @@ export const encounters: Encounter[] = [
     drops: ['Banished Knight Engvall Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34001110,
@@ -3015,7 +2971,6 @@ export const encounters: Encounter[] = [
     drops: ['Twinsage Sorcerer Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 36640920,
@@ -3069,7 +3024,6 @@ export const encounters: Encounter[] = [
     drops: ["Assassin's Cerulean Dagger", 'Black Knifeprint'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21000820,
@@ -3121,7 +3075,6 @@ export const encounters: Encounter[] = [
     drops: ['Kaiden Sellsword Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42601920,
@@ -3173,7 +3126,6 @@ export const encounters: Encounter[] = [
     drops: ["Glovewort Picker's Bell Bearing [1]"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42602932,
@@ -3225,7 +3177,6 @@ export const encounters: Encounter[] = [
     drops: ['Ancient Dragon Knight Kristoff Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 71000030,
@@ -3279,7 +3230,6 @@ export const encounters: Encounter[] = [
     drops: ['Bloodhound Knight Floh'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31811032,
@@ -3337,7 +3287,6 @@ export const encounters: Encounter[] = [
     ],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 25000933,
@@ -3425,7 +3374,6 @@ export const encounters: Encounter[] = [
     drops: ["Assassin's Crimson Dagger"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21001010,
@@ -3477,7 +3425,6 @@ export const encounters: Encounter[] = [
     drops: ['Perfumer Tricia Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34600930,
@@ -3565,7 +3512,6 @@ export const encounters: Encounter[] = [
     drops: ['Soldjars of Fortune Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34001133,
@@ -3617,7 +3563,6 @@ export const encounters: Encounter[] = [
     drops: ['Mad Pumpkin Head Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42600940,
@@ -3705,7 +3650,6 @@ export const encounters: Encounter[] = [
     drops: ['Kindred of Rot Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 36640040,
@@ -3759,7 +3703,6 @@ export const encounters: Encounter[] = [
     drops: ['Redmane Knight Ogha Spirit Ashes', 'Golden Seed'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46400942,
@@ -3811,7 +3754,6 @@ export const encounters: Encounter[] = [
     drops: ['Zamor Curved Sword', 'Zamor Mask', 'Zamor Armor', 'Zamor Bracelets', 'Zamor Legwraps'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 71000950,
@@ -3865,7 +3807,6 @@ export const encounters: Encounter[] = [
     drops: ['Golden Seed', "Glovewort Picker's Bell Bearing [2]"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46400950,
@@ -3917,7 +3858,6 @@ export const encounters: Encounter[] = [
     drops: ['Great Grave Glovewort', 'Great Grave Glovewort', 'Rotten Gravekeeper Cloak'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34000952,
@@ -3969,7 +3909,6 @@ export const encounters: Encounter[] = [
     drops: ['Blackflame Monk Amon Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 526100052,
@@ -4036,7 +3975,6 @@ export const encounters: Encounter[] = [
     drops: ['Spear+7', 'Leather Armor', 'Leather Gloves', 'Leather Boots', "Patches' Bell Bearing"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523090010,
@@ -4099,7 +4037,6 @@ export const encounters: Encounter[] = [
     drops: ['Spelldrake Talisman'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46300912,
@@ -4151,7 +4088,6 @@ export const encounters: Encounter[] = [
     drops: ['Viridian Amber Medallion'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 44800912,
@@ -4203,7 +4139,6 @@ export const encounters: Encounter[] = [
     drops: ['Flamedrake Talisman'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 39701910,
@@ -4255,7 +4190,6 @@ export const encounters: Encounter[] = [
     drops: ['Winged Sword Insignia'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 38000920,
@@ -4307,7 +4241,6 @@ export const encounters: Encounter[] = [
     drops: ['Cerulean Amber Medallion'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42900920,
@@ -4361,7 +4294,6 @@ export const encounters: Encounter[] = [
     drops: ['Crystal Release'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 33502920,
@@ -4449,7 +4381,6 @@ export const encounters: Encounter[] = [
     drops: ["Kindred of Rot's Exultation"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 38100932,
@@ -4537,7 +4468,6 @@ export const encounters: Encounter[] = [
     drops: ['Jar Cannon'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 41301932,
@@ -4589,7 +4519,6 @@ export const encounters: Encounter[] = [
     drops: ['Flamedrake Talisman +2'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 39701942,
@@ -4677,7 +4606,6 @@ export const encounters: Encounter[] = [
     drops: ['Crystal Torrent'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 33501940,
@@ -4801,7 +4729,6 @@ export const encounters: Encounter[] = [
     drops: ['Golden Order Greatsword'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34601952,
@@ -4853,7 +4780,6 @@ export const encounters: Encounter[] = [
     drops: ['Tailoring Tools', 'Sewing Needle'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 41200910,
@@ -4961,7 +4887,6 @@ export const encounters: Encounter[] = [
     drops: ['Blue Dancer Charm'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46600910,
@@ -5013,7 +4938,6 @@ export const encounters: Encounter[] = [
     drops: ['Great Omenkiller Cleaver'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 44800930,
@@ -5103,7 +5027,6 @@ export const encounters: Encounter[] = [
     drops: ['Concealing Veil'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21000930,
@@ -5155,7 +5078,6 @@ export const encounters: Encounter[] = [
     drops: ['Family Heads'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523760930,
@@ -5217,7 +5139,6 @@ export const encounters: Encounter[] = [
     drops: ['Gold Scarab'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 38000940,
@@ -5305,7 +5226,6 @@ export const encounters: Encounter[] = [
     drops: ['Putrid Corpse Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34000940,
@@ -5357,7 +5277,6 @@ export const encounters: Encounter[] = [
     drops: ['Black Flame Ritual', 'Godskin Swaddling Cloth'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 35600950,
@@ -5481,7 +5400,6 @@ export const encounters: Encounter[] = [
     drops: ['Rusted Anchor'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34510912,
@@ -5533,7 +5451,6 @@ export const encounters: Encounter[] = [
     drops: ['Roar Medallion'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46030910,
@@ -5585,7 +5502,6 @@ export const encounters: Encounter[] = [
     drops: ["Smithing-Stone Miner's Bell Bearing [1]"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 33500920,
@@ -5637,7 +5553,6 @@ export const encounters: Encounter[] = [
     drops: ['Great Club'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46030930,
@@ -5689,7 +5604,6 @@ export const encounters: Encounter[] = [
     drops: ["Somberstone Miner's Bell Bearing [2]"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 33500930,
@@ -5777,7 +5691,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Moonveil'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49100940,
@@ -5834,7 +5747,6 @@ export const encounters: Encounter[] = [
     ],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46801940,
@@ -5886,7 +5798,6 @@ export const encounters: Encounter[] = [
     drops: ['Meteorite of Astel'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46200952,
@@ -5938,7 +5849,6 @@ export const encounters: Encounter[] = [
     drops: ["Onyx Lord's Greatsword"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 36001933,
@@ -5990,7 +5900,6 @@ export const encounters: Encounter[] = [
     drops: ['Godskin Apostle Hood', 'Godskin Apostle Robe', 'Godskin Apostle Bracelets', 'Godskin Apostle Trousers'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 35600042,
@@ -6042,7 +5951,6 @@ export const encounters: Encounter[] = [
     drops: ['Omenkiller Rollo'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21403050,
@@ -6130,7 +6038,6 @@ export const encounters: Encounter[] = [
     drops: ['Bloodflame Talons'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48001935,
@@ -6182,7 +6089,6 @@ export const encounters: Encounter[] = [
     drops: ["Lord of Blood's Exultation"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523860000,
@@ -6244,7 +6150,6 @@ export const encounters: Encounter[] = [
     drops: ["Magma Wyrm's Scalesword", 'Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49100026,
@@ -6296,7 +6201,6 @@ export const encounters: Encounter[] = [
     drops: ["Death Knight's Twin Axes", 'Crimson Amber Medallion +3'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50700081,
@@ -6348,7 +6252,6 @@ export const encounters: Encounter[] = [
     drops: ["Death Knight's Longhaft Axe", 'Cerulean Amber Medallion +3'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50701095,
@@ -6400,7 +6303,6 @@ export const encounters: Encounter[] = [
     drops: ['Demi-Human Swordsman Yosh'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58100980,
@@ -6452,7 +6354,6 @@ export const encounters: Encounter[] = [
     drops: ['Curseblade Meera'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50400190,
@@ -6504,7 +6405,6 @@ export const encounters: Encounter[] = [
     drops: ["Lamenter's Mask"],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524270084,
@@ -6566,7 +6466,6 @@ export const encounters: Encounter[] = [
     drops: ["Bloodfiend Hexer's Ashes"],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50810990,
@@ -6618,7 +6517,6 @@ export const encounters: Encounter[] = [
     drops: ["Dragon-Hunter's Great Katana"],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524070081,
@@ -6680,7 +6578,6 @@ export const encounters: Encounter[] = [
     drops: ['Black Knife Tiche'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21002922,
@@ -6732,7 +6629,6 @@ export const encounters: Encounter[] = [
     drops: ['Cerulean Crystal Tear', 'Ruptured Crystal Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48100920,
@@ -6784,7 +6680,6 @@ export const encounters: Encounter[] = [
     drops: ['Greatblade Phalanx'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46010920,
@@ -6836,7 +6731,6 @@ export const encounters: Encounter[] = [
     drops: ["Adula's Moonblade", 'Dragon Heart', 'Dragon Heart', 'Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45021922,
@@ -6888,7 +6782,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45020920,
@@ -6940,7 +6833,6 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     drops: [],
-    youtube: [],
     npcs: [
       {
         id: 40200920,
@@ -6992,7 +6884,6 @@ export const encounters: Encounter[] = [
     drops: ['Crucible Knot Talisman'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48200920,
@@ -7044,7 +6935,6 @@ export const encounters: Encounter[] = [
     drops: ["Loretta's Greatbow", "Ash of War: Loretta's Slash"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 32520921,
@@ -7096,7 +6986,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49100032,
@@ -7148,7 +7037,6 @@ export const encounters: Encounter[] = [
     drops: ['Ancient Death Rancor'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49801020,
@@ -7200,7 +7088,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Giant Hunt', 'Nightrider Glaive'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31500020,
@@ -7252,7 +7139,6 @@ export const encounters: Encounter[] = [
     drops: ['Meteorite'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 36001920,
@@ -7304,7 +7190,6 @@ export const encounters: Encounter[] = [
     drops: ['Somber Smithing Stone [6]', 'Smithing Stone [6] x5', 'Fallingstar Beast Jaw'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46800032,
@@ -7356,7 +7241,6 @@ export const encounters: Encounter[] = [
     drops: ['Red-Feathered Branchsword'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49800020,
@@ -7408,7 +7292,6 @@ export const encounters: Encounter[] = [
     drops: ["Meat Peddler's Bell Bearing"],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31000020,
@@ -7460,7 +7343,6 @@ export const encounters: Encounter[] = [
     drops: ['Memory Stone', 'Golden Rune [1]'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 41300032,
@@ -7512,7 +7394,6 @@ export const encounters: Encounter[] = [
     drops: ['Leaden Hardtear', 'Cerulean Hidden Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46400032,
@@ -7564,7 +7445,6 @@ export const encounters: Encounter[] = [
     drops: ['Flame of the Fell God'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523560020,
@@ -7631,7 +7511,6 @@ export const encounters: Encounter[] = [
     drops: ['Holy-Shrouding Cracked Tear', 'Lightning-Shrouding Cracked Tear', 'Magic-Shrouding Cracked Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48100020,
@@ -7683,7 +7562,6 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     drops: [],
-    youtube: [],
     npcs: [
       {
         id: 41301030,
@@ -7735,7 +7613,6 @@ export const encounters: Encounter[] = [
     drops: ['Deathroot', "Tibia's Summons"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49500032,
@@ -7787,7 +7664,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Ice Spear'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31500020,
@@ -7839,7 +7715,6 @@ export const encounters: Encounter[] = [
     drops: ['Deathroot', 'Skeletal Bandit Ashes '],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49500020,
@@ -7891,7 +7766,6 @@ export const encounters: Encounter[] = [
     drops: ['Godfrey Icon'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47500030,
@@ -7943,7 +7817,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Shared Order'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31501030,
@@ -7995,7 +7868,6 @@ export const encounters: Encounter[] = [
     drops: ["Marais Executioner's Sword", 'Briar Greatshield'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31000931,
@@ -8047,7 +7919,6 @@ export const encounters: Encounter[] = [
     drops: ['Black Knife'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 21000830,
@@ -8099,7 +7970,6 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     drops: [],
-    youtube: [],
     npcs: [
       {
         id: 35500930,
@@ -8153,7 +8023,6 @@ export const encounters: Encounter[] = [
     drops: ['Somber Smithing Stone [5]', 'Smithing Stone [6] x5', 'Gravity Stone Fan', 'Gravity Stone Chunk'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 46801930,
@@ -8205,7 +8074,6 @@ export const encounters: Encounter[] = [
     drops: ['Erdtree Greatshield', "Hero's Rune [1]"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 32511030,
@@ -8293,7 +8161,6 @@ export const encounters: Encounter[] = [
     drops: ["Lansseax's Glaive"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45102030,
@@ -8345,7 +8212,6 @@ export const encounters: Encounter[] = [
     drops: ['Crimsonspill Crystal Tear', 'Speckled Hardtear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45800030,
@@ -8397,7 +8263,6 @@ export const encounters: Encounter[] = [
     drops: ["Radagon's Scarseal"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 71000012,
@@ -8451,7 +8316,6 @@ export const encounters: Encounter[] = [
     drops: ['Golden Halberd '],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 32510010,
@@ -8503,7 +8367,6 @@ export const encounters: Encounter[] = [
     drops: ['Aspects of the Crucible: Tail'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 25000010,
@@ -8555,7 +8418,6 @@ export const encounters: Encounter[] = [
     drops: ['Blue-Feathered Branchsword'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49800010,
@@ -8607,7 +8469,6 @@ export const encounters: Encounter[] = [
     drops: ["Bone Peddler's Bell Bearing"],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31000010,
@@ -8659,7 +8520,6 @@ export const encounters: Encounter[] = [
     drops: ['Godskin Peeler', 'Scouring Black Flame'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 35600030,
@@ -8711,7 +8571,6 @@ export const encounters: Encounter[] = [
     drops: ['Grafted Blade Greatsword'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 34600913,
@@ -8763,7 +8622,6 @@ export const encounters: Encounter[] = [
     drops: ['Opaline Bubbletear', 'Crimsonburst Crystal Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48100012,
@@ -8815,7 +8673,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45000010,
@@ -8867,7 +8724,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Repeating Thrust'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31500010,
@@ -8919,7 +8775,6 @@ export const encounters: Encounter[] = [
     drops: ["Medicine Peddler's Bell Bearing"],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31000033,
@@ -8971,7 +8826,6 @@ export const encounters: Encounter[] = [
     drops: ['Sacrificial Axe'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49800012,
@@ -9023,7 +8877,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Barricade Shield', 'Nightrider Flail'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31501012,
@@ -9075,7 +8928,6 @@ export const encounters: Encounter[] = [
     drops: ["Bloodhound's Fang"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 42900010,
@@ -9129,7 +8981,6 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     drops: [],
-    youtube: [],
     npcs: [
       {
         id: 43400910,
@@ -9181,7 +9032,6 @@ export const encounters: Encounter[] = [
     drops: ['Twinbird Kite Shield'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49800033,
@@ -9233,7 +9083,6 @@ export const encounters: Encounter[] = [
     drops: ['Deathroot', 'Skeletal Militiaman Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49500010,
@@ -9285,7 +9134,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Greatclaw', 'Dragonclaw Shield'],
     nightOnly: false,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=9sHyVGYxv3Y'],
     npcs: [
       {
         id: 32500033,
@@ -9337,7 +9185,6 @@ export const encounters: Encounter[] = [
     drops: ['Greenburst Crystal Tear', 'Flame-Shrouding Cracked Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48110040,
@@ -9389,7 +9236,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45010040,
@@ -9450,7 +9296,6 @@ export const encounters: Encounter[] = [
     nightOnly: false,
     dlc: false,
     drops: [],
-    youtube: [],
     npcs: [
       {
         id: 43401940,
@@ -9538,7 +9383,6 @@ export const encounters: Encounter[] = [
     drops: ["Gravity Stone Peddler's Bell Bearing"],
     nightOnly: true,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=J_12cVVCZIo'],
     npcs: [
       {
         id: 31000042,
@@ -9590,7 +9434,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Phantom Slash'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31500050,
@@ -9642,7 +9485,6 @@ export const encounters: Encounter[] = [
     drops: ['Explosive Ghostflame'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49801052,
@@ -9694,7 +9536,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Poison Moth Flight'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31501040,
@@ -9746,7 +9587,6 @@ export const encounters: Encounter[] = [
     drops: ["Death's Poker"],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49801040,
@@ -9798,7 +9638,6 @@ export const encounters: Encounter[] = [
     drops: ["Commander's Standard", 'Unalloyed Gold Needle'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 30500140,
@@ -9850,7 +9689,6 @@ export const encounters: Encounter[] = [
     drops: ['Nox Flowing Sword'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 33000940,
@@ -9938,7 +9776,6 @@ export const encounters: Encounter[] = [
     drops: ['Battlemage Hugues Ashes'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 37040940,
@@ -9991,7 +9828,6 @@ export const encounters: Encounter[] = [
     drops: ["Gargoyle's Black Axe", "Gargoyle's Black Blades"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47700250,
@@ -10043,7 +9879,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Dragon Heart', 'Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49110052,
@@ -10095,7 +9930,6 @@ export const encounters: Encounter[] = [
     drops: ['Death Ritual Spear'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 49801050,
@@ -10147,7 +9981,6 @@ export const encounters: Encounter[] = [
     drops: ['Ruptured Crystal Tear', 'Thorny Cracked Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48110052,
@@ -10199,7 +10032,6 @@ export const encounters: Encounter[] = [
     drops: ['Ruins Greatsword'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 25000941,
@@ -10287,7 +10119,6 @@ export const encounters: Encounter[] = [
     drops: ['Opaline Hardtear', 'Stonebarb Cracked Tear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48110042,
@@ -10339,7 +10170,6 @@ export const encounters: Encounter[] = [
     drops: ["Gargoyle's Blackblade", "Gargoyle's Black Halberd"],
     nightOnly: false,
     dlc: false,
-    youtube: ['https://www.youtube.com/watch?v=tnOj6KhHnXs'],
     npcs: [
       {
         id: 47701242,
@@ -10391,7 +10221,6 @@ export const encounters: Encounter[] = [
     drops: ["Veteran's Prosthesis"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 30500051,
@@ -10443,7 +10272,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45000042,
@@ -10495,7 +10323,6 @@ export const encounters: Encounter[] = [
     drops: ["Ash of War: Bloodhound's Step"],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31500042,
@@ -10547,7 +10374,6 @@ export const encounters: Encounter[] = [
     drops: ['Cerulean Crystal Tear', 'Crimson Bubbletear'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 48100150,
@@ -10605,7 +10431,6 @@ export const encounters: Encounter[] = [
     ],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 523040050,
@@ -10672,7 +10497,6 @@ export const encounters: Encounter[] = [
     drops: ["Night's Cavalry Set", 'Ancient Dragon Smithing Stone'],
     nightOnly: true,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 31500052,
@@ -10760,7 +10584,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Starscourge', "Radahn's Great Rune"],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47300040,
@@ -10813,7 +10636,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Fire Giant'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 47600050,
@@ -10901,7 +10723,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart'],
     nightOnly: false,
     dlc: false,
-    youtube: [],
     npcs: [
       {
         id: 45030050,
@@ -10953,7 +10774,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Saint of the Bud'],
     nightOnly: false,
     dlc: true,
-    youtube: ['https://www.youtube.com/watch?v=UYwAybkg20k'],
     npcs: [
       {
         id: 50300094,
@@ -11007,7 +10827,6 @@ export const encounters: Encounter[] = [
     drops: ['Roar of Rugalea'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58200095,
@@ -11059,7 +10878,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Somber Ancient Dragon Smithing Stone'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58600080,
@@ -11111,7 +10929,6 @@ export const encounters: Encounter[] = [
     drops: ['Dancing Blade of Ranah', "Dancer's Hood", "Dancer's Dress", "Dancer's Bracer", "Dancer's Trousers"],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524220083,
@@ -11178,7 +10995,6 @@ export const encounters: Encounter[] = [
     drops: ['Star-Lined Sword'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 57300083,
@@ -11237,7 +11053,6 @@ export const encounters: Encounter[] = [
     ],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524240080,
@@ -11304,7 +11119,6 @@ export const encounters: Encounter[] = [
     drops: ["Red Bear's Claw", 'Iron Rivet Armor', 'Iron Rivet Gauntlets', 'Iron Rivet Greaves', 'Fang Helm'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524210095,
@@ -11371,7 +11185,6 @@ export const encounters: Encounter[] = [
     drops: ['Divine Beast Tornado'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 52100094,
@@ -11423,7 +11236,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Ghostflame Call'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 62601084,
@@ -11475,7 +11287,6 @@ export const encounters: Encounter[] = [
     drops: ['Black Steel Greatshield'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58400590,
@@ -11527,7 +11338,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Somber Ancient Dragon Smithing Stone'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58600083,
@@ -11579,7 +11389,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Twin Moon Knight'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 53000082,
@@ -11631,7 +11440,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Dragonscale Flesh'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 55800084,
@@ -11683,7 +11491,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Somber Ancient Dragon Smithing Stone'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58600090,
@@ -11735,7 +11542,6 @@ export const encounters: Encounter[] = [
     drops: ['Ash of War: Aspects of the Crucible: Wings'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58400690,
@@ -11787,7 +11593,6 @@ export const encounters: Encounter[] = [
     drops: ["Dane's Hat", 'Dryleaf Arts'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524250190,
@@ -11855,7 +11660,6 @@ export const encounters: Encounter[] = [
     drops: ['Pelt of Ralva'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 58200990,
@@ -11907,7 +11711,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Wild Boar Rider'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 50000092,
@@ -11959,7 +11762,6 @@ export const encounters: Encounter[] = [
     drops: ['Blessing of Marika '],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 62511093,
@@ -12011,7 +11813,6 @@ export const encounters: Encounter[] = [
     drops: ['Remembrance of the Shadow Sunflower', "Miquella's Great Rune"],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 52300096,
@@ -12135,7 +11936,6 @@ export const encounters: Encounter[] = [
     drops: ['Blessing of Marika '],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 62510093,
@@ -12187,7 +11987,6 @@ export const encounters: Encounter[] = [
     drops: ["Rakshasa's Great Katana", 'Rakshasa Helm', 'Rakshasa Armor', 'Rakshasa Gauntlets', 'Rakshasa Greaves'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524230091,
@@ -12261,7 +12060,6 @@ export const encounters: Encounter[] = [
     ],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 524200190,
@@ -12329,7 +12127,6 @@ export const encounters: Encounter[] = [
     drops: ['Dragon Heart', 'Dragonscale Flesh'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 55800985,
@@ -12381,7 +12178,6 @@ export const encounters: Encounter[] = [
     drops: ['Barbed Staff-Spear'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 53120086,
@@ -12433,7 +12229,6 @@ export const encounters: Encounter[] = [
     drops: ['Gravitational Missile'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 63101093,
@@ -12485,7 +12280,6 @@ export const encounters: Encounter[] = [
     drops: ['Heart of Bayle'],
     nightOnly: false,
     dlc: true,
-    youtube: ['https://www.youtube.com/watch?v=E3KTrz9aiqg'],
     npcs: [
       {
         id: 51200085,
@@ -12537,7 +12331,6 @@ export const encounters: Encounter[] = [
     drops: ['Ancient Dragon Smithing Stone', 'Somber Ancient Dragon Smithing Stone'],
     nightOnly: false,
     dlc: true,
-    youtube: [],
     npcs: [
       {
         id: 53701185,

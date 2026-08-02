@@ -200,11 +200,11 @@ button.active,
   border-color: var(--border-color);
 }
 
-.attr-badge.type {
-  color: var(--main-font-color);
-  text-transform: none;
-  letter-spacing: normal;
-}
+/* .attr-badge.type {
+  color: var(--highlight-color);
+  border-color: rgba(var(--highlight-color), 0.4);
+  background: rgba(var(--highlight-color), 0.08);
+} */
 
 .attr-badge.night {
   color: rgb(139, 148, 255);
@@ -249,13 +249,13 @@ button.active,
 }
 
 .attr-badge.those-who-live-in-death {
-  color: rgb(180, 40, 40);
-  border-color: rgba(180, 40, 40, 0.4);
-  background: rgba(180, 40, 40, 0.08);
+  color: rgb(168, 254, 179);
+  border-color: rgba(168, 254, 179, 0.4);
+  background: rgba(168, 254, 179, 0.08);
 }
 
 .attr-badge.undead {
-  color: rgb(130, 200, 100);
-  border-color: rgba(130, 200, 100, 0.4);
-  background: rgba(130, 200, 100, 0.08);
+  color: rgb(139, 148, 255);
+  border-color: rgba(139, 148, 255, 0.4);
+  background: rgba(139, 148, 255, 0.08);
 }
