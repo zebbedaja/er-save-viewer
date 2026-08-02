@@ -109,21 +109,7 @@ a {
 }
 
 html {
-  scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   scrollbar-color: var(--highlight-color) transparent;
   scrollbar-gutter: stable;
-}
-
-html::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-html::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-html::-webkit-scrollbar-thumb {
-  background: var(--highlight-color) transparent;
 }
