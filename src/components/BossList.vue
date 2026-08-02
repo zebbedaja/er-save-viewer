@@ -14,6 +14,7 @@ const route = useRoute()
 const saveStore = useSaveStore()
 const encounterStore = useEncounterStore()
 const { defeatedFlags } = storeToRefs(saveStore)
+const searchRef = ref<HTMLInputElement | null>(null)
 
 const searchQuery = computed({
   get: () => (route.query.q as string) || '',
@@ -221,13 +222,25 @@ function clearFilters() {
 function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
   return bosses.every((b) => saveStore.defeatedFlags.has(b.flagId))
 }
+
+function onSearch() {
+  searchRef.value?.blur()
+}
 </script>
 
 <template>
   <div class="bordered-content boss-list">
     <div class="filters-container">
       <div class="search-and-filter">
-        <input type="search" class="search-input" :placeholder="$t('searchBosses')" v-model="searchQuery" />
+        <input
+          type="search"
+          class="search-input"
+          :placeholder="$t('searchBosses')"
+          v-model="searchQuery"
+          ref="searchRef"
+          enterkeyhint="search"
+          @keydown.enter.prevent="onSearch"
+        />
 
         <div class="filter-group filter-group-connected">
           <button

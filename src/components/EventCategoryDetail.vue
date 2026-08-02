@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import type { Slot, EventFlag } from '@zebbedaja/er-save-parser'
 
@@ -32,6 +32,8 @@ const eventCategories: Record<string, string> = {
   grace: 'eventsGrace',
   illusoryWall: 'eventsIllusoryWall',
 }
+
+const searchRef = ref<HTMLInputElement | null>(null)
 
 const searchQuery = computed({
   get: () => (route.query.q as string) || '',
@@ -90,6 +92,10 @@ const activatedCount = computed(() => categoryFlags.value.filter((f) => f.state)
 function goBack() {
   router.push({ name: 'boss-list' })
 }
+
+function onSearch() {
+  searchRef.value?.blur()
+}
 </script>
 
 <template>
@@ -104,7 +110,15 @@ function goBack() {
 
     <div class="filters-container">
       <div class="search-and-filter">
-        <input type="search" class="search-input" :placeholder="$t('searchFlags')" v-model="searchQuery" />
+        <input
+          type="search"
+          class="search-input"
+          :placeholder="$t('searchFlags')"
+          v-model="searchQuery"
+          ref="searchRef"
+          enterkeyhint="search"
+          @keydown.enter.prevent="onSearch"
+        />
 
         <div class="filter-group filter-group-connected">
           <button

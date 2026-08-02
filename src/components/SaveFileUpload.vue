@@ -2,10 +2,12 @@
 import LoadingIndicator from './LoadingIndicator.vue'
 import { storeToRefs } from 'pinia'
 import { useSaveStore } from '@/stores/save'
+import { useTrackChangesStore } from '@/stores/trackChanges'
 
 const saveStore = useSaveStore()
 const { readFile, connectFile, setActiveSlotId } = saveStore
 const { isLoading } = storeToRefs(saveStore)
+const { trackChangesMode } = useTrackChangesStore()
 
 const supportsFilePicker = typeof window.showOpenFilePicker !== 'undefined'
 
@@ -21,7 +23,7 @@ async function onFileChange(event: Event) {
 async function openFilePicker() {
   try {
     const [handle] = await window.showOpenFilePicker({
-      types: [{ accept: { '*/*': ['.sl2'] } }],
+      types: [{ accept: { '*/*': ['.sl2', '.co2'] } }],
       excludeAcceptAllOption: true,
     })
     await connectFile(handle)
@@ -50,13 +52,13 @@ async function openFilePicker() {
 
     <LoadingIndicator v-if="isLoading" :message="$t('uploadLoadingSave')" :size="2" />
     <div v-else>
-      <button v-if="supportsFilePicker" class="button button-lg" @click="openFilePicker">
+      <button v-if="supportsFilePicker && trackChangesMode" class="button button-lg" @click="openFilePicker">
         {{ $t('uploadSaveFile') }}
       </button>
 
       <template v-else>
         <label for="file-upload" class="button button-lg">{{ $t('uploadSaveFile') }}</label>
-        <input class="d-none" id="file-upload" type="file" accept=".sl2" @change="onFileChange" />
+        <input class="d-none" id="file-upload" type="file" accept=".sl2, .co2" @change="onFileChange" />
       </template>
     </div>
   </div>

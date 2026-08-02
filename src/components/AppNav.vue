@@ -14,6 +14,7 @@ const trackChangesStore = useTrackChangesStore()
 
 const isMenuOpen = ref(false)
 const navWrapperRef = ref<HTMLElement | null>(null)
+const supportsFilePicker = typeof window.showOpenFilePicker !== 'undefined'
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value
@@ -27,7 +28,6 @@ onClickOutside(navWrapperRef, closeMenu)
 
 const themeKeys: Record<Theme, string> = {
   dark: 'themeDark',
-  light: 'themeLight',
   pink: 'themePink',
   blue: 'themeBlue',
 }
@@ -111,7 +111,7 @@ const languages = [
           </span>
         </button>
 
-        <button class="nav-btn" @click="trackChangesStore.toggle">
+        <button class="nav-btn" @click="trackChangesStore.toggle" v-if="supportsFilePicker">
           <span class="btn-label">{{ $t('trackChanges') }}</span>
           <span class="btn-value" :class="{ 'track-active': trackChangesStore.trackChangesMode }">
             {{ trackChangesStore.trackChangesMode ? $t('trackChangesOn') : $t('trackChangesOff') }}

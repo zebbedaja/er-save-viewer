@@ -2,10 +2,10 @@ import { watch } from 'vue'
 import { defineStore } from 'pinia'
 import { useStorage } from '@vueuse/core'
 
-export type Theme = 'dark' | 'light' | 'pink' | 'blue'
+export type Theme = 'dark' | 'pink' | 'blue'
 
 export const useThemeStore = defineStore('theme', () => {
-  const themes: Theme[] = ['dark', 'light', 'pink', 'blue']
+  const themes: Theme[] = ['dark', 'pink', 'blue']
   const theme = useStorage('pinia/theme', themes[0])
   addCSSClasses(theme.value as Theme)
 
@@ -20,7 +20,7 @@ export const useThemeStore = defineStore('theme', () => {
   }
 
   function addCSSClasses(val: Theme) {
-    document.documentElement.classList.remove('light-theme', 'pink-theme', 'blue-theme')
+    document.documentElement.classList.remove('pink-theme', 'blue-theme')
     if (val !== 'dark') {
       document.documentElement.classList.add(`${val}-theme`)
     }
