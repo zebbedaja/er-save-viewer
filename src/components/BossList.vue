@@ -172,7 +172,7 @@ const sections = computed<Section[]>(() =>
   [
     {
       id: 'base',
-      labelKey: 'baseGameSection',
+      labelKey: 'baseGame',
       keyPrefix: 'bg',
       bosses: groupedBaseGameBosses.value,
       defeated: defeatedBaseGame.value,
@@ -181,7 +181,7 @@ const sections = computed<Section[]>(() =>
     },
     {
       id: 'dlc',
-      labelKey: 'dlcSection',
+      labelKey: 'dlc',
       keyPrefix: 'dlc',
       bosses: groupedDlcBosses.value,
       defeated: defeatedDlc.value,
@@ -248,7 +248,7 @@ function onSearch() {
             :class="{ active: defeatFilter === 'all' }"
             @click="defeatFilter = 'all'"
           >
-            {{ $t('allBosses') }}
+            {{ $t('all') }}
           </button>
           <button
             class="button toggle-button"
@@ -317,11 +317,11 @@ function onSearch() {
           :class="{ active: filterParryable }"
           @click="filterParryable = !filterParryable"
         >
-          {{ $t('parryableFilter') }}
+          {{ $t('parryable') }}
         </button>
 
         <button class="button toggle-button" :class="{ active: filterHuman }" @click="filterHuman = !filterHuman">
-          {{ $t('humanFilter') }}
+          {{ $t('human') }}
         </button>
 
         <button class="button toggle-button" :class="{ active: filterDuoBoss }" @click="filterDuoBoss = !filterDuoBoss">
@@ -337,11 +337,11 @@ function onSearch() {
         </button>
 
         <button class="button toggle-button" :class="{ active: filterVoid }" @click="filterVoid = !filterVoid">
-          {{ $t('voidFilter') }}
+          {{ $t('void') }}
         </button>
 
         <button class="button toggle-button" :class="{ active: filterDragon }" @click="filterDragon = !filterDragon">
-          {{ $t('dragonFilter') }}
+          {{ $t('dragon') }}
         </button>
 
         <button
@@ -349,11 +349,11 @@ function onSearch() {
           :class="{ active: filterAncientDragon }"
           @click="filterAncientDragon = !filterAncientDragon"
         >
-          {{ $t('ancientDragonFilter') }}
+          {{ $t('ancientDragon') }}
         </button>
 
         <button class="button toggle-button" :class="{ active: filterUndead }" @click="filterUndead = !filterUndead">
-          {{ $t('undeadFilter') }}
+          {{ $t('undead') }}
         </button>
 
         <button
@@ -361,7 +361,7 @@ function onSearch() {
           :class="{ active: filterThoseWhoLiveInDeath }"
           @click="filterThoseWhoLiveInDeath = !filterThoseWhoLiveInDeath"
         >
-          {{ $t('thoseWhoLiveInDeathFilter') }}
+          {{ $t('thoseWhoLiveInDeath') }}
         </button>
 
         <button
@@ -369,7 +369,7 @@ function onSearch() {
           :class="{ active: filterBackstab }"
           @click="filterBackstab = !filterBackstab"
         >
-          {{ $t('backstabFilter') }}
+          {{ $t('backstab') }}
         </button>
       </div>
 
@@ -471,20 +471,18 @@ function onSearch() {
               </div>
               <div v-if="showAttributes" class="boss-attributes">
                 <span class="attr-badge type">{{ boss.type }}</span>
-                <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnlyBadge') }}</span>
-                <!-- <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span> -->
-                <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRuneBadge') }}</span>
-                <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembranceBadge') }}</span>
+                <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnly') }}</span>
+                <!-- <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlc') }}</span> -->
+                <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRune') }}</span>
+                <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembrance') }}</span>
                 <span v-if="boss.hasHuman" class="attr-badge positive">{{ $t('human') }}</span>
-                <span v-if="boss.hasVoid" class="attr-badge void">{{ $t('voidBadge') }}</span>
-                <span v-if="boss.hasDragon" class="attr-badge dragon">{{ $t('dragonBadge') }}</span>
-                <span v-if="boss.hasAncientDragon" class="attr-badge ancient-dragon">{{
-                  $t('ancientDragonBadge')
-                }}</span>
+                <span v-if="boss.hasVoid" class="attr-badge void">{{ $t('void') }}</span>
+                <span v-if="boss.hasDragon" class="attr-badge dragon">{{ $t('dragon') }}</span>
+                <span v-if="boss.hasAncientDragon" class="attr-badge ancient-dragon">{{ $t('ancientDragon') }}</span>
                 <span v-if="boss.hasThoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">{{
-                  $t('thoseWhoLiveInDeathBadge')
+                  $t('thoseWhoLiveInDeath')
                 }}</span>
-                <span v-if="boss.hasUndead" class="attr-badge undead">{{ $t('undeadBadge') }}</span>
+                <span v-if="boss.hasUndead" class="attr-badge undead">{{ $t('undead') }}</span>
               </div>
             </div>
           </div>
@@ -523,10 +521,10 @@ function onSearch() {
             </div>
             <div v-if="showAttributes" class="boss-attributes">
               <span class="attr-badge type">{{ boss.type }}</span>
-              <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnlyBadge') }}</span>
-              <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlcBadge') }}</span>
-              <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRuneBadge') }}</span>
-              <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembranceBadge') }}</span>
+              <span v-if="boss.nightOnly" class="attr-badge night">{{ $t('nightOnly') }}</span>
+              <span v-if="boss.dlc" class="attr-badge dlc-tag">{{ $t('dlc') }}</span>
+              <span v-if="boss.hasGreatRune" class="attr-badge great-rune">{{ $t('greatRune') }}</span>
+              <span v-if="boss.hasRemembrance" class="attr-badge remembrance">{{ $t('remembrance') }}</span>
             </div>
           </div>
         </div>

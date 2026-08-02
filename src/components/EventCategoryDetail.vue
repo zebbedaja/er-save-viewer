@@ -126,7 +126,7 @@ function onSearch() {
             :class="{ active: activationFilter === 'all' }"
             @click="activationFilter = 'all'"
           >
-            {{ $t('allFlags') }}
+            {{ $t('all') }}
           </button>
           <button
             class="button toggle-button"

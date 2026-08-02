@@ -83,16 +83,16 @@ function getYouTubeUser(): string | undefined {
           {{ boss.type }}
         </span>
         <span v-if="boss.nightOnly" class="attr-badge night">
-          {{ $t('nightOnlyBadge') }}
+          {{ $t('nightOnly') }}
         </span>
         <span v-if="boss.dlc" class="attr-badge dlc-tag">
-          {{ $t('dlcBadge') }}
+          {{ $t('dlc') }}
         </span>
         <span v-if="boss.hasGreatRune" class="attr-badge great-rune">
-          {{ $t('greatRuneBadge') }}
+          {{ $t('greatRune') }}
         </span>
         <span v-if="boss.hasRemembrance" class="attr-badge remembrance">
-          {{ $t('remembranceBadge') }}
+          {{ $t('remembrance') }}
         </span>
       </div>
     </div>
@@ -157,19 +157,19 @@ function getYouTubeUser(): string | undefined {
           {{ $t('human') }}
         </span>
         <span v-if="npc.void" class="attr-badge void">
-          {{ $t('voidBadge') }}
+          {{ $t('void') }}
         </span>
         <span v-if="npc.dragon" class="attr-badge dragon">
-          {{ $t('dragonBadge') }}
+          {{ $t('dragon') }}
         </span>
         <span v-if="npc.ancientDragon" class="attr-badge ancient-dragon">
-          {{ $t('ancientDragonBadge') }}
+          {{ $t('ancientDragon') }}
         </span>
         <span v-if="npc.thoseWhoLiveInDeath" class="attr-badge those-who-live-in-death">
-          {{ $t('thoseWhoLiveInDeathBadge') }}
+          {{ $t('thoseWhoLiveInDeath') }}
         </span>
         <span v-if="npc.undead" class="attr-badge undead">
-          {{ $t('undeadBadge') }}
+          {{ $t('undead') }}
         </span>
       </div>
 
