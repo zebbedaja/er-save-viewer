@@ -72,6 +72,12 @@ button.active,
   word-break: break-all;
 }
 
+.divider {
+  margin: 1.5rem 0;
+  background: var(--divider-gradient);
+  height: 1px;
+}
+
 .mini-stat {
   display: flex;
   justify-content: space-between;

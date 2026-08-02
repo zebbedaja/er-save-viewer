@@ -1,6 +1,46 @@
 export default {
   about: 'Info',
-  aboutTitle: 'Dies ist eine Infoseite',
+  aboutTitle: 'Über ER Save Viewer',
+  aboutDescription:
+    'Ein webbasiertes Tool zur Analyse von Elden Ring-Save-Dateien. Zeige deinen Boss-Fortschritt, verfolge Event-Flags, überprüfe Charakter-Statistiken und erkunde Schadensresistenzen und Status-Resistenzen für jeden Boss — alles direkt im Browser.',
+  aboutFeatures: 'Funktionen',
+  aboutFeatureBosses: 'Durchsuche und filtere Bosse nach Region, Typ und Besiegungsstatus',
+  aboutFeatureEvents: 'Verfolge Event-Flags: Handlung, Karten, Gnaden, Gegenstände und mehr',
+  aboutFeatureStats: 'Zeige Charakter-Statistiken, Ausrüstung und Fortschrittsdetails',
+  aboutFeatureDamage: 'Analysiere Boss-Schadensresistenzen, Status-Resistenzen und verursachte Effekte',
+  aboutFeaturePrivacy: 'Alles läuft lokal — dein Save verlässt niemals deinen Rechner',
+  aboutCredits: 'Danksagungen',
+  aboutCreditsIntro:
+    'Dieses Projekt wäre ohne die großartige Arbeit der Elden Ring Modding-Community nicht möglich. Besonderer Dank an:',
+  aboutCreditErSaveManager: 'Elden Ring Save Manager',
+  aboutCreditErSaveManagerBy: 'von Hapfel1',
+  aboutCreditErSaveManagerDesc:
+    'Umfassender Save-Editor, Backup-Manager und Reparaturwerkzeug mit Charakterverwaltung, Teleportation und mehr.',
+  aboutCreditSmithbox: 'Smithbox',
+  aboutCreditSmithboxBy: 'von vawser',
+  aboutCreditSmithboxDesc:
+    'Modding-Toolkit für FromSoftware-Spiele mit Karten-, Modell-, Param- und Textureditoren.',
+  aboutCreditSoulsModding: 'Souls Modding',
+  aboutCreditSoulsModdingDesc:
+    'Community-Hub für Dark Souls und Elden Ring Modding mit Dokumentation, Tutorials und Tools.',
+  aboutCreditAutoChecklist: 'Elden Ring Automatic Checklist',
+  aboutCreditAutoChecklistBy: 'von CyberGiant7',
+  aboutCreditAutoChecklistDesc:
+    'Automatisierte 100%-Fortschrittsliste, die Save-Dateien analysiert, um besitzene und fehlende Gegenstände zu verfolgen.',
+  aboutCreditErSaveEditor: 'ER Save Editor',
+  aboutCreditErSaveEditorBy: 'von ClayAmore',
+  aboutCreditErSaveEditorDesc:
+    'Save-Editor mit Charakterverwaltung, Gegenstandsspawn, Statistiken-Bearbeitung, Boss-Revival und mehr. Kompatibel mit PC- und PlayStation-Saves.',
+  aboutCreditErSaveLib: 'ER Save Lib',
+  aboutCreditErSaveLibBy: 'von ClayAmore',
+  aboutCreditErSaveLibDesc:
+    'Rust-Bibliothek zum Lesen und Schreiben von Elden Ring-Save-Dateien. Kompatibel mit PC- und PlayStation-Saves.',
+  aboutCreditCompass: 'Elden Ring Compass',
+  aboutCreditCompassBy: 'von EthanShoeDev',
+  aboutCreditCompassDesc:
+    'Browserbasiertes Fortschrittstool mit interaktiven Karten, Save-Polling und Komplettierungsstatistiken.',
+  aboutParserNote:
+    'Diese App verwendet <a href="https://github.com/zebbedaja/er-save-parser" target="_blank" rel="noopener noreferrer">er-save-parser</a>, eine TypeScript-Bibliothek zum Lesen von Elden Ring-Save-Dateien.',
   activatedOnly: 'Aktiviert',
   all: 'Alle',
   ancientDragon: 'Uralter Drache',
@@ -94,13 +134,9 @@ export default {
   multiPhaseBoss: 'Mehrere Phasen',
   negation: 'Schadensresistenz',
   nightOnly: 'Nur nachts',
-  noBackstab: 'Kein Backstab',
   noBossesMatch: 'Keine Bosse passen zu deinen Filtern.',
   noFlagsMatch: 'Keine Flags passen zu deinen Filtern.',
   notActivatedOnly: 'Nicht aktiviert',
-  notHuman: 'Kein menschlicher NPC',
-  notParryable: 'Nicht parrierbar',
-  notVulnerableToCriticalHit: 'Nicht Anfällig für Kritische Treffer',
   overall: 'Gesamt',
   parryable: 'Parrierbar',
   phase: 'Phase',

@@ -79,10 +79,4 @@ async function openFilePicker() {
   display: inline-block;
   margin-top: 1rem;
 }
-
-.divider {
-  margin: 1.8rem;
-  background: var(--divider-gradient);
-  height: 2px;
-}
 </style>

@@ -1,6 +1,46 @@
 export default {
   about: 'Info',
-  aboutTitle: 'This is an info page',
+  aboutTitle: 'About ER Save Viewer',
+  aboutDescription:
+    'A web-based tool to analyze Elden Ring save files. View your boss progress, track event flags, inspect character stats, and explore damage negation and status resistances for every boss — all from your browser.',
+  aboutFeatures: 'Features',
+  aboutFeatureBosses: 'Browse and filter bosses by region, type, and defeat status',
+  aboutFeatureEvents: 'Track event flags: story progress, maps, graces, items, and more',
+  aboutFeatureStats: 'View character stats, equipment, and progression details',
+  aboutFeatureDamage: 'Inspect boss damage negation, status resistances, and inflicted effects',
+  aboutFeaturePrivacy: 'Everything runs locally — your save never leaves your machine',
+  aboutCredits: 'Credits',
+  aboutCreditsIntro:
+    'This project would not exist without the amazing work of the Elden Ring modding community. Special thanks to:',
+  aboutCreditErSaveManager: 'Elden Ring Save Manager',
+  aboutCreditErSaveManagerBy: 'by Hapfel1',
+  aboutCreditErSaveManagerDesc:
+    'Comprehensive save file editor, backup manager, and corruption fixer with character management, teleportation, and more.',
+  aboutCreditSmithbox: 'Smithbox',
+  aboutCreditSmithboxBy: 'by vawser',
+  aboutCreditSmithboxDesc:
+    'Modding toolkit for FromSoftware games with map, model, param, and texture editors.',
+  aboutCreditSoulsModding: 'Souls Modding',
+  aboutCreditSoulsModdingDesc:
+    'Community hub for Dark Souls and Elden Ring modding with documentation, tutorials, and tools.',
+  aboutCreditAutoChecklist: 'Elden Ring Automatic Checklist',
+  aboutCreditAutoChecklistBy: 'by CyberGiant7',
+  aboutCreditAutoChecklistDesc:
+    'Automated 100% completion checklist that parses save files to track owned and missing items.',
+  aboutCreditErSaveEditor: 'ER Save Editor',
+  aboutCreditErSaveEditorBy: 'by ClayAmore',
+  aboutCreditErSaveEditorDesc:
+    'Save file editor with character management, item spawning, stat editing, boss revival, and more. Compatible with PC and PlayStation saves.',
+  aboutCreditErSaveLib: 'ER Save Lib',
+  aboutCreditErSaveLibBy: 'by ClayAmore',
+  aboutCreditErSaveLibDesc:
+    'Rust library for reading and writing Elden Ring save files. Compatible with PC and PlayStation saves.',
+  aboutCreditCompass: 'Elden Ring Compass',
+  aboutCreditCompassBy: 'by EthanShoeDev',
+  aboutCreditCompassDesc:
+    'Browser-based progression tracker with interactive maps, save polling, and completion stats.',
+  aboutParserNote:
+    'This app uses <a href="https://github.com/zebbedaja/er-save-parser" target="_blank" rel="noopener noreferrer">er-save-parser</a>, a TypeScript library for reading Elden Ring save files.',
   activatedOnly: 'Activated',
   all: 'All',
   ancientDragon: 'Ancient Dragon',
@@ -94,12 +134,8 @@ export default {
   multiPhaseBoss: 'Multi Phase',
   negation: 'Damage Negation',
   nightOnly: 'Night Only',
-  noBackstab: 'Not Backstabable',
   noBossesMatch: 'No bosses match your filters.',
   noFlagsMatch: 'No flags match your filters.',
-  notActivatedOnly: 'Not Activated',
-  notHuman: 'Not Human NPC',
-  notParryable: 'Not Parryable',
   notVulnerableToCriticalHit: 'Not Vulnerable to Critical Hit',
   overall: 'Overall',
   parryable: 'Parryable',

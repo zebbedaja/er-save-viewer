@@ -137,21 +137,19 @@ function getYouTubeUser(): string | undefined {
       </h3>
 
       <div class="npc-attributes">
-        <span class="attr-badge" :class="npc.stanceCritical ? 'positive' : 'negative'">
-          {{ npc.stanceCritical ? $t('vulnerableToCriticalHit') : $t('notVulnerableToCriticalHit') }}
+        <span v-if="npc.stanceCritical" class="attr-badge positive">
+          {{ $t('vulnerableToCriticalHit') }}
         </span>
-        <span class="attr-badge" :class="npc.parryable ? 'positive' : 'negative'">
+        <span v-if="npc.parryable" class="attr-badge positive">
           {{
-            npc.parryable
-              ? $t('parryable') +
-                (npc.numberOfParries != null && npc.numberOfParries > 1
-                  ? ' (' + $t('requiresNParries', { count: npc.numberOfParries }) + ')'
-                  : '')
-              : $t('notParryable')
+            $t('parryable') +
+            (npc.numberOfParries != null && npc.numberOfParries > 1
+              ? ' (' + $t('requiresNParries', { count: npc.numberOfParries }) + ')'
+              : '')
           }}
         </span>
-        <span class="attr-badge" :class="npc.backstab ? 'positive' : 'negative'">
-          {{ npc.backstab ? $t('backstabable') : $t('noBackstab') }}
+        <span v-if="npc.backstab" class="attr-badge positive">
+          {{ $t('backstabable') }}
         </span>
         <span v-if="npc.human" class="attr-badge positive">
           {{ $t('human') }}
