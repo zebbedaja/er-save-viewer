@@ -51,7 +51,11 @@
         </li>
         <li class="credit-item">
           <span class="credit-header">
-            <a href="https://github.com/CyberGiant7/Elden-Ring-Automatic-Checklist" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/CyberGiant7/Elden-Ring-Automatic-Checklist"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span class="credit-name">{{ $t('aboutCreditAutoChecklist') }}</span>
             </a>
             <span class="credit-owner">{{ $t('aboutCreditAutoChecklistBy') }}</span>

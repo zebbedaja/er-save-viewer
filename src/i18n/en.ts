@@ -18,8 +18,7 @@ export default {
     'Comprehensive save file editor, backup manager, and corruption fixer with character management, teleportation, and more.',
   aboutCreditSmithbox: 'Smithbox',
   aboutCreditSmithboxBy: 'by vawser',
-  aboutCreditSmithboxDesc:
-    'Modding toolkit for FromSoftware games with map, model, param, and texture editors.',
+  aboutCreditSmithboxDesc: 'Modding toolkit for FromSoftware games with map, model, param, and texture editors.',
   aboutCreditSoulsModding: 'Souls Modding',
   aboutCreditSoulsModdingDesc:
     'Community hub for Dark Souls and Elden Ring modding with documentation, tutorials, and tools.',

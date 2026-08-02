@@ -18,8 +18,7 @@ export default {
     'Umfassender Save-Editor, Backup-Manager und Reparaturwerkzeug mit Charakterverwaltung, Teleportation und mehr.',
   aboutCreditSmithbox: 'Smithbox',
   aboutCreditSmithboxBy: 'von vawser',
-  aboutCreditSmithboxDesc:
-    'Modding-Toolkit für FromSoftware-Spiele mit Karten-, Modell-, Param- und Textureditoren.',
+  aboutCreditSmithboxDesc: 'Modding-Toolkit für FromSoftware-Spiele mit Karten-, Modell-, Param- und Textureditoren.',
   aboutCreditSoulsModding: 'Souls Modding',
   aboutCreditSoulsModdingDesc:
     'Community-Hub für Dark Souls und Elden Ring Modding mit Dokumentation, Tutorials und Tools.',
