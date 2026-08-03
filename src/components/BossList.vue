@@ -16,6 +16,25 @@ const encounterStore = useEncounterStore()
 const { defeatedFlags } = storeToRefs(saveStore)
 const searchRef = ref<HTMLInputElement | null>(null)
 
+const filterGreatRune = createBoolFilterRef('filterGreatRune')
+const filterRemembrance = createBoolFilterRef('filterRemembrance')
+const filterGreatEnemy = createBoolFilterRef('filterGreatEnemy')
+const filterEnemy = createBoolFilterRef('filterEnemy')
+const filterLegend = createBoolFilterRef('filterLegend')
+const filterDemigod = createBoolFilterRef('filterDemigod')
+const filterGod = createBoolFilterRef('filterGod')
+const filterNightOnly = createBoolFilterRef('filterNightOnly')
+const filterParryable = createBoolFilterRef('filterParryable')
+const filterHuman = createBoolFilterRef('filterHuman')
+const filterDuoBoss = createBoolFilterRef('filterDuoBoss')
+const filterMultiPhase = createBoolFilterRef('filterMultiPhase')
+const filterVoid = createBoolFilterRef('filterVoid')
+const filterDragon = createBoolFilterRef('filterDragon')
+const filterAncientDragon = createBoolFilterRef('filterAncientDragon')
+const filterUndead = createBoolFilterRef('filterUndead')
+const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
+const filterBackstab = createBoolFilterRef('filterBackstab')
+
 const searchQuery = computed({
   get: () => (route.query.q as string) || '',
   set: (v: string) => {
@@ -37,25 +56,6 @@ function createBoolFilterRef(key: string) {
     },
   })
 }
-
-const filterGreatRune = createBoolFilterRef('filterGreatRune')
-const filterRemembrance = createBoolFilterRef('filterRemembrance')
-const filterGreatEnemy = createBoolFilterRef('filterGreatEnemy')
-const filterEnemy = createBoolFilterRef('filterEnemy')
-const filterLegend = createBoolFilterRef('filterLegend')
-const filterDemigod = createBoolFilterRef('filterDemigod')
-const filterGod = createBoolFilterRef('filterGod')
-const filterNightOnly = createBoolFilterRef('filterNightOnly')
-const filterParryable = createBoolFilterRef('filterParryable')
-const filterHuman = createBoolFilterRef('filterHuman')
-const filterDuoBoss = createBoolFilterRef('filterDuoBoss')
-const filterMultiPhase = createBoolFilterRef('filterMultiPhase')
-const filterVoid = createBoolFilterRef('filterVoid')
-const filterDragon = createBoolFilterRef('filterDragon')
-const filterAncientDragon = createBoolFilterRef('filterAncientDragon')
-const filterUndead = createBoolFilterRef('filterUndead')
-const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
-const filterBackstab = createBoolFilterRef('filterBackstab')
 
 const groupingOn = computed({
   get: () => route.query.groupByRegion !== '0',

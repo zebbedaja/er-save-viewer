@@ -108,7 +108,7 @@ export default {
   frost: 'Frostbite',
   gauntlets: 'Gauntlets',
   god: 'God',
-  greatEnemy: 'Great Enemy',
+  greatenemy: 'Great Enemy',
   greatRune: 'Great Rune',
   groupByRegion: 'Group by Region',
   helm: 'Helm',
