@@ -119,6 +119,7 @@ export default {
   inflictedStatusEffects: 'Vergebene Statuswirkungen',
   immune: 'Immun',
   intelligence: 'Weisheit',
+  keyItems: 'Key Items',
   legend: 'Legende',
   legs: 'Beine',
   level: 'Stufe',
