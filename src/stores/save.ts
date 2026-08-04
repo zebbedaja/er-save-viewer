@@ -1,4 +1,5 @@
 import { ref, computed } from 'vue'
+import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { parse, compareUint8Arrays, type Save, getEventIdFromPosition, getBstMap } from '@zebbedaja/er-save-parser'
 import i18n from '@/i18n'
@@ -14,6 +15,17 @@ export const useSaveStore = defineStore('save', () => {
   const save = ref<Save | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
+  const persistedSlot = useStorage<{ checksum: string; slotId: number } | null>(
+    'pinia/persistedSlot',
+    null,
+    undefined,
+    {
+      serializer: {
+        read: (v) => (v ? JSON.parse(v) : null),
+        write: (v) => JSON.stringify(v),
+      },
+    },
+  )
   const activeSlotId = ref<number | null>(null)
   const fileHandle = ref<FileSystemFileHandle | null>(null)
   const lastModified = ref<number>(0)
@@ -30,6 +42,19 @@ export const useSaveStore = defineStore('save', () => {
     history.value.push({ data, timestamp: Date.now(), lastModified: modified })
     if (history.value.length > MAX_HISTORY) {
       history.value.shift()
+    }
+  }
+
+  function restorePersistedSlot() {
+    if (
+      persistedSlot.value?.checksum != null &&
+      save.value?.checksum != null &&
+      persistedSlot.value?.checksum === save.value?.checksum &&
+      persistedSlot.value?.slotId < (save.value?.slots?.length ?? 0)
+    ) {
+      activeSlotId.value = persistedSlot.value?.slotId
+    } else {
+      activeSlotId.value = 0
     }
   }
 
@@ -74,6 +99,7 @@ export const useSaveStore = defineStore('save', () => {
         const parsed = await parseFileBuffer(buffer)
         save.value = parsed
         pushToHistory(parsed, file.lastModified)
+        restorePersistedSlot()
         isLoading.value = false
         resolve()
       }
@@ -105,7 +131,7 @@ export const useSaveStore = defineStore('save', () => {
       const parsed = await parseFileBuffer(buffer)
       save.value = parsed
       pushToHistory(parsed, lastModified.value)
-      setActiveSlotId(0)
+      restorePersistedSlot()
 
       pollInterval.value = setInterval(async () => {
         try {
@@ -148,22 +174,28 @@ export const useSaveStore = defineStore('save', () => {
       throw new Error(`Invalid slot index: ${slot}`)
     }
     activeSlotId.value = slot
+    if (slot !== null && save.value?.checksum) {
+      persistedSlot.value = { checksum: save.value.checksum, slotId: slot }
+    }
   }
 
   function resetActiveSlot() {
     activeSlotId.value = null
+    persistedSlot.value = null
   }
 
   function resetSaveFile() {
     disconnectFile()
     save.value = null
     activeSlotId.value = null
+    persistedSlot.value = null
     error.value = null
     // history.value = []
   }
 
   return {
     save,
+    persistedSlot,
     activeSlotId,
     activeSlot,
     defeatedFlags,

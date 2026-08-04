@@ -5,7 +5,7 @@ import { useSaveStore } from '@/stores/save'
 import { useTrackChangesStore } from '@/stores/trackChanges'
 
 const saveStore = useSaveStore()
-const { readFile, connectFile, setActiveSlotId } = saveStore
+const { readFile, connectFile } = saveStore
 const { isLoading } = storeToRefs(saveStore)
 const { trackChangesMode } = useTrackChangesStore()
 
@@ -17,7 +17,6 @@ async function onFileChange(event: Event) {
   if (!file) return
 
   await readFile(file)
-  setActiveSlotId(0)
 }
 
 async function openFilePicker() {
