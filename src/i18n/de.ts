@@ -114,6 +114,7 @@ export default {
   helm: 'Helm',
   hp: 'LP',
   holy: 'Heilig',
+  home: 'Home',
   human: 'Menschlicher NPC',
   inflictedDamageTypes: 'Vergegebene Schadentypen',
   inflictedStatusEffects: 'Vergebene Statuswirkungen',
