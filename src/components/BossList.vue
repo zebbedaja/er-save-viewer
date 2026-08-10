@@ -35,6 +35,21 @@ const filterUndead = createBoolFilterRef('filterUndead')
 const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
 const filterBackstab = createBoolFilterRef('filterBackstab')
 
+const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-profile/*.jpg', { eager: true })
+
+const bossProfileImagesMap = computed<Record<string, string>>(() => {
+  const map: Record<string, string> = {}
+  for (const [path, url] of Object.entries(bossProfileImages)) {
+    const id =
+      path
+        .split('/')
+        .pop()
+        ?.replace(/\.\w+$/, '') ?? ''
+    map[id] = url.default
+  }
+  return map
+})
+
 const searchQuery = computed({
   get: () => (route.query.q as string) || '',
   set: (v: string) => {
@@ -455,6 +470,9 @@ function onSearch() {
             >
               <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
               <span class="boss-check-placeholder" v-else></span>
+              <div class="boss-profile" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }" v-if="showAttributes && false">
+                <img :src="bossProfileImagesMap[boss.flagId]" v-if="bossProfileImagesMap[boss.flagId]" />
+              </div>
               <div class="boss-row-info">
                 <div class="boss-name" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }">
                   {{ boss.flagName }}
@@ -672,8 +690,9 @@ function onSearch() {
 .boss-row {
   display: grid;
   grid-template-columns: 1rem 1fr max-content;
+  /* grid-template-columns: 1rem max-content 1fr max-content; */
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.6rem;
   padding: 0.5rem 0.4rem;
   font-size: 0.8rem;
   border-bottom: 1px solid var(--border-color);
@@ -750,6 +769,18 @@ function onSearch() {
 .boss-list {
   container-type: inline-size;
   container-name: boss-list;
+}
+
+.boss-profile {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.boss-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
 }
 
 @container boss-list (width < 400px) {

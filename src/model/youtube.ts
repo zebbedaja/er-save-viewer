@@ -14,6 +14,12 @@ export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
     youTubeUser: 'Zebbedaja',
   },
   {
+    flagId: 12050800,
+    youTubeId: 'uIomgAmQF6M',
+    youTubeTitle: 'Mohg, Lord of Blood - Level 1 Wretch (RL1, No Hit except nihil)',
+    youTubeUser: 'Zebbedaja',
+  },
+  {
     flagId: 15000800,
     youTubeId: 'Ua3J8bmekM0',
     youTubeTitle: 'PERFECT Malenia - Level 1 Wretch (RL1, No Hit)',
