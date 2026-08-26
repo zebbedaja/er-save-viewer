@@ -58,6 +58,7 @@ const languages = [
           <span class="nav-title">{{ $t('appTitle') }}</span>
         </RouterLink>
         <RouterLink to="/" class="nav-link">{{ $t('home') }}</RouterLink>
+        <RouterLink to="/map" class="nav-link">{{ $t('map') }}</RouterLink>
         <RouterLink to="/about" class="nav-link">{{ $t('about') }}</RouterLink>
       </div>
 
@@ -98,6 +99,9 @@ const languages = [
       <div class="nav-right" :class="{ open: isMenuOpen }">
         <RouterLink to="/" class="nav-link" @click="closeMenu">
           {{ $t('home') }}
+        </RouterLink>
+        <RouterLink to="/map" class="nav-link" @click="closeMenu">
+          {{ $t('map') }}
         </RouterLink>
         <RouterLink to="/about" class="nav-link" @click="closeMenu">
           {{ $t('about') }}

@@ -34,6 +34,13 @@ const filterAncientDragon = createBoolFilterRef('filterAncientDragon')
 const filterUndead = createBoolFilterRef('filterUndead')
 const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
 const filterBackstab = createBoolFilterRef('filterBackstab')
+const filterCatacombs = createBoolFilterRef('filterCatacombs')
+const filterTunnel = createBoolFilterRef('filterTunnel')
+const filterCave = createBoolFilterRef('filterCave')
+const filterGaol = createBoolFilterRef('filterGaol')
+const filterEvergaol = createBoolFilterRef('filterEvergaol')
+const filterHerosGrave = createBoolFilterRef('filterHerosGrave')
+const filterRuins = createBoolFilterRef('filterRuins')
 
 const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-profile/*.jpg', { eager: true })
 
@@ -144,6 +151,19 @@ const filteredEncounters = computed(() => {
     if (filterUndead.value && !e.hasUndead) return false
     if (filterThoseWhoLiveInDeath.value && !e.hasThoseWhoLiveInDeath) return false
     if (filterBackstab.value && !e.hasBackstab) return false
+    if (
+      filterCatacombs.value &&
+      !e.location.includes('Catacombs') &&
+      !e.location.includes('Auriza Side') &&
+      !e.location.includes('Hidden Path')
+    )
+      return false
+    if (filterTunnel.value && !e.location.includes('Tunnel')) return false
+    if (filterCave.value && !e.location.includes('Cave') && !e.location.includes('Grotto')) return false
+    if (filterGaol.value && !e.location.includes(' Gaol')) return false
+    if (filterEvergaol.value && !e.location.includes('Evergaol')) return false
+    if (filterHerosGrave.value && !e.location.includes("Hero's Grave")) return false
+    if (filterRuins.value && !e.location.includes('Ruins')) return false
 
     const defeated = flags.has(e.flagId)
 
@@ -392,6 +412,46 @@ function onSearch() {
         >
           {{ $t('multiPhaseBoss') }}
         </button>
+
+        <button
+          class="button toggle-button"
+          :class="{ active: filterCatacombs }"
+          @click="filterCatacombs = !filterCatacombs"
+        >
+          {{ $t('catacombs') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterTunnel }" @click="filterTunnel = !filterTunnel">
+          {{ $t('tunnel') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterCave }" @click="filterCave = !filterCave">
+          {{ $t('cave') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterGaol }" @click="filterGaol = !filterGaol">
+          {{ $t('gaol') }}
+        </button>
+
+        <button
+          class="button toggle-button"
+          :class="{ active: filterEvergaol }"
+          @click="filterEvergaol = !filterEvergaol"
+        >
+          {{ $t('evergaol') }}
+        </button>
+
+        <button
+          class="button toggle-button"
+          :class="{ active: filterHerosGrave }"
+          @click="filterHerosGrave = !filterHerosGrave"
+        >
+          {{ $t('herosGrave') }}
+        </button>
+
+        <button class="button toggle-button" :class="{ active: filterRuins }" @click="filterRuins = !filterRuins">
+          {{ $t('ruins') }}
+        </button>
       </div>
 
       <div class="expand-all-group">
@@ -470,7 +530,11 @@ function onSearch() {
             >
               <span class="boss-check" v-if="defeatedFlags.has(boss.flagId)">&#x2714;</span>
               <span class="boss-check-placeholder" v-else></span>
-              <div class="boss-profile" :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }" v-if="showAttributes && false">
+              <div
+                class="boss-profile"
+                :class="{ 'spoiler-sensitive': !defeatedFlags.has(boss.flagId) }"
+                v-if="showAttributes && false"
+              >
                 <img :src="bossProfileImagesMap[boss.flagId]" v-if="bossProfileImagesMap[boss.flagId]" />
               </div>
               <div class="boss-row-info">

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { encounters } from '@/model/encounters'
-import type { ProcessedEncounter } from '@/model/types'
+import { type ProcessedEncounter } from '@/model/types'
 import { hasDuoPhase, hasMultiplePhases } from '@/util'
 
 const processedEncounters: ProcessedEncounter[] = encounters

@@ -44,6 +44,18 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
+    {
+      path: '/map',
+      name: 'map',
+      component: () => import('../views/MapView.vue'),
+      children: [
+        {
+          path: ':id',
+          name: 'map-fly',
+          component: () => import('../views/MapView.vue'),
+        },
+      ],
+    },
   ],
 })
 

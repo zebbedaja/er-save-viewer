@@ -151,3 +151,55 @@ export interface YouTubeVideo {
   youTubeTitle: string
   youTubeUser: string
 }
+
+export interface MapLocation {
+  id: number
+  name: string
+  locationType: LocationType
+  mapType: MapType
+  lngLat?: [number, number]
+  dungeonType?: DungeonType
+}
+
+export interface World {
+  name: string
+  map: MapType
+  tiles: string
+  width: number
+  height: number
+}
+
+export interface MapOverlay {
+  name: string
+  image: string
+  type: DungeonType
+  mapType: MapType
+  width: number
+  rotation: number
+  lng: number
+  lat: number
+  debug?: boolean
+}
+
+export enum MapType {
+  LANDS_BETWEEN,
+  UNDERGROUND,
+  LAND_OF_SHADOW,
+}
+
+export enum LocationType {
+  BOSS,
+}
+
+export enum DungeonType {
+  CATACOMBS,
+  CAVE,
+  HEROS_GRAVE,
+  TUNNEL,
+  GAOL,
+  GROTTO,
+  EVERGAOL,
+  PRECIPICE,
+  RUINS,
+  OTHER,
+}

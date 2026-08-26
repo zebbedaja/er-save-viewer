@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { useEncounterStore } from '@/stores/encounter'
 import type { ResistanceValue } from '@/model/types'
@@ -8,14 +8,13 @@ import { formatNumber } from '@/util'
 import ProgressBarCenter from './ProgressBarCenter.vue'
 import ProgressBar from './ProgressBar.vue'
 import { useI18n } from 'vue-i18n'
-import { YOUTUBE_VIDEOS } from '@/model/youtube.ts'
+import { YOUTUBE_VIDEOS } from '@/model/youtube'
 
 const { t } = useI18n()
 const saveStore = useSaveStore()
 const encounterStore = useEncounterStore()
 
 const route = useRoute()
-const router = useRouter()
 
 const flagId = computed(() => Number(route.params.flagId))
 const boss = computed(() => encounterStore.getByFlagId(flagId.value))
@@ -23,10 +22,6 @@ const boss = computed(() => encounterStore.getByFlagId(flagId.value))
 const isDefeated = computed(() => saveStore.defeatedFlags.has(flagId.value))
 
 const youtubeVideo = computed(() => YOUTUBE_VIDEOS.find((v) => v.flagId === flagId.value))
-
-function goBack() {
-  router.back()
-}
 
 function formatResistanceThresholds(resistance: ResistanceValue): string {
   return resistance.immune
@@ -72,7 +67,12 @@ function getYouTubeUser(): string | undefined {
 <template>
   <div class="boss-detail bordered-content" v-if="boss">
     <div class="boss-detail-header">
-      <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>
+      <div class="boss-detail-header-navigation">
+        <RouterLink class="button button-sm" :to="{ name: 'boss-list' }">{{ $t('backToBosses') }}</RouterLink>
+        <RouterLink class="button button-sm" :to="{ name: 'map-fly', params: { id: flagId } }">{{
+          $t('showOnMap')
+        }}</RouterLink>
+      </div>
       <div class="boss-title-row">
         <span class="boss-icon" v-if="isDefeated">&#x2714;</span>
         <h2 class="boss-name">{{ boss.flagName }}</h2>
@@ -390,7 +390,7 @@ function getYouTubeUser(): string | undefined {
   </div>
 
   <div class="boss-not-found" v-else>
-    <button class="button" @click="goBack">{{ $t('backToBosses') }}</button>
+    <RouterLink class="button" :to="{ name: 'boss-list' }">{{ $t('backToBosses') }}</RouterLink>
     <p>{{ $t('bossNotFound') }}</p>
   </div>
 </template>
@@ -700,6 +700,16 @@ function getYouTubeUser(): string | undefined {
   flex-wrap: wrap;
   gap: 0.3rem;
   margin: 0rem 0 0.5rem;
+}
+
+.boss-detail-header-navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.boss-detail-header-navigation a {
+  color: var(--main-font-color);
 }
 
 @media (max-width: 520px) {
