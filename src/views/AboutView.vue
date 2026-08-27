@@ -95,6 +95,13 @@
     <div class="divider"></div>
 
     <section class="about-section">
+      <h2>{{ $t('aboutSpecialThanks') }}</h2>
+      <p class="credits-intro">{{ $t('aboutSpecialThanksText') }}</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="about-section">
       <p class="parser-note" v-html="$t('aboutParserNote')"></p>
     </section>
 

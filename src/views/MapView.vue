@@ -271,7 +271,7 @@ function addMarkers(map: Map, world: World) {
 function applyWorld(index: number): void {
   const world = worlds[index]
 
-  if (mapEl.value != null && world != null) {
+  if (mapEl.value != null && world != null && (currentIndex.value !== index || map == null)) {
     currentIndex.value = index
 
     const { maxZoom, bounds } = geometryFor(world)
@@ -432,7 +432,7 @@ onBeforeUnmount(() => {
   <div class="map-wrapper">
     <div class="map-overlay map-options">
       <div class="map-overlay-header" @click="showMapOptions = !showMapOptions">
-        <div class="heading-2">Map Options</div>
+        <div class="map-overlay-header-headline">{{ $t('mapOptions') }}</div>
         <div
           class="expand-icon"
           :style="{ transform: showMapOptions ? 'rotate(180deg)' : '', 'padding-top': showMapOptions ? '0.2rem' : '' }"
@@ -444,7 +444,7 @@ onBeforeUnmount(() => {
         class="map-overlay-body"
         :style="{
           height: showMapOptions ? 'calc-size(auto, size)' : '0',
-          'padding-top': showMapOptions ? '0.4rem' : '0',
+          'padding-top': showMapOptions ? '0.8rem' : '0',
           opacity: showMapOptions ? '1' : '0',
         }"
       >
@@ -525,7 +525,7 @@ onBeforeUnmount(() => {
     <div class="map-overlay map-legend">
       <div class="map-overlay-group">
         <div class="map-overlay-header" @click="showLegend = !showLegend">
-          <div class="heading-2">{{ $t('legend') }}</div>
+          <div class="map-overlay-header-headline">{{ $t('legend') }}</div>
           <div
             class="expand-icon"
             :style="{ transform: showLegend ? 'rotate(180deg)' : '', 'padding-top': showLegend ? '0.2rem' : '' }"
@@ -537,17 +537,17 @@ onBeforeUnmount(() => {
           class="map-overlay-body"
           :style="{
             height: showLegend ? 'calc-size(auto, size)' : '0',
-            'padding-top': showLegend ? '0.4rem' : '0',
+            'padding-top': showLegend ? '0.8rem' : '0',
             opacity: showLegend ? '1' : '0',
           }"
         >
           <div class="legend-row">
             <div class="legend-marker legend-marker-default" v-html="markerSvg"></div>
-            <div>Overworld Boss</div>
+            <div>{{ $t('overworldBoss') }}</div>
           </div>
           <div class="legend-row">
             <div class="legend-marker legend-marker-dungeon" v-html="markerSvg"></div>
-            <div>Dungeon Boss</div>
+            <div>{{ $t('dungeonBoss') }}</div>
           </div>
         </div>
       </div>
@@ -563,10 +563,12 @@ onBeforeUnmount(() => {
       </div>
       <div>&mdash; {{ popupEncounter.location }}</div>
       <div>{{ $t(popupEncounter.type?.replaceAll(' ', '')?.toLocaleLowerCase()) }}</div>
-      <div>Runes: {{ formatNumber(popupEncounter.runes) }}</div>
-      <div v-if="popupEncounter.drops">Drops: {{ popupEncounter.drops?.join(', ') }}</div>
+      <div>{{ $t('runes') }}: {{ formatNumber(popupEncounter.runes) }}</div>
+      <div v-if="popupEncounter.drops">{{ $t('drops') }}: {{ popupEncounter.drops?.join(', ') }}</div>
       <div>
-        <RouterLink :to="{ name: 'boss-detail', params: { flagId: popupEncounter.flagId } }">Boss Details</RouterLink>
+        <RouterLink :to="{ name: 'boss-detail', params: { flagId: popupEncounter.flagId } }">{{
+          $t('bossDetails')
+        }}</RouterLink>
       </div>
     </div>
   </Teleport>
@@ -590,11 +592,10 @@ onBeforeUnmount(() => {
   padding: 0.8rem;
   border: 1px solid var(--border-color);
   background: var(--main-bg-color);
-  width: 220px;
+  width: 210px;
 }
 
 .map-overlay-body {
-  /* padding-top: 0.4rem; */
   overflow: hidden;
   transition: all 0.2s ease;
 }
@@ -622,6 +623,8 @@ onBeforeUnmount(() => {
 
 .map-overlay-headline {
   padding-bottom: 0.3rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 .map-options-buttons {
@@ -648,7 +651,7 @@ onBeforeUnmount(() => {
 .legend-row {
   display: flex;
   gap: 0.5rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   align-items: center;
 }
 
@@ -670,7 +673,7 @@ onBeforeUnmount(() => {
 
 .expand-icon {
   color: var(--highlight-color);
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   transition: all 0.2s ease;
 }
 </style>
