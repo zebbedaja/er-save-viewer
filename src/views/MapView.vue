@@ -577,8 +577,8 @@ onBeforeUnmount(() => {
 <style scoped>
 .map-wrapper {
   position: relative;
-  width: 100%;
-  height: calc(100dvh - 5.5rem);
+  margin: -1rem;
+  height: calc(100dvh - 3.5rem);
 }
 
 .map {
@@ -589,10 +589,10 @@ onBeforeUnmount(() => {
 .map-overlay {
   position: absolute;
   z-index: 1000;
-  padding: 0.8rem;
+  padding: 0.6rem;
   border: 1px solid var(--border-color);
   background: var(--main-bg-color);
-  width: 210px;
+  width: 220px;
 }
 
 .map-overlay-body {
