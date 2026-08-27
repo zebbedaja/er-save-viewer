@@ -45,7 +45,7 @@ watch(activeSlotId, () => {
   position: fixed;
   width: 420px;
   top: 4.5rem;
-  height: calc(100vh - 6.5rem);
+  height: calc(100dvh - 6.5rem);
   padding-bottom: 2rem;
   display: flex;
   flex-direction: column;

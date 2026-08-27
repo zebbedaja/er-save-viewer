@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import 'maplibre-gl/dist/maplibre-gl.css'
 import {
   LngLatBounds,
@@ -14,8 +16,16 @@ import {
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 
 import { useEncounterStore } from '@/stores/encounter'
+import { useSaveStore } from '@/stores/save'
 import { formatNumber } from '@/util'
-import { DungeonType, LocationType, MapType, type ProcessedEncounter, type World } from '@/model/types'
+import {
+  DungeonType,
+  LocationType,
+  MapType,
+  type MapLocation,
+  type ProcessedEncounter,
+  type World,
+} from '@/model/types'
 import { mapLocations } from '@/model/map-locations'
 
 import { useRouteQuery } from '@vueuse/router'
@@ -24,13 +34,20 @@ import { useRoute } from 'vue-router'
 import dungeonMapsLandsBetween from '@/assets/maps/dungeon-maps-lands-between.geojson.json'
 import dungeonMapsLandOfShadow from '@/assets/maps/dungeon-maps-land-of-shadow.geojson.json'
 
+import markerSvg from '@/assets/img/map/marker.svg?raw'
+
 setWorkerUrl(workerUrl)
+
+const saveStore = useSaveStore()
+const { defeatedFlags } = storeToRefs(saveStore)
 
 const encounterStore = useEncounterStore()
 const route = useRoute()
 
-const showBossMarkers = ref<boolean>(true)
+const bossFilter = useRouteQuery<string>('bossFilter', 'all')
 const showDungeons = ref<boolean>(true)
+const showMapOptions = ref<boolean>(true)
+const showLegend = ref<boolean>(true)
 
 const popupTarget = ref<HTMLElement | null>(null)
 const popupEncounter = ref<ProcessedEncounter | null>(null)
@@ -70,15 +87,41 @@ const mapEl = ref<HTMLDivElement | null>(null)
 
 let map: Map | null = null
 
-function toggleBossMarkers() {
-  showBossMarkers.value = !showBossMarkers.value
-  setBossMarkers(showBossMarkers.value)
-}
+function setBossMarkers(filter: string) {
+  bossFilter.value = filter
 
-function setBossMarkers(show: boolean) {
-  for (const value of Object.values(markerMap.value)) {
-    value.setOpacity(show ? 100 : 0)
-    value.getElement().style.pointerEvents = show ? '' : 'none'
+  if (filter === 'all') {
+    for (const marker of Object.values(markerMap.value)) {
+      marker.setOpacity(1)
+      marker.getElement().style.pointerEvents = ''
+    }
+  } else if (filter === 'defeated') {
+    for (const [key, marker] of Object.entries(markerMap.value)) {
+      const defeated = defeatedFlags.value.has(parseInt(key))
+      if (defeated) {
+        marker.setOpacity(1)
+        marker.getElement().style.pointerEvents = ''
+      } else {
+        marker.setOpacity(0)
+        marker.getElement().style.pointerEvents = 'none'
+      }
+    }
+  } else if (filter === 'undefeated') {
+    for (const [key, marker] of Object.entries(markerMap.value)) {
+      const defeated = defeatedFlags.value.has(parseInt(key))
+      if (defeated) {
+        marker.setOpacity(0)
+        marker.getElement().style.pointerEvents = 'none'
+      } else {
+        marker.setOpacity(1)
+        marker.getElement().style.pointerEvents = ''
+      }
+    }
+  } else if (filter === 'none') {
+    for (const marker of Object.values(markerMap.value)) {
+      marker.setOpacity(0)
+      marker.getElement().style.pointerEvents = 'none'
+    }
   }
 }
 
@@ -99,6 +142,132 @@ function geometryFor(world: World): { maxZoom: number; bounds: LngLatBounds } {
   return { maxZoom, bounds: new LngLatBounds([nw.lng, se.lat], [se.lng, nw.lat]) }
 }
 
+function getMarkerColor(location: MapLocation): string {
+  if (
+    location.dungeonType == null ||
+    location.dungeonType === DungeonType.RUINS ||
+    location.dungeonType === DungeonType.EVERGAOL
+  ) {
+    return getComputedStyle(document.documentElement).getPropertyValue('--highlight-color')
+  } else {
+    return getComputedStyle(document.documentElement).getPropertyValue('--highlight-color-dark')
+  }
+}
+
+function createMap(world: World, htmlElement: HTMLDivElement, maxZoom: number, bounds: LngLatBounds): Map {
+  return new Map({
+    container: htmlElement,
+    attributionControl: false,
+    transformConstrain: (lngLat, zoom) => {
+      let transformedZoom = zoom ?? 0
+
+      if (zoom > maxZoom) {
+        transformedZoom = maxZoom
+      } else if (zoom < 0) {
+        transformedZoom = 0
+      }
+
+      if (lngLat.lng < bounds.getWest()) {
+        lngLat.lng = bounds.getWest()
+      } else if (lngLat.lng > bounds.getEast()) {
+        lngLat.lng = bounds.getEast()
+      }
+
+      return { center: lngLat, zoom: transformedZoom }
+
+      // return { center: lngLat, zoom: zoom ?? 0 }
+    },
+    style: {
+      version: 8,
+      sources: {
+        [SOURCE_ID]: {
+          type: 'raster',
+          tiles: [world.tiles],
+          tileSize: TILE_SIZE,
+          minzoom: 0,
+          maxzoom: maxZoom,
+          bounds: [bounds.getWest(), bounds.getSouth(), bounds.getEast(), bounds.getNorth()],
+        },
+      },
+      layers: [{ id: LAYER_ID, type: 'raster', source: SOURCE_ID }],
+    },
+    center: bounds.getCenter(),
+    // zoom: 0,
+    minZoom: 0,
+    maxZoom,
+    bounds: bounds,
+    // maxBounds: bounds,
+    renderWorldCopies: false,
+    doubleClickZoom: false,
+  }).addControl(
+    new NavigationControl({
+      visualizePitch: true,
+      visualizeRoll: true,
+      showZoom: true,
+      showCompass: true,
+    }),
+  )
+}
+
+function addMarkers(map: Map, world: World) {
+  for (const location of mapLocations) {
+    if (location.mapType === world.map && location.lngLat != null) {
+      if (location.locationType === LocationType.BOSS) {
+        const encounter = encounterStore.encounters.find((e) => e.flagId === location.id)
+
+        if (encounter != null) {
+          const container = document.createElement('div')
+
+          const popup = new Popup({ offset: 25, className: 'popup' }).setDOMContent(container)
+          const defeated = defeatedFlags.value.has(encounter.flagId)
+
+          popup.on('open', () => {
+            popupTarget.value = container
+            popupEncounter.value = encounter
+          })
+
+          popup.on('close', () => {
+            if (popupEncounter.value?.flagId === encounter.flagId) {
+              popupTarget.value = null
+              popupEncounter.value = null
+            }
+          })
+
+          const hover = new Popup({ offset: 25, closeButton: false, closeOnMove: true })
+            .setText(location.name + (defeated ? ' ✓' : ''))
+            .setLngLat(location.lngLat)
+
+          const marker = new Marker({
+            color: getMarkerColor(location),
+            className: 'marker',
+            // opacity: showBossMarkers.value ? 100 : 0,
+          })
+            .setLngLat(location.lngLat)
+            .setPopup(popup)
+            .addTo(map)
+
+          const markerElement = marker.getElement()
+
+          markerElement.addEventListener('mouseenter', () => {
+            if (!popup.isOpen() && map != null) {
+              hover.addTo(map)
+              markerPopupActive.value = true
+            }
+          })
+
+          markerElement.addEventListener('mouseleave', () => {
+            hover.remove()
+            markerPopupActive.value = false
+          })
+
+          markerMap.value[location.id] = marker
+        }
+      }
+    }
+  }
+  setBossMarkers(bossFilter.value)
+}
+
 function applyWorld(index: number): void {
   const world = worlds[index]
 
@@ -110,120 +279,8 @@ function applyWorld(index: number): void {
     map?.remove()
     markerMap.value = {}
 
-    map = new Map({
-      container: mapEl.value,
-      attributionControl: false,
-      transformConstrain: (lngLat, zoom) => {
-        let transformedZoom = zoom ?? 0
-
-        if (zoom > maxZoom) {
-          transformedZoom = maxZoom
-        } else if (zoom < 0) {
-          transformedZoom = 0
-        }
-
-        if (lngLat.lng < bounds.getWest()) {
-          lngLat.lng = bounds.getWest()
-        } else if (lngLat.lng > bounds.getEast()) {
-          lngLat.lng = bounds.getEast()
-        }
-
-        return { center: lngLat, zoom: transformedZoom }
-
-        // return { center: lngLat, zoom: zoom ?? 0 }
-      },
-      style: {
-        version: 8,
-        sources: {
-          [SOURCE_ID]: {
-            type: 'raster',
-            tiles: [world.tiles],
-            tileSize: TILE_SIZE,
-            minzoom: 0,
-            maxzoom: maxZoom,
-            bounds: [bounds.getWest(), bounds.getSouth(), bounds.getEast(), bounds.getNorth()],
-          },
-        },
-        layers: [{ id: LAYER_ID, type: 'raster', source: SOURCE_ID }],
-      },
-      center: bounds.getCenter(),
-      // zoom: 0,
-      minZoom: 0,
-      maxZoom,
-      bounds: bounds,
-      // maxBounds: bounds,
-      renderWorldCopies: false,
-      doubleClickZoom: false,
-    })
-
-    for (const location of mapLocations) {
-      if (location.mapType === world.map && location.lngLat != null) {
-        if (location.locationType === LocationType.BOSS) {
-          const encounter = encounterStore.encounters.find((e) => e.flagId === location.id)
-
-          if (encounter != null) {
-            const container = document.createElement('div')
-
-            const popup = new Popup({ offset: 25, className: 'popup' }).setDOMContent(container)
-
-            popup.on('open', () => {
-              popupTarget.value = container
-              popupEncounter.value = encounter
-            })
-
-            popup.on('close', () => {
-              if (popupEncounter.value?.flagId === encounter.flagId) {
-                popupTarget.value = null
-                popupEncounter.value = null
-              }
-            })
-
-            const hover = new Popup({ offset: 25, closeButton: false, closeOnMove: true })
-              .setText(location.name)
-              .setLngLat(location.lngLat)
-
-            const marker = new Marker({
-              color:
-                location.dungeonType == null ||
-                location.dungeonType === DungeonType.RUINS ||
-                location.dungeonType === DungeonType.EVERGAOL
-                  ? getComputedStyle(document.documentElement).getPropertyValue('--highlight-color')
-                  : getComputedStyle(document.documentElement).getPropertyValue('--highlight-color-dark'),
-              className: 'marker',
-              opacity: showBossMarkers.value ? 100 : 0,
-            })
-              .setLngLat(location.lngLat)
-              .setPopup(popup)
-              .addTo(map)
-
-            const markerElement = marker.getElement()
-
-            markerElement.addEventListener('mouseenter', () => {
-              if (!popup.isOpen() && map != null) {
-                hover.addTo(map)
-                markerPopupActive.value = true
-              }
-            })
-
-            markerElement.addEventListener('mouseleave', () => {
-              hover.remove()
-              markerPopupActive.value = false
-            })
-
-            markerMap.value[location.id] = marker
-          }
-        }
-      }
-    }
-
-    map.addControl(
-      new NavigationControl({
-        visualizePitch: true,
-        visualizeRoll: true,
-        showZoom: true,
-        showCompass: true,
-      }),
-    )
+    map = createMap(world, mapEl.value, maxZoom, bounds)
+    addMarkers(map, world)
 
     map.on('load', () => {
       if (map != null) {
@@ -331,7 +388,7 @@ function loadGeoJsonData(map: Map, data: GeoJSONSourceSpecification['data']) {
   map.on('mouseleave', 'shapes-fill', () => {
     // map.getCanvas().style.cursor = ''
 
-    if (hoveredId !== null) {
+    if (hoveredId != null) {
       map.setFeatureState({ source: 'shapes', id: hoveredId }, { hover: false })
     }
 
@@ -373,30 +430,127 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="map-wrapper">
-    <div class="world-switcher filter-group filter-group-connected">
-      <button
-        v-for="(world, i) in worlds"
-        :key="world.name"
-        class="button toggle-button"
-        :class="{ active: i === currentIndex }"
-        @click="applyWorld(i)"
+    <div class="map-overlay map-options">
+      <div class="map-overlay-header" @click="showMapOptions = !showMapOptions">
+        <div class="heading-2">Map Options</div>
+        <div
+          class="expand-icon"
+          :style="{ transform: showMapOptions ? 'rotate(180deg)' : '', 'padding-top': showMapOptions ? '0.2rem' : '' }"
+        >
+          ▼
+        </div>
+      </div>
+      <div
+        class="map-overlay-body"
+        :style="{
+          height: showMapOptions ? 'calc-size(auto, size)' : '0',
+          'padding-top': showMapOptions ? '0.4rem' : '0',
+          opacity: showMapOptions ? '1' : '0',
+        }"
       >
-        {{ world.name }}
-      </button>
+        <div class="map-overlay-group">
+          <div class="map-overlay-headline">{{ $t('map') }}</div>
+          <div class="map-options-buttons filter-group filter-group-connected">
+            <button
+              v-for="(world, i) in worlds"
+              :key="world.name"
+              class="button toggle-button"
+              :class="{ active: i === currentIndex }"
+              @click="applyWorld(i)"
+            >
+              {{ world.name }}
+            </button>
+          </div>
+        </div>
+
+        <div class="map-overlay-group">
+          <div class="map-overlay-headline">{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
+          <div class="map-options-buttons filter-group filter-group-connected">
+            <button
+              class="button toggle-button"
+              :class="{ active: bossFilter === 'all' }"
+              @click="setBossMarkers('all')"
+            >
+              {{ $t('all') }}
+            </button>
+            <button
+              class="button toggle-button"
+              :class="{ active: bossFilter === 'defeated' }"
+              @click="setBossMarkers('defeated')"
+            >
+              {{ $t('defeatedOnly') }}
+            </button>
+            <button
+              class="button toggle-button"
+              :class="{ active: bossFilter === 'undefeated' }"
+              @click="setBossMarkers('undefeated')"
+            >
+              {{ $t('undefeatedOnly') }}
+            </button>
+            <button
+              class="button toggle-button"
+              :class="{ active: bossFilter === 'none' }"
+              @click="setBossMarkers('none')"
+            >
+              {{ $t('none') }}
+            </button>
+          </div>
+        </div>
+
+        <div class="map-overlay-group">
+          <div class="map-overlay-headline">{{ $t('dungeons') }}</div>
+          <div class="map-options-buttons">
+            <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons">
+              {{ $t('showHide') }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="marker-switcher">
+        <div class="toggle">
+          <div>{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
+          <button class="button toggle-button" :class="{ active: showBossMarkers }" @click="toggleBossMarkers"></button>
+        </div>
+        <div class="toggle">
+          <div>Dungeons</div>
+          <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons"></button>
+        </div> -->
+      <!-- <div v-for="(marker, key) of markerMap" :key="key">
+          {{ key }}
+        </div> -->
+      <!-- </div> -->
     </div>
 
-    <div class="marker-switcher">
-      <div class="toggle">
-        <div>{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
-        <button class="button toggle-button" :class="{ active: showBossMarkers }" @click="toggleBossMarkers"></button>
+    <div class="map-overlay map-legend">
+      <div class="map-overlay-group">
+        <div class="map-overlay-header" @click="showLegend = !showLegend">
+          <div class="heading-2">{{ $t('legend') }}</div>
+          <div
+            class="expand-icon"
+            :style="{ transform: showLegend ? 'rotate(180deg)' : '', 'padding-top': showLegend ? '0.2rem' : '' }"
+          >
+            ▼
+          </div>
+        </div>
+        <div
+          class="map-overlay-body"
+          :style="{
+            height: showLegend ? 'calc-size(auto, size)' : '0',
+            'padding-top': showLegend ? '0.4rem' : '0',
+            opacity: showLegend ? '1' : '0',
+          }"
+        >
+          <div class="legend-row">
+            <div class="legend-marker legend-marker-default" v-html="markerSvg"></div>
+            <div>Overworld Boss</div>
+          </div>
+          <div class="legend-row">
+            <div class="legend-marker legend-marker-dungeon" v-html="markerSvg"></div>
+            <div>Dungeon Boss</div>
+          </div>
+        </div>
       </div>
-      <div class="toggle">
-        <div>Dungeons</div>
-        <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons"></button>
-      </div>
-      <!-- <div v-for="(marker, key) of markerMap" :key="key">
-        {{ key }}
-      </div> -->
     </div>
 
     <div ref="mapEl" class="map"></div>
@@ -422,7 +576,7 @@ onBeforeUnmount(() => {
 .map-wrapper {
   position: relative;
   width: 100%;
-  height: calc(100vh - 5.5rem);
+  height: calc(100dvh - 5.5rem);
 }
 
 .map {
@@ -430,20 +584,51 @@ onBeforeUnmount(() => {
   height: 100%;
 }
 
-.world-switcher {
+.map-overlay {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
   z-index: 1000;
-  display: flex;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
   background: var(--main-bg-color);
+  width: 220px;
 }
 
-.marker-switcher {
-  position: absolute;
+.map-overlay-body {
+  /* padding-top: 0.4rem; */
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.map-options {
+  top: 1rem;
+  left: 1rem;
+}
+
+.map-legend {
   bottom: 1rem;
   left: 1rem;
-  z-index: 1000;
+}
+
+.map-overlay-group:not(:last-child) {
+  padding-bottom: 1.2rem;
+}
+
+.map-overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.map-overlay-headline {
+  padding-bottom: 0.3rem;
+}
+
+.map-options-buttons {
+  display: grid;
+}
+
+/* .marker-switcher {
   background: var(--main-bg-color);
   padding: 0.6rem 0.8rem;
   border: 1px solid var(--border-color);
@@ -452,12 +637,41 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-}
+} */
 
 .toggle {
   display: flex;
   gap: 0.6rem;
   justify-content: space-between;
+}
+
+.legend-row {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  align-items: center;
+}
+
+.legend-row:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
+.legend-marker {
+  width: 0.8rem;
+}
+
+.legend-marker-default {
+  color: var(--highlight-color);
+}
+
+.legend-marker-dungeon {
+  color: var(--highlight-color-dark);
+}
+
+.expand-icon {
+  color: var(--highlight-color);
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
 }
 </style>
 
@@ -498,22 +712,23 @@ onBeforeUnmount(() => {
   z-index: 99;
 }
 
-.maplibregl-ctrl-group {
-  background-color: var(--main-bg-color) !important;
-  border: 1px solid var(--border-color) !important;
+.maplibregl-ctrl {
+  margin: 1rem 1rem 0 0 !important;
 }
-
-/* .maplibregl-ctrl-group button {
-  background-color: transparent !important;
-} */
 
 .maplibregl-ctrl,
 .maplibregl-ctrl-group button {
   border-color: var(--border-color) !important;
+  border-radius: 0;
+}
+
+.maplibregl-ctrl-group {
+  background-color: var(--main-bg-color) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
 }
 
 .maplibregl-ctrl-group button span {
-  /* filter: invert(100%) hue-rotate(180deg) brightness(1.2); */
   filter: var(--color-filter);
 }
 

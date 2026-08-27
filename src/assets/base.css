@@ -5,6 +5,7 @@
   --border-hover-color: #7e7a74;
   --highlight-color: #c9a959;
   --highlight-color-dark: color-mix(in oklab, var(--highlight-color), black 25%);
+  --highlight-color-light: color-mix(in oklab, var(--highlight-color), white 50%);
   --positive-color: #5d8a5f;
   --negative-color: #9e4a44;
   --link-color: var(--highlight-color);

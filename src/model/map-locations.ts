@@ -610,7 +610,7 @@ export const mapLocations: MapLocation[] = [
     name: 'Spirit-Caller Snail',
     locationType: LocationType.BOSS,
     mapType: MapType.LANDS_BETWEEN,
-    lngLat: [-43.28297920499753, 78.09317598405539],
+    lngLat: [-43.262290088447116, 78.01957979909315],
     dungeonType: DungeonType.CAVE,
   },
   {
