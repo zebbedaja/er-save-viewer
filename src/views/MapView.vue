@@ -440,74 +440,68 @@ onBeforeUnmount(() => {
           ▼
         </div>
       </div>
-      <div
-        class="map-overlay-body"
-        :style="{
-          height: showMapOptions ? 'calc-size(auto, size)' : '0',
-          'padding-top': showMapOptions ? '0.8rem' : '0',
-          opacity: showMapOptions ? '1' : '0',
-        }"
-      >
-        <div class="map-overlay-group">
-          <div class="map-overlay-headline">{{ $t('map') }}</div>
-          <div class="map-options-buttons filter-group filter-group-connected">
-            <button
-              v-for="(world, i) in worlds"
-              :key="world.name"
-              class="button toggle-button"
-              :class="{ active: i === currentIndex }"
-              @click="applyWorld(i)"
-            >
-              {{ world.name }}
-            </button>
+      <div class="collapsible__wrapper" :class="{ 'is-open': showMapOptions }">
+        <div class="collapsible__inner">
+          <div class="map-overlay-group">
+            <div class="map-overlay-headline">{{ $t('map') }}</div>
+            <div class="map-options-buttons filter-group filter-group-connected">
+              <button
+                v-for="(world, i) in worlds"
+                :key="world.name"
+                class="button toggle-button"
+                :class="{ active: i === currentIndex }"
+                @click="applyWorld(i)"
+              >
+                {{ world.name }}
+              </button>
+            </div>
+          </div>
+
+          <div class="map-overlay-group">
+            <div class="map-overlay-headline">{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
+            <div class="map-options-buttons filter-group filter-group-connected">
+              <button
+                class="button toggle-button"
+                :class="{ active: bossFilter === 'all' }"
+                @click="setBossMarkers('all')"
+              >
+                {{ $t('all') }}
+              </button>
+              <button
+                class="button toggle-button"
+                :class="{ active: bossFilter === 'defeated' }"
+                @click="setBossMarkers('defeated')"
+              >
+                {{ $t('defeatedOnly') }}
+              </button>
+              <button
+                class="button toggle-button"
+                :class="{ active: bossFilter === 'undefeated' }"
+                @click="setBossMarkers('undefeated')"
+              >
+                {{ $t('undefeatedOnly') }}
+              </button>
+              <button
+                class="button toggle-button"
+                :class="{ active: bossFilter === 'none' }"
+                @click="setBossMarkers('none')"
+              >
+                {{ $t('none') }}
+              </button>
+            </div>
+          </div>
+
+          <div class="map-overlay-group">
+            <div class="map-overlay-headline">{{ $t('dungeons') }}</div>
+            <div class="map-options-buttons">
+              <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons">
+                {{ $t('showHide') }}
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="map-overlay-group">
-          <div class="map-overlay-headline">{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
-          <div class="map-options-buttons filter-group filter-group-connected">
-            <button
-              class="button toggle-button"
-              :class="{ active: bossFilter === 'all' }"
-              @click="setBossMarkers('all')"
-            >
-              {{ $t('all') }}
-            </button>
-            <button
-              class="button toggle-button"
-              :class="{ active: bossFilter === 'defeated' }"
-              @click="setBossMarkers('defeated')"
-            >
-              {{ $t('defeatedOnly') }}
-            </button>
-            <button
-              class="button toggle-button"
-              :class="{ active: bossFilter === 'undefeated' }"
-              @click="setBossMarkers('undefeated')"
-            >
-              {{ $t('undefeatedOnly') }}
-            </button>
-            <button
-              class="button toggle-button"
-              :class="{ active: bossFilter === 'none' }"
-              @click="setBossMarkers('none')"
-            >
-              {{ $t('none') }}
-            </button>
-          </div>
-        </div>
-
-        <div class="map-overlay-group">
-          <div class="map-overlay-headline">{{ $t('dungeons') }}</div>
-          <div class="map-options-buttons">
-            <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons">
-              {{ $t('showHide') }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="marker-switcher">
+        <!-- <div class="marker-switcher">
         <div class="toggle">
           <div>{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
           <button class="button toggle-button" :class="{ active: showBossMarkers }" @click="toggleBossMarkers"></button>
@@ -516,10 +510,11 @@ onBeforeUnmount(() => {
           <div>Dungeons</div>
           <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons"></button>
         </div> -->
-      <!-- <div v-for="(marker, key) of markerMap" :key="key">
+        <!-- <div v-for="(marker, key) of markerMap" :key="key">
           {{ key }}
         </div> -->
-      <!-- </div> -->
+        <!-- </div> -->
+      </div>
     </div>
 
     <div class="map-overlay map-legend">
@@ -533,21 +528,16 @@ onBeforeUnmount(() => {
             ▼
           </div>
         </div>
-        <div
-          class="map-overlay-body"
-          :style="{
-            height: showLegend ? 'calc-size(auto, size)' : '0',
-            'padding-top': showLegend ? '0.8rem' : '0',
-            opacity: showLegend ? '1' : '0',
-          }"
-        >
-          <div class="legend-row">
-            <div class="legend-marker legend-marker-default" v-html="markerSvg"></div>
-            <div>{{ $t('overworldBoss') }}</div>
-          </div>
-          <div class="legend-row">
-            <div class="legend-marker legend-marker-dungeon" v-html="markerSvg"></div>
-            <div>{{ $t('dungeonBoss') }}</div>
+        <div class="collapsible__wrapper" :class="{ 'is-open': showLegend }">
+          <div class="collapsible__inner">
+            <div class="legend-row">
+              <div class="legend-marker legend-marker-default" v-html="markerSvg"></div>
+              <div>{{ $t('overworldBoss') }}</div>
+            </div>
+            <div class="legend-row">
+              <div class="legend-marker legend-marker-dungeon" v-html="markerSvg"></div>
+              <div>{{ $t('dungeonBoss') }}</div>
+            </div>
           </div>
         </div>
       </div>
@@ -593,11 +583,6 @@ onBeforeUnmount(() => {
   border: 1px solid var(--border-color);
   background: var(--main-bg-color);
   width: 220px;
-}
-
-.map-overlay-body {
-  overflow: hidden;
-  transition: all 0.2s ease;
 }
 
 .map-options {
@@ -675,6 +660,25 @@ onBeforeUnmount(() => {
   color: var(--highlight-color);
   font-size: 0.65rem;
   transition: all 0.2s ease;
+}
+
+.collapsible__wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 200ms ease;
+  padding-top: 0;
+  opacity: 0;
+}
+
+.collapsible__wrapper.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  padding-top: 0.8rem;
+}
+
+.collapsible__inner {
+  overflow: hidden;
+  min-height: 0;
 }
 </style>
 

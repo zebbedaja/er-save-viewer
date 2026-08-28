@@ -35,14 +35,13 @@ function calculateResistancePercentage(resistance: ResistanceValue): number {
 
 const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*.jpg', { eager: true })
 
-function getNpcImageUrl(npcId: number): string | undefined {
-  const key = Object.keys(bossImages).find((k) => k.includes(`${npcId}.jpg`))
-  return key ? bossImages[key]?.default : undefined
+function getNpcImageUrls(npcId: number): string[] {
+  return Object.entries(bossImages)
+    .filter(([key]) => key.includes(`${npcId}`))
+    .map(([, value]) => value.default)
 }
 
-const npcImageUrls = computed(() =>
-  boss?.value?.npcs?.map((npc) => getNpcImageUrl(npc.id)).filter((url) => url != null),
-)
+const npcImageUrls = computed(() => boss?.value?.npcs?.map((npc) => getNpcImageUrls(npc.id)).flat())
 
 const bossYouTubeImages = import.meta.glob<{ default: string }>('../assets/img/bosses-youtube/*.jpg', { eager: true })
 
