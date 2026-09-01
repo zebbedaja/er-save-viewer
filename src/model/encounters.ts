@@ -7964,7 +7964,7 @@ export const encounters: Encounter[] = [
     hp: 3128,
     runes: 8800,
     region: 'Altus Plateau',
-    location: 'Altus Plateau',
+    location: 'Writheblood Ruins',
     closestSiteOfGrace: 'Road of Iniquity Side Path',
     type: 'Enemy',
     nightOnly: false,

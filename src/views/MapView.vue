@@ -29,7 +29,6 @@ import {
 import { mapLocations } from '@/model/map-locations'
 
 import { useRouteQuery } from '@vueuse/router'
-import { useRoute } from 'vue-router'
 
 import dungeonMapsLandsBetween from '@/assets/maps/dungeon-maps-lands-between.geojson.json'
 import dungeonMapsLandOfShadow from '@/assets/maps/dungeon-maps-land-of-shadow.geojson.json'
@@ -42,12 +41,12 @@ const saveStore = useSaveStore()
 const { defeatedFlags } = storeToRefs(saveStore)
 
 const encounterStore = useEncounterStore()
-const route = useRoute()
 
 const bossFilter = useRouteQuery<string>('bossFilter', 'all')
 const showDungeons = ref<boolean>(true)
-const showMapOptions = ref<boolean>(true)
-const showLegend = ref<boolean>(true)
+const showMapOptions = ref<boolean>(false)
+const showLegend = ref<boolean>(false)
+const bossId = useRouteQuery<number | null>('bossId', null, { transform: Number })
 
 const popupTarget = ref<HTMLElement | null>(null)
 const popupEncounter = ref<ProcessedEncounter | null>(null)
@@ -224,12 +223,14 @@ function addMarkers(map: Map, world: World) {
           popup.on('open', () => {
             popupTarget.value = container
             popupEncounter.value = encounter
+            bossId.value = encounter.flagId
           })
 
           popup.on('close', () => {
             if (popupEncounter.value?.flagId === encounter.flagId) {
               popupTarget.value = null
               popupEncounter.value = null
+              bossId.value = null
             }
           })
 
@@ -348,6 +349,8 @@ function loadGeoJsonData(map: Map, data: GeoJSONSourceSpecification['data']) {
         '#1abc9c',
         'HEROS_GRAVE',
         '#f1c40f',
+        'FORGE',
+        '#9b59b6',
         /* Fallback */ '#2ecc71',
         // ],
       ],
@@ -398,10 +401,16 @@ function loadGeoJsonData(map: Map, data: GeoJSONSourceSpecification['data']) {
 }
 
 onMounted(() => {
-  const id = Number(route.params.id)
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    showLegend.value = false
+    showMapOptions.value = false
+  } else {
+    showLegend.value = true
+    showMapOptions.value = true
+  }
 
-  if (id != null) {
-    const location = mapLocations.find((l) => l.id === id)
+  if (bossId.value != null) {
+    const location = mapLocations.find((l) => l.id === bossId.value)
 
     if (location != null) {
       switch (location.mapType) {
@@ -417,8 +426,8 @@ onMounted(() => {
 
   applyWorld(currentIndex.value)
 
-  if (id != null) {
-    flyTo(id)
+  if (bossId.value != null) {
+    flyTo(bossId.value)
   }
 })
 
@@ -444,7 +453,7 @@ onBeforeUnmount(() => {
         <div class="collapsible__inner">
           <div class="map-overlay-group">
             <div class="map-overlay-headline">{{ $t('map') }}</div>
-            <div class="map-options-buttons filter-group filter-group-connected">
+            <div class="map-options-buttons filter-group filter-group-connected filter-group-connected-vertical">
               <button
                 v-for="(world, i) in worlds"
                 :key="world.name"
@@ -459,7 +468,7 @@ onBeforeUnmount(() => {
 
           <div class="map-overlay-group">
             <div class="map-overlay-headline">{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
-            <div class="map-options-buttons filter-group filter-group-connected">
+            <div class="map-options-buttons filter-group filter-group-connected filter-group-connected-verticalƒ">
               <button
                 class="button toggle-button"
                 :class="{ active: bossFilter === 'all' }"

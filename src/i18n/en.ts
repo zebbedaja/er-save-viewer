@@ -113,6 +113,7 @@ export default {
   flagLocation: 'Location',
   flagName: 'Flag Name',
   frost: 'Frostbite',
+  gallery: 'Gallery',
   gaol: 'Gaol',
   gauntlets: 'Gauntlets',
   god: 'God',

@@ -133,6 +133,10 @@ button.active,
   margin-left: -0.5px;
 }
 
+.filter-group-connected.filter-group-connected-vertical button:not(:first-child) {
+  margin-top: -0.5px;
+}
+
 .search-and-filter {
   display: flex;
   gap: 0.5rem;

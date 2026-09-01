@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { useEncounterStore } from '@/stores/encounter'
 import type { ResistanceValue } from '@/model/types'
@@ -9,12 +9,16 @@ import ProgressBarCenter from './ProgressBarCenter.vue'
 import ProgressBar from './ProgressBar.vue'
 import { useI18n } from 'vue-i18n'
 import { YOUTUBE_VIDEOS } from '@/model/youtube'
+import { useClipboard } from '@vueuse/core'
+
+const { copy } = useClipboard()
 
 const { t } = useI18n()
 const saveStore = useSaveStore()
 const encounterStore = useEncounterStore()
 
 const route = useRoute()
+const router = useRouter()
 
 const flagId = computed(() => Number(route.params.flagId))
 const boss = computed(() => encounterStore.getByFlagId(flagId.value))
@@ -33,7 +37,7 @@ function calculateResistancePercentage(resistance: ResistanceValue): number {
   return resistance.immune ? Number.MAX_VALUE : (resistance?.thresholds?.[0] ?? 0) / 20
 }
 
-const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*.jpg', { eager: true })
+const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*', { eager: true })
 
 function getNpcImageUrls(npcId: number): string[] {
   return Object.entries(bossImages)
@@ -41,7 +45,7 @@ function getNpcImageUrls(npcId: number): string[] {
     .map(([, value]) => value.default)
 }
 
-const npcImageUrls = computed(() => boss?.value?.npcs?.map((npc) => getNpcImageUrls(npc.id)).flat())
+const npcImageUrls = computed(() => [...new Set(boss?.value?.npcs?.map((npc) => getNpcImageUrls(npc.id)).flat())])
 
 const bossYouTubeImages = import.meta.glob<{ default: string }>('../assets/img/bosses-youtube/*.jpg', { eager: true })
 
@@ -61,14 +65,25 @@ function getYouTubeTitle(): string | undefined {
 function getYouTubeUser(): string | undefined {
   return youtubeVideo.value?.youTubeUser
 }
+
+function goBack() {
+  const back = router.options.history.state.back
+
+  if (typeof back === 'string' && back.startsWith('/?')) {
+    router.back()
+  } else {
+    router.push({ name: 'boss-list' })
+  }
+}
 </script>
 
 <template>
   <div class="boss-detail bordered-content" v-if="boss">
     <div class="boss-detail-header">
       <div class="boss-detail-header-navigation">
-        <RouterLink class="button button-sm" :to="{ name: 'boss-list' }">{{ $t('backToBosses') }}</RouterLink>
-        <RouterLink class="button button-sm" :to="{ name: 'map-fly', params: { id: flagId } }">{{
+        <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>
+        <!-- <RouterLink class="button button-sm" :to="{ name: 'boss-list' }">{{ $t('backToBosses') }}</RouterLink> -->
+        <RouterLink class="button button-sm" :to="{ name: 'map', query: { bossId: flagId } }">{{
           $t('showOnMap')
         }}</RouterLink>
       </div>
@@ -78,9 +93,7 @@ function getYouTubeUser(): string | undefined {
       </div>
 
       <div class="boss-attributes">
-        <span class="attr-badge type">
-          {{ boss.type }}
-        </span>
+        <span class="attr-badge type">{{ $t(boss.type?.replaceAll(' ', '')?.toLocaleLowerCase()) }}</span>
         <span v-if="boss.nightOnly" class="attr-badge night">
           {{ $t('nightOnly') }}
         </span>
@@ -134,6 +147,8 @@ function getYouTubeUser(): string | undefined {
         {{ $t('phase') }} {{ npc.phase }} &mdash;
         <span class="npc-name">{{ npc.name }}</span>
       </h3>
+
+      <!-- <button @click="copy(`${boss.flagId}_${npc.id}`)">copy</button> -->
 
       <div class="npc-attributes">
         <span v-if="npc.stanceCritical" class="attr-badge positive">

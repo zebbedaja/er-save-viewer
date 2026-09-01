@@ -201,5 +201,6 @@ export enum DungeonType {
   EVERGAOL,
   PRECIPICE,
   RUINS,
+  FORGE,
   OTHER,
 }
