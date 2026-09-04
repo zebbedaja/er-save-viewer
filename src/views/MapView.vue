@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { storeToRefs } from 'pinia'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -17,7 +17,6 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 
 import { useEncounterStore } from '@/stores/encounter'
 import { useSaveStore } from '@/stores/save'
-import { formatNumber } from '@/util'
 import {
   DungeonType,
   LocationType,
@@ -34,6 +33,7 @@ import dungeonMapsLandsBetween from '@/assets/maps/dungeon-maps-lands-between.ge
 import dungeonMapsLandOfShadow from '@/assets/maps/dungeon-maps-land-of-shadow.geojson.json'
 
 import markerSvg from '@/assets/img/map/marker.svg?raw'
+import BossCard from '@/components/BossCard.vue'
 
 setWorkerUrl(workerUrl)
 
@@ -85,6 +85,21 @@ const markerPopupActive = ref<boolean>(false)
 const mapEl = ref<HTMLDivElement | null>(null)
 
 let map: Map | null = null
+
+const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-sm/*', { eager: true })
+
+const bossProfileImagesMap = computed<Record<string, string>>(() => {
+  const map: Record<string, string> = {}
+  for (const [path, url] of Object.entries(bossProfileImages)) {
+    const id =
+      path
+        .split('/')
+        .pop()
+        ?.replace(/\.\w+$/, '') ?? ''
+    map[id] = url.default
+  }
+  return map
+})
 
 function setBossMarkers(filter: string) {
   bossFilter.value = filter
@@ -217,13 +232,18 @@ function addMarkers(map: Map, world: World) {
         if (encounter != null) {
           const container = document.createElement('div')
 
-          const popup = new Popup({ offset: 25, className: 'popup' }).setDOMContent(container)
+          const popup = new Popup({ offset: 25, className: 'popup', anchor: 'bottom' }).setDOMContent(container)
           const defeated = defeatedFlags.value.has(encounter.flagId)
 
           popup.on('open', () => {
             popupTarget.value = container
             popupEncounter.value = encounter
             bossId.value = encounter.flagId
+            // map.easeTo({
+            //   center: popup.getLngLat(),
+            //   duration: 300, // smooth transition in ms
+            // })
+            // map.panBy([0, -150], { duration: 300 });
           })
 
           popup.on('close', () => {
@@ -556,14 +576,22 @@ onBeforeUnmount(() => {
   </div>
 
   <Teleport v-if="popupTarget && popupEncounter" :to="popupTarget">
-    <div>
-      <div>
+    <div class="boss-popup">
+      <BossCard
+        class="boss-card"
+        :boss="popupEncounter"
+        :bossProfileImage="bossProfileImagesMap[popupEncounter.flagId]"
+        :showAttributes="true"
+        :defeated="false"
+        :animated="false"
+      />
+      <!--<div>
         <strong>{{ popupEncounter.flagName }} (Lvl. {{ popupEncounter.level }})</strong>
       </div>
       <div>&mdash; {{ popupEncounter.location }}</div>
       <div>{{ $t(popupEncounter.type?.replaceAll(' ', '')?.toLocaleLowerCase()) }}</div>
       <div>{{ $t('runes') }}: {{ formatNumber(popupEncounter.runes) }}</div>
-      <div v-if="popupEncounter.drops">{{ $t('drops') }}: {{ popupEncounter.drops?.join(', ') }}</div>
+      <div v-if="popupEncounter.drops">{{ $t('drops') }}: {{ popupEncounter.drops?.join(', ') }}</div>-->
       <div>
         <RouterLink :to="{ name: 'boss-detail', params: { flagId: popupEncounter.flagId } }">{{
           $t('bossDetails')
@@ -689,6 +717,12 @@ onBeforeUnmount(() => {
   overflow: hidden;
   min-height: 0;
 }
+
+.boss-card {
+  border: 0;
+  margin: -0.4rem -1rem;
+  cursor: initial;
+}
 </style>
 
 <style>
@@ -722,6 +756,10 @@ onBeforeUnmount(() => {
 
 .maplibregl-popup-close-button {
   outline: none;
+}
+
+.popup .maplibregl-popup-content {
+  border: 1px solid var(--border-color);
 }
 
 .popup {

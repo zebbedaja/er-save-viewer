@@ -98,15 +98,15 @@ button.active,
 }
 
 [data-spoiler='true'] .spoiler-sensitive {
-  filter: blur(4px);
+  filter: blur(4px) !important;
   user-select: none;
   transition: filter 0.2s;
   pointer-events: auto;
 }
 
-[data-spoiler='true'] .spoiler-sensitive:hover {
+/* [data-spoiler='true'] .spoiler-sensitive:hover {
   filter: blur(0);
-}
+} */
 
 .filters-container {
   display: flex;

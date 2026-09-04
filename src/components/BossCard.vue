@@ -2,16 +2,22 @@
 import type { ProcessedEncounter } from '@/model/types'
 import { formatNumber } from '@/util'
 
-defineProps<{
-  boss: ProcessedEncounter
-  defeated: boolean
-  showAttributes: boolean
-  bossProfileImage?: string
-}>()
+withDefaults(
+  defineProps<{
+    boss: ProcessedEncounter
+    defeated: boolean
+    showAttributes: boolean
+    bossProfileImage?: string
+    animated?: boolean
+  }>(),
+  {
+    animated: true,
+  },
+)
 </script>
 
 <template>
-  <div class="card" :class="{ defeated }">
+  <div class="card" :class="{ defeated, animated }">
     <div class="card-header">
       <img
         class="card-image"
@@ -73,6 +79,10 @@ defineProps<{
   overflow: hidden;
 }
 
+.card-title {
+  font-size: 15px;
+}
+
 .card-header {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -86,13 +96,13 @@ defineProps<{
   color: var(--highlight-color);
 }
 
-.card:hover {
-  background: var(--hover-background);
+.card.animated:hover {
   /* transform: scale(1.03); */
+  background: var(--hover-background);
   transform: translateY(-0.2rem) scale(1.02);
 }
 
-.card:hover .card-image {
+.card.animated:hover .card-image {
   filter: sepia();
   /* filter: sepia() hue-rotate(300deg); */
 }
