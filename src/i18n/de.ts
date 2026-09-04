@@ -140,6 +140,7 @@ export default {
   magic: 'Magisch',
   map: 'Karte',
   mapOptions: 'Kartenoptionen',
+  mausoleum: 'Mausoleun',
   maxFp: 'Max FP',
   maxHp: 'Max LP',
   maxSp: 'Max SP',

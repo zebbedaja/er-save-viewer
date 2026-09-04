@@ -148,7 +148,7 @@ function goBack() {
         <span class="npc-name">{{ npc.name }}</span>
       </h3>
 
-      <!-- <button @click="copy(`${boss.flagId}_${npc.id}`)">copy</button> -->
+      <button @click="copy(`${boss.flagId}_${npc.id}`)" style="display: none">copy</button>
 
       <div class="npc-attributes">
         <span v-if="npc.stanceCritical" class="attr-badge positive">

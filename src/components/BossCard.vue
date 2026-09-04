@@ -75,7 +75,7 @@ defineProps<{
 
 .card-header {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
 }
 
 .card.defeated {
@@ -94,6 +94,7 @@ defineProps<{
 
 .card:hover .card-image {
   filter: sepia();
+  /* filter: sepia() hue-rotate(300deg); */
 }
 
 .card-image {

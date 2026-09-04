@@ -4,11 +4,12 @@ import { useRoute, useRouter } from 'vue-router'
 import { useSaveStore } from '@/stores/save'
 import { useEncounterStore } from '@/stores/encounter'
 import { storeToRefs } from 'pinia'
-import type { ProcessedEncounter, Section } from '@/model/types'
+import { DungeonType, type ProcessedEncounter, type Section } from '@/model/types'
 import { REGION_ORDER } from '@/model/regions'
 import ProgressBar from './ProgressBar.vue'
 import BossRow from './BossRow.vue'
 import BossCard from './BossCard.vue'
+import { useRouteQuery } from '@vueuse/router'
 
 const router = useRouter()
 const route = useRoute()
@@ -35,17 +36,55 @@ const filterAncientDragon = createBoolFilterRef('filterAncientDragon')
 const filterUndead = createBoolFilterRef('filterUndead')
 const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
 const filterBackstab = createBoolFilterRef('filterBackstab')
-const filterCatacombs = createBoolFilterRef('filterCatacombs')
-const filterTunnel = createBoolFilterRef('filterTunnel')
-const filterCave = createBoolFilterRef('filterCave')
-const filterGaol = createBoolFilterRef('filterGaol')
-const filterEvergaol = createBoolFilterRef('filterEvergaol')
-const filterHerosGrave = createBoolFilterRef('filterHerosGrave')
-const filterRuins = createBoolFilterRef('filterRuins')
+
+const filterDungeonTypeValues = [
+  {
+    type: DungeonType.CATACOMBS,
+    name: 'catacombs',
+    search: ['Catacombs', 'Auriza Side', 'Hidden Path'],
+  },
+  {
+    type: DungeonType.TUNNEL,
+    name: 'tunnel',
+    search: ['Tunnel'],
+  },
+  {
+    type: DungeonType.CAVE,
+    name: 'cave',
+    search: ['Cave', 'Grotto', "Dragon's Pit", 'Sellia Hideaway'],
+  },
+  {
+    type: DungeonType.GAOL,
+    name: 'gaol',
+    search: [' Gaol'],
+  },
+  {
+    type: DungeonType.EVERGAOL,
+    name: 'evergaol',
+    search: ['Evergaol'],
+  },
+  {
+    type: DungeonType.HEROS_GRAVE,
+    name: 'herosGrave',
+    search: ["Hero's Grave"],
+  },
+  {
+    type: DungeonType.RUINS,
+    name: 'ruins',
+    search: ['Ruins'],
+  },
+  {
+    type: DungeonType.MAUSOLEUM,
+    name: 'mausoleum',
+    search: ['Mausoleum'],
+  },
+]
+const filterDungeonType = useRouteQuery<DungeonType | null>('filterDungeonType', null)
 
 const gallery = createBoolFilterRef('gallery')
+gallery.value = true
 
-const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-profile/*', { eager: true })
+const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-sm/*', { eager: true })
 
 const bossProfileImagesMap = computed<Record<string, string>>(() => {
   const map: Record<string, string> = {}
@@ -154,25 +193,11 @@ const filteredEncounters = computed(() => {
     if (filterUndead.value && !e.hasUndead) return false
     if (filterThoseWhoLiveInDeath.value && !e.hasThoseWhoLiveInDeath) return false
     if (filterBackstab.value && !e.hasBackstab) return false
-    if (
-      filterCatacombs.value &&
-      !e.location.includes('Catacombs') &&
-      !e.location.includes('Auriza Side') &&
-      !e.location.includes('Hidden Path')
-    )
-      return false
-    if (filterTunnel.value && !e.location.includes('Tunnel')) return false
-    if (
-      filterCave.value &&
-      !e.location.includes('Cave') &&
-      !e.location.includes('Grotto') &&
-      !e.location.includes("Dragon's Pit")
-    )
-      return false
-    if (filterGaol.value && !e.location.includes(' Gaol')) return false
-    if (filterEvergaol.value && !e.location.includes('Evergaol')) return false
-    if (filterHerosGrave.value && !e.location.includes("Hero's Grave")) return false
-    if (filterRuins.value && !e.location.includes('Ruins')) return false
+
+    for (const dungeonType of filterDungeonTypeValues) {
+      if (filterDungeonType.value === dungeonType.type && !dungeonType.search.find((s) => e.location.includes(s)))
+        return false
+    }
 
     const defeated = flags.has(e.flagId)
 
@@ -272,6 +297,10 @@ function isRegionComplete(bosses: ProcessedEncounter[]): boolean {
 
 function onSearch() {
   searchRef.value?.blur()
+}
+
+function setFilterDungeonType(type: DungeonType) {
+  filterDungeonType.value = filterDungeonType.value === type ? null : type
 }
 </script>
 
@@ -423,45 +452,17 @@ function onSearch() {
           {{ $t('multiPhaseBoss') }}
         </button>
 
+        <!-- <div class="filter-group filter-group-connected"> -->
         <button
+          v-for="dungeonType of filterDungeonTypeValues"
+          :key="dungeonType.type"
           class="button toggle-button"
-          :class="{ active: filterCatacombs }"
-          @click="filterCatacombs = !filterCatacombs"
+          :class="{ active: filterDungeonType === dungeonType.type }"
+          @click="setFilterDungeonType(dungeonType.type)"
         >
-          {{ $t('catacombs') }}
+          {{ $t(dungeonType.name) }}
         </button>
-
-        <button class="button toggle-button" :class="{ active: filterTunnel }" @click="filterTunnel = !filterTunnel">
-          {{ $t('tunnel') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterCave }" @click="filterCave = !filterCave">
-          {{ $t('cave') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterGaol }" @click="filterGaol = !filterGaol">
-          {{ $t('gaol') }}
-        </button>
-
-        <button
-          class="button toggle-button"
-          :class="{ active: filterEvergaol }"
-          @click="filterEvergaol = !filterEvergaol"
-        >
-          {{ $t('evergaol') }}
-        </button>
-
-        <button
-          class="button toggle-button"
-          :class="{ active: filterHerosGrave }"
-          @click="filterHerosGrave = !filterHerosGrave"
-        >
-          {{ $t('herosGrave') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterRuins }" @click="filterRuins = !filterRuins">
-          {{ $t('ruins') }}
-        </button>
+        <!-- </div> -->
       </div>
 
       <div class="expand-all-group">

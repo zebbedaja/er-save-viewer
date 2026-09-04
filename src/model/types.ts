@@ -192,15 +192,16 @@ export enum LocationType {
 }
 
 export enum DungeonType {
-  CATACOMBS,
-  CAVE,
-  HEROS_GRAVE,
-  TUNNEL,
-  GAOL,
-  GROTTO,
-  EVERGAOL,
-  PRECIPICE,
-  RUINS,
-  FORGE,
-  OTHER,
+  CATACOMBS = 'catacombs',
+  CAVE = 'cave',
+  HEROS_GRAVE = 'heros-grave',
+  TUNNEL = 'tunnel',
+  GAOL = 'gaol',
+  GROTTO = 'grotto',
+  EVERGAOL = 'evergaol',
+  PRECIPICE = 'precepice',
+  RUINS = 'ruins',
+  FORGE = 'forge',
+  MAUSOLEUM = 'mausoleum',
+  OTHER = 'other',
 }
