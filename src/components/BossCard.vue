@@ -6,12 +6,17 @@ withDefaults(
   defineProps<{
     boss: ProcessedEncounter
     defeated: boolean
-    showAttributes: boolean
     bossProfileImage?: string
+    showAttributes?: boolean
     animated?: boolean
+    linkFromTitle?: boolean
+    showDrops?: boolean
   }>(),
   {
+    showAttributes: true,
     animated: true,
+    linkFromTitle: false,
+    showDrops: false,
   },
 )
 </script>
@@ -29,7 +34,10 @@ withDefaults(
     </div>
     <div class="card-body">
       <div class="card-title" :class="{ 'spoiler-sensitive': !defeated }">
-        {{ boss.flagName }}
+        <RouterLink v-if="linkFromTitle" :to="{ name: 'boss-detail', params: { flagId: boss.flagId } }">{{
+          boss.flagName
+        }}</RouterLink>
+        <span v-else>{{ boss.flagName }}</span>
       </div>
       <div class="card-subtitle">
         {{ boss.location }}
@@ -46,6 +54,12 @@ withDefaults(
         <div>
           <div class="boss-stat-title" :title="$t('hp')">{{ $t('hp') }}</div>
           <div class="boss-stat-value">{{ formatNumber(boss.hp ?? 0) }}</div>
+        </div>
+      </div>
+      <div class="boss-stats" v-if="showAttributes && showDrops && boss.drops">
+        <div>
+          <div class="boss-stat-title" :title="$t('drops')">{{ $t('drops') }}</div>
+          <div class="boss-stat-value">{{ boss.drops?.join(', ') }}</div>
         </div>
       </div>
       <div v-if="showAttributes" class="boss-attributes">

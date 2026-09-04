@@ -20,11 +20,6 @@ const searchRef = ref<HTMLInputElement | null>(null)
 
 const filterGreatRune = createBoolFilterRef('filterGreatRune')
 const filterRemembrance = createBoolFilterRef('filterRemembrance')
-const filterGreatEnemy = createBoolFilterRef('filterGreatEnemy')
-const filterEnemy = createBoolFilterRef('filterEnemy')
-const filterLegend = createBoolFilterRef('filterLegend')
-const filterDemigod = createBoolFilterRef('filterDemigod')
-const filterGod = createBoolFilterRef('filterGod')
 const filterNightOnly = createBoolFilterRef('filterNightOnly')
 const filterParryable = createBoolFilterRef('filterParryable')
 const filterHuman = createBoolFilterRef('filterHuman')
@@ -36,6 +31,30 @@ const filterAncientDragon = createBoolFilterRef('filterAncientDragon')
 const filterUndead = createBoolFilterRef('filterUndead')
 const filterThoseWhoLiveInDeath = createBoolFilterRef('filterThoseWhoLiveInDeath')
 const filterBackstab = createBoolFilterRef('filterBackstab')
+
+const filterBossTypeValues = [
+  {
+    name: 'enemy',
+    search: 'Enemy',
+  },
+  {
+    name: 'greatEnemy',
+    search: 'Great Enemy',
+  },
+  {
+    name: 'legend',
+    search: 'Legend',
+  },
+  {
+    name: 'demigod',
+    search: 'Demigod',
+  },
+  {
+    name: 'god',
+    search: 'God',
+  },
+]
+const filterBossType = useRouteQuery<string | null>('filterBossType', null)
 
 const filterDungeonTypeValues = [
   {
@@ -81,11 +100,7 @@ const filterDungeonTypeValues = [
 ]
 const filterDungeonType = useRouteQuery<DungeonType | null>('filterDungeonType', null)
 
-const gallery = createBoolFilterRef('gallery')
-gallery.value = true
-
 const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-sm/*', { eager: true })
-
 const bossProfileImagesMap = computed<Record<string, string>>(() => {
   const map: Record<string, string> = {}
   for (const [path, url] of Object.entries(bossProfileImages)) {
@@ -141,6 +156,16 @@ const showAttributes = computed({
   },
 })
 
+const showGallery = computed({
+  get: () => route.query.showGallery !== '0',
+  set: (v: boolean) => {
+    const q = { ...route.query }
+    if (v) delete q.showGallery
+    else q.showGallery = '0'
+    router.replace({ query: q })
+  },
+})
+
 const defeatFilter = computed<'all' | 'defeated' | 'undefeated'>({
   get: () =>
     ['all', 'defeated', 'undefeated'].includes(route.query.defeatFilter as string)
@@ -177,11 +202,11 @@ const filteredEncounters = computed(() => {
 
     if (filterGreatRune.value && !e.hasGreatRune) return false
     if (filterRemembrance.value && !e.hasRemembrance) return false
-    if (filterGreatEnemy.value && e.type !== 'Great Enemy') return false
-    if (filterEnemy.value && e.type !== 'Enemy') return false
-    if (filterLegend.value && e.type !== 'Legend') return false
-    if (filterDemigod.value && e.type !== 'Demigod') return false
-    if (filterGod.value && e.type !== 'God') return false
+    // if (filterBossType.value === 'enemy' && e.type !== 'Enemy') return false
+    // if (filterBossType.value === 'greatEnemy' && e.type !== 'Great Enemy') return false
+    // if (filterBossType.value === 'legend' && e.type !== 'Legend') return false
+    // if (filterBossType.value === 'demigod' && e.type !== 'Demigod') return false
+    // if (filterBossType.value === 'god' && e.type !== 'God') return false
     if (filterNightOnly.value && !e.nightOnly) return false
     if (filterParryable.value && !e.hasParryable) return false
     if (filterHuman.value && !e.hasHuman) return false
@@ -193,6 +218,10 @@ const filteredEncounters = computed(() => {
     if (filterUndead.value && !e.hasUndead) return false
     if (filterThoseWhoLiveInDeath.value && !e.hasThoseWhoLiveInDeath) return false
     if (filterBackstab.value && !e.hasBackstab) return false
+
+    for (const bossType of filterBossTypeValues) {
+      if (filterBossType.value === bossType.name && bossType.search !== e.type) return false
+    }
 
     for (const dungeonType of filterDungeonTypeValues) {
       if (filterDungeonType.value === dungeonType.type && !dungeonType.search.find((s) => e.location.includes(s)))
@@ -302,6 +331,10 @@ function onSearch() {
 function setFilterDungeonType(type: DungeonType) {
   filterDungeonType.value = filterDungeonType.value === type ? null : type
 }
+
+function setFilterBossType(name: string) {
+  filterBossType.value = filterBossType.value === name ? null : name
+}
 </script>
 
 <template>
@@ -360,29 +393,17 @@ function setFilterDungeonType(type: DungeonType) {
           {{ $t('remembrance') }}
         </button>
 
-        <button class="button toggle-button" :class="{ active: filterLegend }" @click="filterLegend = !filterLegend">
-          {{ $t('legend') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterDemigod }" @click="filterDemigod = !filterDemigod">
-          {{ $t('demigod') }}
-        </button>
-
-        <button class="button toggle-button" :class="{ active: filterGod }" @click="filterGod = !filterGod">
-          {{ $t('god') }}
-        </button>
-
+        <!-- <div class="filter-group filter-group-connected"> -->
         <button
+          v-for="bossType of filterBossTypeValues"
+          :key="bossType.name"
           class="button toggle-button"
-          :class="{ active: filterGreatEnemy }"
-          @click="filterGreatEnemy = !filterGreatEnemy"
+          :class="{ active: filterBossType === bossType.name }"
+          @click="setFilterBossType(bossType.name)"
         >
-          {{ $t('greatenemy') }}
+          {{ $t(bossType.name) }}
         </button>
-
-        <button class="button toggle-button" :class="{ active: filterEnemy }" @click="filterEnemy = !filterEnemy">
-          {{ $t('enemy') }}
-        </button>
+        <!-- </div> -->
 
         <button
           class="button toggle-button"
@@ -477,7 +498,7 @@ function setFilterDungeonType(type: DungeonType) {
           >
             {{ $t('showBossAttributes') }}
           </button>
-          <button class="button toggle-button" :class="{ active: gallery }" @click="gallery = !gallery">
+          <button class="button toggle-button" :class="{ active: showGallery }" @click="showGallery = !showGallery">
             {{ $t('gallery') }}
           </button>
         </div>
@@ -534,7 +555,7 @@ function setFilterDungeonType(type: DungeonType) {
             <div class="region-count">{{ countDefeated(bosses) }} / {{ bosses.length }}</div>
           </div>
 
-          <div v-show="expandedRegions.has(region)" class="boss-rows" v-if="!gallery">
+          <div v-show="expandedRegions.has(region)" class="boss-rows" v-if="!showGallery">
             <BossRow
               v-for="boss in bosses"
               :key="boss.flagId"
@@ -559,7 +580,7 @@ function setFilterDungeonType(type: DungeonType) {
         </div>
       </template>
       <template v-else>
-        <div class="boss-rows" v-if="!gallery">
+        <div class="boss-rows" v-if="!showGallery">
           <BossRow
             v-for="boss in section.flatBosses"
             :key="boss.flagId"

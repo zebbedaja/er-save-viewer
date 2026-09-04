@@ -232,18 +232,25 @@ function addMarkers(map: Map, world: World) {
         if (encounter != null) {
           const container = document.createElement('div')
 
-          const popup = new Popup({ offset: 25, className: 'popup', anchor: 'bottom' }).setDOMContent(container)
+          const popup = new Popup({ offset: 25, className: 'popup', anchor: 'bottom' })
+            .setDOMContent(container)
+            .setMaxWidth('300px')
           const defeated = defeatedFlags.value.has(encounter.flagId)
 
           popup.on('open', () => {
             popupTarget.value = container
             popupEncounter.value = encounter
             bossId.value = encounter.flagId
-            // map.easeTo({
-            //   center: popup.getLngLat(),
-            //   duration: 300, // smooth transition in ms
-            // })
-            // map.panBy([0, -150], { duration: 300 });
+            map.easeTo({
+              center: popup.getLngLat(),
+              duration: 400,
+              padding: {
+                top: 300,
+                bottom: 0,
+                left: 0,
+                right: 0,
+              },
+            })
           })
 
           popup.on('close', () => {
@@ -330,11 +337,19 @@ function flyTo(id: number) {
         zoom: 4,
         speed: 1.5,
         essential: true,
+        padding: {
+          top: 300,
+          bottom: 0,
+          left: 0,
+          right: 0,
+        },
       })
 
-      if (!marker.getPopup()?.isOpen()) {
-        marker.togglePopup()
-      }
+      map.once('moveend', () => {
+        if (!marker.getPopup()?.isOpen()) {
+          marker.togglePopup()
+        }
+      })
     }
   }
 }
@@ -584,6 +599,8 @@ onBeforeUnmount(() => {
         :showAttributes="true"
         :defeated="false"
         :animated="false"
+        :linkFromTitle="true"
+        :showDrops="true"
       />
       <!--<div>
         <strong>{{ popupEncounter.flagName }} (Lvl. {{ popupEncounter.level }})</strong>
@@ -591,12 +608,12 @@ onBeforeUnmount(() => {
       <div>&mdash; {{ popupEncounter.location }}</div>
       <div>{{ $t(popupEncounter.type?.replaceAll(' ', '')?.toLocaleLowerCase()) }}</div>
       <div>{{ $t('runes') }}: {{ formatNumber(popupEncounter.runes) }}</div>
-      <div v-if="popupEncounter.drops">{{ $t('drops') }}: {{ popupEncounter.drops?.join(', ') }}</div>-->
+      <div v-if="popupEncounter.drops">{{ $t('drops') }}: {{ popupEncounter.drops?.join(', ') }}</div>
       <div>
         <RouterLink :to="{ name: 'boss-detail', params: { flagId: popupEncounter.flagId } }">{{
           $t('bossDetails')
         }}</RouterLink>
-      </div>
+      </div>-->
     </div>
   </Teleport>
 </template>
