@@ -245,7 +245,7 @@ function addMarkers(map: Map, world: World) {
               center: popup.getLngLat(),
               duration: 500,
               padding: {
-                top: 300,
+                top: 320,
                 bottom: 0,
                 left: 0,
                 right: 0,
@@ -342,7 +342,7 @@ function flyTo(id: number) {
         speed: 1.5,
         essential: true,
         padding: {
-          top: 300,
+          top: 320,
           bottom: 0,
           left: 0,
           right: 0,
@@ -465,7 +465,11 @@ onMounted(() => {
 
   applyWorld(currentIndex.value, () => {
     if (bossId.value != null) {
-      flyTo(bossId.value)
+      setTimeout(() => {
+        if (bossId.value != null) {
+          flyTo(bossId.value)
+        }
+      }, 100)
     }
   })
 })
@@ -773,6 +777,7 @@ onBeforeUnmount(() => {
 
 .popup {
   z-index: 99;
+  width: 300px;
 }
 
 .maplibregl-ctrl {
