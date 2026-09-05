@@ -117,7 +117,7 @@ export default {
   gaol: 'Gaol',
   gauntlets: 'Hände',
   god: 'Gott',
-  greatEnemy: 'Großer Gegner',
+  greatenemy: 'Großer Gegner',
   greatRune: 'Große Rune',
   groupByRegion: 'Nach Region gruppieren',
   helm: 'Helm',

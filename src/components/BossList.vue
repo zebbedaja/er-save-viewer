@@ -38,7 +38,7 @@ const filterBossTypeValues = [
     search: 'Enemy',
   },
   {
-    name: 'greatEnemy',
+    name: 'greatenemy',
     search: 'Great Enemy',
   },
   {
@@ -202,11 +202,6 @@ const filteredEncounters = computed(() => {
 
     if (filterGreatRune.value && !e.hasGreatRune) return false
     if (filterRemembrance.value && !e.hasRemembrance) return false
-    // if (filterBossType.value === 'enemy' && e.type !== 'Enemy') return false
-    // if (filterBossType.value === 'greatEnemy' && e.type !== 'Great Enemy') return false
-    // if (filterBossType.value === 'legend' && e.type !== 'Legend') return false
-    // if (filterBossType.value === 'demigod' && e.type !== 'Demigod') return false
-    // if (filterBossType.value === 'god' && e.type !== 'God') return false
     if (filterNightOnly.value && !e.nightOnly) return false
     if (filterParryable.value && !e.hasParryable) return false
     if (filterHuman.value && !e.hasHuman) return false
@@ -265,8 +260,12 @@ function groupByRegion(list: ProcessedEncounter[]) {
 const groupedBaseGameBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => !e.dlc)))
 const groupedDlcBosses = computed(() => groupByRegion(filteredEncounters.value.filter((e) => e.dlc)))
 
-const flatBaseGameBosses = computed(() => groupedBaseGameBosses.value.flatMap(([, bosses]) => bosses))
-const flatDlcBosses = computed(() => groupedDlcBosses.value.flatMap(([, bosses]) => bosses))
+const flatBaseGameBosses = computed(() =>
+  groupedBaseGameBosses.value.flatMap(([, bosses]) => bosses).toSorted((b1, b2) => (b1.level ?? 0) - (b2.level ?? 0)),
+)
+const flatDlcBosses = computed(() =>
+  groupedDlcBosses.value.flatMap(([, bosses]) => bosses).toSorted((b1, b2) => (b1.level ?? 0) - (b2.level ?? 0)),
+)
 
 const sections = computed<Section[]>(() =>
   [

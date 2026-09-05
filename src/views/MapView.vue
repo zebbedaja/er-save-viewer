@@ -243,7 +243,7 @@ function addMarkers(map: Map, world: World) {
             bossId.value = encounter.flagId
             map.easeTo({
               center: popup.getLngLat(),
-              duration: 400,
+              duration: 500,
               padding: {
                 top: 300,
                 bottom: 0,
@@ -296,7 +296,7 @@ function addMarkers(map: Map, world: World) {
   setBossMarkers(bossFilter.value)
 }
 
-function applyWorld(index: number): void {
+function applyWorld(index: number, callback?: () => void): void {
   const world = worlds[index]
 
   if (mapEl.value != null && world != null && (currentIndex.value !== index || map == null)) {
@@ -318,13 +318,17 @@ function applyWorld(index: number): void {
           loadGeoJsonData(map, dungeonMapsLandOfShadow)
         }
       }
+
+      if (callback != null) {
+        callback()
+      }
     })
 
-    map.on('click', (e) => {
-      const lng = e.lngLat.lng
-      const lat = e.lngLat.lat
-      console.log(`${lng}, ${lat}`)
-    })
+    // map.on('click', (e) => {
+    //   const lng = e.lngLat.lng
+    //   const lat = e.lngLat.lat
+    //   console.log(`${lng}, ${lat}`)
+    // })
   }
 }
 
@@ -459,11 +463,11 @@ onMounted(() => {
     }
   }
 
-  applyWorld(currentIndex.value)
-
-  if (bossId.value != null) {
-    flyTo(bossId.value)
-  }
+  applyWorld(currentIndex.value, () => {
+    if (bossId.value != null) {
+      flyTo(bossId.value)
+    }
+  })
 })
 
 onBeforeUnmount(() => {
@@ -602,18 +606,6 @@ onBeforeUnmount(() => {
         :linkFromTitle="true"
         :showDrops="true"
       />
-      <!--<div>
-        <strong>{{ popupEncounter.flagName }} (Lvl. {{ popupEncounter.level }})</strong>
-      </div>
-      <div>&mdash; {{ popupEncounter.location }}</div>
-      <div>{{ $t(popupEncounter.type?.replaceAll(' ', '')?.toLocaleLowerCase()) }}</div>
-      <div>{{ $t('runes') }}: {{ formatNumber(popupEncounter.runes) }}</div>
-      <div v-if="popupEncounter.drops">{{ $t('drops') }}: {{ popupEncounter.drops?.join(', ') }}</div>
-      <div>
-        <RouterLink :to="{ name: 'boss-detail', params: { flagId: popupEncounter.flagId } }">{{
-          $t('bossDetails')
-        }}</RouterLink>
-      </div>-->
     </div>
   </Teleport>
 </template>
