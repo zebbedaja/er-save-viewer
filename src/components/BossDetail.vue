@@ -9,9 +9,6 @@ import ProgressBarCenter from './ProgressBarCenter.vue'
 import ProgressBar from './ProgressBar.vue'
 import { useI18n } from 'vue-i18n'
 import { YOUTUBE_VIDEOS } from '@/model/youtube'
-import { useClipboard } from '@vueuse/core'
-
-const { copy } = useClipboard()
 
 const { t } = useI18n()
 const saveStore = useSaveStore()
