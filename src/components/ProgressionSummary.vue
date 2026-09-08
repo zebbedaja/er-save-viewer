@@ -81,7 +81,7 @@ const eventProgress = computed(() => {
 </script>
 
 <template>
-  <div class="bordered-content">
+  <div class="progression-summary">
     <div class="boss-title heading-1">
       {{ $t('bossProgress') }}
     </div>
@@ -134,7 +134,7 @@ const eventProgress = computed(() => {
 </template>
 
 <style scoped>
-.bordered-content {
+.proression-summary {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;

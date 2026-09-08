@@ -99,7 +99,7 @@ function onSearch() {
 </script>
 
 <template>
-  <div class="bordered-content event-detail" v-if="category in eventCategories">
+  <div class="event-detail" v-if="category in eventCategories">
     <div class="event-detail-header">
       <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>
       <div class="title-section">

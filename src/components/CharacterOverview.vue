@@ -22,7 +22,7 @@ function calculatePercantage(max: number, value?: number): number {
 </script>
 
 <template>
-  <div class="bordered-content">
+  <div class="character-overview">
     <div class="profile-header">
       <div class="profile-image">
         <CharacterImage :char="{ archetype: character?.archetype, bodyType: character?.bodyType }" />
@@ -147,11 +147,10 @@ function calculatePercantage(max: number, value?: number): number {
 </template>
 
 <style scoped>
-.bordered-content {
+.character-overview {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 0.8rem;
   transition: 0.3s;
 }
 

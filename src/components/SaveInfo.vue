@@ -7,7 +7,7 @@ const { save } = storeToRefs(saveStore)
 </script>
 
 <template>
-  <div class="bordered-content">
+  <div class="save-info">
     <div class="save-info-title heading-1">
       {{ $t('saveInfo') }}
     </div>
@@ -30,7 +30,7 @@ const { save } = storeToRefs(saveStore)
 </template>
 
 <style scoped>
-.bordered-content {
+.save-info {
   gap: 0.6rem;
 }
 

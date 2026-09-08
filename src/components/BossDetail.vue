@@ -75,7 +75,7 @@ function goBack() {
 </script>
 
 <template>
-  <div class="boss-detail bordered-content" v-if="boss">
+  <div class="boss-detail" v-if="boss">
     <div class="boss-detail-header">
       <div class="boss-detail-header-navigation">
         <button class="button button-sm" @click="goBack">{{ $t('backToBosses') }}</button>

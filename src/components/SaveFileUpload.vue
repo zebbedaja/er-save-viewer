@@ -35,7 +35,7 @@ async function openFilePicker() {
 </script>
 
 <template>
-  <div class="upload bordered-content">
+  <div class="upload">
     <div class="heading-1">{{ $t('appTitle') }}</div>
     <div class="divider"></div>
     <p>

@@ -337,7 +337,7 @@ function setFilterBossType(name: string) {
 </script>
 
 <template>
-  <div class="bordered-content boss-list">
+  <div class="boss-list">
     <div class="filters-container">
       <div class="search-and-filter">
         <input
@@ -703,7 +703,6 @@ function setFilterBossType(name: string) {
 
 .region-name {
   font-size: 0.85rem;
-  width: 240px;
   flex: 1;
 }
 
@@ -727,7 +726,6 @@ function setFilterBossType(name: string) {
 }
 
 .boss-rows {
-  margin-left: 1.3rem;
   margin-bottom: 1.3rem;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -737,7 +735,6 @@ function setFilterBossType(name: string) {
   display: grid;
   gap: 0.7rem;
   margin-bottom: 1.3rem;
-  margin-left: 1.3rem;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 

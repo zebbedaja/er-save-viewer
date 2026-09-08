@@ -12,6 +12,7 @@
   --divider-gradient: linear-gradient(to right, transparent, var(--highlight-color), transparent);
   --hover-shadow: 0px 0px 16px 4px rgba(50, 49, 35, 0.9);
   --hover-background: rgba(50, 49, 35, 0.5);
+  /* --sidenav-background: #14110b; */
   --color-filter: invert(68%) sepia(48%) saturate(412%) hue-rotate(5deg) brightness(92%) contrast(91%);
   color-scheme: dark;
 }
@@ -110,7 +111,6 @@ a {
 
 #app {
   margin: 0 auto;
-  padding: 1rem;
 }
 
 html {

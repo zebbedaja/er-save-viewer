@@ -617,7 +617,6 @@ onBeforeUnmount(() => {
 <style scoped>
 .map-wrapper {
   position: relative;
-  margin: -1rem;
   height: calc(100dvh - 3.5rem);
 }
 
