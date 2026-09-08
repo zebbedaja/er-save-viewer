@@ -8,7 +8,7 @@ const processedEncounters: ProcessedEncounter[] = encounters
     ...e,
     level: e.npcs?.reduce((max, obj) => (obj.level > max.level ? obj : max))?.level,
     hasGreatRune: e.drops.some((d) => /Great Rune/.test(d)),
-    hasRemembrance: e.drops.some((d) => /Remembrance/.test(d)),
+    hasRemembrance: e.drops.some((d) => /Remembrance|Bayle/.test(d)),
     hasParryable: e.npcs.some((n) => n.parryable),
     hasHuman: e.npcs.some((n) => n.human),
     hasDuoPhase: hasDuoPhase(e.npcs),

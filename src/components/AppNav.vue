@@ -122,6 +122,8 @@ const languages = [
           <span>GitHub</span>
         </a>
 
+        <div class="divider"></div>
+
         <button class="nav-btn" @click="cycleTheme">
           <span class="btn-label">{{ $t('theme') }}</span>
           <span class="btn-value">{{ currentThemeLabel }}</span>
@@ -308,7 +310,9 @@ const languages = [
     top: 100%;
     left: 0;
     right: 0;
-    display: none;
+    display: flex;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
     flex-direction: column;
     align-items: stretch;
     gap: 0.4rem;
@@ -319,7 +323,7 @@ const languages = [
   }
 
   .nav-right.open {
-    display: flex;
+    transform: translateX(0);
   }
 
   .nav-right .nav-link {
@@ -342,7 +346,12 @@ const languages = [
 
   .nav-right .nav-select {
     align-self: flex-start;
-    width: auto;
+    width: 100%;
+  }
+
+  .nav-right svg {
+    vertical-align: middle;
+    margin-right: 0.4rem;
   }
 }
 </style>
