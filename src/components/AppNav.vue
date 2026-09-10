@@ -20,7 +20,7 @@ const { isSidebarOpen } = storeToRefs(sidebarStore)
 
 const isMenuOpen = ref(false)
 const navWrapperRef = ref<HTMLElement | null>(null)
-const supportsFilePicker = typeof window.showOpenFilePicker !== 'undefined'
+const supportsFilePicker = typeof showOpenFilePicker !== 'undefined'
 
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value

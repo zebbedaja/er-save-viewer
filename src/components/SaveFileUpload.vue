@@ -9,7 +9,7 @@ const { readFile, connectFile } = saveStore
 const { isLoading } = storeToRefs(saveStore)
 const { trackChangesMode } = useTrackChangesStore()
 
-const supportsFilePicker = typeof window.showOpenFilePicker !== 'undefined'
+const supportsFilePicker = typeof showOpenFilePicker !== 'undefined'
 
 async function onFileChange(event: Event) {
   const input = event.target as HTMLInputElement
@@ -21,7 +21,7 @@ async function onFileChange(event: Event) {
 
 async function openFilePicker() {
   try {
-    const [handle] = await window.showOpenFilePicker({
+    const [handle] = await showOpenFilePicker({
       types: [{ accept: { '*/*': ['.sl2', '.co2'] } }],
       excludeAcceptAllOption: true,
     })

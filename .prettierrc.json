@@ -2,5 +2,23 @@
   "$schema": "https://json.schemastore.org/prettierrc",
   "semi": false,
   "singleQuote": true,
-  "printWidth": 120
+  "printWidth": 120,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^[vue]",
+    "<THIRD_PARTY_MODULES>",
+    "^@/api(.*)$",
+    "^@/assets(.*)$",
+    "^@/components(.*)$",
+    "^@/config",
+    "^@/i18n(.*)$",
+    "^@/model(.*)$",
+    "^@/router(.*)$",
+    "^@/stores(.*)$",
+    "^@/templates(.*)$",
+    "^@/views(.*)$",
+    "^@/util(.*)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

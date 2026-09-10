@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
-import { storeToRefs } from 'pinia'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-import 'maplibre-gl/dist/maplibre-gl.css'
+import { useRouteQuery } from '@vueuse/router'
 import {
+  type GeoJSONSourceSpecification,
   LngLatBounds,
   Map,
   Marker,
@@ -11,31 +11,38 @@ import {
   NavigationControl,
   Popup,
   setWorkerUrl,
-  type GeoJSONSourceSpecification,
 } from 'maplibre-gl'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
+import 'maplibre-gl/dist/maplibre-gl.css'
+import { storeToRefs } from 'pinia'
 
-import { useEncounterStore } from '@/stores/encounter'
-import { useSaveStore } from '@/stores/save'
+import markerSvg from '@/assets/img/map/marker.svg?raw'
+import dungeonMapsLandOfShadow from '@/assets/maps/dungeon-maps-land-of-shadow.geojson.json'
+import dungeonMapsLandsBetween from '@/assets/maps/dungeon-maps-lands-between.geojson.json'
+
+import BossCard from '@/components/BossCard.vue'
+
+import { mapLocations } from '@/model/map-locations'
 import {
   DungeonType,
   LocationType,
-  MapType,
   type MapLocation,
+  MapType,
   type ProcessedEncounter,
   type World,
 } from '@/model/types'
-import { mapLocations } from '@/model/map-locations'
 
-import { useRouteQuery } from '@vueuse/router'
-
-import dungeonMapsLandsBetween from '@/assets/maps/dungeon-maps-lands-between.geojson.json'
-import dungeonMapsLandOfShadow from '@/assets/maps/dungeon-maps-land-of-shadow.geojson.json'
-
-import markerSvg from '@/assets/img/map/marker.svg?raw'
-import BossCard from '@/components/BossCard.vue'
+import { useEncounterStore } from '@/stores/encounter'
+import { useSaveStore } from '@/stores/save'
+import { useSidebarStore } from '@/stores/sidebar'
+import { useThemeStore } from '@/stores/theme'
 
 setWorkerUrl(workerUrl)
+
+const themeStore = useThemeStore()
+const { theme } = storeToRefs(themeStore)
+
+const { closeSidebar } = useSidebarStore()
 
 const saveStore = useSaveStore()
 const { defeatedFlags } = storeToRefs(saveStore)
@@ -439,8 +446,20 @@ function loadGeoJsonData(map: Map, data: GeoJSONSourceSpecification['data']) {
   })
 }
 
+watch(defeatedFlags, () => {
+  setBossMarkers(bossFilter.value)
+})
+
+watch(theme, () => {
+  map?.remove()
+  map = null
+  applyWorld(currentIndex.value)
+})
+
 onMounted(() => {
-  if (window.matchMedia('(max-width: 768px)').matches) {
+  closeSidebar()
+
+  if (matchMedia('(max-width: 768px)').matches) {
     showLegend.value = false
     showMapOptions.value = false
   } else {
@@ -552,20 +571,6 @@ onBeforeUnmount(() => {
             </div>
           </div>
         </div>
-
-        <!-- <div class="marker-switcher">
-        <div class="toggle">
-          <div>{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
-          <button class="button toggle-button" :class="{ active: showBossMarkers }" @click="toggleBossMarkers"></button>
-        </div>
-        <div class="toggle">
-          <div>Dungeons</div>
-          <button class="button toggle-button" :class="{ active: showDungeons }" @click="toggleDungeons"></button>
-        </div> -->
-        <!-- <div v-for="(marker, key) of markerMap" :key="key">
-          {{ key }}
-        </div> -->
-        <!-- </div> -->
       </div>
     </div>
 
@@ -632,6 +637,11 @@ onBeforeUnmount(() => {
   border: 1px solid var(--border-color);
   background: var(--main-bg-color);
   width: 220px;
+  transition: left 0.3s ease;
+}
+
+.sidebar-open .map-overlay {
+  left: calc(380px + 3rem);
 }
 
 .map-options {
