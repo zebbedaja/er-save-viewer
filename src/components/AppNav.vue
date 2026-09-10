@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { mdiArrowCollapseLeft, mdiArrowExpandRight } from '@mdi/js'
+import { mdiArrowCollapseLeft, mdiArrowExpandRight, mdiClose, mdiMenu } from '@mdi/js'
 import { onClickOutside } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 
@@ -63,8 +63,8 @@ const languages = [
     <nav class="app-nav">
       <div class="nav-left">
         <button class="nav-hamburger" @click="toggleSidebar">
-          <svg-icon type="mdi" :path.attr="mdiArrowCollapseLeft" v-if="isSidebarOpen"></svg-icon>
-          <svg-icon type="mdi" :path.attr="mdiArrowExpandRight" v-else></svg-icon>
+          <svg-icon type="mdi" :path.attr="mdiArrowCollapseLeft" size="20" v-if="isSidebarOpen"></svg-icon>
+          <svg-icon type="mdi" :path.attr="mdiArrowExpandRight" size="20" v-else></svg-icon>
         </button>
         <RouterLink to="/" class="nav-brand">
           <img :src="faviconSvg" class="nav-logo" :alt="$t('appTitle')" />
@@ -76,37 +76,8 @@ const languages = [
       </div>
 
       <button class="nav-hamburger" @click="toggleMenu">
-        <svg
-          v-if="!isMenuOpen"
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
+        <svg-icon type="mdi" :path.attr="mdiMenu" v-if="!isMenuOpen"></svg-icon>
+        <svg-icon type="mdi" :path.attr="mdiClose" v-else></svg-icon>
       </button>
 
       <div class="nav-right">
@@ -328,7 +299,7 @@ const languages = [
 }
 
 .nav-left .nav-hamburger {
-  display: block;
+  display: flex;
 }
 
 .nav-hamburger {
@@ -347,7 +318,7 @@ const languages = [
 
 @media (max-width: 768px) {
   .nav-hamburger {
-    display: block;
+    display: flex;
   }
 
   .nav-left .nav-link,

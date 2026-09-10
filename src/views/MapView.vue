@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
+import { mdiChevronDown, mdiChevronUp } from '@mdi/js'
 import { useRouteQuery } from '@vueuse/router'
 import {
   type GeoJSONSourceSpecification,
@@ -241,7 +242,7 @@ function addMarkers(map: Map, world: World) {
 
           const popup = new Popup({ offset: 25, className: 'popup', anchor: 'bottom' })
             .setDOMContent(container)
-            .setMaxWidth('300px')
+            .setMaxWidth('280px')
           const defeated = defeatedFlags.value.has(encounter.flagId)
 
           popup.on('open', () => {
@@ -508,7 +509,7 @@ onBeforeUnmount(() => {
           class="expand-icon"
           :style="{ transform: showMapOptions ? 'rotate(180deg)' : '', 'padding-top': showMapOptions ? '0.2rem' : '' }"
         >
-          ▼
+          <svg-icon type="mdi" :path.attr="mdiChevronDown"></svg-icon>
         </div>
       </div>
       <div class="collapsible__wrapper" :class="{ 'is-open': showMapOptions }">
@@ -582,7 +583,7 @@ onBeforeUnmount(() => {
             class="expand-icon"
             :style="{ transform: showLegend ? 'rotate(180deg)' : '', 'padding-top': showLegend ? '0.2rem' : '' }"
           >
-            ▼
+            <svg-icon type="mdi" :path.attr="mdiChevronUp"></svg-icon>
           </div>
         </div>
         <div class="collapsible__wrapper" :class="{ 'is-open': showLegend }">
@@ -786,7 +787,7 @@ onBeforeUnmount(() => {
 
 .popup {
   z-index: 99;
-  width: 300px;
+  width: 280px;
 }
 
 .maplibregl-ctrl {

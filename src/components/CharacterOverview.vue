@@ -48,25 +48,6 @@ function calculatePercantage(max: number, value?: number): number {
 
     <div class="vitals-row">
       <div class="mini-stat">
-        <span class="mini-label">{{ $t('maxHp') }}</span>
-        <span class="mini-value">{{ formatNumber(character?.maxHp ?? 0) }}</span>
-      </div>
-      <div class="mini-stat">
-        <span class="mini-label">{{ $t('maxFp') }}</span>
-        <span class="mini-value">{{ formatNumber(character?.maxFp ?? 0) }}</span>
-      </div>
-      <div class="mini-stat">
-        <span class="mini-label">{{ $t('maxSp') }}</span>
-        <span class="mini-value">{{ formatNumber(character?.maxSp ?? 0) }}</span>
-      </div>
-      <div class="mini-stat">
-        <span class="mini-label">{{ $t('totalDeaths') }}</span>
-        <span class="mini-value">{{ formatNumber(props.saveSlot.totalDeathCount ?? 0) }}</span>
-      </div>
-    </div>
-
-    <div class="flask-row">
-      <div class="mini-stat">
         <span class="mini-label">{{ $t('crimsonTears') }}</span>
         <span class="mini-value">{{ formatNumber(character?.maxCrimsonTearFlaskCount ?? 0) }}</span>
       </div>
@@ -79,6 +60,25 @@ function calculatePercantage(max: number, value?: number): number {
         <span class="mini-value">{{
           formatNumber(character?.additionalTalismanSlotCount ? character?.additionalTalismanSlotCount + 1 : 0)
         }}</span>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-label">{{ $t('totalDeaths') }}</span>
+        <span class="mini-value">{{ formatNumber(props.saveSlot.totalDeathCount ?? 0) }}</span>
+      </div>
+    </div>
+
+    <div class="flask-row">
+      <div class="mini-stat">
+        <span class="mini-label">{{ $t('maxHp') }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxHp ?? 0) }}</span>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-label">{{ $t('maxFp') }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxFp ?? 0) }}</span>
+      </div>
+      <div class="mini-stat">
+        <span class="mini-label">{{ $t('maxSp') }}</span>
+        <span class="mini-value">{{ formatNumber(character?.maxSp ?? 0) }}</span>
       </div>
     </div>
 

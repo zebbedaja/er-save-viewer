@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import { mdiChevronDown, mdiChevronRight } from '@mdi/js'
 import { useRouteQuery } from '@vueuse/router'
 import { storeToRefs } from 'pinia'
 
@@ -546,7 +547,10 @@ function setFilterBossType(name: string) {
           :class="{ completed: isRegionComplete(bosses) }"
         >
           <div class="region-header" @click="toggleRegion(region)">
-            <div class="expand-icon">{{ expandedRegions.has(region) ? '▼' : '▶' }}</div>
+            <div class="expand-icon">
+              <svg-icon type="mdi" :path.attr="mdiChevronDown" v-if="expandedRegions.has(region)"></svg-icon>
+              <svg-icon type="mdi" :path.attr="mdiChevronRight" v-else></svg-icon>
+            </div>
             <div class="region-name">{{ region }}</div>
             <ProgressBar
               class="region-progress"

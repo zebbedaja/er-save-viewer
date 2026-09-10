@@ -148,6 +148,7 @@ const eventProgress = computed(() => {
 .boss-title {
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
 .events-section {
