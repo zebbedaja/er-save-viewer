@@ -66,6 +66,7 @@ async function openFilePicker() {
 <style scoped>
 .upload {
   text-align: center;
+  padding-top: 0.3rem;
 }
 
 .file-path {

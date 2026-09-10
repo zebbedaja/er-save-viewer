@@ -9,7 +9,13 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/er-save-viewer/' : '/',
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag === 'svg-icon',
+        },
+      },
+    }),
     vueDevTools(),
     {
       name: 'copy-404',
