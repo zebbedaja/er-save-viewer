@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+
 import type { Slot } from '@zebbedaja/er-save-parser'
-import { useSaveStore } from '@/stores/save'
+
+import ProgressRow from '@/components/ProgressRow.vue'
+
 import { useEncounterStore } from '@/stores/encounter'
-import ProgressRow from './ProgressRow.vue'
+import { useSaveStore } from '@/stores/save'
 
 const router = useRouter()
 const saveStore = useSaveStore()

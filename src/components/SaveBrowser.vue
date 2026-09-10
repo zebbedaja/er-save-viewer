@@ -1,9 +1,21 @@
 <script setup lang="ts">
-import { useSaveStore } from '@/stores/save'
+import { onMounted } from 'vue'
+
 import { storeToRefs } from 'pinia'
+
+import { useSaveStore } from '@/stores/save'
+import { useSidebarStore } from '@/stores/sidebar'
 
 const saveStore = useSaveStore()
 const { activeSlot } = storeToRefs(saveStore)
+
+const { openSidebar } = useSidebarStore()
+
+onMounted(() => {
+  if (!matchMedia('(max-width: 768px)').matches) {
+    openSidebar()
+  }
+})
 </script>
 
 <template>

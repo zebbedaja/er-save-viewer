@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
+import { defineStore } from 'pinia'
+
 export const useSidebarStore = defineStore('sidebar', () => {
-  console.log(matchMedia('(max-width: 768px)').matches)
-  const isSidebarOpen = ref(!matchMedia('(max-width: 768px)').matches)
+  const isSidebarOpen = ref(false)
   const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value
   }

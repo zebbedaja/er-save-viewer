@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import LoadingIndicator from './LoadingIndicator.vue'
 import { storeToRefs } from 'pinia'
+
+import LoadingIndicator from '@/components/LoadingIndicator.vue'
+
 import { useSaveStore } from '@/stores/save'
 import { useTrackChangesStore } from '@/stores/trackChanges'
 

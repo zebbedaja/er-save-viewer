@@ -1,4 +1,4 @@
-import { MapType, LocationType, type MapLocation, DungeonType } from './types'
+import { DungeonType, LocationType, type MapLocation, MapType } from '@/model/types'
 
 export const mapLocations: MapLocation[] = [
   {

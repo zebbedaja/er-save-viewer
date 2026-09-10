@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ProcessedEncounter } from '@/model/types'
+
 import { formatNumber } from '@/util'
 
 defineProps<{

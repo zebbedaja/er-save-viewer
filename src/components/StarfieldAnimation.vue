@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const stars = ref<Array<{ top: string; left: string; delay: number; duration: number; size: number }>>([])
 

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { Slot, EventFlag } from '@zebbedaja/er-save-parser'
+
+import type { EventFlag, Slot } from '@zebbedaja/er-save-parser'
 
 const props = defineProps<{
   saveSlot: Slot | null

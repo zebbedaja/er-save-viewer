@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { onClickOutside } from '@vueuse/core'
-import { useThemeStore, type Theme } from '@/stores/theme'
-import { useSpoilerStore } from '@/stores/spoiler'
-import { useTrackChangesStore } from '@/stores/trackChanges'
-import { useSidebarStore } from '@/stores/sidebar'
-import faviconSvg from '@/assets/img/favicon.svg'
+
 import { mdiArrowCollapseLeft, mdiArrowExpandRight } from '@mdi/js'
+import { onClickOutside } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
+
+import faviconSvg from '@/assets/img/favicon.svg'
+
+import { useSidebarStore } from '@/stores/sidebar'
+import { useSpoilerStore } from '@/stores/spoiler'
+import { type Theme, useThemeStore } from '@/stores/theme'
+import { useTrackChangesStore } from '@/stores/trackChanges'
 
 const { locale, t } = useI18n()
 const themeStore = useThemeStore()

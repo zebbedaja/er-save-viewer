@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+
 import type { Character, Slot } from '@zebbedaja/er-save-parser'
 
-import { useSaveStore } from '@/stores/save'
-import { formatNumber } from '@/util'
-import ProgressRow from '@/components/ProgressRow.vue'
 import CharacterImage from '@/components/CharacterImage.vue'
+import ProgressRow from '@/components/ProgressRow.vue'
+
+import { useSaveStore } from '@/stores/save'
+
+import { formatNumber } from '@/util'
 
 const saveStore = useSaveStore()
 const { resetActiveSlot, resetSaveFile } = saveStore

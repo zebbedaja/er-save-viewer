@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+
 import { storeToRefs } from 'pinia'
+
 import { useSaveStore } from '@/stores/save'
 
 const saveStore = useSaveStore()

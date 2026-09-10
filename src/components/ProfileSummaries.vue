@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import ProfileSummary from './ProfileSummary.vue'
+import { storeToRefs } from 'pinia'
+
+import ProfileSummary from '@/components/ProfileSummary.vue'
 
 import { useSaveStore } from '@/stores/save'
-import { storeToRefs } from 'pinia'
 
 const saveStore = useSaveStore()
 const { save } = storeToRefs(saveStore)

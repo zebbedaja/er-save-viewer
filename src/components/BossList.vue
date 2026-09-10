@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useSaveStore } from '@/stores/save'
-import { useEncounterStore } from '@/stores/encounter'
-import { storeToRefs } from 'pinia'
-import { DungeonType, type ProcessedEncounter, type Section } from '@/model/types'
-import { REGION_ORDER } from '@/model/regions'
-import ProgressBar from './ProgressBar.vue'
-import BossRow from './BossRow.vue'
-import BossCard from './BossCard.vue'
+
 import { useRouteQuery } from '@vueuse/router'
+import { storeToRefs } from 'pinia'
+
+import BossCard from '@/components/BossCard.vue'
+import BossRow from '@/components/BossRow.vue'
+import ProgressBar from '@/components/ProgressBar.vue'
+
+import { REGION_ORDER } from '@/model/regions'
+import { DungeonType, type ProcessedEncounter, type Section } from '@/model/types'
+
+import { useEncounterStore } from '@/stores/encounter'
+import { useSaveStore } from '@/stores/save'
 
 const router = useRouter()
 const route = useRoute()
@@ -100,7 +104,7 @@ const filterDungeonTypeValues = [
 ]
 const filterDungeonType = useRouteQuery<DungeonType | null>('filterDungeonType', null)
 
-const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-sm/*', { eager: true })
+const bossProfileImages = import.meta.glob<{ default: string }>('@/assets/img/bosses-sm/*', { eager: true })
 const bossProfileImagesMap = computed<Record<string, string>>(() => {
   const map: Record<string, string> = {}
   for (const [path, url] of Object.entries(bossProfileImages)) {

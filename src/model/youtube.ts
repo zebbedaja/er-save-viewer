@@ -1,4 +1,4 @@
-import type { YouTubeVideo } from './types'
+import type { YouTubeVideo } from '@/model/types'
 
 export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
   {

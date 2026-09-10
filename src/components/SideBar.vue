@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { watch } from 'vue'
+
+import { storeToRefs } from 'pinia'
+
+import CharacterOverview from '@/components/CharacterOverview.vue'
+import LiveSyncStatus from '@/components/LiveSyncStatus.vue'
+import ProfileSummaries from '@/components/ProfileSummaries.vue'
+import ProgressionSummary from '@/components/ProgressionSummary.vue'
+import SaveFileUpload from '@/components/SaveFileUpload.vue'
+import SaveInfo from '@/components/SaveInfo.vue'
+import TrackChanges from '@/components/TrackChanges.vue'
+
 import { useSaveStore } from '@/stores/save'
 import { useTrackChangesStore } from '@/stores/trackChanges'
-import { storeToRefs } from 'pinia'
-import SaveFileUpload from './SaveFileUpload.vue'
-import ProfileSummaries from './ProfileSummaries.vue'
-import CharacterOverview from './CharacterOverview.vue'
-import ProgressionSummary from './ProgressionSummary.vue'
-import LiveSyncStatus from './LiveSyncStatus.vue'
-import TrackChanges from './TrackChanges.vue'
-import SaveInfo from './SaveInfo.vue'
 
 const saveStore = useSaveStore()
 const { save, activeSlot, activeSlotId } = storeToRefs(saveStore)

@@ -1,6 +1,7 @@
 import { watch } from 'vue'
-import { defineStore } from 'pinia'
+
 import { useStorage } from '@vueuse/core'
+import { defineStore } from 'pinia'
 
 export type Theme = 'dark' | 'pink' | 'blue'
 

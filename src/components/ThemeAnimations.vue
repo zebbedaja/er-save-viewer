@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import ButterfliesAnimation from '@/components/ButterfliesAnimation.vue'
+import StarfieldAnimation from '@/components/StarfieldAnimation.vue'
+
 import { useThemeStore } from '@/stores/theme'
-import StarfieldAnimation from './StarfieldAnimation.vue'
-import ButterfliesAnimation from './ButterfliesAnimation.vue'
 
 const themeStore = useThemeStore()
 </script>

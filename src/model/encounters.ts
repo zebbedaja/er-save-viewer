@@ -1,4 +1,4 @@
-import { type Encounter } from './types'
+import { type Encounter } from '@/model/types'
 
 export const encounters: Encounter[] = [
   {

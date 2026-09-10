@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import SaveBrowser from '@/components/SaveBrowser.vue'
 import { RouterView } from 'vue-router'
+
+import SaveBrowser from '@/components/SaveBrowser.vue'
 </script>
 
 <template>

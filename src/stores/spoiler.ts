@@ -1,6 +1,7 @@
-import { watch, onMounted, onUnmounted } from 'vue'
-import { defineStore } from 'pinia'
+import { onMounted, onUnmounted, watch } from 'vue'
+
 import { useStorage } from '@vueuse/core'
+import { defineStore } from 'pinia'
 
 export const useSpoilerStore = defineStore('spoiler', () => {
   const spoilerMode = useStorage('pinia/spoilerMode', false)

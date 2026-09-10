@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+
+import { useSidebarStore } from '@/stores/sidebar'
+
+const { closeSidebar } = useSidebarStore()
+
+onMounted(() => {
+  closeSidebar()
+})
+</script>
+
 <template>
   <div class="about">
     <h1>{{ $t('aboutTitle') }}</h1>

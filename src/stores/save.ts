@@ -1,10 +1,14 @@
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
+
 import { useStorage } from '@vueuse/core'
+import { type Save, compareUint8Arrays, getBstMap, getEventIdFromPosition, parse } from '@zebbedaja/er-save-parser'
 import { defineStore } from 'pinia'
-import { parse, compareUint8Arrays, type Save, getEventIdFromPosition, getBstMap } from '@zebbedaja/er-save-parser'
+
 import i18n from '@/i18n'
-import { useTrackChangesStore } from './trackChanges'
+
 import type { HistoryEntry } from '@/model/types'
+
+import { useTrackChangesStore } from '@/stores/trackChanges'
 
 const pollIntervalMs = 1000
 const MAX_HISTORY = 50

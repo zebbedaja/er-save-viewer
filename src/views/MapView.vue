@@ -93,7 +93,7 @@ const mapEl = ref<HTMLDivElement | null>(null)
 
 let map: Map | null = null
 
-const bossProfileImages = import.meta.glob<{ default: string }>('../assets/img/bosses-sm/*', { eager: true })
+const bossProfileImages = import.meta.glob<{ default: string }>('@/assets/img/bosses-sm/*', { eager: true })
 
 const bossProfileImagesMap = computed<Record<string, string>>(() => {
   const map: Record<string, string> = {}

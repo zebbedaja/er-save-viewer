@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { secondsToHMS } from '@/util'
 import type { ProfileSummary } from '@zebbedaja/er-save-parser'
 
 import CharacterImage from '@/components/CharacterImage.vue'
+
+import { secondsToHMS } from '@/util'
 
 defineProps<{
   profileSummary: ProfileSummary

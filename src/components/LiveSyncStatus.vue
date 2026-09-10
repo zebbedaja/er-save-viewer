@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+
 import { storeToRefs } from 'pinia'
+
 import { useSaveStore } from '@/stores/save'
 
 const saveStore = useSaveStore()

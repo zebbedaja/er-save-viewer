@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useSaveStore } from '@/stores/save'
-import { useEncounterStore } from '@/stores/encounter'
-import type { ResistanceValue } from '@/model/types'
-import { formatNumber } from '@/util'
-import ProgressBarCenter from './ProgressBarCenter.vue'
-import ProgressBar from './ProgressBar.vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute, useRouter } from 'vue-router'
+
+import ProgressBar from '@/components/ProgressBar.vue'
+import ProgressBarCenter from '@/components/ProgressBarCenter.vue'
+
+import type { ResistanceValue } from '@/model/types'
 import { YOUTUBE_VIDEOS } from '@/model/youtube'
+
+import { useEncounterStore } from '@/stores/encounter'
+import { useSaveStore } from '@/stores/save'
+
+import { formatNumber } from '@/util'
 
 const { t } = useI18n()
 const saveStore = useSaveStore()
@@ -34,7 +38,7 @@ function calculateResistancePercentage(resistance: ResistanceValue): number {
   return resistance.immune ? Number.MAX_VALUE : (resistance?.thresholds?.[0] ?? 0) / 20
 }
 
-const bossImages = import.meta.glob<{ default: string }>('../assets/img/bosses/*', { eager: true })
+const bossImages = import.meta.glob<{ default: string }>('@/assets/img/bosses/*', { eager: true })
 
 function getNpcImageUrls(npcId: number): string[] {
   return Object.entries(bossImages)
@@ -44,7 +48,7 @@ function getNpcImageUrls(npcId: number): string[] {
 
 const npcImageUrls = computed(() => [...new Set(boss?.value?.npcs?.map((npc) => getNpcImageUrls(npc.id)).flat())])
 
-const bossYouTubeImages = import.meta.glob<{ default: string }>('../assets/img/bosses-youtube/*.jpg', { eager: true })
+const bossYouTubeImages = import.meta.glob<{ default: string }>('@/assets/img/bosses-youtube/*.jpg', { eager: true })
 
 function getYouTubeImageUrl(flagId: number): string | undefined {
   const key = Object.keys(bossYouTubeImages).find((k) => k.includes(`${flagId}`))

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import BossList from '../components/BossList.vue'
-import BossDetail from '../components/BossDetail.vue'
-import EventCategoryDetail from '../components/EventCategoryDetail.vue'
+
+import BossDetail from '@/components/BossDetail.vue'
+import BossList from '@/components/BossList.vue'
+import EventCategoryDetail from '@/components/EventCategoryDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,7 +20,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomeView.vue'),
+      component: () => import('@/views/HomeView.vue'),
       children: [
         {
           path: '',
@@ -41,12 +42,12 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('@/views/AboutView.vue'),
     },
     {
       path: '/map',
       name: 'map',
-      component: () => import('../views/MapView.vue'),
+      component: () => import('@/views/MapView.vue'),
     },
   ],
 })
