@@ -35,7 +35,7 @@ withDefaults(
 .progress-bar-fill {
   height: 100%;
   border-radius: 1.5px;
-  transition: width 0.4s ease;
+  transition: width 0.2s ease;
 }
 
 .caps {

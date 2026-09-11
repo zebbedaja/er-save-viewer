@@ -154,7 +154,7 @@ function calculatePercantage(max: number, value?: number): number {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .profile-header {

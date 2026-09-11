@@ -638,7 +638,7 @@ onBeforeUnmount(() => {
   border: 1px solid var(--border-color);
   background: var(--main-bg-color);
   width: 220px;
-  transition: left 0.3s ease;
+  transition: left 0.2s ease;
 }
 
 .sidebar-open .map-overlay {
@@ -725,7 +725,7 @@ onBeforeUnmount(() => {
 .collapsible__wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  transition: all 200ms ease;
+  transition: all 0.2s ease;
   padding-top: 0;
   opacity: 0;
 }

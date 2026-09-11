@@ -337,7 +337,7 @@ const languages = [
   left: 0;
   right: 0;
   display: flex;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   transform: translateX(100%);
   flex-direction: column;
   align-items: stretch;

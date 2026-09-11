@@ -33,7 +33,7 @@ onMounted(() => {
 
 .container-wrapper {
   margin-left: 0;
-  transition: margin-left 0.3s ease;
+  transition: margin-left 0.2s ease;
   padding: 1rem 1rem 2rem 1rem;
 }
 

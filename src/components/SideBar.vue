@@ -53,7 +53,7 @@ watch(activeSlotId, () => {
   overflow-y: auto;
   border-right: 1px solid var(--border-color);
   background-color: var(--sidenav-background);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
   background: var(--main-bg-color);
   z-index: 1099;
   transform: translateX(-100%);

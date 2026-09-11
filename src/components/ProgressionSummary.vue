@@ -142,7 +142,7 @@ const eventProgress = computed(() => {
   flex-direction: column;
   gap: 0.6rem;
   padding: 1rem 0.8rem;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .boss-title {
@@ -169,7 +169,7 @@ const eventProgress = computed(() => {
 
 .category-click {
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity 0.2s;
 }
 
 .category-click:hover {
