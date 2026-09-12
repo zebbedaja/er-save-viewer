@@ -21,7 +21,7 @@
   cursor: pointer;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--border-color);
-  transition: 0.2s;
+  transition: all 0.2s ease;
   text-align: center;
   background: transparent;
   font-size: 0.8rem;
@@ -129,7 +129,7 @@ button.active,
   padding-right: 1rem;
 }
 
-.filter-group-connected button:not(:first-child) {
+.filter-group-connected.filter-group-connected-horizontal button:not(:first-child) {
   margin-left: -0.5px;
 }
 

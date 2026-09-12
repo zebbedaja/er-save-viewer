@@ -516,7 +516,7 @@ onBeforeUnmount(() => {
         <div class="collapsible__inner">
           <div class="map-overlay-group">
             <div class="map-overlay-headline">{{ $t('map') }}</div>
-            <div class="map-options-buttons filter-group filter-group-connected filter-group-connected-vertical">
+            <div class="map-options-buttons filter-group">
               <button
                 v-for="(world, i) in worlds"
                 :key="world.name"
@@ -531,7 +531,7 @@ onBeforeUnmount(() => {
 
           <div class="map-overlay-group">
             <div class="map-overlay-headline">{{ $t('bosses') }} ({{ Object.keys(markerMap).length }})</div>
-            <div class="map-options-buttons filter-group filter-group-connected filter-group-connected-verticalƒ">
+            <div class="map-options-buttons filter-group">
               <button
                 class="button toggle-button"
                 :class="{ active: bossFilter === 'all' }"
@@ -641,8 +641,10 @@ onBeforeUnmount(() => {
   transition: left 0.2s ease;
 }
 
-.sidebar-open .map-overlay {
-  left: calc(380px + 3rem);
+@media (min-width: 769px) {
+  .sidebar-open .map-overlay {
+    left: calc(380px + 3rem);
+  }
 }
 
 .map-options {

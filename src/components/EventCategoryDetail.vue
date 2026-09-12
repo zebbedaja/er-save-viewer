@@ -121,7 +121,7 @@ function onSearch() {
           @keydown.enter.prevent="onSearch"
         />
 
-        <div class="filter-group filter-group-connected">
+        <div class="filter-group filter-group-connected filter-group-connected-horizontal">
           <button
             class="button toggle-button"
             :class="{ active: activationFilter === 'all' }"

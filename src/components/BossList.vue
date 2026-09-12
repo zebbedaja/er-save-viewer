@@ -355,7 +355,7 @@ function setFilterBossType(name: string) {
           @keydown.enter.prevent="onSearch"
         />
 
-        <div class="filter-group filter-group-connected">
+        <div class="filter-group filter-group-connected filter-group-connected-horizontal">
           <button
             class="button toggle-button"
             :class="{ active: defeatFilter === 'all' }"
@@ -397,7 +397,7 @@ function setFilterBossType(name: string) {
           {{ $t('remembrance') }}
         </button>
 
-        <!-- <div class="filter-group filter-group-connected"> -->
+        <!-- <div class="filter-group filter-group-connected filter-group-connected-horizontal"> -->
         <button
           v-for="bossType of filterBossTypeValues"
           :key="bossType.name"
@@ -477,7 +477,7 @@ function setFilterBossType(name: string) {
           {{ $t('multiPhaseBoss') }}
         </button>
 
-        <!-- <div class="filter-group filter-group-connected"> -->
+        <!-- <div class="filter-group filter-group-connected filter-group-connected-horizontal"> -->
         <button
           v-for="dungeonType of filterDungeonTypeValues"
           :key="dungeonType.type"
