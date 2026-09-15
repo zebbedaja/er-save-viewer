@@ -664,7 +664,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 12020850,
     flagName: 'Mimic Tear',
-    hp: 1242,
+    hp: 3111,
     runes: 10000,
     region: 'Nokron, Eternal City',
     location: 'Nokron, Eternal City',
@@ -3900,7 +3900,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 30200800,
     flagName: 'Stray Mimic Tear',
-    hp: 1242,
+    hp: 4968,
     runes: 50000,
     region: 'Mountaintops of the Giants',
     location: 'Hidden Path to the Haligtree',
@@ -4002,12 +4002,12 @@ export const encounters: Encounter[] = [
         defense: { physical: 85, magic: 98, fire: 98, lightning: 81, holy: 96 },
         negation: { standard: 14, slash: 14, strike: 16, pierce: 15, magic: 16, fire: 16, lightning: 18, holy: 18 },
         resistance: {
-          poison: { immune: true, thresholds: [213, 276, 377, 519, 852, 1831] },
-          scarletRot: { immune: true, thresholds: [213, 276, 377, 519, 852, 1831] },
-          bloodLoss: { immune: true, thresholds: [165, 214, 292, 402, 660, 1419] },
-          frostBite: { immune: true, thresholds: [165, 214, 292, 402, 660, 1419] },
-          sleep: { immune: true, thresholds: [178, 231, 315, 434, 712, 1530] },
-          madness: { immune: true, thresholds: [178, 231, 315, 434, 712, 1530] },
+          poison: { immune: false, thresholds: [213, 276, 377, 519, 852, 1831] },
+          scarletRot: { immune: false, thresholds: [213, 276, 377, 519, 852, 1831] },
+          bloodLoss: { immune: false, thresholds: [165, 214, 292, 402, 660, 1419] },
+          frostBite: { immune: false, thresholds: [165, 214, 292, 402, 660, 1419] },
+          sleep: { immune: false, thresholds: [178, 231, 315, 434, 712, 1530] },
+          madness: { immune: false, thresholds: [178, 231, 315, 434, 712, 1530] },
           deathBlight: { immune: true, thresholds: [199, 258, 352, 485, 796, 1711] },
         },
         stats: {
@@ -5018,7 +5018,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 31190800,
     flagName: "Black Knife Assassin (Sage's Cave)",
-    hp: 1964,
+    hp: 3929,
     runes: 9000,
     region: 'Altus Plateau',
     location: "Sage's Cave",
@@ -6396,7 +6396,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 41020800,
     flagName: 'Lamenter',
-    hp: 54963,
+    hp: 36748,
     runes: 160000,
     region: "Charo's Hidden Grave",
     location: "Lamenter's Gaol",
@@ -6508,7 +6508,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 43010800,
     flagName: 'Ancient Dragon-Man',
-    hp: 21859,
+    hp: 19097,
     runes: 130000,
     region: 'Gravesite Plain',
     location: "Dragon's Pit",
@@ -7655,7 +7655,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 1039430800,
     flagName: "Night's Cavalry",
-    hp: 2704,
+    hp: 7268,
     runes: 5600,
     region: 'Liurnia of the Lakes',
     location: 'Liurnia South',
@@ -10920,7 +10920,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 2046380800,
     flagName: 'Dancer of Ranah',
-    hp: 15025,
+    hp: 14046,
     runes: 80000,
     region: 'Cerulean Coast',
     location: 'Southern Nameless Mausoleum',
@@ -11110,7 +11110,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 2046450800,
     flagName: 'Red Bear',
-    hp: 24476,
+    hp: 16365,
     runes: 80000,
     region: 'Gravesite Plain',
     location: 'Northern Nameless Mausoleum',
@@ -11584,7 +11584,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 2049440800,
     flagName: 'Dryleaf Dane',
-    hp: 18321,
+    hp: 12249,
     runes: 0,
     region: 'Scadu Altus',
     location: 'Moorth Ruins',
@@ -11978,7 +11978,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 2051440800,
     flagName: 'Rakshasa',
-    hp: 25809,
+    hp: 20235,
     runes: 90000,
     region: 'Scadu Altus',
     location: 'Eastern Nameless Mausoleum',
@@ -12044,7 +12044,7 @@ export const encounters: Encounter[] = [
   {
     flagId: 2051450800,
     flagName: 'Count Ymir, Mother of Fingers',
-    hp: 16673,
+    hp: 11147,
     runes: 210000,
     region: 'Scadu Altus',
     location: 'Cathedral of Manus Metyr',
