@@ -20,6 +20,12 @@ export const YOUTUBE_VIDEOS: YouTubeVideo[] = [
     youTubeUser: 'Zebbedaja',
   },
   {
+    flagId: 13000800,
+    youTubeId: 'Fj-luGTUn4g',
+    youTubeTitle: 'Maliketh RL1+0 NO HIT',
+    youTubeUser: 'Zebbedaja',
+  },
+  {
     flagId: 15000800,
     youTubeId: 'Ua3J8bmekM0',
     youTubeTitle: 'PERFECT Malenia - Level 1 Wretch (RL1, No Hit)',
