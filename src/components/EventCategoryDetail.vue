@@ -32,6 +32,9 @@ const eventCategories: Record<string, string> = {
   perfumeBottle: 'eventsPerfumeBottle',
   grace: 'eventsGrace',
   illusoryWall: 'eventsIllusoryWall',
+  sacredTear: 'eventsSacredTear',
+  goldenSeed: 'eventsGoldenSeed',
+  talisman: 'eventsTalisman',
 }
 
 const searchRef = ref<HTMLInputElement | null>(null)
@@ -62,7 +65,7 @@ const activationFilter = computed<'all' | 'activated' | 'notActivated'>({
 const categoryFlags = computed<EventFlag[]>(() => {
   if (!props.saveSlot?.eventFlags) return []
   const flags = props.saveSlot.eventFlags.filter((f) => f.category === category.value)
-  const shouldSortByName = ['cookbook', 'ashOfWar', 'illusoryWall'].includes(category.value)
+  const shouldSortByName = ['cookbook', 'ashOfWar', 'illusoryWall', 'talisman'].includes(category.value)
   return flags.toSorted(
     shouldSortByName
       ? (a, b) => (a.name || '').localeCompare(b.name || '', undefined, { numeric: true })
@@ -203,7 +206,6 @@ function onSearch() {
 .not-found {
   text-align: center;
   padding: 2rem;
-  opacity: 0.5;
   font-style: italic;
 }
 
@@ -222,7 +224,7 @@ function onSearch() {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  opacity: 0.5;
+  opacity: 0.8;
   border-bottom: 1px solid var(--border-color);
   user-select: none;
 }
@@ -286,11 +288,11 @@ function onSearch() {
 }
 
 .flag-row:not(.activated) .flag-name {
-  opacity: 0.55;
+  opacity: 0.7;
 }
 
 .flag-location {
-  opacity: 0.4;
+  opacity: 0.7;
   font-size: 0.8rem;
   flex-shrink: 0;
   white-space: nowrap;

@@ -53,6 +53,9 @@ const eventCategories: Record<string, string> = {
   perfumeBottle: 'eventsPerfumeBottle',
   grace: 'eventsGrace',
   illusoryWall: 'eventsIllusoryWall',
+  sacredTear: 'eventsSacredTear',
+  goldenSeed: 'eventsGoldenSeed',
+  talisman: 'eventsTalisman',
 }
 
 const eventProgress = computed(() => {
@@ -88,7 +91,7 @@ const eventProgress = computed(() => {
     <div class="boss-title heading-1">
       {{ $t('bossProgress') }}
     </div>
-    <div class="heading-2">
+    <div class="events-title heading-2">
       {{ $t('bosses') }}
     </div>
     <div class="attributes-grid">
